@@ -1,0 +1,59 @@
+MessageType,DefaultButton,MessageID,Message,CreatTime,Creater
+Q,2,2001,确定要退出吗?,2009/06/17 23:48,WanGang
+Q,1,2002,Are You Sure Add This Goods?,2007/12/11,WanGang
+Q,1,2003,Are You Sure Update This Goods?,2008/08/28,HaoQiang
+Q,1,2004,Are You Sure Add This UserGroup?,2008/08/28,WanGang
+Q,2,2005,Are You Sure Delete This Goods?,2008/08/28,HaoQiang
+Q,1,2006,Are You Sure Closs This Window?,2008/08/28,HaoQiang
+Q,2,2007,确定要删除本数据吗?,2008/08/29,WanGang
+Q,1,2008,Are You Sure Update This Data?,2008/08/29,WanGang
+Q,1,2009,Are You Sure Add This Data?,2008/08/29,HaoQiang
+Q,1,2010,Are You Sure Re-Login System?,2008/09/04,WanGang
+Q,1,2011,Are You Sure Add This User?,2008/09/04,WanGang
+Q,1,2012,确定要添加新部门吗?,2008/09/04,WanGang
+Q,1,2013,确定要修改该部门吗?,2008/09/04,WanGang
+I,1,1001,The Successful Completion Of Operation.,2007/12/11,WanGang
+E,1,3001,The Operation Is Fail.,2007/12/11,WanGang
+E,1,3002,Creat Goods ID Fail.,2008/09/01,WanGang
+E,1,1001,SQL Server Connection Error.,2008/09/01,WanGang
+E,1,1002,SQL Server Running Fail.,2008/09/01,WanGang
+E,1,1003,Get SlipID Fail.,2008/08/28,WanGang
+E,1,1004,An unknown error process!.,2008/08/28,WanGang
+E,1,2001,Add UserGroup Fail.,2008/09/01,WanGang
+E,1,3001,Add User Fail.,2008/09/04,WanGang
+W,1,1001,Can't Empty.,2008/08/27,haoqiang
+W,1,1002,The Logging UserID Is Not Exist!,2007-12-13,WanGang
+W,1,1003,Successful Implementation Of SQL Statements  But No Data Change.,2007-12-12,WanGang
+W,1,1004,The PassWord Is Error!,2008/09/01,WanGang
+W,1,1005,The User has  be stop!,2008/09/01,WanGang
+W,1,1006,The length is input Wrong!.,2008/08/27,haoqiang
+W,1,1007,The input length is longer than maxlength!.,2008/08/27,haoqiang
+W,1,1008,The data is not exist!.,2008/08/27,haoqiang
+W,1,1009,Goods group Num can't change!,2008/08/27,haoqiang
+W,1,1010,The data has existed.,2008/08/27,haoqiang
+W,1,1011,Please enter a number!,2008/08/27,haoqiang
+W,1,1012,Please enter a half-width characters両,2008/08/27,haoqiang
+W,1,1013,The UserGroup is not existed両.,2008/08/27,haoqiang
+W,1,1014,The Name is existed,plase try again両,2008/09/02,haoqiang
+W,1,1015,Plase choose one item両,2008/09/02,haoqiang
+W,1,1016,Your input is include some specail chars両,2008/09/02,haoqiang
+W,1,1017,There is an error in input!,2008/09/02,WanGang
+W,1,1018,This UserGroupName Has Exist!,2008/09/02,WanGang
+W,1,1019,The primary key is not change両,2008/09/02,haoqiang
+W,1,1020,图像大小必须小于 2M.,2008/09/04,WanGang
+W,1,1021,This UserLoginID Has Exist!,2008/09/04,WanGang
+W,1,1022,Can not delete the current user!,2008/09/08,WanGang
+W,1,1023,所操作的数据不存在!,2008/09/08,haoqiang
+W,1,1024,Please enter a valid address E_Mail!,2008/09/09,WanGang
+W,1,1025,The Goods is not exist the storage!,2008/09/09,HaoQiang
+W,1,1026,The Goods's counts is more than storage goods count!,2008/09/09,HaoQiang
+W,1,1027,Please Enter the date!,2008/09/10,WanGang
+W,1,1028,this goods group can't be deleted other MSTR using it!,2008/09/17,HaoQiang
+W,1,1029,this goods can't be deleted other MSTR using it!,2008/09/17,HaoQiang
+W,1,1030,this storage can't be deleted other MSTR using it!,2008/09/17,HaoQiang
+W,1,1031,Sale price can not be less than purchase price!,2008/09/18,HaoQiang
+W,1,1032,Expiration dates can not be less than production dates !,2008/09/18,HaoQiang
+W,1,1033,The min stock alert num can not be lager than the max stock alert num!,2008/09/18,HaoQiang
+W,1,1034,The business start time can not be lager than business end time!,2008/09/18,HaoQiang
+W,1,8888,Program have been running.,2007/12/10,WanGang
+

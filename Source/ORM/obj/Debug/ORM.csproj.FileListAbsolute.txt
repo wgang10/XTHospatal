@@ -1,0 +1,5 @@
+D:\Source\XTHospatal\Source\ORM\bin\Debug\XTHospital.ORM.dll
+D:\Source\XTHospatal\Source\ORM\bin\Debug\XTHospital.ORM.pdb
+D:\Source\XTHospatal\Source\ORM\obj\Debug\ResolveAssemblyReference.cache
+D:\Source\XTHospatal\Source\ORM\obj\Debug\XTHospital.ORM.dll
+D:\Source\XTHospatal\Source\ORM\obj\Debug\XTHospital.ORM.pdb

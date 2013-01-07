@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{05918081-5B3A-4203-9E95-08C10B2A4572}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>XTHospital.OleDbDAL</RootNamespace>
+    <AssemblyName>XTHospital.OleDbDAL</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DAL_Bexamination.cs" />
+    <Compile Include="DAL_Biochemistry.cs" />
+    <Compile Include="DAL_Composition.cs" />
+    <Compile Include="DAL_Department.cs" />
+    <Compile Include="DAL_ECG.cs" />
+    <Compile Include="DAL_Employee.cs" />
+    <Compile Include="DAL_Features.cs" />
+    <Compile Include="DAL_Feme.cs" />
+    <Compile Include="DAL_InternalMedicine.cs" />
+    <Compile Include="DAL_Log.cs" />
+    <Compile Include="DAL_LoginUser.cs" />
+    <Compile Include="DAL_MedicalItems.cs" />
+    <Compile Include="DAL_Province.cs" />
+    <Compile Include="DAL_Report.cs" />
+    <Compile Include="DAL_Surgery.cs" />
+    <Compile Include="DAL_Xray.cs" />
+    <Compile Include="DAL_YearMonth.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\COM\COM.csproj">
+      <Project>{1D4C12EC-E53B-41A0-B867-8CB6A6550006}</Project>
+      <Name>COM</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DB\DB.csproj">
+      <Project>{D8B19AE2-5D2B-41F2-8017-46BD49D8DCB0}</Project>
+      <Name>DB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IDAL\IDAL.csproj">
+      <Project>{1FE3DF10-B292-4EC7-A708-DFF3DAACFA40}</Project>
+      <Name>IDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{1CC2D7D8-0620-4103-BA6A-3E1FC1FE86A7}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

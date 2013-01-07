@@ -1,0 +1,390 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{248D1623-5B74-4B43-90AA-106F19FC5B3A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>XTHospitalUI</RootNamespace>
+    <AssemblyName>XTHospitalUI</AssemblyName>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <ManifestCertificateThumbprint>2F5C0209C87DCEBB9291EFE414BEC3392D47BAB2</ManifestCertificateThumbprint>
+    <ManifestKeyFile>key.pfx</ManifestKeyFile>
+    <GenerateManifests>true</GenerateManifests>
+    <TargetZone>LocalIntranet</TargetZone>
+    <SignManifests>false</SignManifests>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <ApplicationIcon>config.ico</ApplicationIcon>
+    <SignAssembly>false</SignAssembly>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <TargetFrameworkProfile />
+    <PublishUrl>D:\XTHospital\</PublishUrl>
+    <Install>false</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <InstallUrl>http://111.114.111.116/</InstallUrl>
+    <SupportUrl>http://www.shangmeisi.com/</SupportUrl>
+    <TargetCulture>zh-CN</TargetCulture>
+    <ProductName>西安体育学院教职工健康信息管理系统</ProductName>
+    <PublisherName>尚美思</PublisherName>
+    <ApplicationRevision>16</ApplicationRevision>
+    <ApplicationVersion>2.2011.1115.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRules>
+    </CodeAnalysisRules>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization">
+      <HintPath>..\..\lib\System.Windows.Forms.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AlphaBlendingBringer.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AlphaBlendingBringer.Designer.cs">
+      <DependentUpon>AlphaBlendingBringer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeCheckNum.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmployeeCheckNum.Designer.cs">
+      <DependentUpon>EmployeeCheckNum.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeEdite.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmployeeEdite.Designer.cs">
+      <DependentUpon>EmployeeEdite.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmployeeManage.Designer.cs">
+      <DependentUpon>EmployeeManage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormBase.designer.cs">
+      <DependentUpon>FormBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormConfig.Designer.cs">
+      <DependentUpon>FormConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormLoading.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLoading.designer.cs">
+      <DependentUpon>FormLoading.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FromLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FromLogin.Designer.cs">
+      <DependentUpon>FromLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FromMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FromMain.Designer.cs">
+      <DependentUpon>FromMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utility\GlobalVal.cs" />
+    <Compile Include="FormImage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormImage.Designer.cs">
+      <DependentUpon>FormImage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InfoEdite.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InfoEdite.Designer.cs">
+      <DependentUpon>InfoEdite.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AlphaBlendingBringer.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>AlphaBlendingBringer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmployeeCheckNum.resx">
+      <DependentUpon>EmployeeCheckNum.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmployeeEdite.resx">
+      <DependentUpon>EmployeeEdite.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmployeeManage.resx">
+      <DependentUpon>EmployeeManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormBase.resx">
+      <DependentUpon>FormBase.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormConfig.resx">
+      <DependentUpon>FormConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLoading.resx">
+      <DependentUpon>FormLoading.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FromLogin.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FromLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormImage.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormImage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FromMain.resx">
+      <DependentUpon>FromMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InfoEdite.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>InfoEdite.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Search.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Search.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserManage.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>UserManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utility\SplashResource.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SplashResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LogManage.resx">
+      <DependentUpon>LogManage.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DepartmentManage.resx">
+      <DependentUpon>DepartmentManage.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <BaseApplicationManifest Include="Properties\app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Resource\Message.csv" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Search.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Search.Designer.cs">
+      <DependentUpon>Search.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserManage.Designer.cs">
+      <DependentUpon>UserManage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utility\DataSetHelper.cs" />
+    <Compile Include="Utility\Enum.cs" />
+    <Compile Include="Utility\LogManager.cs" />
+    <Compile Include="Utility\Method.cs" />
+    <Compile Include="Utility\SplashObject.cs" />
+    <Compile Include="Utility\SplashResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SplashResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\XTHotpatalWebServices\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="LogManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LogManage.Designer.cs">
+      <DependentUpon>LogManage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DepartmentManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DepartmentManage.Designer.cs">
+      <DependentUpon>DepartmentManage.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="config.ico" />
+    <None Include="Resources\24.jpg" />
+    <None Include="Resources\1.jpg" />
+    <None Include="Resources\2.jpg" />
+    <None Include="Resources\3.jpg" />
+    <None Include="Resources\4.jpg" />
+    <None Include="Resources\5.jpg" />
+    <None Include="Resources\6.jpg" />
+    <None Include="Resources\7.jpg" />
+    <None Include="Resources\8.jpg" />
+    <None Include="Resources\9.jpg" />
+    <None Include="Resources\10.jpg" />
+    <None Include="Resources\11.jpg" />
+    <None Include="Resources\12.jpg" />
+    <None Include="Resources\13.jpg" />
+    <None Include="Resources\14.jpg" />
+    <None Include="Resources\15.jpg" />
+    <None Include="Resources\16.jpg" />
+    <None Include="Resources\17.jpg" />
+    <None Include="Resources\18.jpg" />
+    <None Include="Resources\19.jpg" />
+    <None Include="Resources\20.jpg" />
+    <None Include="Resources\21.jpg" />
+    <None Include="Resources\22.jpg" />
+    <None Include="Resources\23.jpg" />
+    <Content Include="DLL\log4net.dll" />
+    <Content Include="DLL\SMdiagnostics.dll" />
+    <Content Include="Resources\25.png" />
+    <Content Include="Resource\Loading.gif" />
+    <Content Include="Resource\Properties.txt" />
+    <Content Include="Resource\Splash.PNG" />
+    <None Include="Web References\XTHotpatalWebServices\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\XTHotpatalWebServices\ReturnValue1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\XTHotpatalWebServices\Service.disco" />
+    <None Include="Web References\XTHotpatalWebServices\Service.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://111.114.111.116/Service.asmx">
+      <UrlBehavior>Static</UrlBehavior>
+      <RelPath>Web References\XTHotpatalWebServices\</RelPath>
+      <UpdateFromURL>http://111.114.111.116/Service.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>西安体育学院教职工健康健康信息管理系统_XTHotpatalWebServices_Service</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <PublishFile Include="SMDiagnostics">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
