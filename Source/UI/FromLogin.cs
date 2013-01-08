@@ -80,6 +80,7 @@ namespace UI
 
         private void FromLogin_Load(object sender, EventArgs e)
         {
+            this.Height = 248;
             this.Activate();
             //Method.CmbDataBound("YearMonth", cmbYearMonth);
         }
@@ -139,16 +140,22 @@ namespace UI
 
         private void btnConfig_Click(object sender, EventArgs e)
         {
+            this.Height = 352;
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
             bool blws = false;
             try
             {
                 XTHotpatalWebServices.Service webServices = new UI.XTHotpatalWebServices.Service();
-                webServices.Url = txtUserID.Text;
+                webServices.Url = txtServerURL.Text;
                 string strResoult = webServices.CheckWebServices();
                 if (strResoult.Trim() == "WanGang")
                 {
                     blws = true;
                     MessageBox.Show("成功连接服务！", "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Height = 248;
                 }
             }
             catch
@@ -160,6 +167,11 @@ namespace UI
                     MessageBox.Show("不能连接到服务器！", "消息", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Height = 248;
         }
     }
 }

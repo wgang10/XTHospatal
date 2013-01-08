@@ -40,7 +40,12 @@
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.btnConfig = new System.Windows.Forms.Button();
             this.alphaBlendingBringer1 = new UI.AlphaBlendingBringer(this.components);
+            this.txtServerURL = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -130,19 +135,64 @@
             // btnConfig
             // 
             this.btnConfig.Font = new System.Drawing.Font("微软雅黑", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnConfig.Location = new System.Drawing.Point(216, 191);
+            this.btnConfig.Location = new System.Drawing.Point(281, 192);
             this.btnConfig.Name = "btnConfig";
-            this.btnConfig.Size = new System.Drawing.Size(91, 28);
+            this.btnConfig.Size = new System.Drawing.Size(26, 20);
             this.btnConfig.TabIndex = 5;
-            this.btnConfig.Text = "设置";
+            this.btnConfig.Text = "▼";
             this.btnConfig.UseVisualStyleBackColor = true;
             this.btnConfig.Click += new System.EventHandler(this.btnConfig_Click);
+            // 
+            // txtServerURL
+            // 
+            this.txtServerURL.Font = new System.Drawing.Font("微软雅黑", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtServerURL.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.txtServerURL.Location = new System.Drawing.Point(6, 20);
+            this.txtServerURL.MaxLength = 100;
+            this.txtServerURL.Name = "txtServerURL";
+            this.txtServerURL.Size = new System.Drawing.Size(301, 22);
+            this.txtServerURL.TabIndex = 11;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.txtServerURL);
+            this.groupBox1.Controls.Add(this.btnCancel);
+            this.groupBox1.Controls.Add(this.btnSave);
+            this.groupBox1.Location = new System.Drawing.Point(0, 234);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(319, 80);
+            this.groupBox1.TabIndex = 12;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "服务器地址";
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Font = new System.Drawing.Font("微软雅黑", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnCancel.Location = new System.Drawing.Point(119, 48);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(91, 26);
+            this.btnCancel.TabIndex = 5;
+            this.btnCancel.Text = "取消";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // btnSave
+            // 
+            this.btnSave.Font = new System.Drawing.Font("微软雅黑", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnSave.Location = new System.Drawing.Point(216, 48);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(91, 26);
+            this.btnSave.TabIndex = 5;
+            this.btnSave.Text = "保存";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // FromLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(319, 221);
+            this.ClientSize = new System.Drawing.Size(319, 327);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.btnConfig);
             this.Controls.Add(this.btnExit);
@@ -152,7 +202,7 @@
             this.Controls.Add(this.txtUserID);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "FromLogin";
@@ -161,6 +211,8 @@
             this.Load += new System.EventHandler(this.FromLogin_Load);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.FromLogin_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -178,5 +230,9 @@
         private AlphaBlendingBringer alphaBlendingBringer1;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Button btnConfig;
+        private System.Windows.Forms.TextBox txtServerURL;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnSave;
     }
 }
