@@ -1,5 +1,0 @@
-D:\Source\XTHospatal\Source\COMM\bin\Debug\XTHospatal.COMM.dll
-D:\Source\XTHospatal\Source\COMM\bin\Debug\XTHospatal.COMM.pdb
-D:\Source\XTHospatal\Source\COMM\obj\Debug\ResolveAssemblyReference.cache
-D:\Source\XTHospatal\Source\COMM\obj\Debug\XTHospatal.COMM.dll
-D:\Source\XTHospatal\Source\COMM\obj\Debug\XTHospatal.COMM.pdb

@@ -288,10 +288,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://localhost:17761/Web/Service.asmx">
+    <WebReferenceUrl Include="http://localhost/XTHospatal/Service.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\XTHotpatalWebServices\</RelPath>
-      <UpdateFromURL>http://localhost:17761/Web/Service.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost/XTHospatal/Service.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>

@@ -1,5 +1,0 @@
-D:\Source\XTHospatal\Source\SQLDAL\bin\Debug\XTHospatal.SQLDAL.dll
-D:\Source\XTHospatal\Source\SQLDAL\bin\Debug\XTHospatal.SQLDAL.pdb
-D:\Source\XTHospatal\Source\SQLDAL\obj\Debug\ResolveAssemblyReference.cache
-D:\Source\XTHospatal\Source\SQLDAL\obj\Debug\XTHospatal.SQLDAL.dll
-D:\Source\XTHospatal\Source\SQLDAL\obj\Debug\XTHospatal.SQLDAL.pdb

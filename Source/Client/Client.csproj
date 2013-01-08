@@ -355,10 +355,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://111.114.111.116/Service.asmx">
+    <WebReferenceUrl Include="http://localhost/XTHospatal/Service.asmx">
       <UrlBehavior>Static</UrlBehavior>
       <RelPath>Web References\XTHotpatalWebServices\</RelPath>
-      <UpdateFromURL>http://111.114.111.116/Service.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost/XTHospatal/Service.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>

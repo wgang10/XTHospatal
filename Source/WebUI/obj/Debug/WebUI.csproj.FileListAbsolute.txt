@@ -1,5 +1,0 @@
-D:\Source\XTHospatal\Source\WebUI\bin\XTHospatal.WebUI.dll
-D:\Source\XTHospatal\Source\WebUI\bin\XTHospatal.WebUI.pdb
-D:\Source\XTHospatal\Source\WebUI\obj\Debug\ResolveAssemblyReference.cache
-D:\Source\XTHospatal\Source\WebUI\obj\Debug\XTHospatal.WebUI.dll
-D:\Source\XTHospatal\Source\WebUI\obj\Debug\XTHospatal.WebUI.pdb
