@@ -356,7 +356,7 @@
   </ItemGroup>
   <ItemGroup>
     <WebReferenceUrl Include="http://localhost/XTHospatal/Service.asmx">
-      <UrlBehavior>Static</UrlBehavior>
+      <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\XTHotpatalWebServices\</RelPath>
       <UpdateFromURL>http://localhost/XTHospatal/Service.asmx</UpdateFromURL>
       <ServiceLocationURL>

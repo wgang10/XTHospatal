@@ -136,5 +136,30 @@ namespace UI
                     break;
             }
         }
+
+        private void btnConfig_Click(object sender, EventArgs e)
+        {
+            bool blws = false;
+            try
+            {
+                XTHotpatalWebServices.Service webServices = new UI.XTHotpatalWebServices.Service();
+                webServices.Url = txtUserID.Text;
+                string strResoult = webServices.CheckWebServices();
+                if (strResoult.Trim() == "WanGang")
+                {
+                    blws = true;
+                    MessageBox.Show("成功连接服务！", "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch
+            { }
+            finally
+            {
+                if (!blws)
+                {
+                    MessageBox.Show("不能连接到服务器！", "消息", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+        }
     }
 }

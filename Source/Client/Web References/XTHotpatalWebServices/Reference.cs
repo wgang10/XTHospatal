@@ -94,7 +94,7 @@ namespace XTHospitalUI.XTHotpatalWebServices {
         
         /// <remarks/>
         public Service() {
-            this.Url = "http://localhost/XTHospatal/Service.asmx";
+            this.Url = global::XTHospitalUI.Properties.Settings.Default.西安体育学院教职工健康健康信息管理系统_XTHotpatalWebServices_Service;
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;

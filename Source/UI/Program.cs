@@ -23,11 +23,11 @@ namespace UI
         {
             try
             {
-                if (!ReadProperties())
-                {
-                    Application.Exit();
-                    return;
-                }
+                //if (!ReadProperties())
+                //{
+                //    Application.Exit();
+                //    return;
+                //}
             }
             catch (Exception ex)
             {

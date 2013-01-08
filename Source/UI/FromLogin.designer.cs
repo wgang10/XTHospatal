@@ -38,6 +38,7 @@
             this.btnLogin = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.btnConfig = new System.Windows.Forms.Button();
             this.alphaBlendingBringer1 = new UI.AlphaBlendingBringer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -67,7 +68,7 @@
             this.txtUserID.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtUserID.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.txtUserID.Location = new System.Drawing.Point(102, 76);
-            this.txtUserID.MaxLength = 20;
+            this.txtUserID.MaxLength = 100;
             this.txtUserID.Name = "txtUserID";
             this.txtUserID.Size = new System.Drawing.Size(183, 29);
             this.txtUserID.TabIndex = 1;
@@ -126,12 +127,24 @@
             this.linkLabel1.Text = "技术支持：尚美思";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
+            // btnConfig
+            // 
+            this.btnConfig.Font = new System.Drawing.Font("微软雅黑", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnConfig.Location = new System.Drawing.Point(216, 191);
+            this.btnConfig.Name = "btnConfig";
+            this.btnConfig.Size = new System.Drawing.Size(91, 28);
+            this.btnConfig.TabIndex = 5;
+            this.btnConfig.Text = "设置";
+            this.btnConfig.UseVisualStyleBackColor = true;
+            this.btnConfig.Click += new System.EventHandler(this.btnConfig_Click);
+            // 
             // FromLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(319, 221);
             this.Controls.Add(this.linkLabel1);
+            this.Controls.Add(this.btnConfig);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.txtUserPwd);
@@ -164,5 +177,6 @@
         private System.Windows.Forms.Button btnExit;
         private AlphaBlendingBringer alphaBlendingBringer1;
         private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.Button btnConfig;
     }
 }
