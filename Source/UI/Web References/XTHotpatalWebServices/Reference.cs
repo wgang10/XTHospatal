@@ -94,7 +94,7 @@ namespace UI.XTHotpatalWebServices {
         
         /// <remarks/>
         public Service() {
-            this.Url = global::UI.Properties.Settings.Default.UI_XTHotpatalWebServices_Service;
+            this.Url = GlobalVal.glostrServicesURL;
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;

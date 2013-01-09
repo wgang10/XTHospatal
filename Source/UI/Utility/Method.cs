@@ -752,8 +752,8 @@ namespace UI
                 case "YearMonth":
                     //cmbControl.Items.Clear();
                     cmbControl.DataSource = null;
-                    XTHotpatalWebServices.Service webService = new UI.XTHotpatalWebServices.Service();
-                    XTHotpatalWebServices.ReturnValue resoult = webService.GetYearMonth();
+
+                    XTHotpatalWebServices.ReturnValue resoult = GlobalVal.gloWebSerices.GetYearMonth();
                     if (resoult.ErrorFlag)
                     {
                         System.Data.DataTable tb = resoult.ResultDataSet.Tables[0];
@@ -767,9 +767,8 @@ namespace UI
                     }
                     break;
                 case "Department":
-                    cmbControl.DataSource = null;
-                    XTHotpatalWebServices.Service webServiceDep = new UI.XTHotpatalWebServices.Service();
-                    XTHotpatalWebServices.ReturnValue resoultDep = webServiceDep.GetDepartmentList();
+                    cmbControl.DataSource = null;                    
+                    XTHotpatalWebServices.ReturnValue resoultDep = GlobalVal.gloWebSerices.GetDepartmentList();
                     if (resoultDep.ErrorFlag)
                     {
                         System.Data.DataTable tb = resoultDep.ResultDataSet.Tables[0];

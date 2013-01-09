@@ -6,11 +6,21 @@ using System.Net;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using UI.Properties;
+using System.Configuration;
 
 namespace UI
 {
     public partial class FromLogin : Form
     {
+        /// <summary>
+        /// hide
+        /// </summary>
+        int windowHeight1 = 228;
+        /// <summary>
+        /// show
+        /// </summary>
+        int windowHeight2 = 327;
         public FromLogin()
         {
             InitializeComponent();
@@ -59,28 +69,46 @@ namespace UI
             //    cmbYearMonth.Select();
             //    return;
             //}
-            XTHotpatalWebServices.Service webSerices = new UI.XTHotpatalWebServices.Service();
-            string[] resoult = webSerices.ValidateUserNoYearMonth(GlobalVal.gloStrLoginUserID,GlobalVal.gloStrTerminalCD, strUserID, strUserPWD);
-            if (resoult[0] == "1")
+            try
             {
-                webSerices.AddLog("管理用户[" + strUserID+"]登录了系统.", "2", Dns.GetHostAddresses(Dns.GetHostName())[0].ToString());
-                //GlobalVal.gloYearMonth = strYearMonth;
-                GlobalVal.gloStrLoginUserID = strUserID;
-                GlobalVal.gloStrLoginUserType = resoult[2];
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+                if (GlobalVal.gloWebSerices == null)
+                {
+                    GlobalVal.gloWebSerices = new UI.XTHotpatalWebServices.Service();
+                }
+                string[] resoult = GlobalVal.gloWebSerices.ValidateUserNoYearMonth(GlobalVal.gloStrLoginUserID, GlobalVal.gloStrTerminalCD, strUserID, strUserPWD);
+                if (resoult[0] == "1")
+                {
+                    GlobalVal.gloWebSerices.AddLog("管理用户[" + strUserID + "]登录了系统.", "2", Dns.GetHostAddresses(Dns.GetHostName())[0].ToString());
+                    //GlobalVal.gloYearMonth = strYearMonth;
+                    GlobalVal.gloStrLoginUserID = strUserID;
+                    GlobalVal.gloStrLoginUserType = resoult[2];
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+                else
+                {
+                    GlobalVal.gloWebSerices.AddLog("用户[" + strUserID + "]尝试登录管理系统失败." + resoult[1], "2", Dns.GetHostAddresses(Dns.GetHostName())[0].ToString());
+                    MessageBox.Show(resoult[1], "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                webSerices.AddLog("用户[" + strUserID + "]尝试登录管理系统失败." + resoult[1], "2", Dns.GetHostAddresses(Dns.GetHostName())[0].ToString());
-                MessageBox.Show(resoult[1], "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return;
+                MessageBox.Show(ex.Message, "消息", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
         private void FromLogin_Load(object sender, EventArgs e)
         {
-            this.Height = 248;
+            linkLabel1.Text = GlobalVal.glostrSupportCompanyName;
+            txtServerURL.Text = GlobalVal.glostrServicesURL;
+            //**************************************
+            System.Threading.ThreadStart testWeb = new System.Threading.ThreadStart(TestWebService);
+            System.Threading.Thread testWebThread = new System.Threading.Thread(testWeb);
+            testWebThread.Start();
+            //**************************************
+            this.Height = windowHeight1;
+            btnConfig.Text = "▼";
             this.Activate();
             //Method.CmbDataBound("YearMonth", cmbYearMonth);
         }
@@ -115,7 +143,7 @@ namespace UI
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("IEXPLORE.exe", "http://www.shangmeisi.com");
+            System.Diagnostics.Process.Start("IEXPLORE.exe", GlobalVal.glostrSupportCompanyURL);
         }
 
         private void FromLogin_KeyUp(object sender, KeyEventArgs e)
@@ -140,7 +168,48 @@ namespace UI
 
         private void btnConfig_Click(object sender, EventArgs e)
         {
-            this.Height = 352;
+            if (Height == windowHeight1)
+            {
+                this.Height = windowHeight2;
+                btnConfig.Text = "▲";
+            }
+            else
+            {
+                this.Height = windowHeight1;
+                btnConfig.Text = "▼";
+            }
+        }
+
+        /// <summary>
+        /// 测试服务器连接
+        /// </summary>
+        private void TestWebService()
+        {
+            bool blws = false;
+            try
+            {
+                if (GlobalVal.gloWebSerices == null)
+                {
+                    GlobalVal.gloWebSerices = new UI.XTHotpatalWebServices.Service();
+                }
+                GlobalVal.gloWebSerices.Url = txtServerURL.Text;
+                string strResoult = GlobalVal.gloWebSerices.CheckWebServices();
+                if (strResoult.Trim() == "WanGang")
+                {
+                    blws = true;
+                    btnConfig.ForeColor = Color.Green;
+                }
+            }
+            catch
+            { }
+            finally
+            {
+                if (!blws)
+                {
+                    MessageBox.Show("不能连接到服务器！", "消息", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    btnConfig.ForeColor = Color.Red;
+                }
+            }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -148,14 +217,33 @@ namespace UI
             bool blws = false;
             try
             {
-                XTHotpatalWebServices.Service webServices = new UI.XTHotpatalWebServices.Service();
-                webServices.Url = txtServerURL.Text;
-                string strResoult = webServices.CheckWebServices();
+                if (GlobalVal.gloWebSerices == null)
+                {
+                    GlobalVal.gloWebSerices = new UI.XTHotpatalWebServices.Service();
+                }
+                GlobalVal.gloWebSerices.Url = txtServerURL.Text;
+                string strResoult = GlobalVal.gloWebSerices.CheckWebServices();
                 if (strResoult.Trim() == "WanGang")
                 {
+                    //修改配置文件
+                    Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                    if (config.AppSettings.Settings["WebServicesURL"] != null)
+                    {
+                        config.AppSettings.Settings["WebServicesURL"].Value = txtServerURL.Text;
+                    }
+                    else
+                    {
+                        config.AppSettings.Settings.Add("WebServicesURL", txtServerURL.Text);
+                    }
+                    config.Save(ConfigurationSaveMode.Modified);
+                    GlobalVal.glostrServicesURL = txtUserID.Text;
+
                     blws = true;
                     MessageBox.Show("成功连接服务！", "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Height = 248;
+                    System.Configuration.ConfigurationManager.AppSettings.Set("","");
+                    this.Height = windowHeight1;
+                    btnConfig.Text = "▼";
+                    btnConfig.ForeColor = Color.Green;
                 }
             }
             catch
@@ -171,7 +259,9 @@ namespace UI
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            this.Height = 248;
+            this.Height = windowHeight1;
+            btnConfig.Text = "▼";
         }
+        
     }
 }

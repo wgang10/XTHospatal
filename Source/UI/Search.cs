@@ -76,10 +76,10 @@ namespace UI
 
         private void BindGridData()
         {
-            XTHotpatalWebServices.Service webService = new UI.XTHotpatalWebServices.Service();
+            
             try
             {
-                XTHotpatalWebServices.ReturnValue resoult = webService.GetListEmployee(" Where Employee.EmployeeID <> '000000000000000000'");
+                XTHotpatalWebServices.ReturnValue resoult = GlobalVal.gloWebSerices.GetListEmployee(" Where Employee.EmployeeID <> '000000000000000000'");
                 if (resoult.ErrorFlag)
                 {
                     for (int i = 0; i < resoult.ResultDataSet.Tables[0].Rows.Count; i++)
@@ -153,10 +153,10 @@ namespace UI
             }
 
 
-            XTHotpatalWebServices.Service webService = new UI.XTHotpatalWebServices.Service();
+            
             try
             {
-                XTHotpatalWebServices.ReturnValue resoult = webService.GetListEmployee(strWhere);
+                XTHotpatalWebServices.ReturnValue resoult = GlobalVal.gloWebSerices.GetListEmployee(strWhere);
                 if (resoult.ErrorFlag)
                 {
                     for (int i = 0; i < resoult.ResultDataSet.Tables[0].Rows.Count; i++)
@@ -238,8 +238,8 @@ namespace UI
                 cmbYearMonth.Select();
                 return;
             }
-            XTHotpatalWebServices.Service webSerices = new UI.XTHotpatalWebServices.Service();
-            string[] resoult = webSerices.SetYearMonth(GlobalVal.gloStrLoginUserID,GlobalVal.gloStrTerminalCD, strYearMonth);
+
+            string[] resoult = GlobalVal.gloWebSerices.SetYearMonth(GlobalVal.gloStrLoginUserID, GlobalVal.gloStrTerminalCD, strYearMonth);
             if (resoult[0] != "1")
             {
                 MessageBox.Show(resoult[1], "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);

@@ -95,8 +95,8 @@ namespace UI
                 EmployeeBM = cmbBM.SelectedValue.ToString();
             }
 
-            XTHotpatalWebServices.Service webService = new UI.XTHotpatalWebServices.Service();
-            XTHotpatalWebServices.ReturnValue resoult = webService.GetCheckEmployeeNum(cmbYearMonth.Text, txtName.Text.Trim(), EmployeeBM);
+
+            XTHotpatalWebServices.ReturnValue resoult = GlobalVal.gloWebSerices.GetCheckEmployeeNum(cmbYearMonth.Text, txtName.Text.Trim(), EmployeeBM);
             if (resoult.ErrorFlag)
             {
                 for (int i = 0; i < resoult.ResultDataSet.Tables[0].Rows.Count; i++)

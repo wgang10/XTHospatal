@@ -94,22 +94,21 @@ namespace UI
                     GlobalVal.ShowForm = this;
                     BindChartData();
                 }
+                else
+                {
+                    Application.Exit();
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            //else
-            //{
-            //    Application.Exit();
-            //    return;
-            //}
         }
 
         private void BindChartData()
         {
-            XTHotpatalWebServices.Service webService = new UI.XTHotpatalWebServices.Service();
-            XTHotpatalWebServices.ReturnValue resoult = webService.StatisticNums();
+
+            XTHotpatalWebServices.ReturnValue resoult = GlobalVal.gloWebSerices.StatisticNums();
             if (resoult.ErrorFlag)
             {
                 DataSetHelper dsHelper = new DataSetHelper();

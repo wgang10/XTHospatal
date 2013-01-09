@@ -60,6 +60,31 @@ namespace UI
         public static string glostrSystemName = "西安体育学院教职工健康信息管理系统";
 
         /// <summary>
+        /// 技术支持公司
+        /// </summary>
+        public static string glostrSupportCompanyName = "技术支持:子杨软件";
+
+        /// <summary>
+        /// 技术支持公司网址
+        /// </summary>
+        public static string glostrSupportCompanyURL = @"http://www.ziyangsoft.com";
+
+        /// <summary>
+        /// 版权所有
+        /// </summary>
+        public static string glostrCopyright = "版权所有©西安运动创伤医院";
+
+        /// <summary>
+        /// 服务器地址
+        /// </summary>
+        public static string glostrServicesURL = "";
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static XTHotpatalWebServices.Service gloWebSerices = null;
+
+        /// <summary>
         /// INI File Path
         /// </summary>
         public static string glostrIniFilePath = string.Empty;

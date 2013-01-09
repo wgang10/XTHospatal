@@ -211,8 +211,7 @@ namespace UI
             //if (MessageBox.Show("确定要退出系统吗？", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             //{
             //    GlobalVal.blCloseForm = true;
-            //    XTHotpatalWebServices.Service webService = new UI.XTHotpatalWebServices.Service();
-            //    webService.AddLog("管理用户[" + GlobalVal.gloStrLoginUserID + "]退出了系统.", "2", Dns.GetHostAddresses(Dns.GetHostName())[0].ToString());
+            //    GlobalVal.gloWebSerices.AddLog("管理用户[" + GlobalVal.gloStrLoginUserID + "]退出了系统.", "2", Dns.GetHostAddresses(Dns.GetHostName())[0].ToString());
             //    Application.Exit();
             //}
         }
@@ -295,8 +294,8 @@ namespace UI
             model.TERMINAL_CD = GlobalVal.gloStrTerminalCD;
             model.EmployeeEmail = txtEmail.Text;
             model.EmployeePhone = txtEmployeePhone.Text;
-            XTHotpatalWebServices.Service webService = new UI.XTHotpatalWebServices.Service();
-            XTHotpatalWebServices.ReturnValue resoult = webService.AddEmployee(model);
+
+            XTHotpatalWebServices.ReturnValue resoult = GlobalVal.gloWebSerices.AddEmployee(model);
             if (resoult.ErrorFlag)
             {
                 MessageBox.Show("操作成功！");
@@ -409,8 +408,8 @@ namespace UI
             }
             model.UPDATER_ID = GlobalVal.gloStrLoginUserID;
             model.TERMINAL_CD = GlobalVal.gloStrTerminalCD;
-            XTHotpatalWebServices.Service webService = new UI.XTHotpatalWebServices.Service();
-            XTHotpatalWebServices.ReturnValue resoult = webService.AddUpdateBiochemistry(model);
+
+            XTHotpatalWebServices.ReturnValue resoult = GlobalVal.gloWebSerices.AddUpdateBiochemistry(model);
             if (resoult.ErrorFlag)
             {
                 MessageBox.Show("操作成功！");
@@ -460,8 +459,8 @@ namespace UI
             model.Physicians = this.txtFeaturesPhysicians.Text.Trim();
             model.UPDATER_ID = GlobalVal.gloStrLoginUserID;
             model.TERMINAL_CD = GlobalVal.gloStrTerminalCD;
-            XTHotpatalWebServices.Service webService = new UI.XTHotpatalWebServices.Service();
-            XTHotpatalWebServices.ReturnValue resoult =webService.AddUpdateFeatures(model);
+
+            XTHotpatalWebServices.ReturnValue resoult = GlobalVal.gloWebSerices.AddUpdateFeatures(model);
             if (resoult.ErrorFlag)
             {
                 MessageBox.Show("操作成功！");
@@ -506,8 +505,8 @@ namespace UI
             model.Physicians=this.txtSurgeryPhysicians.Text.Trim ();
             model.UPDATER_ID = GlobalVal.gloStrLoginUserID;
             model.TERMINAL_CD = GlobalVal.gloStrTerminalCD;
-            XTHotpatalWebServices.Service webService = new UI.XTHotpatalWebServices.Service();
-            XTHotpatalWebServices.ReturnValue resoult =webService.AddUpdateSurgery(model);
+
+            XTHotpatalWebServices.ReturnValue resoult = GlobalVal.gloWebSerices.AddUpdateSurgery(model);
             if (resoult.ErrorFlag)
             {
                 MessageBox.Show("操作成功！");
@@ -547,8 +546,8 @@ namespace UI
             model.Physicians = this.txtInternalMedicinePhysicians.Text.Trim();
             model.UPDATER_ID = GlobalVal.gloStrLoginUserID;
             model.TERMINAL_CD = GlobalVal.gloStrTerminalCD;
-            XTHotpatalWebServices.Service webService = new UI.XTHotpatalWebServices.Service();
-            XTHotpatalWebServices.ReturnValue resoult =webService.AddUpdateInternalMeicine(model);
+
+            XTHotpatalWebServices.ReturnValue resoult = GlobalVal.gloWebSerices.AddUpdateInternalMeicine(model);
             if (resoult.ErrorFlag)
             {
                 MessageBox.Show("操作成功！");
@@ -610,8 +609,8 @@ namespace UI
             model.Physicians = this.txtECGPhysicians.Text.Trim();
             model.UPDATER_ID = GlobalVal.gloStrLoginUserID;
             model.TERMINAL_CD = GlobalVal.gloStrTerminalCD;
-            XTHotpatalWebServices.Service webService = new UI.XTHotpatalWebServices.Service();
-            XTHotpatalWebServices.ReturnValue resoult =webService.AddUpdateECG(model);
+
+            XTHotpatalWebServices.ReturnValue resoult = GlobalVal.gloWebSerices.AddUpdateECG(model);
             if (resoult.ErrorFlag)
             {
                 MessageBox.Show("操作成功！");
@@ -660,8 +659,8 @@ namespace UI
             model.Physicians = this.txtXRayPhysicians.Text.Trim();
             model.UPDATER_ID = GlobalVal.gloStrLoginUserID;
             model.TERMINAL_CD = GlobalVal.gloStrTerminalCD;
-            XTHotpatalWebServices.Service webService = new UI.XTHotpatalWebServices.Service();
-            XTHotpatalWebServices.ReturnValue resoult =webService.AddUpdateXray(model);
+
+            XTHotpatalWebServices.ReturnValue resoult = GlobalVal.gloWebSerices.AddUpdateXray(model);
             if (resoult.ErrorFlag)
             {
                 MessageBox.Show("操作成功！");
@@ -710,8 +709,8 @@ namespace UI
             model.Physicians = this.txtBPhysicians.Text.Trim();
             model.UPDATER_ID = GlobalVal.gloStrLoginUserID;
             model.TERMINAL_CD = GlobalVal.gloStrTerminalCD;
-            XTHotpatalWebServices.Service webService = new UI.XTHotpatalWebServices.Service();
-            XTHotpatalWebServices.ReturnValue resoult =webService.AddUpdateBexamination(model);
+
+            XTHotpatalWebServices.ReturnValue resoult = GlobalVal.gloWebSerices.AddUpdateBexamination(model);
             if (resoult.ErrorFlag)
             {
                 MessageBox.Show("操作成功！");
@@ -743,8 +742,8 @@ namespace UI
             model.Remarks = this.txtRemarks.Text.Trim();
             model.UPDATER_ID = GlobalVal.gloStrLoginUserID;
             model.TERMINAL_CD = GlobalVal.gloStrTerminalCD;
-            XTHotpatalWebServices.Service webService = new UI.XTHotpatalWebServices.Service();
-            XTHotpatalWebServices.ReturnValue resoult =webService.AddUpdateReport(model);
+
+            XTHotpatalWebServices.ReturnValue resoult = GlobalVal.gloWebSerices.AddUpdateReport(model);
             if (resoult.ErrorFlag)
             {
                 MessageBox.Show("操作成功！");
@@ -906,8 +905,8 @@ namespace UI
         /// <param name="YearMonth"></param>
         private void BindAllInfo(string EmployeeID, string YearMonth)
         {
-            XTHotpatalWebServices.Service webService = new UI.XTHotpatalWebServices.Service();
-            XTHotpatalWebServices.ReturnValue resoult =webService.SearchEmployeeAllInfo(EmployeeID, YearMonth);
+
+            XTHotpatalWebServices.ReturnValue resoult = GlobalVal.gloWebSerices.SearchEmployeeAllInfo(EmployeeID, YearMonth);
             if (resoult.ErrorFlag)
             {
                 if (resoult.Count > 0)
@@ -2237,8 +2236,8 @@ namespace UI
             model.Physicians = this.txtBPhysicians.Text.Trim();
             model.UPDATER_ID = GlobalVal.gloStrLoginUserID;
             model.TERMINAL_CD = GlobalVal.gloStrTerminalCD;
-            XTHotpatalWebServices.Service webService = new UI.XTHotpatalWebServices.Service();
-            XTHotpatalWebServices.ReturnValue resoult = webService.AddUpdateBexamination(model);
+
+            XTHotpatalWebServices.ReturnValue resoult = GlobalVal.gloWebSerices.AddUpdateBexamination(model);
             if (resoult.ErrorFlag)
             {
                 MessageBox.Show("操作成功！");
@@ -2282,8 +2281,8 @@ namespace UI
             model.Physicians = this.txtXRayPhysicians.Text.Trim();
             model.UPDATER_ID = GlobalVal.gloStrLoginUserID;
             model.TERMINAL_CD = GlobalVal.gloStrTerminalCD;
-            XTHotpatalWebServices.Service webService = new UI.XTHotpatalWebServices.Service();
-            XTHotpatalWebServices.ReturnValue resoult = webService.AddUpdateXray(model);
+
+            XTHotpatalWebServices.ReturnValue resoult = GlobalVal.gloWebSerices.AddUpdateXray(model);
             if (resoult.ErrorFlag)
             {
                 MessageBox.Show("操作成功！");
@@ -2340,8 +2339,8 @@ namespace UI
             model.Physicians = this.txtECGPhysicians.Text.Trim();
             model.UPDATER_ID = GlobalVal.gloStrLoginUserID;
             model.TERMINAL_CD = GlobalVal.gloStrTerminalCD;
-            XTHotpatalWebServices.Service webService = new UI.XTHotpatalWebServices.Service();
-            XTHotpatalWebServices.ReturnValue resoult = webService.AddUpdateECG(model);
+
+            XTHotpatalWebServices.ReturnValue resoult = GlobalVal.gloWebSerices.AddUpdateECG(model);
             if (resoult.ErrorFlag)
             {
                 MessageBox.Show("操作成功！");
@@ -2376,8 +2375,8 @@ namespace UI
             model.Physicians = this.txtInternalMedicinePhysicians.Text.Trim();
             model.UPDATER_ID = GlobalVal.gloStrLoginUserID;
             model.TERMINAL_CD = GlobalVal.gloStrTerminalCD;
-            XTHotpatalWebServices.Service webService = new UI.XTHotpatalWebServices.Service();
-            XTHotpatalWebServices.ReturnValue resoult = webService.AddUpdateInternalMeicine(model);
+
+            XTHotpatalWebServices.ReturnValue resoult = GlobalVal.gloWebSerices.AddUpdateInternalMeicine(model);
             if (resoult.ErrorFlag)
             {
                 MessageBox.Show("操作成功！");
@@ -2417,8 +2416,8 @@ namespace UI
             model.Physicians = this.txtSurgeryPhysicians.Text.Trim();
             model.UPDATER_ID = GlobalVal.gloStrLoginUserID;
             model.TERMINAL_CD = GlobalVal.gloStrTerminalCD;
-            XTHotpatalWebServices.Service webService = new UI.XTHotpatalWebServices.Service();
-            XTHotpatalWebServices.ReturnValue resoult = webService.AddUpdateSurgery(model);
+
+            XTHotpatalWebServices.ReturnValue resoult = GlobalVal.gloWebSerices.AddUpdateSurgery(model);
             if (resoult.ErrorFlag)
             {
                 MessageBox.Show("操作成功！");
@@ -2463,8 +2462,8 @@ namespace UI
             model.Physicians = this.txtFeaturesPhysicians.Text.Trim();
             model.UPDATER_ID = GlobalVal.gloStrLoginUserID;
             model.TERMINAL_CD = GlobalVal.gloStrTerminalCD;
-            XTHotpatalWebServices.Service webService = new UI.XTHotpatalWebServices.Service();
-            XTHotpatalWebServices.ReturnValue resoult = webService.AddUpdateFeatures(model);
+
+            XTHotpatalWebServices.ReturnValue resoult = GlobalVal.gloWebSerices.AddUpdateFeatures(model);
             if (resoult.ErrorFlag)
             {
                 MessageBox.Show("操作成功！");
@@ -2482,8 +2481,8 @@ namespace UI
         /// <param name="e"></param>
         private void btnInputMBFeatures_Click(object sender, EventArgs e)
         {
-            XTHotpatalWebServices.Service webService = new UI.XTHotpatalWebServices.Service();
-            XTHotpatalWebServices.ReturnValue resoult = webService.SearchEmployeeAllInfo("000000000000000000", "000000");
+
+            XTHotpatalWebServices.ReturnValue resoult = GlobalVal.gloWebSerices.SearchEmployeeAllInfo("000000000000000000", "000000");
             if (resoult.ErrorFlag)
             {
                 if (resoult.Count > 0)
@@ -2526,8 +2525,8 @@ namespace UI
         /// <param name="e"></param>
         private void btnInputMBSurgery_Click(object sender, EventArgs e)
         {
-            XTHotpatalWebServices.Service webService = new UI.XTHotpatalWebServices.Service();
-            XTHotpatalWebServices.ReturnValue resoult = webService.SearchEmployeeAllInfo("000000000000000000", "000000");
+
+            XTHotpatalWebServices.ReturnValue resoult = GlobalVal.gloWebSerices.SearchEmployeeAllInfo("000000000000000000", "000000");
             if (resoult.ErrorFlag)
             {
                 if (resoult.Count > 0)
@@ -2565,8 +2564,8 @@ namespace UI
         /// <param name="e"></param>
         private void btnInputMBInternalMedicine_Click(object sender, EventArgs e)
         {
-            XTHotpatalWebServices.Service webService = new UI.XTHotpatalWebServices.Service();
-            XTHotpatalWebServices.ReturnValue resoult = webService.SearchEmployeeAllInfo("000000000000000000", "000000");
+
+            XTHotpatalWebServices.ReturnValue resoult = GlobalVal.gloWebSerices.SearchEmployeeAllInfo("000000000000000000", "000000");
             if (resoult.ErrorFlag)
             {
                 if (resoult.Count > 0)
@@ -2599,8 +2598,8 @@ namespace UI
         /// <param name="e"></param>
         private void btnInputMBECG_Click(object sender, EventArgs e)
         {
-            XTHotpatalWebServices.Service webService = new UI.XTHotpatalWebServices.Service();
-            XTHotpatalWebServices.ReturnValue resoult = webService.SearchEmployeeAllInfo("000000000000000000", "000000");
+
+            XTHotpatalWebServices.ReturnValue resoult = GlobalVal.gloWebSerices.SearchEmployeeAllInfo("000000000000000000", "000000");
             if (resoult.ErrorFlag)
             {
                 if (resoult.Count > 0)
@@ -2654,8 +2653,8 @@ namespace UI
         /// <param name="e"></param>
         private void btnInputMBXray_Click(object sender, EventArgs e)
         {
-            XTHotpatalWebServices.Service webService = new UI.XTHotpatalWebServices.Service();
-            XTHotpatalWebServices.ReturnValue resoult = webService.SearchEmployeeAllInfo("000000000000000000", "000000");
+
+            XTHotpatalWebServices.ReturnValue resoult = GlobalVal.gloWebSerices.SearchEmployeeAllInfo("000000000000000000", "000000");
             if (resoult.ErrorFlag)
             {
                 if (resoult.Count > 0)
@@ -2695,8 +2694,8 @@ namespace UI
         /// <param name="e"></param>
         private void btnInputMBBexamination_Click(object sender, EventArgs e)
         {
-            XTHotpatalWebServices.Service webService = new UI.XTHotpatalWebServices.Service();
-            XTHotpatalWebServices.ReturnValue resoult = webService.SearchEmployeeAllInfo("000000000000000000", "000000");
+
+            XTHotpatalWebServices.ReturnValue resoult = GlobalVal.gloWebSerices.SearchEmployeeAllInfo("000000000000000000", "000000");
             if (resoult.ErrorFlag)
             {
                 if (resoult.Count > 0)
@@ -3098,8 +3097,8 @@ namespace UI
             model.Physicians=txtFemePhysicians.Text.Trim();			            //医师
             model.UPDATER_ID = GlobalVal.gloStrLoginUserID;
             model.TERMINAL_CD = GlobalVal.gloStrTerminalCD;
-            XTHotpatalWebServices.Service webService = new UI.XTHotpatalWebServices.Service();
-            XTHotpatalWebServices.ReturnValue resoult = webService.AddUpdateFeme(model);
+
+            XTHotpatalWebServices.ReturnValue resoult = GlobalVal.gloWebSerices.AddUpdateFeme(model);
             if (resoult.ErrorFlag)
             {
                 MessageBox.Show("操作成功！");
@@ -3202,8 +3201,8 @@ namespace UI
             model.Physicians = this.txtCompositionPhysicians.Text.Trim();
             model.UPDATER_ID = GlobalVal.gloStrLoginUserID;
             model.TERMINAL_CD = GlobalVal.gloStrTerminalCD;
-            XTHotpatalWebServices.Service webService = new UI.XTHotpatalWebServices.Service();
-            XTHotpatalWebServices.ReturnValue resoult = webService.AddUpdateComposition(model);
+
+            XTHotpatalWebServices.ReturnValue resoult = GlobalVal.gloWebSerices.AddUpdateComposition(model);
             if (resoult.ErrorFlag)
             {
                 MessageBox.Show("操作成功！");

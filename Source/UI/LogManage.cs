@@ -67,7 +67,7 @@ namespace UI
         private void BindGridData()
         {
             grdMain.Rows.Clear();
-            XTHotpatalWebServices.Service webService = new UI.XTHotpatalWebServices.Service();
+            
             try
             {
                 string strDateFrom = dtpDateFrom.Text.Trim().Replace("-", "").Replace("/","");
@@ -80,7 +80,7 @@ namespace UI
                 {
                     strDateTo += "235959";
                 }
-                XTHotpatalWebServices.ReturnValue resoult = webService.GetLogList(strDateFrom, strDateTo,"");
+                XTHotpatalWebServices.ReturnValue resoult = GlobalVal.gloWebSerices.GetLogList(strDateFrom, strDateTo, "");
                 if (resoult.ErrorFlag)
                 {
                     for (int i = 0; i < resoult.ResultDataSet.Tables[0].Rows.Count; i++)

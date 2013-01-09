@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Reflection;
 using System.Threading;
+using System.Configuration;
 
 namespace UI
 {
@@ -79,8 +80,11 @@ namespace UI
             bool blws = false;
             try
             {
-                XTHotpatalWebServices.Service webServices = new UI.XTHotpatalWebServices.Service();
-                string strResoult = webServices.CheckWebServices();
+                if (GlobalVal.gloWebSerices == null)
+                {
+                    GlobalVal.gloWebSerices=new UI.XTHotpatalWebServices.Service();
+                }
+                string strResoult = GlobalVal.gloWebSerices.CheckWebServices();
                 if (strResoult.Trim() == "WanGang")
                 {
                     blws = true;
@@ -123,6 +127,11 @@ namespace UI
         /// <returns></returns>
         public static Process RunningInstance()
         {
+            if (ConfigurationManager.AppSettings["WebServicesURL"] != null)
+            {
+                GlobalVal.glostrServicesURL = ConfigurationManager.AppSettings["WebServicesURL"];
+            }
+
             Process current = Process.GetCurrentProcess();
             Process[] processes = Process.GetProcessesByName(current.ProcessName);
             foreach (Process process in processes)

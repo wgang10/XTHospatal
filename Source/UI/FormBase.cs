@@ -239,5 +239,16 @@ namespace UI
 
         #endregion
 
+        private void FormBase_Load(object sender, EventArgs e)
+        {
+            linkLabel1.Text = GlobalVal.glostrSupportCompanyName;
+            label139.Text = GlobalVal.glostrCopyright;
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("IEXPLORE.exe", GlobalVal.glostrSupportCompanyURL);
+        }
+
     }
 }

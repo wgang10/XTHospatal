@@ -39,11 +39,11 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.btnConfig = new System.Windows.Forms.Button();
-            this.alphaBlendingBringer1 = new UI.AlphaBlendingBringer(this.components);
             this.txtServerURL = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
+            this.alphaBlendingBringer1 = new UI.AlphaBlendingBringer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -62,7 +62,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(24, 80);
+            this.label1.Location = new System.Drawing.Point(10, 79);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(74, 21);
             this.label1.TabIndex = 8;
@@ -72,28 +72,28 @@
             // 
             this.txtUserID.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtUserID.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.txtUserID.Location = new System.Drawing.Point(102, 76);
-            this.txtUserID.MaxLength = 100;
+            this.txtUserID.Location = new System.Drawing.Point(82, 76);
+            this.txtUserID.MaxLength = 20;
             this.txtUserID.Name = "txtUserID";
-            this.txtUserID.Size = new System.Drawing.Size(183, 29);
+            this.txtUserID.Size = new System.Drawing.Size(225, 29);
             this.txtUserID.TabIndex = 1;
             // 
             // txtUserPwd
             // 
             this.txtUserPwd.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtUserPwd.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.txtUserPwd.Location = new System.Drawing.Point(103, 111);
+            this.txtUserPwd.Location = new System.Drawing.Point(82, 111);
             this.txtUserPwd.MaxLength = 20;
             this.txtUserPwd.Name = "txtUserPwd";
             this.txtUserPwd.PasswordChar = '*';
-            this.txtUserPwd.Size = new System.Drawing.Size(183, 29);
+            this.txtUserPwd.Size = new System.Drawing.Size(225, 29);
             this.txtUserPwd.TabIndex = 2;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(30, 114);
+            this.label2.Location = new System.Drawing.Point(10, 114);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(68, 21);
             this.label2.TabIndex = 10;
@@ -134,10 +134,9 @@
             // 
             // btnConfig
             // 
-            this.btnConfig.Font = new System.Drawing.Font("微软雅黑", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnConfig.Location = new System.Drawing.Point(281, 192);
+            this.btnConfig.Location = new System.Drawing.Point(277, 197);
             this.btnConfig.Name = "btnConfig";
-            this.btnConfig.Size = new System.Drawing.Size(26, 20);
+            this.btnConfig.Size = new System.Drawing.Size(30, 16);
             this.btnConfig.TabIndex = 5;
             this.btnConfig.Text = "▼";
             this.btnConfig.UseVisualStyleBackColor = true;
@@ -202,7 +201,7 @@
             this.Controls.Add(this.txtUserID);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "FromLogin";

@@ -33,8 +33,8 @@ namespace UI
         /// <param name="EmployeeID"></param>
         private void BindEmployeeInfo(string EmployeeID)
         {
-            XTHotpatalWebServices.Service webService = new UI.XTHotpatalWebServices.Service();
-            XTHotpatalWebServices.ReturnValue resoult = webService.GetEmployeeInfo(EmployeeID);
+
+            XTHotpatalWebServices.ReturnValue resoult = GlobalVal.gloWebSerices.GetEmployeeInfo(EmployeeID);
             if (resoult.ErrorFlag)
             {
                 if (resoult.Count > 0)
@@ -181,8 +181,8 @@ namespace UI
             model.TERMINAL_CD = GlobalVal.gloStrTerminalCD;
             model.EmployeeEmail = txtEmail.Text;
             model.EmployeePhone = txtEmployeePhone.Text;
-            XTHotpatalWebServices.Service webService = new UI.XTHotpatalWebServices.Service();
-            XTHotpatalWebServices.ReturnValue resoult = webService.AddEmployee(model);
+
+            XTHotpatalWebServices.ReturnValue resoult = GlobalVal.gloWebSerices.AddEmployee(model);
             if (resoult.ErrorFlag)
             {
                 if (DialogResult.OK == MessageBox.Show("操作成功！是否关闭本窗口？", "系统提示", MessageBoxButtons.OKCancel))

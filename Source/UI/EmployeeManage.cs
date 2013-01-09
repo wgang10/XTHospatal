@@ -70,10 +70,10 @@ namespace UI
 
         private void BindGridData()
         {
-            XTHotpatalWebServices.Service webService = new UI.XTHotpatalWebServices.Service();
+            
             try
             {
-                XTHotpatalWebServices.ReturnValue resoult = webService.GetListEmployee(" Where Employee.EmployeeID <> '000000000000000000'");
+                XTHotpatalWebServices.ReturnValue resoult = GlobalVal.gloWebSerices.GetListEmployee(" Where Employee.EmployeeID <> '000000000000000000'");
                 if (resoult.ErrorFlag)
                 {
                     for (int i = 0; i < resoult.ResultDataSet.Tables[0].Rows.Count; i++)
@@ -133,10 +133,10 @@ namespace UI
             }
 
 
-            XTHotpatalWebServices.Service webService = new UI.XTHotpatalWebServices.Service();
+            
             try
             {
-                XTHotpatalWebServices.ReturnValue resoult = webService.GetListEmployee(strWhere);
+                XTHotpatalWebServices.ReturnValue resoult = GlobalVal.gloWebSerices.GetListEmployee(strWhere);
                 if (resoult.ErrorFlag)
                 {
                     for (int i = 0; i < resoult.ResultDataSet.Tables[0].Rows.Count; i++)

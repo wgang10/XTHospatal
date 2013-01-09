@@ -40,9 +40,9 @@ namespace UI
             model.UserType = cmbUSER_GROUP.SelectedIndex.ToString();
             model.UPDATER_ID = GlobalVal.gloStrLoginUserID;
             model.TERMINAL_CD = GlobalVal.gloStrTerminalCD;
-            XTHotpatalWebServices.Service webService = new UI.XTHotpatalWebServices.Service();
+            
             XTHotpatalWebServices.ReturnValue resoult;
-            resoult = webService.AddUser(model);
+            resoult = GlobalVal.gloWebSerices.AddUser(model);
             if (resoult.ErrorFlag)
             {
                 ControlInitial();
@@ -99,9 +99,9 @@ namespace UI
             {
                 return;
             }
-            XTHotpatalWebServices.Service webService = new UI.XTHotpatalWebServices.Service();
+            
             XTHotpatalWebServices.ReturnValue resoult;
-            resoult = webService.DeleteUser(txtUSER_ID.Text.Trim());
+            resoult = GlobalVal.gloWebSerices.DeleteUser(txtUSER_ID.Text.Trim());
             if (resoult.ErrorFlag)
             {
                 ControlInitial();
@@ -134,11 +134,11 @@ namespace UI
             grdMain.Columns.Clear();
             GridViewInitial();
             this.Cursor = Cursors.WaitCursor;
-            XTHotpatalWebServices.Service webService = new UI.XTHotpatalWebServices.Service();
+            
             XTHotpatalWebServices.ReturnValue returnValue;
             try
             {
-                returnValue = webService.GetUserList();
+                returnValue = GlobalVal.gloWebSerices.GetUserList();
                 if (!returnValue.ErrorFlag)
                 {
                     MessageBox.Show(returnValue.ErrorID);

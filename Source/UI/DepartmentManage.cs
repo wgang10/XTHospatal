@@ -57,11 +57,11 @@ namespace UI
             model.Notes = txtMEMO.Text.Trim();
             model.UPDATER_ID = GlobalVal.gloStrLoginUserID;
             model.TERMINAL_CD = GlobalVal.gloStrTerminalCD;
-            XTHotpatalWebServices.Service webService = new UI.XTHotpatalWebServices.Service();
+            
             XTHotpatalWebServices.ReturnValue resoult;
             try
             {
-                resoult = webService.AddUpdateDepartment(model);
+                resoult = GlobalVal.gloWebSerices.AddUpdateDepartment(model);
             }
             catch (Exception ex)
             {
@@ -124,9 +124,9 @@ namespace UI
             {
                 return;
             }
-            XTHotpatalWebServices.Service webService = new UI.XTHotpatalWebServices.Service();
+            
             XTHotpatalWebServices.ReturnValue resoult;
-            resoult = webService.DeleteDepartment(txtDepartmentID.Text.Trim());
+            resoult = GlobalVal.gloWebSerices.DeleteDepartment(txtDepartmentID.Text.Trim());
             if (resoult.ErrorFlag)
             {
                 ControlInitial();
@@ -160,11 +160,11 @@ namespace UI
             grdMain.Columns.Clear();
             GridViewInitial();
             this.Cursor = Cursors.WaitCursor;
-            XTHotpatalWebServices.Service webService = new UI.XTHotpatalWebServices.Service();
+            
             XTHotpatalWebServices.ReturnValue returnValue;
             try
             {
-                returnValue = webService.GetDepartmentList();
+                returnValue = GlobalVal.gloWebSerices.GetDepartmentList();
                 if (!returnValue.ErrorFlag)
                 {
                     MessageBox.Show(returnValue.ErrorID);
