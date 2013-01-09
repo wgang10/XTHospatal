@@ -17,8 +17,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OleDbDAL", "OleDbDAL\OleDbDAL.csproj", "{05918081-5B3A-4203-9E95-08C10B2A4572}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csproj", "{248D1623-5B74-4B43-90AA-106F19FC5B3A}"
-EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Web", "Web\", "{F7749C68-E87F-433A-87E3-66C91FE2C12B}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv2.0"
@@ -53,6 +51,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebUI", "WebUI\WebUI.csproj", "{0EB27203-63D2-4500-A3B4-F523DA433B6D}"
 EndProject
 Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|.NET = Debug|.NET
 		Debug|Any CPU = Debug|Any CPU
@@ -160,18 +162,6 @@ Global
 		{05918081-5B3A-4203-9E95-08C10B2A4572}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{05918081-5B3A-4203-9E95-08C10B2A4572}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{05918081-5B3A-4203-9E95-08C10B2A4572}.Release|x86.ActiveCfg = Release|Any CPU
-		{248D1623-5B74-4B43-90AA-106F19FC5B3A}.Debug|.NET.ActiveCfg = Debug|Any CPU
-		{248D1623-5B74-4B43-90AA-106F19FC5B3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{248D1623-5B74-4B43-90AA-106F19FC5B3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{248D1623-5B74-4B43-90AA-106F19FC5B3A}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{248D1623-5B74-4B43-90AA-106F19FC5B3A}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{248D1623-5B74-4B43-90AA-106F19FC5B3A}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{248D1623-5B74-4B43-90AA-106F19FC5B3A}.Release|.NET.ActiveCfg = Release|Any CPU
-		{248D1623-5B74-4B43-90AA-106F19FC5B3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{248D1623-5B74-4B43-90AA-106F19FC5B3A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{248D1623-5B74-4B43-90AA-106F19FC5B3A}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{248D1623-5B74-4B43-90AA-106F19FC5B3A}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{248D1623-5B74-4B43-90AA-106F19FC5B3A}.Release|x86.ActiveCfg = Release|Any CPU
 		{F7749C68-E87F-433A-87E3-66C91FE2C12B}.Debug|.NET.ActiveCfg = Debug|Any CPU
 		{F7749C68-E87F-433A-87E3-66C91FE2C12B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F7749C68-E87F-433A-87E3-66C91FE2C12B}.Debug|Any CPU.Build.0 = Debug|Any CPU
@@ -253,9 +243,5 @@ Global
 		{D09674C4-3BA7-44B5-99E6-5337D9841EBF} = {B2311298-CA18-46D8-841F-AFD7B4980794}
 		{5B6C3E04-DDFF-4D43-8800-F4E081D295DC} = {B2311298-CA18-46D8-841F-AFD7B4980794}
 		{0EB27203-63D2-4500-A3B4-F523DA433B6D} = {B2311298-CA18-46D8-841F-AFD7B4980794}
-	EndGlobalSection
-	GlobalSection(SubversionScc) = preSolution
-		Svn-Managed = True
-		Manager = AnkhSVN - Subversion Support for Visual Studio
 	EndGlobalSection
 EndGlobal
