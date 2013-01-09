@@ -73,7 +73,7 @@ namespace UI
             {
                 if (GlobalVal.gloWebSerices == null)
                 {
-                    GlobalVal.gloWebSerices = new UI.XTHotpatalWebServices.Service();
+                    GlobalVal.gloWebSerices = new MyWebService();
                 }
                 string[] resoult = GlobalVal.gloWebSerices.ValidateUserNoYearMonth(GlobalVal.gloStrLoginUserID, GlobalVal.gloStrTerminalCD, strUserID, strUserPWD);
                 if (resoult[0] == "1")
@@ -190,7 +190,7 @@ namespace UI
             {
                 if (GlobalVal.gloWebSerices == null)
                 {
-                    GlobalVal.gloWebSerices = new UI.XTHotpatalWebServices.Service();
+                    GlobalVal.gloWebSerices = new MyWebService();
                 }
                 GlobalVal.gloWebSerices.Url = txtServerURL.Text;
                 string strResoult = GlobalVal.gloWebSerices.CheckWebServices();
@@ -200,8 +200,10 @@ namespace UI
                     btnConfig.ForeColor = Color.Green;
                 }
             }
-            catch
-            { }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "消息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             finally
             {
                 if (!blws)
@@ -219,7 +221,7 @@ namespace UI
             {
                 if (GlobalVal.gloWebSerices == null)
                 {
-                    GlobalVal.gloWebSerices = new UI.XTHotpatalWebServices.Service();
+                    GlobalVal.gloWebSerices = new MyWebService();
                 }
                 GlobalVal.gloWebSerices.Url = txtServerURL.Text;
                 string strResoult = GlobalVal.gloWebSerices.CheckWebServices();
@@ -246,8 +248,10 @@ namespace UI
                     btnConfig.ForeColor = Color.Green;
                 }
             }
-            catch
-            { }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "消息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             finally
             {
                 if (!blws)

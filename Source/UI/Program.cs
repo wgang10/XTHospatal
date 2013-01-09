@@ -82,7 +82,7 @@ namespace UI
             {
                 if (GlobalVal.gloWebSerices == null)
                 {
-                    GlobalVal.gloWebSerices=new UI.XTHotpatalWebServices.Service();
+                    GlobalVal.gloWebSerices = new MyWebService();
                 }
                 string strResoult = GlobalVal.gloWebSerices.CheckWebServices();
                 if (strResoult.Trim() == "WanGang")

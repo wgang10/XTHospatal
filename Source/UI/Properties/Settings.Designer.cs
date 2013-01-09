@@ -22,5 +22,15 @@ namespace UI.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost/XTHospatal/Service.asmx")]
+        public string UI_XTHotpatalWebServices_Service {
+            get {
+                return ((string)(this["UI_XTHotpatalWebServices_Service"]));
+            }
+        }
     }
 }

@@ -189,6 +189,7 @@
     <Compile Include="Utility\GlobalVal.cs" />
     <Compile Include="Utility\LogManager.cs" />
     <Compile Include="Utility\Method.cs" />
+    <Compile Include="Utility\MyWebService.cs" />
     <Compile Include="Utility\SplashObject.cs" />
     <Compile Include="Utility\SplashResource.Designer.cs">
       <DependentUpon>SplashResource.resx</DependentUpon>
