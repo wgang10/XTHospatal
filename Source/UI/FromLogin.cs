@@ -239,6 +239,7 @@ namespace UI
                         config.AppSettings.Settings.Add("WebServicesURL", txtServerURL.Text);
                     }
                     config.Save(ConfigurationSaveMode.Modified);
+                    ConfigurationManager.RefreshSection("appSettings");
                     GlobalVal.glostrServicesURL = txtServerURL.Text.Trim() + @"/Service.asmx";
 
                     blws = true;
