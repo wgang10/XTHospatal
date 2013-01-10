@@ -24,6 +24,10 @@ namespace UI
         {
             try
             {
+                if (ConfigurationManager.AppSettings["WebServicesURL"] != null)
+                {
+                    GlobalVal.glostrServicesURL = ConfigurationManager.AppSettings["WebServicesURL"].Trim() + @"/Service.asmx";
+                }
                 //if (!ReadProperties())
                 //{
                 //    Application.Exit();
@@ -127,11 +131,6 @@ namespace UI
         /// <returns></returns>
         public static Process RunningInstance()
         {
-            if (ConfigurationManager.AppSettings["WebServicesURL"] != null)
-            {
-                GlobalVal.glostrServicesURL = ConfigurationManager.AppSettings["WebServicesURL"];
-            }
-
             Process current = Process.GetCurrentProcess();
             Process[] processes = Process.GetProcessesByName(current.ProcessName);
             foreach (Process process in processes)

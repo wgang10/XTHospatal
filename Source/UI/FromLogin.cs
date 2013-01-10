@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using UI.Properties;
 using System.Configuration;
+using System.IO;
 
 namespace UI
 {
@@ -101,7 +102,7 @@ namespace UI
         private void FromLogin_Load(object sender, EventArgs e)
         {
             linkLabel1.Text = GlobalVal.glostrSupportCompanyName;
-            txtServerURL.Text = GlobalVal.glostrServicesURL;
+            txtServerURL.Text = ConfigurationManager.AppSettings["WebServicesURL"];
             //**************************************
             System.Threading.ThreadStart testWeb = new System.Threading.ThreadStart(TestWebService);
             System.Threading.Thread testWebThread = new System.Threading.Thread(testWeb);
@@ -192,7 +193,7 @@ namespace UI
                 {
                     GlobalVal.gloWebSerices = new MyWebService();
                 }
-                GlobalVal.gloWebSerices.Url = txtServerURL.Text;
+                GlobalVal.gloWebSerices.Url = txtServerURL.Text.Trim() + @"/Service.asmx";
                 string strResoult = GlobalVal.gloWebSerices.CheckWebServices();
                 if (strResoult.Trim() == "WanGang")
                 {
@@ -223,7 +224,7 @@ namespace UI
                 {
                     GlobalVal.gloWebSerices = new MyWebService();
                 }
-                GlobalVal.gloWebSerices.Url = txtServerURL.Text;
+                GlobalVal.gloWebSerices.Url = txtServerURL.Text.Trim() + @"/Service.asmx";
                 string strResoult = GlobalVal.gloWebSerices.CheckWebServices();
                 if (strResoult.Trim() == "WanGang")
                 {
@@ -238,11 +239,11 @@ namespace UI
                         config.AppSettings.Settings.Add("WebServicesURL", txtServerURL.Text);
                     }
                     config.Save(ConfigurationSaveMode.Modified);
-                    GlobalVal.glostrServicesURL = txtUserID.Text;
+                    GlobalVal.glostrServicesURL = txtServerURL.Text.Trim() + @"/Service.asmx";
 
                     blws = true;
                     MessageBox.Show("成功连接服务！", "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    System.Configuration.ConfigurationManager.AppSettings.Set("","");
+                    //System.Configuration.ConfigurationManager.AppSettings.Set("","");
                     this.Height = windowHeight1;
                     btnConfig.Text = "▼";
                     btnConfig.ForeColor = Color.Green;
@@ -266,6 +267,42 @@ namespace UI
             this.Height = windowHeight1;
             btnConfig.Text = "▼";
         }
+
+
+        //private void btnFile_Click(object sender, EventArgs e)
+        //{
+        //    if (this.ofdCode.ShowDialog() == DialogResult.OK) this.txtCode.Text = this.ofdCode.FileName;
+        //}
+        //private void btnGo_Click(object sender, EventArgs e)
+        //{
+        //    if (!(!string.IsNullOrEmpty(this.txtCode.Text) && File.Exists(this.txtCode.Text)))
+        //    {
+        //        MessageBox.Show("请指定第九关代买文件！", "文件出错！", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+        //    }
+        //    List<byte> list = new List<byte>();
+        //    using (StreamReader reader = new StreamReader(File.OpenRead(this.txtCode.Text)))
+        //    {
+        //        while (!reader.EndOfStream)
+        //        {
+        //            string[] strArray = reader.ReadLine().Replace('_', '1').Split(new char[] { ' ' });
+        //            foreach (string str2 in strArray)
+        //            {
+        //                list.Add(Convert.ToByte(str2, 2));
+        //            }
+        //        }
+        //    }
+        //    string s = new ASCIIEncoding().GetString(list.ToArray());
+        //    string path = "result.tar.zip";
+        //    if (File.Exists(path)) File.Delete(path);
+        //    using (BinaryWriter writer = new BinaryWriter(File.Open(path, FileMode.CreateNew)))
+        //    {
+        //        writer.Write(Convert.FromBase64String(s));
+        //        writer.Flush();
+        //    }
+        //}
+
+
+
         
     }
 }

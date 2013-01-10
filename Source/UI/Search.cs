@@ -98,7 +98,7 @@ namespace UI
                     {
                         string EmployeeID = grdMain.CurrentRow.Cells["EmployeeGZID"].Value.ToString();
                         string gloYearMonth = cmbYearMonth.Text.Trim();
-                        webBrowser1.Url = new Uri(System.Configuration.ConfigurationManager.AppSettings["WebURL"] + "/Print.aspx?FromType=UI&UserID=" + EmployeeID + "&YearMonth=" + gloYearMonth);
+                        webBrowser1.Url = new Uri(System.Configuration.ConfigurationManager.AppSettings["WebServicesURL"] + "/Print.aspx?FromType=UI&UserID=" + EmployeeID + "&YearMonth=" + gloYearMonth);
                     }
                 }
                 else
@@ -213,7 +213,7 @@ namespace UI
         {
             string EmployeeID = grdMain.CurrentRow.Cells["EmployeeGZID"].Value.ToString();
             string gloYearMonth = cmbYearMonth.Text.Trim();
-            webBrowser1.Url = new Uri(System.Configuration.ConfigurationManager.AppSettings["WebURL"]+"/Print.aspx?FromType=UI&UserID=" + EmployeeID + "&YearMonth=" + gloYearMonth+"#"+System.DateTime.Now.ToString());
+            webBrowser1.Url = new Uri(System.Configuration.ConfigurationManager.AppSettings["WebServicesURL"] + "/Print.aspx?FromType=UI&UserID=" + EmployeeID + "&YearMonth=" + gloYearMonth + "#" + System.DateTime.Now.ToString());
         }
 
         /// <summary>
