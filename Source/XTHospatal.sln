@@ -29,8 +29,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "COMM", "COMM\COMM.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebUI", "WebUI\WebUI.csproj", "{0EB27203-63D2-4500-A3B4-F523DA433B6D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UIWeb", "UIWeb\UIWeb.csproj", "{E6FBDE1C-C8BB-4CC3-9B8E-B71482CA3181}"
-EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Web", "Web\", "{22576A5B-07AA-4650-8106-17D2B27D0F2C}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv2.0"
@@ -224,18 +222,6 @@ Global
 		{0EB27203-63D2-4500-A3B4-F523DA433B6D}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{0EB27203-63D2-4500-A3B4-F523DA433B6D}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{0EB27203-63D2-4500-A3B4-F523DA433B6D}.Release|x86.ActiveCfg = Release|Any CPU
-		{E6FBDE1C-C8BB-4CC3-9B8E-B71482CA3181}.Debug|.NET.ActiveCfg = Debug|Any CPU
-		{E6FBDE1C-C8BB-4CC3-9B8E-B71482CA3181}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E6FBDE1C-C8BB-4CC3-9B8E-B71482CA3181}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E6FBDE1C-C8BB-4CC3-9B8E-B71482CA3181}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{E6FBDE1C-C8BB-4CC3-9B8E-B71482CA3181}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{E6FBDE1C-C8BB-4CC3-9B8E-B71482CA3181}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{E6FBDE1C-C8BB-4CC3-9B8E-B71482CA3181}.Release|.NET.ActiveCfg = Release|Any CPU
-		{E6FBDE1C-C8BB-4CC3-9B8E-B71482CA3181}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E6FBDE1C-C8BB-4CC3-9B8E-B71482CA3181}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E6FBDE1C-C8BB-4CC3-9B8E-B71482CA3181}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{E6FBDE1C-C8BB-4CC3-9B8E-B71482CA3181}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{E6FBDE1C-C8BB-4CC3-9B8E-B71482CA3181}.Release|x86.ActiveCfg = Release|Any CPU
 		{22576A5B-07AA-4650-8106-17D2B27D0F2C}.Debug|.NET.ActiveCfg = Debug|Any CPU
 		{22576A5B-07AA-4650-8106-17D2B27D0F2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{22576A5B-07AA-4650-8106-17D2B27D0F2C}.Debug|Any CPU.Build.0 = Debug|Any CPU

@@ -48,7 +48,7 @@
 	    <uc1:WebUserControlEmployeeInfo ID="WebUserControlEmployeeInfo1" runat="server" />
     </div>
     <div id="footer">
-		    版权所有©西安运动创伤医院 技术支持：<a href="http://www.shangmeisi.com/" target="_blank">尚美思</a>
+		    版权所有©西安运动创伤医院 技术支持：<a href="http://www.ziyangsoft.com/" target="_blank">子杨软件</a>
 	</div>	
 </div>
 

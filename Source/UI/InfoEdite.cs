@@ -344,7 +344,7 @@ namespace UI
 
             model.HYLDLC = this.txtHYLDLC.Text.Trim();
             model.HYAPOAI = this.txtHYAPOAI.Text.Trim();
-            model.HYAPOB = this.txtHYAPOP.Text.Trim();
+            model.HYAPOB = this.txtHYAPOB.Text.Trim();
             model.HYAST = this.txtHYAST.Text.Trim();
             model.HYGT = this.txtHYGT.Text.Trim();
             model.HYALP = this.txtHYALP.Text.Trim();
@@ -1001,7 +1001,7 @@ namespace UI
 
                     this.txtHYLDLC.Text = resoult.ResultDataSet.Tables[0].Rows[0]["Bio_HYLDLC"].ToString();//低密度脂蛋白胆固醇(LDL-C)
                     this.txtHYAPOAI.Text = resoult.ResultDataSet.Tables[0].Rows[0]["Bio_HYAPOAI"].ToString();//载脂蛋白AI(APOAI)
-                    this.txtHYAPOP.Text = resoult.ResultDataSet.Tables[0].Rows[0]["Bio_HYAPOB"].ToString();//载脂蛋白B(APOB)
+                    this.txtHYAPOB.Text = resoult.ResultDataSet.Tables[0].Rows[0]["Bio_HYAPOB"].ToString();//载脂蛋白B(APOB)
                     this.txtHYAST.Text = resoult.ResultDataSet.Tables[0].Rows[0]["Bio_HYAST"].ToString();//天门冬氨酸氨基转移酶(AST)
                     this.txtHYGT.Text = resoult.ResultDataSet.Tables[0].Rows[0]["Bio_HYGT"].ToString();//γ-谷胺酰转氨酶(γ-GT)
                     this.txtHYALP.Text = resoult.ResultDataSet.Tables[0].Rows[0]["Bio_HYALP"].ToString();//碱性磷铵酶(ALP)
@@ -2019,7 +2019,7 @@ namespace UI
 
             this.txtHYLDLC.Text = "";
             this.txtHYAPOAI.Text = "";
-            this.txtHYAPOP.Text = "";
+            this.txtHYAPOB.Text = "";
             this.txtHYAST.Text = "";
             this.txtHYGT.Text = "";
             this.txtHYALP.Text = "";

@@ -81,6 +81,9 @@
             this.label153 = new System.Windows.Forms.Label();
             this.label154 = new System.Windows.Forms.Label();
             this.groupBox21 = new System.Windows.Forms.GroupBox();
+            this.txtHYUA = new System.Windows.Forms.TextBox();
+            this.label185 = new System.Windows.Forms.Label();
+            this.label186 = new System.Windows.Forms.Label();
             this.txtCR = new System.Windows.Forms.TextBox();
             this.label144 = new System.Windows.Forms.Label();
             this.label145 = new System.Windows.Forms.Label();
@@ -115,6 +118,15 @@
             this.rdbHBsAg2 = new System.Windows.Forms.RadioButton();
             this.rdbHBsAg1 = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label183 = new System.Windows.Forms.Label();
+            this.txtHYALP = new System.Windows.Forms.TextBox();
+            this.label184 = new System.Windows.Forms.Label();
+            this.label181 = new System.Windows.Forms.Label();
+            this.txtHYGT = new System.Windows.Forms.TextBox();
+            this.label182 = new System.Windows.Forms.Label();
+            this.label176 = new System.Windows.Forms.Label();
+            this.txtHYAST = new System.Windows.Forms.TextBox();
+            this.label180 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
@@ -126,11 +138,19 @@
             this.label27 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtHYAPOB = new System.Windows.Forms.TextBox();
+            this.label174 = new System.Windows.Forms.Label();
+            this.label175 = new System.Windows.Forms.Label();
+            this.txtHYAPOAI = new System.Windows.Forms.TextBox();
+            this.label148 = new System.Windows.Forms.Label();
+            this.label173 = new System.Windows.Forms.Label();
+            this.txtHYLDLC = new System.Windows.Forms.TextBox();
+            this.label140 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.txtHY_HDL_C = new System.Windows.Forms.TextBox();
             this.txtHY_TG = new System.Windows.Forms.TextBox();
@@ -527,26 +547,6 @@
             this.btnNew = new System.Windows.Forms.Button();
             this.label169 = new System.Windows.Forms.Label();
             this.txtYearMonth = new System.Windows.Forms.TextBox();
-            this.txtHYLDLC = new System.Windows.Forms.TextBox();
-            this.label140 = new System.Windows.Forms.Label();
-            this.txtHYAPOAI = new System.Windows.Forms.TextBox();
-            this.label148 = new System.Windows.Forms.Label();
-            this.label173 = new System.Windows.Forms.Label();
-            this.txtHYAPOP = new System.Windows.Forms.TextBox();
-            this.label174 = new System.Windows.Forms.Label();
-            this.label175 = new System.Windows.Forms.Label();
-            this.label176 = new System.Windows.Forms.Label();
-            this.txtHYAST = new System.Windows.Forms.TextBox();
-            this.label180 = new System.Windows.Forms.Label();
-            this.label181 = new System.Windows.Forms.Label();
-            this.txtHYGT = new System.Windows.Forms.TextBox();
-            this.label182 = new System.Windows.Forms.Label();
-            this.label183 = new System.Windows.Forms.Label();
-            this.txtHYALP = new System.Windows.Forms.TextBox();
-            this.label184 = new System.Windows.Forms.Label();
-            this.txtHYUA = new System.Windows.Forms.TextBox();
-            this.label185 = new System.Windows.Forms.Label();
-            this.label186 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.Employee.SuspendLayout();
             this.groupBox14.SuspendLayout();
@@ -628,9 +628,9 @@
             // Employee
             // 
             this.Employee.Controls.Add(this.groupBox14);
-            this.Employee.Location = new System.Drawing.Point(4, 21);
+            this.Employee.Location = new System.Drawing.Point(4, 22);
             this.Employee.Name = "Employee";
-            this.Employee.Size = new System.Drawing.Size(760, 370);
+            this.Employee.Size = new System.Drawing.Size(760, 369);
             this.Employee.TabIndex = 2;
             this.Employee.Text = "概要信息";
             this.Employee.UseVisualStyleBackColor = true;
@@ -673,7 +673,7 @@
             this.groupBox14.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox14.Location = new System.Drawing.Point(0, 0);
             this.groupBox14.Name = "groupBox14";
-            this.groupBox14.Size = new System.Drawing.Size(760, 370);
+            this.groupBox14.Size = new System.Drawing.Size(760, 369);
             this.groupBox14.TabIndex = 0;
             this.groupBox14.TabStop = false;
             // 
@@ -1101,10 +1101,10 @@
             this.Biochemistry.Controls.Add(this.groupBox3);
             this.Biochemistry.Controls.Add(this.groupBox2);
             this.Biochemistry.Controls.Add(this.groupBox1);
-            this.Biochemistry.Location = new System.Drawing.Point(4, 21);
+            this.Biochemistry.Location = new System.Drawing.Point(4, 22);
             this.Biochemistry.Name = "Biochemistry";
             this.Biochemistry.Padding = new System.Windows.Forms.Padding(3);
-            this.Biochemistry.Size = new System.Drawing.Size(760, 370);
+            this.Biochemistry.Size = new System.Drawing.Size(760, 369);
             this.Biochemistry.TabIndex = 0;
             this.Biochemistry.Text = "生化检验";
             this.Biochemistry.UseVisualStyleBackColor = true;
@@ -1118,9 +1118,9 @@
             this.groupBox22.Controls.Add(this.label152);
             this.groupBox22.Controls.Add(this.label153);
             this.groupBox22.Controls.Add(this.label154);
-            this.groupBox22.Location = new System.Drawing.Point(379, 232);
+            this.groupBox22.Location = new System.Drawing.Point(409, 232);
             this.groupBox22.Name = "groupBox22";
-            this.groupBox22.Size = new System.Drawing.Size(361, 67);
+            this.groupBox22.Size = new System.Drawing.Size(330, 67);
             this.groupBox22.TabIndex = 14;
             this.groupBox22.TabStop = false;
             this.groupBox22.Text = "防癌";
@@ -1201,10 +1201,38 @@
             this.groupBox21.Controls.Add(this.label143);
             this.groupBox21.Location = new System.Drawing.Point(6, 226);
             this.groupBox21.Name = "groupBox21";
-            this.groupBox21.Size = new System.Drawing.Size(367, 79);
+            this.groupBox21.Size = new System.Drawing.Size(397, 79);
             this.groupBox21.TabIndex = 12;
             this.groupBox21.TabStop = false;
             this.groupBox21.Text = "肾功";
+            // 
+            // txtHYUA
+            // 
+            this.txtHYUA.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.txtHYUA.Location = new System.Drawing.Point(128, 56);
+            this.txtHYUA.MaxLength = 10;
+            this.txtHYUA.Name = "txtHYUA";
+            this.txtHYUA.Size = new System.Drawing.Size(101, 21);
+            this.txtHYUA.TabIndex = 21;
+            // 
+            // label185
+            // 
+            this.label185.AutoSize = true;
+            this.label185.Location = new System.Drawing.Point(232, 61);
+            this.label185.Name = "label185";
+            this.label185.Size = new System.Drawing.Size(143, 12);
+            this.label185.TabIndex = 20;
+            this.label185.Text = "umol/L 参考 142.0-416.0";
+            // 
+            // label186
+            // 
+            this.label186.AutoSize = true;
+            this.label186.ForeColor = System.Drawing.Color.Maroon;
+            this.label186.Location = new System.Drawing.Point(72, 60);
+            this.label186.Name = "label186";
+            this.label186.Size = new System.Drawing.Size(53, 12);
+            this.label186.TabIndex = 19;
+            this.label186.Text = "尿酸(UA)";
             // 
             // txtCR
             // 
@@ -1575,6 +1603,90 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "肝功";
             // 
+            // label183
+            // 
+            this.label183.AutoSize = true;
+            this.label183.Location = new System.Drawing.Point(229, 177);
+            this.label183.Name = "label183";
+            this.label183.Size = new System.Drawing.Size(131, 12);
+            this.label183.TabIndex = 24;
+            this.label183.Text = "U/L 男53-128 女42-141";
+            // 
+            // txtHYALP
+            // 
+            this.txtHYALP.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.txtHYALP.Location = new System.Drawing.Point(124, 172);
+            this.txtHYALP.MaxLength = 10;
+            this.txtHYALP.Name = "txtHYALP";
+            this.txtHYALP.Size = new System.Drawing.Size(102, 21);
+            this.txtHYALP.TabIndex = 23;
+            // 
+            // label184
+            // 
+            this.label184.AutoSize = true;
+            this.label184.ForeColor = System.Drawing.Color.Maroon;
+            this.label184.Location = new System.Drawing.Point(26, 176);
+            this.label184.Name = "label184";
+            this.label184.Size = new System.Drawing.Size(95, 12);
+            this.label184.TabIndex = 22;
+            this.label184.Text = "碱性磷铵酶(ALP)";
+            // 
+            // label181
+            // 
+            this.label181.AutoSize = true;
+            this.label181.Location = new System.Drawing.Point(229, 154);
+            this.label181.Name = "label181";
+            this.label181.Size = new System.Drawing.Size(113, 12);
+            this.label181.TabIndex = 21;
+            this.label181.Text = "U/L 男11-50 女7-32";
+            // 
+            // txtHYGT
+            // 
+            this.txtHYGT.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.txtHYGT.Location = new System.Drawing.Point(160, 149);
+            this.txtHYGT.MaxLength = 10;
+            this.txtHYGT.Name = "txtHYGT";
+            this.txtHYGT.Size = new System.Drawing.Size(66, 21);
+            this.txtHYGT.TabIndex = 20;
+            // 
+            // label182
+            // 
+            this.label182.AutoSize = true;
+            this.label182.ForeColor = System.Drawing.Color.Maroon;
+            this.label182.Location = new System.Drawing.Point(19, 152);
+            this.label182.Name = "label182";
+            this.label182.Size = new System.Drawing.Size(137, 12);
+            this.label182.TabIndex = 19;
+            this.label182.Text = "γ-谷胺酰转氨酶(γ-GT)";
+            // 
+            // label176
+            // 
+            this.label176.AutoSize = true;
+            this.label176.Location = new System.Drawing.Point(229, 131);
+            this.label176.Name = "label176";
+            this.label176.Size = new System.Drawing.Size(119, 12);
+            this.label176.TabIndex = 18;
+            this.label176.Text = "U/L     参考 ≦37.0";
+            // 
+            // txtHYAST
+            // 
+            this.txtHYAST.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.txtHYAST.Location = new System.Drawing.Point(160, 126);
+            this.txtHYAST.MaxLength = 10;
+            this.txtHYAST.Name = "txtHYAST";
+            this.txtHYAST.Size = new System.Drawing.Size(66, 21);
+            this.txtHYAST.TabIndex = 17;
+            // 
+            // label180
+            // 
+            this.label180.AutoSize = true;
+            this.label180.ForeColor = System.Drawing.Color.Maroon;
+            this.label180.Location = new System.Drawing.Point(5, 130);
+            this.label180.Name = "label180";
+            this.label180.Size = new System.Drawing.Size(155, 12);
+            this.label180.TabIndex = 16;
+            this.label180.Text = "天门冬氨酸氨基转移酶(AST)";
+            // 
             // label30
             // 
             this.label30.AutoSize = true;
@@ -1674,6 +1786,15 @@
             this.label25.TabIndex = 4;
             this.label25.Text = "白蛋白(ALB)";
             // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(32, 16);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(89, 12);
+            this.label21.TabIndex = 0;
+            this.label21.Text = "总胆红素(TBIL)";
+            // 
             // label24
             // 
             this.label24.AutoSize = true;
@@ -1702,18 +1823,9 @@
             this.label22.TabIndex = 1;
             this.label22.Text = "u mol/L 参考 2-18";
             // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(32, 16);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(89, 12);
-            this.label21.TabIndex = 0;
-            this.label21.Text = "总胆红素(TBIL)";
-            // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.txtHYAPOP);
+            this.groupBox1.Controls.Add(this.txtHYAPOB);
             this.groupBox1.Controls.Add(this.label174);
             this.groupBox1.Controls.Add(this.label175);
             this.groupBox1.Controls.Add(this.txtHYAPOAI);
@@ -1738,6 +1850,80 @@
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "血脂";
+            // 
+            // txtHYAPOB
+            // 
+            this.txtHYAPOB.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.txtHYAPOB.Location = new System.Drawing.Point(128, 127);
+            this.txtHYAPOB.MaxLength = 10;
+            this.txtHYAPOB.Name = "txtHYAPOB";
+            this.txtHYAPOB.Size = new System.Drawing.Size(101, 21);
+            this.txtHYAPOB.TabIndex = 18;
+            // 
+            // label174
+            // 
+            this.label174.AutoSize = true;
+            this.label174.Location = new System.Drawing.Point(232, 133);
+            this.label174.Name = "label174";
+            this.label174.Size = new System.Drawing.Size(119, 12);
+            this.label174.TabIndex = 17;
+            this.label174.Text = "g/L    参考 0.6-1.1";
+            // 
+            // label175
+            // 
+            this.label175.AutoSize = true;
+            this.label175.ForeColor = System.Drawing.Color.Maroon;
+            this.label175.Location = new System.Drawing.Point(29, 131);
+            this.label175.Name = "label175";
+            this.label175.Size = new System.Drawing.Size(95, 12);
+            this.label175.TabIndex = 16;
+            this.label175.Text = "载脂蛋白B(APOB)";
+            // 
+            // txtHYAPOAI
+            // 
+            this.txtHYAPOAI.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.txtHYAPOAI.Location = new System.Drawing.Point(128, 103);
+            this.txtHYAPOAI.MaxLength = 10;
+            this.txtHYAPOAI.Name = "txtHYAPOAI";
+            this.txtHYAPOAI.Size = new System.Drawing.Size(101, 21);
+            this.txtHYAPOAI.TabIndex = 15;
+            // 
+            // label148
+            // 
+            this.label148.AutoSize = true;
+            this.label148.Location = new System.Drawing.Point(232, 108);
+            this.label148.Name = "label148";
+            this.label148.Size = new System.Drawing.Size(131, 12);
+            this.label148.TabIndex = 14;
+            this.label148.Text = "g/L    参考 1.00-1.60";
+            // 
+            // label173
+            // 
+            this.label173.AutoSize = true;
+            this.label173.ForeColor = System.Drawing.Color.Maroon;
+            this.label173.Location = new System.Drawing.Point(18, 108);
+            this.label173.Name = "label173";
+            this.label173.Size = new System.Drawing.Size(107, 12);
+            this.label173.TabIndex = 13;
+            this.label173.Text = "载脂蛋白AI(APOAI)";
+            // 
+            // txtHYLDLC
+            // 
+            this.txtHYLDLC.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.txtHYLDLC.Location = new System.Drawing.Point(156, 80);
+            this.txtHYLDLC.MaxLength = 10;
+            this.txtHYLDLC.Name = "txtHYLDLC";
+            this.txtHYLDLC.Size = new System.Drawing.Size(73, 21);
+            this.txtHYLDLC.TabIndex = 12;
+            // 
+            // label140
+            // 
+            this.label140.AutoSize = true;
+            this.label140.Location = new System.Drawing.Point(232, 84);
+            this.label140.Name = "label140";
+            this.label140.Size = new System.Drawing.Size(131, 12);
+            this.label140.TabIndex = 11;
+            this.label140.Text = "mmol/L 参考 2.07-3.10";
             // 
             // label20
             // 
@@ -1849,10 +2035,10 @@
             this.TG1.Controls.Add(this.groupBox11);
             this.TG1.Controls.Add(this.groupBox10);
             this.TG1.Controls.Add(this.groupBox9);
-            this.TG1.Location = new System.Drawing.Point(4, 21);
+            this.TG1.Location = new System.Drawing.Point(4, 22);
             this.TG1.Name = "TG1";
             this.TG1.Padding = new System.Windows.Forms.Padding(3);
-            this.TG1.Size = new System.Drawing.Size(760, 370);
+            this.TG1.Size = new System.Drawing.Size(760, 369);
             this.TG1.TabIndex = 1;
             this.TG1.Text = "体格检查(五官)";
             this.TG1.UseVisualStyleBackColor = true;
@@ -2452,9 +2638,9 @@
             this.TG2.Controls.Add(this.groupBox17);
             this.TG2.Controls.Add(this.btnInputMBSurgery);
             this.TG2.Controls.Add(this.btnTG_WKAdd);
-            this.TG2.Location = new System.Drawing.Point(4, 21);
+            this.TG2.Location = new System.Drawing.Point(4, 22);
             this.TG2.Name = "TG2";
-            this.TG2.Size = new System.Drawing.Size(760, 370);
+            this.TG2.Size = new System.Drawing.Size(760, 369);
             this.TG2.TabIndex = 6;
             this.TG2.Text = "体格检查(外科)";
             this.TG2.UseVisualStyleBackColor = true;
@@ -2888,9 +3074,9 @@
             this.TG3.Controls.Add(this.groupBox19);
             this.TG3.Controls.Add(this.btnInputMBInternalMedicine);
             this.TG3.Controls.Add(this.btnTG_NKAdd);
-            this.TG3.Location = new System.Drawing.Point(4, 21);
+            this.TG3.Location = new System.Drawing.Point(4, 22);
             this.TG3.Name = "TG3";
-            this.TG3.Size = new System.Drawing.Size(760, 370);
+            this.TG3.Size = new System.Drawing.Size(760, 369);
             this.TG3.TabIndex = 7;
             this.TG3.Text = "体格检查(内科)";
             this.TG3.UseVisualStyleBackColor = true;
@@ -3214,9 +3400,9 @@
             this.tabPage4.Controls.Add(this.label92);
             this.tabPage4.Controls.Add(this.btnPicECGSearch);
             this.tabPage4.Controls.Add(this.picECG);
-            this.tabPage4.Location = new System.Drawing.Point(4, 21);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(760, 370);
+            this.tabPage4.Size = new System.Drawing.Size(760, 369);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "心电图";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -3477,9 +3663,9 @@
             this.tabPage5.Controls.Add(this.label114);
             this.tabPage5.Controls.Add(this.btnXRayImageSearch);
             this.tabPage5.Controls.Add(this.picXImage);
-            this.tabPage5.Location = new System.Drawing.Point(4, 21);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(760, 370);
+            this.tabPage5.Size = new System.Drawing.Size(760, 369);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "X线";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -3727,9 +3913,9 @@
             this.tabPage6.Controls.Add(this.label129);
             this.tabPage6.Controls.Add(this.btnPicBSearch);
             this.tabPage6.Controls.Add(this.picBImage);
-            this.tabPage6.Location = new System.Drawing.Point(4, 21);
+            this.tabPage6.Location = new System.Drawing.Point(4, 22);
             this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Size = new System.Drawing.Size(760, 370);
+            this.tabPage6.Size = new System.Drawing.Size(760, 369);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "B超";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -3946,10 +4132,10 @@
             this.tabPage1.Controls.Add(this.groupBox39);
             this.tabPage1.Controls.Add(this.label162);
             this.tabPage1.Controls.Add(this.label161);
-            this.tabPage1.Location = new System.Drawing.Point(4, 21);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(760, 370);
+            this.tabPage1.Size = new System.Drawing.Size(760, 369);
             this.tabPage1.TabIndex = 10;
             this.tabPage1.Text = "体成分";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -4271,9 +4457,9 @@
             this.Feme.Controls.Add(this.label156);
             this.Feme.Controls.Add(this.txtMenarche);
             this.Feme.Controls.Add(this.label155);
-            this.Feme.Location = new System.Drawing.Point(4, 21);
+            this.Feme.Location = new System.Drawing.Point(4, 22);
             this.Feme.Name = "Feme";
-            this.Feme.Size = new System.Drawing.Size(760, 370);
+            this.Feme.Size = new System.Drawing.Size(760, 369);
             this.Feme.TabIndex = 9;
             this.Feme.Text = "妇科检查";
             this.Feme.UseVisualStyleBackColor = true;
@@ -5462,9 +5648,9 @@
             this.Report.Controls.Add(this.label133);
             this.Report.Controls.Add(this.txtChestPerspective);
             this.Report.Controls.Add(this.label132);
-            this.Report.Location = new System.Drawing.Point(4, 21);
+            this.Report.Location = new System.Drawing.Point(4, 22);
             this.Report.Name = "Report";
-            this.Report.Size = new System.Drawing.Size(760, 370);
+            this.Report.Size = new System.Drawing.Size(760, 369);
             this.Report.TabIndex = 8;
             this.Report.Text = "体检结论";
             this.Report.UseVisualStyleBackColor = true;
@@ -5833,192 +6019,6 @@
             this.txtYearMonth.Size = new System.Drawing.Size(128, 29);
             this.txtYearMonth.TabIndex = 57;
             this.txtYearMonth.TabStop = false;
-            // 
-            // txtHYLDLC
-            // 
-            this.txtHYLDLC.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.txtHYLDLC.Location = new System.Drawing.Point(156, 80);
-            this.txtHYLDLC.MaxLength = 10;
-            this.txtHYLDLC.Name = "txtHYLDLC";
-            this.txtHYLDLC.Size = new System.Drawing.Size(73, 21);
-            this.txtHYLDLC.TabIndex = 12;
-            // 
-            // label140
-            // 
-            this.label140.AutoSize = true;
-            this.label140.Location = new System.Drawing.Point(232, 84);
-            this.label140.Name = "label140";
-            this.label140.Size = new System.Drawing.Size(131, 12);
-            this.label140.TabIndex = 11;
-            this.label140.Text = "mmol/L 参考 2.07-3.10";
-            // 
-            // txtHYAPOAI
-            // 
-            this.txtHYAPOAI.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.txtHYAPOAI.Location = new System.Drawing.Point(128, 103);
-            this.txtHYAPOAI.MaxLength = 10;
-            this.txtHYAPOAI.Name = "txtHYAPOAI";
-            this.txtHYAPOAI.Size = new System.Drawing.Size(101, 21);
-            this.txtHYAPOAI.TabIndex = 15;
-            // 
-            // label148
-            // 
-            this.label148.AutoSize = true;
-            this.label148.Location = new System.Drawing.Point(232, 108);
-            this.label148.Name = "label148";
-            this.label148.Size = new System.Drawing.Size(131, 12);
-            this.label148.TabIndex = 14;
-            this.label148.Text = "g/L    参考 1.00-1.60";
-            // 
-            // label173
-            // 
-            this.label173.AutoSize = true;
-            this.label173.ForeColor = System.Drawing.Color.Maroon;
-            this.label173.Location = new System.Drawing.Point(18, 108);
-            this.label173.Name = "label173";
-            this.label173.Size = new System.Drawing.Size(107, 12);
-            this.label173.TabIndex = 13;
-            this.label173.Text = "载脂蛋白AI(APOAI)";
-            // 
-            // txtHYAPOP
-            // 
-            this.txtHYAPOP.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.txtHYAPOP.Location = new System.Drawing.Point(128, 127);
-            this.txtHYAPOP.MaxLength = 10;
-            this.txtHYAPOP.Name = "txtHYAPOP";
-            this.txtHYAPOP.Size = new System.Drawing.Size(101, 21);
-            this.txtHYAPOP.TabIndex = 18;
-            // 
-            // label174
-            // 
-            this.label174.AutoSize = true;
-            this.label174.Location = new System.Drawing.Point(232, 133);
-            this.label174.Name = "label174";
-            this.label174.Size = new System.Drawing.Size(119, 12);
-            this.label174.TabIndex = 17;
-            this.label174.Text = "g/L    参考 0.6-1.1";
-            // 
-            // label175
-            // 
-            this.label175.AutoSize = true;
-            this.label175.ForeColor = System.Drawing.Color.Maroon;
-            this.label175.Location = new System.Drawing.Point(29, 131);
-            this.label175.Name = "label175";
-            this.label175.Size = new System.Drawing.Size(95, 12);
-            this.label175.TabIndex = 16;
-            this.label175.Text = "载脂蛋白B(APOB)";
-            // 
-            // label176
-            // 
-            this.label176.AutoSize = true;
-            this.label176.Location = new System.Drawing.Point(229, 131);
-            this.label176.Name = "label176";
-            this.label176.Size = new System.Drawing.Size(119, 12);
-            this.label176.TabIndex = 18;
-            this.label176.Text = "U/L     参考 ≦37.0";
-            // 
-            // txtHYAST
-            // 
-            this.txtHYAST.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.txtHYAST.Location = new System.Drawing.Point(160, 126);
-            this.txtHYAST.MaxLength = 10;
-            this.txtHYAST.Name = "txtHYAST";
-            this.txtHYAST.Size = new System.Drawing.Size(66, 21);
-            this.txtHYAST.TabIndex = 17;
-            // 
-            // label180
-            // 
-            this.label180.AutoSize = true;
-            this.label180.ForeColor = System.Drawing.Color.Maroon;
-            this.label180.Location = new System.Drawing.Point(5, 130);
-            this.label180.Name = "label180";
-            this.label180.Size = new System.Drawing.Size(155, 12);
-            this.label180.TabIndex = 16;
-            this.label180.Text = "天门冬氨酸氨基转移酶(AST)";
-            // 
-            // label181
-            // 
-            this.label181.AutoSize = true;
-            this.label181.Location = new System.Drawing.Point(229, 154);
-            this.label181.Name = "label181";
-            this.label181.Size = new System.Drawing.Size(113, 12);
-            this.label181.TabIndex = 21;
-            this.label181.Text = "U/L 男11-50 女7-32";
-            // 
-            // txtHYGT
-            // 
-            this.txtHYGT.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.txtHYGT.Location = new System.Drawing.Point(160, 149);
-            this.txtHYGT.MaxLength = 10;
-            this.txtHYGT.Name = "txtHYGT";
-            this.txtHYGT.Size = new System.Drawing.Size(66, 21);
-            this.txtHYGT.TabIndex = 20;
-            // 
-            // label182
-            // 
-            this.label182.AutoSize = true;
-            this.label182.ForeColor = System.Drawing.Color.Maroon;
-            this.label182.Location = new System.Drawing.Point(19, 152);
-            this.label182.Name = "label182";
-            this.label182.Size = new System.Drawing.Size(137, 12);
-            this.label182.TabIndex = 19;
-            this.label182.Text = "γ-谷胺酰转氨酶(γ-GT)";
-            // 
-            // label183
-            // 
-            this.label183.AutoSize = true;
-            this.label183.Location = new System.Drawing.Point(229, 177);
-            this.label183.Name = "label183";
-            this.label183.Size = new System.Drawing.Size(131, 12);
-            this.label183.TabIndex = 24;
-            this.label183.Text = "U/L 男53-128 女42-141";
-            // 
-            // txtHYALP
-            // 
-            this.txtHYALP.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.txtHYALP.Location = new System.Drawing.Point(124, 172);
-            this.txtHYALP.MaxLength = 10;
-            this.txtHYALP.Name = "txtHYALP";
-            this.txtHYALP.Size = new System.Drawing.Size(102, 21);
-            this.txtHYALP.TabIndex = 23;
-            // 
-            // label184
-            // 
-            this.label184.AutoSize = true;
-            this.label184.ForeColor = System.Drawing.Color.Maroon;
-            this.label184.Location = new System.Drawing.Point(26, 176);
-            this.label184.Name = "label184";
-            this.label184.Size = new System.Drawing.Size(95, 12);
-            this.label184.TabIndex = 22;
-            this.label184.Text = "碱性磷铵酶(ALP)";
-            // 
-            // txtHYUA
-            // 
-            this.txtHYUA.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.txtHYUA.Location = new System.Drawing.Point(128, 56);
-            this.txtHYUA.MaxLength = 10;
-            this.txtHYUA.Name = "txtHYUA";
-            this.txtHYUA.Size = new System.Drawing.Size(101, 21);
-            this.txtHYUA.TabIndex = 21;
-            // 
-            // label185
-            // 
-            this.label185.AutoSize = true;
-            this.label185.Location = new System.Drawing.Point(232, 61);
-            this.label185.Name = "label185";
-            this.label185.Size = new System.Drawing.Size(143, 12);
-            this.label185.TabIndex = 20;
-            this.label185.Text = "umol/L 参考 142.0-416.0";
-            // 
-            // label186
-            // 
-            this.label186.AutoSize = true;
-            this.label186.ForeColor = System.Drawing.Color.Maroon;
-            this.label186.Location = new System.Drawing.Point(72, 60);
-            this.label186.Name = "label186";
-            this.label186.Size = new System.Drawing.Size(53, 12);
-            this.label186.TabIndex = 19;
-            this.label186.Text = "尿酸(UA)";
             // 
             // InfoEdite
             // 
@@ -6664,7 +6664,7 @@
         private System.Windows.Forms.Label label176;
         private System.Windows.Forms.TextBox txtHYAST;
         private System.Windows.Forms.Label label180;
-        private System.Windows.Forms.TextBox txtHYAPOP;
+        private System.Windows.Forms.TextBox txtHYAPOB;
         private System.Windows.Forms.Label label174;
         private System.Windows.Forms.Label label175;
         private System.Windows.Forms.TextBox txtHYAPOAI;

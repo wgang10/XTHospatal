@@ -15,9 +15,9 @@ namespace XTHospital.OleDbDAL
         private string SearchID_SQL = @"Select EmployeeID From Biochemistry
 Where EmployeeID=@EmployeeID And YearMoth=@YearMonth";
         private string Add_SQL = @"Insert into Biochemistry(
-CREATE_DATETIME,UPDATE_DATETIME,TRANS_STATE,UPDATER_ID,TERMINAL_CD,EmployeeID,YearMoth,HYNo,HYDr,HYTC,HYTG,HYHDLC,HYTBIL,HYDBIL,HYTP,HYALB,HYALT,HYHBsAg,HYHBsAb,HYHBeAg,HYHBeAb,HYHBcAb,HY_GLU,HY_UREA,HY_CR,HY_AFP,HY_CEA)
+CREATE_DATETIME,UPDATE_DATETIME,TRANS_STATE,UPDATER_ID,TERMINAL_CD,EmployeeID,YearMoth,HYNo,HYDr,HYTC,HYTG,HYHDLC,HYTBIL,HYDBIL,HYTP,HYALB,HYALT,HYHBsAg,HYHBsAb,HYHBeAg,HYHBeAb,HYHBcAb,HY_GLU,HY_UREA,HY_CR,HY_AFP,HY_CEA,HYLDLC,HYAPOAI,HYAPOB,HYAST,HYGT,HYALP,HYUA)
 Values (
-FORMAT(date(),'YYYYMMDD')+FORMAT(TIME(),'HHMMSS'),FORMAT(date(),'YYYYMMDD')+FORMAT(TIME(),'HHMMSS'),'1',@UPDATER_ID,@TERMINAL_CD,@EmployeeID,@YearMonth,@HYNo,@HYDr,@HYTC,@HYTG,@HYHDLC,@HYTBIL,@HYDBIL,@HYTP,@HYALB,@HYALT,@HYHBsAg,@HYHBsAb,@HYHBeAg,@HYHBeAb,@HYHBcAb,@HY_GLU,@HY_UREA,@HY_CR,@HY_AFP,@HY_CEA)";
+FORMAT(date(),'YYYYMMDD')+FORMAT(TIME(),'HHMMSS'),FORMAT(date(),'YYYYMMDD')+FORMAT(TIME(),'HHMMSS'),'1',@UPDATER_ID,@TERMINAL_CD,@EmployeeID,@YearMonth,@HYNo,@HYDr,@HYTC,@HYTG,@HYHDLC,@HYTBIL,@HYDBIL,@HYTP,@HYALB,@HYALT,@HYHBsAg,@HYHBsAb,@HYHBeAg,@HYHBeAb,@HYHBcAb,@HY_GLU,@HY_UREA,@HY_CR,@HY_AFP,@HY_CEA,@HYLDLC,@HYAPOAI,@HYAPOB,@HYAST,@HYGT,@HYALP,@HYUA)";
         private string Update_SQL = @"Update Biochemistry Set 
 UPDATE_DATETIME=FORMAT(date(),'YYYYMMDD')+FORMAT(TIME(),'HHMMSS'),
 TRANS_STATE='2',
@@ -42,7 +42,14 @@ HY_GLU=@HY_GLU,
 HY_UREA=@HY_UREA,
 HY_CR=@HY_CR,
 HY_AFP=@HY_AFP,
-HY_CEA=@HY_CEA
+HY_CEA=@HY_CEA,
+HYLDLC=@HYLDLC,
+HYAPOAI=@HYAPOAI,
+HYAPOB=@HYAPOB,
+HYAST=@HYAST,
+HYGT=@HYGT,
+HYALP=@HYALP,
+HYUA=@HYUA
 where EmployeeID=@EmployeeID and YearMoth=@YearMonth ";
 
         public ReturnValue Add(Biochemistry model)
@@ -71,7 +78,14 @@ where EmployeeID=@EmployeeID and YearMoth=@YearMonth ";
 					new OleDbParameter("@HY_UREA", OleDbType.VarWChar,10),
 					new OleDbParameter("@HY_CR", OleDbType.VarWChar,10),
 					new OleDbParameter("@HY_AFP", OleDbType.VarWChar,10),
-					new OleDbParameter("@HY_CEA", OleDbType.VarWChar,10)};
+					new OleDbParameter("@HY_CEA", OleDbType.VarWChar,10),
+                    new OleDbParameter("@HYLDLC", OleDbType.VarWChar,10),
+                    new OleDbParameter("@HYAPOAI", OleDbType.VarWChar,10),
+                    new OleDbParameter("@HYAPOB", OleDbType.VarWChar,10),
+                    new OleDbParameter("@HYAST", OleDbType.VarWChar,10),
+                    new OleDbParameter("@HYGT", OleDbType.VarWChar,10),
+                    new OleDbParameter("@HYALP", OleDbType.VarWChar,10),
+                    new OleDbParameter("@HYUA", OleDbType.VarWChar,10)};
             parameters[0].Value = model.UPDATER_ID;
             parameters[1].Value = model.TERMINAL_CD;
             parameters[2].Value = model.EmployeeID;
@@ -96,6 +110,13 @@ where EmployeeID=@EmployeeID and YearMoth=@YearMonth ";
             parameters[21].Value = model.HY_CR;
             parameters[22].Value = model.HY_AFP;
             parameters[23].Value = model.HY_CEA;
+            parameters[24].Value = model.HYLDLC;
+            parameters[25].Value = model.HYAPOAI;
+            parameters[26].Value = model.HYAPOB;
+            parameters[27].Value = model.HYAST;
+            parameters[28].Value = model.HYGT;
+            parameters[29].Value = model.HYALP;
+            parameters[30].Value = model.HYUA;
             return OleDbHelper.ExecuteSql(Add_SQL, parameters);
         }
 
@@ -134,6 +155,13 @@ where EmployeeID=@EmployeeID and YearMoth=@YearMonth ";
 					new OleDbParameter("@HY_CR", OleDbType.VarWChar,10),
 					new OleDbParameter("@HY_AFP", OleDbType.VarWChar,10),
 					new OleDbParameter("@HY_CEA", OleDbType.VarWChar,10),
+                    new OleDbParameter("@HYLDLC", OleDbType.VarWChar,10),
+                    new OleDbParameter("@HYAPOAI", OleDbType.VarWChar,10),
+                    new OleDbParameter("@HYAPOB", OleDbType.VarWChar,10),
+                    new OleDbParameter("@HYAST", OleDbType.VarWChar,10),
+                    new OleDbParameter("@HYGT", OleDbType.VarWChar,10),
+                    new OleDbParameter("@HYALP", OleDbType.VarWChar,10),
+                    new OleDbParameter("@HYUA", OleDbType.VarWChar,10),
                     new OleDbParameter("@EmployeeID", OleDbType.VarWChar,18),
 					new OleDbParameter("@YearMonth", OleDbType.VarWChar,6)};
             parametersUpdate[0].Value = model.UPDATER_ID;
@@ -158,8 +186,15 @@ where EmployeeID=@EmployeeID and YearMoth=@YearMonth ";
             parametersUpdate[19].Value = model.HY_CR;
             parametersUpdate[20].Value = model.HY_AFP;
             parametersUpdate[21].Value = model.HY_CEA;
-            parametersUpdate[22].Value = model.EmployeeID;
-            parametersUpdate[23].Value = model.YearMonth;
+            parametersUpdate[22].Value = model.HYLDLC;
+            parametersUpdate[23].Value = model.HYAPOAI;
+            parametersUpdate[24].Value = model.HYAPOB;
+            parametersUpdate[25].Value = model.HYAST;
+            parametersUpdate[26].Value = model.HYGT;
+            parametersUpdate[27].Value = model.HYALP;
+            parametersUpdate[28].Value = model.HYUA;
+            parametersUpdate[29].Value = model.EmployeeID;
+            parametersUpdate[30].Value = model.YearMonth;
             return OleDbHelper.ExecuteSql(Update_SQL, parametersUpdate);
         }
     }
