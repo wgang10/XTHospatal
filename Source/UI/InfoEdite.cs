@@ -341,6 +341,15 @@ namespace UI
             model.HY_CR = txtCR.Text.Trim();//肌酐
             model.HY_AFP = txtAFP.Text.Trim();//甲胎蛋白
             model.HY_CEA = txtCEA.Text.Trim();//癌胚抗原
+
+            model.HYLDLC = this.txtHYLDLC.Text.Trim();
+            model.HYAPOAI = this.txtHYAPOAI.Text.Trim();
+            model.HYAPOB = this.txtHYAPOP.Text.Trim();
+            model.HYAST = this.txtHYAST.Text.Trim();
+            model.HYGT = this.txtHYGT.Text.Trim();
+            model.HYALP = this.txtHYALP.Text.Trim();
+            model.HYUA = this.txtHYUA.Text.Trim();
+
             //HBsAg
             if(rdbHBsAg1.Checked )
             {
@@ -989,6 +998,15 @@ namespace UI
                     this.txtHY_TC.Text = resoult.ResultDataSet.Tables[0].Rows[0]["Bio_HYTC"].ToString();//总胆固醇(TC)
                     this.txtHY_TG.Text = resoult.ResultDataSet.Tables[0].Rows[0]["Bio_HYTG"].ToString();//甘油三脂(TG)
                     this.txtHY_HDL_C.Text = resoult.ResultDataSet.Tables[0].Rows[0]["Bio_HYHDLC"].ToString();//高密度脂蛋白胆固醇(HDL-C)
+
+                    this.txtHYLDLC.Text = resoult.ResultDataSet.Tables[0].Rows[0]["Bio_HYLDLC"].ToString();//低密度脂蛋白胆固醇(LDL-C)
+                    this.txtHYAPOAI.Text = resoult.ResultDataSet.Tables[0].Rows[0]["Bio_HYAPOAI"].ToString();//载脂蛋白AI(APOAI)
+                    this.txtHYAPOP.Text = resoult.ResultDataSet.Tables[0].Rows[0]["Bio_HYAPOB"].ToString();//载脂蛋白B(APOB)
+                    this.txtHYAST.Text = resoult.ResultDataSet.Tables[0].Rows[0]["Bio_HYAST"].ToString();//天门冬氨酸氨基转移酶(AST)
+                    this.txtHYGT.Text = resoult.ResultDataSet.Tables[0].Rows[0]["Bio_HYGT"].ToString();//γ-谷胺酰转氨酶(γ-GT)
+                    this.txtHYALP.Text = resoult.ResultDataSet.Tables[0].Rows[0]["Bio_HYALP"].ToString();//碱性磷铵酶(ALP)
+                    this.txtHYUA.Text = resoult.ResultDataSet.Tables[0].Rows[0]["Bio_HYUA"].ToString();//尿酸（UA）
+
                     this.txtHY_TBIL.Text = resoult.ResultDataSet.Tables[0].Rows[0]["Bio_HYTBIL"].ToString();//总胆红素(TBIL)
                     this.txtHY_DBIL.Text = resoult.ResultDataSet.Tables[0].Rows[0]["Bio_HYDBIL"].ToString();//直接胆红素(DBIL)
                     this.txtHY_TP.Text = resoult.ResultDataSet.Tables[0].Rows[0]["Bio_HYTP"].ToString();//总蛋白(TP)
@@ -1998,6 +2016,15 @@ namespace UI
             this.txtCR.Text = "";//肌酐
             this.txtAFP.Text = "";//甲胎蛋白
             this.txtCEA.Text = "";//癌胚抗原
+
+            this.txtHYLDLC.Text = "";
+            this.txtHYAPOAI.Text = "";
+            this.txtHYAPOP.Text = "";
+            this.txtHYAST.Text = "";
+            this.txtHYGT.Text = "";
+            this.txtHYALP.Text = "";
+            this.txtHYUA.Text = "";
+
             rdbHBsAg1.Checked = false;
             rdbHBsAg2.Checked = false;
             rdbHBsAb1.Checked = false;

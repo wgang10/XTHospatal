@@ -178,11 +178,17 @@
           <s:element minOccurs="0" maxOccurs="1" name="HYTC" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="HYTG" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="HYHDLC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HYLDLC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HYAPOAI" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HYAPOB" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="HYTBIL" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="HYDBIL" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="HYTP" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="HYALB" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="HYALT" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HYAST" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HYGT" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HYALP" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="HYHBsAg" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="HYHBsAb" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="HYHBeAg" type="s:string" />
@@ -191,6 +197,7 @@
           <s:element minOccurs="0" maxOccurs="1" name="HY_GLU" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="HY_UREA" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="HY_CR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HYUA" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="HY_AFP" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="HY_CEA" type="s:string" />
         </s:sequence>

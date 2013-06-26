@@ -34,6 +34,14 @@ namespace XTHospital.Model
         private string _hy_afp;
         private string _hy_cea;
 
+        private string _hy_ldlc;
+        private string _hy_apoai;
+        private string _hy_apob;
+        private string _hy_ast;
+        private string _hy_gt;
+        private string _hy_alp;
+        private string _hy_ua;
+
         /// <summary>
         /// 数据作成日時
         /// </summary>
@@ -130,6 +138,34 @@ namespace XTHospital.Model
             set { _hyhdlc = value; }
             get { return _hyhdlc; }
         }
+
+        /// <summary>
+        /// 低密度脂蛋白胆固醇(LDL-C)
+        /// </summary>
+        public string HYLDLC
+        {
+            set { _hy_ldlc = value; }
+            get { return _hy_ldlc; }
+        }
+
+        /// <summary>
+        /// 载脂蛋白AI(APOAI)
+        /// </summary>
+        public string HYAPOAI
+        {
+            set { _hy_apoai = value; }
+            get { return _hy_apoai; }
+        }
+
+        /// <summary>
+        /// 载脂蛋白B(APOB)
+        /// </summary>
+        public string HYAPOB
+        {
+            set { _hy_apob = value; }
+            get { return _hy_apob; }
+        }
+
         /// <summary>
         /// 总胆红素(TBIL)
         /// </summary>
@@ -163,13 +199,40 @@ namespace XTHospital.Model
             get { return _hyalb; }
         }
         /// <summary>
-        /// 谷丙转氨酶(ALT)
+        /// 谷丙转氨酶(ALT)=>丙氨酸氨基转移酶
         /// </summary>
         public string HYALT
         {
             set { _hyalt = value; }
             get { return _hyalt; }
         }
+
+
+        /// <summary>
+        /// 天门冬氨酸氨基转移酶(AST)
+        /// </summary>
+        public string HYAST
+        {
+            set { _hy_ast = value; }
+            get { return _hy_ast; }
+        }
+        /// <summary>
+        /// γ-谷胺酰转氨酶(γ-GT)
+        /// </summary>
+        public string HYGT
+        {
+            set { _hy_gt = value; }
+            get { return _hy_gt; }
+        }
+        /// <summary>
+        /// 碱性磷铵酶(ALP)
+        /// </summary>
+        public string HYALP
+        {
+            set { _hy_alp = value; }
+            get { return _hy_alp; }
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -234,6 +297,14 @@ namespace XTHospital.Model
         {
             set { _hy_cr = value; }
             get { return _hy_cr; }
+        }
+        /// <summary>
+        /// 尿酸（UA）
+        /// </summary>
+        public string HYUA
+        {
+            set { _hy_ua = value; }
+            get { return _hy_ua; }
         }
         /// <summary>
         /// 甲胎蛋白
