@@ -5,6 +5,8 @@ using System.Web.Services.Protocols;
 using XTHospital.BLL;
 using XTHospital.COM;
 using XTHospital.Model;
+using System.IO;
+using System.Text;
 
 [WebService(Namespace = "http://tempuri.org/")]
 [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
@@ -321,5 +323,24 @@ public class Service : System.Web.Services.WebService
     {
         BLL_Employee bll = new BLL_Employee();
         return bll.GetCheckEmployeeNum(YearMonth, EmployeeName, EmployeeBM);
+    }
+
+    [WebMethod(Description = "查询程序最新版本")]
+    public string GetLastAppNo()
+    {
+        string filePath=System.Web.HttpContext.Current.Server.MapPath("Update.ini");
+        StreamReader sr= new StreamReader(filePath,Encoding.Default);
+        string s=string.Empty;
+        string version=string.Empty;
+        while((s=sr.ReadLine())!=null)
+        {
+            version=version+"@"+s;
+        }
+        if (version.IndexOf("@") == 0)
+        {
+            version = version.Substring(1);
+        }
+        sr.Close();
+        return version;
     }
 }

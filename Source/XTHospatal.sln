@@ -50,6 +50,8 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Web", "Web\", "{22576A5B-07
 		VWDPort = "17761"
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UpdateApp", "UpdateApp\UpdateApp.csproj", "{1E1B82E8-1679-4A50-85EE-337FFD85698E}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -234,6 +236,18 @@ Global
 		{22576A5B-07AA-4650-8106-17D2B27D0F2C}.Release|Mixed Platforms.ActiveCfg = Debug|Any CPU
 		{22576A5B-07AA-4650-8106-17D2B27D0F2C}.Release|Mixed Platforms.Build.0 = Debug|Any CPU
 		{22576A5B-07AA-4650-8106-17D2B27D0F2C}.Release|x86.ActiveCfg = Debug|Any CPU
+		{1E1B82E8-1679-4A50-85EE-337FFD85698E}.Debug|.NET.ActiveCfg = Debug|x86
+		{1E1B82E8-1679-4A50-85EE-337FFD85698E}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{1E1B82E8-1679-4A50-85EE-337FFD85698E}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{1E1B82E8-1679-4A50-85EE-337FFD85698E}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{1E1B82E8-1679-4A50-85EE-337FFD85698E}.Debug|x86.ActiveCfg = Debug|x86
+		{1E1B82E8-1679-4A50-85EE-337FFD85698E}.Debug|x86.Build.0 = Debug|x86
+		{1E1B82E8-1679-4A50-85EE-337FFD85698E}.Release|.NET.ActiveCfg = Release|x86
+		{1E1B82E8-1679-4A50-85EE-337FFD85698E}.Release|Any CPU.ActiveCfg = Release|x86
+		{1E1B82E8-1679-4A50-85EE-337FFD85698E}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{1E1B82E8-1679-4A50-85EE-337FFD85698E}.Release|Mixed Platforms.Build.0 = Release|x86
+		{1E1B82E8-1679-4A50-85EE-337FFD85698E}.Release|x86.ActiveCfg = Release|x86
+		{1E1B82E8-1679-4A50-85EE-337FFD85698E}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
