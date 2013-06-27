@@ -35,7 +35,11 @@ namespace UpdateApp
 
         private void UpdateForm_Load(object sender, EventArgs e)
         {
-            dirPath = ConfigurationManager.AppSettings["WebServicesURL"].Trim(); 
+            dirPath = ConfigurationManager.AppSettings["WebServicesURL"].Trim();
+            if (MessageBox.Show("是否更新？", "update?", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                UpdaterStart();
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -146,13 +150,20 @@ namespace UpdateApp
                 }
                 else
                 {
-                    this.Text = Common.GetMD5HashFromFile(Application.StartupPath + "\\AutoUpdater\\" + fileName);
-                    if (File.Exists(Application.StartupPath + "\\" + fileName))
-                    {
-                        File.Delete(Application.StartupPath + "\\" + fileName);
-                    }
-                    File.Move(Application.StartupPath + "\\AutoUpdater\\" + fileName, Application.StartupPath + "\\" + fileName);                    
-                    //SetConfigValue("conf.config", "UpDate", GetTheLastUpdateTime(dirPath));
+                    //获取程序包的MD5值
+                    string appMD5 = Common.GetMD5HashFromFile(Application.StartupPath + "\\AutoUpdater\\" + fileName);
+                    //删除已有的下载包
+                    //if (File.Exists(Application.StartupPath + "\\" + fileName))
+                    //{
+                    //    File.Delete(Application.StartupPath + "\\" + fileName);
+                    //}
+                    //移动下载包
+                    //File.Move(Application.StartupPath + "\\AutoUpdater\\" + fileName, Application.StartupPath + "\\" + fileName);               
+                    //解压缩
+                    Common.UnZipFile(Application.StartupPath + "\\AutoUpdater\\app.zip", Application.StartupPath + "\\AutoUpdater");
+                    //设置最新的程序号
+                    string[] newAppNo = { "2.0.0.0", appMD5 };
+                    SetConfigAppNo(newAppNo);
                     UpdaterClose();
                 }
             };
@@ -176,6 +187,10 @@ namespace UpdateApp
                     count,
                     ConvertSize(size));                
                 string DownLoadURL = dirPath + @"/update/" + fileName;
+                if(!Directory.Exists(Application.StartupPath + "\\AutoUpdater"))
+                {
+                    Directory.CreateDirectory(Application.StartupPath + "\\AutoUpdater");
+                }
                 string SavePathName=Application.StartupPath + "\\AutoUpdater\\" + fileName;
                 this.downWebClient.DownloadFileAsync(
                     new Uri(DownLoadURL),
@@ -258,11 +273,28 @@ namespace UpdateApp
             Application.Exit();
         }
 
-        
-
         private void btnUnZip_Click(object sender, EventArgs e)
         {
             Common.UnZipFile(Application.StartupPath + "\\AutoUpdater\\app.zip",Application.StartupPath + "\\AutoUpdater");
+        }
+
+        private void SetConfigAppNo(string[] appNos)
+        {
+            FileStream fsInfo = new FileStream(Application.StartupPath+"\\Update.ini",FileMode.OpenOrCreate); 
+            StreamWriter swInfo = new StreamWriter( fsInfo ); 
+            swInfo.Flush(); 
+            swInfo.BaseStream.Seek( 0, SeekOrigin.Begin );
+            for (int i = 0; i < appNos.Length; i++)
+            {
+                swInfo.WriteLine(appNos[i]);
+            }
+            swInfo.Flush(); 
+            swInfo.Close();
+        }
+
+        private void btnMD5_Click(object sender, EventArgs e)
+        {
+            txtMD5.Text = Common.GetMD5HashFromFile(txtMD5.Text);
         }
 
     }

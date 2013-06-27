@@ -6,6 +6,8 @@ using System.Runtime.InteropServices;
 using System.Reflection;
 using System.Threading;
 using System.Configuration;
+using System.IO;
+using System.Text;
 
 namespace UI
 {
@@ -62,6 +64,7 @@ namespace UI
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                 GlobalVal.SplashObj = SplashObject.GetSplash();
+                GlobalVal.glostrAppNo = GetAppNo();
                 Application.Run(new FromMain());
             }
         }
@@ -154,6 +157,28 @@ namespace UI
         {
             ShowWindowAsync(instance.MainWindowHandle, WS_SHOWNORMAL);
             SetForegroundWindow(instance.MainWindowHandle);
+        }
+
+        /// <summary>
+        /// 从配置文件中获取程序号
+        /// </summary>
+        /// <returns></returns>
+        public static string GetAppNo()
+        {
+            string filePath = Application.StartupPath+"\\Update.ini";
+            StreamReader sr = new StreamReader(filePath, Encoding.Default);
+            string s = string.Empty;
+            string version = string.Empty;
+            while ((s = sr.ReadLine()) != null)
+            {
+                version = version + "@" + s;
+            }
+            if (version.IndexOf("@") == 0)
+            {
+                version = version.Substring(1);
+            }
+            sr.Close();
+            return version;
         }
 
     }

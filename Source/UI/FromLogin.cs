@@ -199,6 +199,24 @@ namespace UI
                 {
                     blws = true;
                     btnConfig.ForeColor = Color.Green;
+                    //开始检查更新
+                    if (GlobalVal.gloWebSerices == null)
+                    {
+                        GlobalVal.gloWebSerices = new MyWebService();
+                    }
+                    string newAppNo = GlobalVal.gloWebSerices.GetLastAppNo();
+                    if (!newAppNo.Equals(GlobalVal.glostrAppNo))
+                    {
+                        try
+                        {
+                            System.Diagnostics.Process.Start(Application.StartupPath + @"\UpdateApp.exe");
+                        }
+                        catch (Win32Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                        Application.Exit();   
+                    }
                 }
             }
             catch (Exception ex)

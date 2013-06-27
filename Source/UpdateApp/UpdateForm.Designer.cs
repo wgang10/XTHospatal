@@ -35,6 +35,8 @@
             this.progressBarSize = new System.Windows.Forms.ProgressBar();
             this.lbMessageFile = new System.Windows.Forms.Label();
             this.btnUnZip = new System.Windows.Forms.Button();
+            this.btnMD5 = new System.Windows.Forms.Button();
+            this.txtMD5 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // progressBarFile
@@ -97,11 +99,30 @@
             this.btnUnZip.UseVisualStyleBackColor = true;
             this.btnUnZip.Click += new System.EventHandler(this.btnUnZip_Click);
             // 
+            // btnMD5
+            // 
+            this.btnMD5.Location = new System.Drawing.Point(196, 135);
+            this.btnMD5.Name = "btnMD5";
+            this.btnMD5.Size = new System.Drawing.Size(75, 23);
+            this.btnMD5.TabIndex = 7;
+            this.btnMD5.Text = "md5";
+            this.btnMD5.UseVisualStyleBackColor = true;
+            this.btnMD5.Click += new System.EventHandler(this.btnMD5_Click);
+            // 
+            // txtMD5
+            // 
+            this.txtMD5.Location = new System.Drawing.Point(12, 109);
+            this.txtMD5.Name = "txtMD5";
+            this.txtMD5.Size = new System.Drawing.Size(541, 21);
+            this.txtMD5.TabIndex = 8;
+            // 
             // UpdateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(565, 170);
+            this.Controls.Add(this.txtMD5);
+            this.Controls.Add(this.btnMD5);
             this.Controls.Add(this.btnUnZip);
             this.Controls.Add(this.lbMessageFile);
             this.Controls.Add(this.progressBarSize);
@@ -114,6 +135,7 @@
             this.Text = "升级程序";
             this.Load += new System.EventHandler(this.UpdateForm_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -126,5 +148,7 @@
         private System.Windows.Forms.ProgressBar progressBarSize;
         private System.Windows.Forms.Label lbMessageFile;
         private System.Windows.Forms.Button btnUnZip;
+        private System.Windows.Forms.Button btnMD5;
+        private System.Windows.Forms.TextBox txtMD5;
     }
 }

@@ -80,6 +80,11 @@ namespace UI
         public static string glostrServicesURL = "";
 
         /// <summary>
+        /// 程序号
+        /// </summary>
+        public static string glostrAppNo = "";
+
+        /// <summary>
         /// 
         /// </summary>
         public static XTHotpatalWebServices.Service gloWebSerices = null;

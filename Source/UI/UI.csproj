@@ -277,6 +277,9 @@
     </Compile>
     <Content Include="Resources\Message.csv" />
     <None Include="UI_TemporaryKey.pfx" />
+    <None Include="Update.ini">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Web References\XTHotpatalWebServices\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -290,10 +293,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://localhost/XTHospatal/Service.asmx">
+    <WebReferenceUrl Include="http://localhost/Service.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\XTHotpatalWebServices\</RelPath>
-      <UpdateFromURL>http://localhost/XTHospatal/Service.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost/Service.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>

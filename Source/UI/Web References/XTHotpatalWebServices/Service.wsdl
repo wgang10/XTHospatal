@@ -729,6 +729,16 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetLastAppNo">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetLastAppNoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLastAppNoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="CheckWebServicesSoapIn">
@@ -911,6 +921,12 @@
   <wsdl:message name="GetCheckEmployeeNumSoapOut">
     <wsdl:part name="parameters" element="tns:GetCheckEmployeeNumResponse" />
   </wsdl:message>
+  <wsdl:message name="GetLastAppNoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLastAppNo" />
+  </wsdl:message>
+  <wsdl:message name="GetLastAppNoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLastAppNoResponse" />
+  </wsdl:message>
   <wsdl:portType name="ServiceSoap">
     <wsdl:operation name="CheckWebServices">
       <wsdl:input message="tns:CheckWebServicesSoapIn" />
@@ -1060,6 +1076,11 @@
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">按年查询人员各项检查项是否已经有记录</wsdl:documentation>
       <wsdl:input message="tns:GetCheckEmployeeNumSoapIn" />
       <wsdl:output message="tns:GetCheckEmployeeNumSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLastAppNo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查询程序最新版本</wsdl:documentation>
+      <wsdl:input message="tns:GetLastAppNoSoapIn" />
+      <wsdl:output message="tns:GetLastAppNoSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="ServiceSoap" type="tns:ServiceSoap">
@@ -1327,6 +1348,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetCheckEmployeeNum">
       <soap:operation soapAction="http://tempuri.org/GetCheckEmployeeNum" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLastAppNo">
+      <soap:operation soapAction="http://tempuri.org/GetLastAppNo" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1607,13 +1637,22 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetLastAppNo">
+      <soap12:operation soapAction="http://tempuri.org/GetLastAppNo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="Service">
     <wsdl:port name="ServiceSoap" binding="tns:ServiceSoap">
-      <soap:address location="http://localhost/XTHospatal/Service.asmx" />
+      <soap:address location="http://localhost/Service.asmx" />
     </wsdl:port>
     <wsdl:port name="ServiceSoap12" binding="tns:ServiceSoap12">
-      <soap12:address location="http://localhost/XTHospatal/Service.asmx" />
+      <soap12:address location="http://localhost/Service.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
