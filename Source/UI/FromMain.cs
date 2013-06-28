@@ -93,6 +93,13 @@ namespace UI
                     this.Activate();
                     GlobalVal.ShowForm = this;
                     BindChartData();
+                    try
+                    {
+                        this.Text = GlobalVal.glostrSystemName + "    "
+                            + GlobalVal.glostrAppNo.Substring(0, GlobalVal.glostrAppNo.IndexOf("@"))
+                            + "    " + GlobalVal.gloStrLoginUserID;
+                    }
+                    catch { }
                 }
                 else
                 {

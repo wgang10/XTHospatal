@@ -103,5 +103,27 @@ namespace UpdateApp
                 throw new Exception("error:" + ex.Message);
             }
         }
+
+        public static string globalAppVNo = string.Empty;
+
+        public static string globalAppMD5No = string.Empty;
+
+        /// <summary>
+        /// 从配置文件中获取配置项
+        /// </summary>
+        /// <returns></returns>
+        public static string GetConfigFormIni()
+        {
+            string filePath = Application.StartupPath + "\\WebURL.ini";
+            StreamReader sr = new StreamReader(filePath, Encoding.Default);
+            string s = string.Empty;
+            s = sr.ReadLine();
+            sr.Close();
+            if (s.EndsWith(@"/"))
+            {
+                s = s.Substring(0, s.Length - 1);
+            }
+            return s;
+        }
     }
 }

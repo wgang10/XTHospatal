@@ -74,7 +74,7 @@ namespace UI
             {
                 if (GlobalVal.gloWebSerices == null)
                 {
-                    GlobalVal.gloWebSerices = new MyWebService();
+                    GlobalVal.gloWebSerices = new MyWebService(GlobalVal.glostrServicesURL);
                 }
                 string[] resoult = GlobalVal.gloWebSerices.ValidateUserNoYearMonth(GlobalVal.gloStrLoginUserID, GlobalVal.gloStrTerminalCD, strUserID, strUserPWD);
                 if (resoult[0] == "1")
@@ -101,8 +101,8 @@ namespace UI
 
         private void FromLogin_Load(object sender, EventArgs e)
         {
-            linkLabel1.Text = GlobalVal.glostrSupportCompanyName;
-            txtServerURL.Text = ConfigurationManager.AppSettings["WebServicesURL"];
+            //txtServerURL.Text = ConfigurationManager.AppSettings["WebServicesURL"];
+            txtServerURL.Text = GetConfigFormIni();
             //**************************************
             System.Threading.ThreadStart testWeb = new System.Threading.ThreadStart(TestWebService);
             System.Threading.Thread testWebThread = new System.Threading.Thread(testWeb);
@@ -191,7 +191,7 @@ namespace UI
             {
                 if (GlobalVal.gloWebSerices == null)
                 {
-                    GlobalVal.gloWebSerices = new MyWebService();
+                    GlobalVal.gloWebSerices = new MyWebService(txtServerURL.Text.Trim() + @"/Service.asmx");
                 }
                 GlobalVal.gloWebSerices.Url = txtServerURL.Text.Trim() + @"/Service.asmx";
                 string strResoult = GlobalVal.gloWebSerices.CheckWebServices();
@@ -199,24 +199,28 @@ namespace UI
                 {
                     blws = true;
                     btnConfig.ForeColor = Color.Green;
-                    //开始检查更新
+                    GlobalVal.glostrServicesURL = txtServerURL.Text.Trim() + @"/Service.asmx";
+                    //开始检查更新******************************************************************
                     if (GlobalVal.gloWebSerices == null)
                     {
-                        GlobalVal.gloWebSerices = new MyWebService();
+                        GlobalVal.gloWebSerices = new MyWebService(txtServerURL.Text.Trim() + @"/Service.asmx");
                     }
+                    //获取服务器最新程序号
                     string newAppNo = GlobalVal.gloWebSerices.GetLastAppNo();
                     if (!newAppNo.Equals(GlobalVal.glostrAppNo))
                     {
                         try
                         {
-                            System.Diagnostics.Process.Start(Application.StartupPath + @"\UpdateApp.exe");
+                            System.Diagnostics.Process.Start(Application.StartupPath + @"\UpdateApp.exe", newAppNo);
                         }
                         catch (Win32Exception ex)
                         {
                             MessageBox.Show(ex.Message);
                         }
+                        GlobalVal.blCloseForm = true;
                         Application.Exit();   
                     }
+                    //****************************************************************************
                 }
             }
             catch (Exception ex)
@@ -240,24 +244,25 @@ namespace UI
             {
                 if (GlobalVal.gloWebSerices == null)
                 {
-                    GlobalVal.gloWebSerices = new MyWebService();
+                    GlobalVal.gloWebSerices = new MyWebService(txtServerURL.Text.Trim() + @"/Service.asmx");
                 }
                 GlobalVal.gloWebSerices.Url = txtServerURL.Text.Trim() + @"/Service.asmx";
                 string strResoult = GlobalVal.gloWebSerices.CheckWebServices();
                 if (strResoult.Trim() == "WanGang")
                 {
                     //修改配置文件
-                    Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-                    if (config.AppSettings.Settings["WebServicesURL"] != null)
-                    {
-                        config.AppSettings.Settings["WebServicesURL"].Value = txtServerURL.Text;
-                    }
-                    else
-                    {
-                        config.AppSettings.Settings.Add("WebServicesURL", txtServerURL.Text);
-                    }
-                    config.Save(ConfigurationSaveMode.Modified);
-                    ConfigurationManager.RefreshSection("appSettings");
+                    //Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                    //if (config.AppSettings.Settings["WebServicesURL"] != null)
+                    //{
+                    //    config.AppSettings.Settings["WebServicesURL"].Value = txtServerURL.Text;
+                    //}
+                    //else
+                    //{
+                    //    config.AppSettings.Settings.Add("WebServicesURL", txtServerURL.Text);
+                    //}
+                    //config.Save(ConfigurationSaveMode.Modified);
+                    //ConfigurationManager.RefreshSection("appSettings");
+                    SaveConfigIni(txtServerURL.Text);
                     GlobalVal.glostrServicesURL = txtServerURL.Text.Trim() + @"/Service.asmx";
 
                     blws = true;
@@ -321,7 +326,37 @@ namespace UI
         //}
 
 
+        /// <summary>
+        /// 从配置文件中获取配置项
+        /// </summary>
+        /// <returns></returns>
+        public static string GetConfigFormIni()
+        {
+            string filePath = Application.StartupPath + "\\WebURL.ini";
+            StreamReader sr = new StreamReader(filePath, Encoding.Default);
+            string s = string.Empty;
+            s = sr.ReadLine();
+            sr.Close();
+            if (s.EndsWith(@"/"))
+            {
+                s = s.Substring(0, s.Length - 1);
+            }
+            return s;
+        }
 
-        
+        /// <summary>
+        /// 保存配置文件
+        /// </summary>
+        /// <param name="appNos"></param>
+        private void SaveConfigIni(string config)
+        {
+            FileStream fsInfo = new FileStream(Application.StartupPath + "\\WebURL.ini", FileMode.OpenOrCreate);
+            StreamWriter swInfo = new StreamWriter(fsInfo);
+            swInfo.Flush();
+            swInfo.BaseStream.Seek(0, SeekOrigin.Begin);
+            swInfo.WriteLine(config);
+            swInfo.Flush();
+            swInfo.Close();
+        }
     }
 }

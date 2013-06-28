@@ -37,7 +37,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnLogin = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.btnConfig = new System.Windows.Forms.Button();
             this.txtServerURL = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -121,17 +120,6 @@
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // linkLabel1
-            // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(12, 200);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(101, 12);
-            this.linkLabel1.TabIndex = 6;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "技术支持：尚美思";
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
-            // 
             // btnConfig
             // 
             this.btnConfig.Location = new System.Drawing.Point(277, 197);
@@ -192,7 +180,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(319, 327);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.btnConfig);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnLogin);
@@ -227,7 +214,6 @@
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Button btnExit;
         private AlphaBlendingBringer alphaBlendingBringer1;
-        private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Button btnConfig;
         private System.Windows.Forms.TextBox txtServerURL;
         private System.Windows.Forms.GroupBox groupBox1;

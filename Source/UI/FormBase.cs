@@ -243,6 +243,8 @@ namespace UI
         {
             linkLabel1.Text = GlobalVal.glostrSupportCompanyName;
             label139.Text = GlobalVal.glostrCopyright;
+            lbUser.Text = GlobalVal.gloStrLoginUserID;
+            
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

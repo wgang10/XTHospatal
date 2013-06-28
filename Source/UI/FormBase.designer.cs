@@ -32,6 +32,7 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.label139 = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.lbUser = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,11 +61,21 @@
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.Location = new System.Drawing.Point(323, 701);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(419, 12);
+            this.linkLabel1.Size = new System.Drawing.Size(251, 12);
             this.linkLabel1.TabIndex = 39;
             this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "技术支持：尚美思 网址:www.shangmeisi.com Email:wangang-10@hotmail.com";
+            this.linkLabel1.Text = "技术支持：尚美思 网址:www.shangmeisi.com ";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
+            // lbUser
+            // 
+            this.lbUser.AutoSize = true;
+            this.lbUser.ForeColor = System.Drawing.Color.Blue;
+            this.lbUser.Location = new System.Drawing.Point(779, 701);
+            this.lbUser.Name = "lbUser";
+            this.lbUser.Size = new System.Drawing.Size(113, 12);
+            this.lbUser.TabIndex = 37;
+            this.lbUser.Text = "当前登录用户：张三";
             // 
             // FormBase
             // 
@@ -72,6 +83,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(994, 718);
             this.Controls.Add(this.linkLabel1);
+            this.Controls.Add(this.lbUser);
             this.Controls.Add(this.label139);
             this.Controls.Add(this.pictureBox4);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -94,5 +106,6 @@
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Label label139;
         private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.Label lbUser;
     }
 }

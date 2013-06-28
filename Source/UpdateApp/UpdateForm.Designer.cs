@@ -56,7 +56,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(478, 135);
+            this.button1.Location = new System.Drawing.Point(478, 214);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 2;
@@ -66,7 +66,7 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(380, 135);
+            this.btnUpdate.Location = new System.Drawing.Point(380, 214);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 23);
             this.btnUpdate.TabIndex = 3;
@@ -91,7 +91,7 @@
             // 
             // btnUnZip
             // 
-            this.btnUnZip.Location = new System.Drawing.Point(287, 135);
+            this.btnUnZip.Location = new System.Drawing.Point(287, 214);
             this.btnUnZip.Name = "btnUnZip";
             this.btnUnZip.Size = new System.Drawing.Size(75, 23);
             this.btnUnZip.TabIndex = 6;
@@ -101,7 +101,7 @@
             // 
             // btnMD5
             // 
-            this.btnMD5.Location = new System.Drawing.Point(196, 135);
+            this.btnMD5.Location = new System.Drawing.Point(196, 214);
             this.btnMD5.Name = "btnMD5";
             this.btnMD5.Size = new System.Drawing.Size(75, 23);
             this.btnMD5.TabIndex = 7;
@@ -111,7 +111,7 @@
             // 
             // txtMD5
             // 
-            this.txtMD5.Location = new System.Drawing.Point(12, 109);
+            this.txtMD5.Location = new System.Drawing.Point(12, 188);
             this.txtMD5.Name = "txtMD5";
             this.txtMD5.Size = new System.Drawing.Size(541, 21);
             this.txtMD5.TabIndex = 8;
@@ -120,7 +120,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(565, 170);
+            this.ClientSize = new System.Drawing.Size(565, 251);
             this.Controls.Add(this.txtMD5);
             this.Controls.Add(this.btnMD5);
             this.Controls.Add(this.btnUnZip);
@@ -132,6 +132,7 @@
             this.Controls.Add(this.progressBarFile);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "UpdateForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "升级程序";
             this.Load += new System.EventHandler(this.UpdateForm_Load);
             this.ResumeLayout(false);

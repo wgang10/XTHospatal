@@ -35,9 +35,22 @@ namespace UpdateApp
 
         private void UpdateForm_Load(object sender, EventArgs e)
         {
-            dirPath = ConfigurationManager.AppSettings["WebServicesURL"].Trim();
-            if (MessageBox.Show("是否更新？", "update?", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            //dirPath = ConfigurationManager.AppSettings["WebServicesURL"].Trim();
+            dirPath = Common.GetConfigFormIni();
+            if (string.IsNullOrEmpty(Common.globalAppVNo)&& string.IsNullOrEmpty(Common.globalAppMD5No))
             {
+                this.Height = 276;
+                
+            }
+            else
+            {
+                this.Height = 142;
+                
+                this.Text ="自动更新程序---------" + Common.globalAppVNo + "@" + Common.globalAppMD5No;
+                //if (MessageBox.Show("是否更新？", "update?", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                //{
+                //    UpdaterStart();
+                //}
                 UpdaterStart();
             }
         }
@@ -52,14 +65,6 @@ namespace UpdateApp
             progressBarSize.Maximum = 100;
             UpdaterStart();
             btnUpdate.Enabled = false;
-            //Thread t = new Thread();
-
-            //for (int i = 1; i < 1000; i++)
-            //{
-            //    ShowProgressDelegate showProgress = new ShowProgressDelegate(ShowProgress);
-            //    Thread.Sleep(10);
-            //    this.Invoke(showProgress, new object[] { 1000, i });
-            //}
         }
 
         /// <summary> 
@@ -152,17 +157,23 @@ namespace UpdateApp
                 {
                     //获取程序包的MD5值
                     string appMD5 = Common.GetMD5HashFromFile(Application.StartupPath + "\\AutoUpdater\\" + fileName);
+                    if (!appMD5.Equals(Common.globalAppMD5No))
+                    {
+                        MessageBox.Show("所下载的更新包不完整，请尝试重新启动程序。");
+                        Application.Exit();
+                        return;
+                    }
                     //删除已有的下载包
-                    //if (File.Exists(Application.StartupPath + "\\" + fileName))
-                    //{
-                    //    File.Delete(Application.StartupPath + "\\" + fileName);
-                    //}
+                    if (File.Exists(Application.StartupPath + "\\" + fileName))
+                    {
+                        File.Delete(Application.StartupPath + "\\" + fileName);
+                    }
                     //移动下载包
                     //File.Move(Application.StartupPath + "\\AutoUpdater\\" + fileName, Application.StartupPath + "\\" + fileName);               
                     //解压缩
-                    Common.UnZipFile(Application.StartupPath + "\\AutoUpdater\\app.zip", Application.StartupPath + "\\AutoUpdater");
+                    Common.UnZipFile(Application.StartupPath + "\\AutoUpdater\\app.zip", Application.StartupPath);
                     //设置最新的程序号
-                    string[] newAppNo = { "2.0.0.0", appMD5 };
+                    string[] newAppNo = { Common.globalAppVNo, Common.globalAppMD5No };
                     SetConfigAppNo(newAppNo);
                     UpdaterClose();
                 }

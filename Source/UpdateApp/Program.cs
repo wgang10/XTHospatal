@@ -20,7 +20,7 @@ namespace UpdateApp
         /// 应用程序的主入口点。
         /// </summary>
         [STAThread]
-        static void Main()
+        static void Main(string[] args)
         {
             Process instance = RunningInstance();
             if (instance != null)
@@ -40,6 +40,16 @@ namespace UpdateApp
                 }
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
+                if (args.Length > 0)
+                {
+                    try
+                    {
+                        string[] strTemp = args[0].Split('@');
+                        Common.globalAppVNo = strTemp[0];
+                        Common.globalAppMD5No = strTemp[1];
+                    }
+                    catch { }
+                }
                 Application.Run(new UpdateForm());
             }
         }

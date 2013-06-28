@@ -9,10 +9,10 @@ namespace UI
     ,System.Web.Services.WebServiceBinding(Name = "",Namespace = "")]
     public class MyWebService : UI.XTHotpatalWebServices.Service
     {
-        public MyWebService():base()
-        {
-            this.Url = GlobalVal.glostrServicesURL;
-        }
+        //public MyWebService():base()
+        //{
+        //    this.Url = GlobalVal.glostrServicesURL;
+        //}
 
         public MyWebService(string webUrl) :base()
         {
