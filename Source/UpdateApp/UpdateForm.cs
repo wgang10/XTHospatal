@@ -213,8 +213,6 @@ namespace UpdateApp
             }
         } 
 
-
-
         /// <summary> 
         /// 获取文件列表并下载 
         /// </summary> 
@@ -251,7 +249,6 @@ namespace UpdateApp
             }
         } 
 
-
         /// <summary> 
         /// 弹出提示框 
         /// </summary> 
@@ -266,7 +263,6 @@ namespace UpdateApp
                 MessageBoxDefaultButton.Button1,
                 MessageBoxOptions.DefaultDesktopOnly);
         } 
-
 
         /// <summary> 
         /// 关闭程序 
