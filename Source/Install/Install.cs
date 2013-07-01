@@ -15,7 +15,12 @@ namespace Install
 {
   public partial class Install : Form
   {
-    private static string dirPath = string.Empty;
+      private static const string webUrl = @"http://ziyangsoft.com/Config.ashx";
+      private static const string systemName = "XTHospatal";
+      private static const string InstallURLConfig = "InstallURL";
+      private static const string InstallFileNameConfig = "InstallFileName";
+      private static const string InstallPathConfig = "InstallPath";
+      private static string InstallURL = string.Empty;
     private WebClient downWebClient = new WebClient();
     private static string fileName = "Install.zip";//当前文件名 
     private static string appPath = @"C:\XTHospatal";
@@ -29,7 +34,17 @@ namespace Install
 
     private void Install_Shown(object sender, EventArgs e)
     {
-      dirPath = @"http://www.ziyangsoft.com/App/Install";
+        try
+        {
+            InstallURL = GetWebConfig(InstallURLConfig);
+            fileName = GetWebConfig(InstallFileNameConfig);
+            appPath = GetWebConfig(InstallPathConfig);
+        }
+        catch (Exception ex)
+        {
+            MeBox(ex.Message);
+            return;
+        }
       GetDownloadFileList();
       UpdaterStart();
     }
@@ -139,7 +154,7 @@ namespace Install
             num,
             fileNames.Length);
         progressBarFile.Value = Convert.ToInt32(((float)num / (float)fileNames.Length) * 100);
-        string DownLoadURL = dirPath + @"/" + fileName;
+        string DownLoadURL = InstallURL + @"/" + fileName;
         if (!Directory.Exists(appPath))
         {
           Directory.CreateDirectory(appPath);
@@ -223,6 +238,28 @@ namespace Install
           MessageBoxIcon.Asterisk,
           MessageBoxDefaultButton.Button1,
           MessageBoxOptions.DefaultDesktopOnly);
+    }
+
+    private static string GetWebConfig(string ConfigName)
+    {
+        string strRet = string.Empty;
+        WebRequest req = WebRequest.Create(string.Format("{0}?SystemName={1}&ConfigName={2}", webUrl,systemName,ConfigName));
+        WebResponse res = req.GetResponse();
+        System.IO.Stream resStream = res.GetResponseStream();
+        Encoding encode = System.Text.Encoding.Default;
+        StreamReader readStream = new StreamReader(resStream, encode);
+        Char[] read = new Char[256];
+        int count = readStream.Read(read, 0, 256);
+        while (count > 0)
+        {
+            String str = new String(read, 0, count);
+            strRet = strRet + str;
+            count = readStream.Read(read, 0, 256);
+        }
+        resStream.Close();
+        readStream.Close();
+        res.Close();
+        return strRet;
     }
   }
 }

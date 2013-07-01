@@ -14,6 +14,12 @@ namespace UI
 {
     public partial class FromLogin : Form
     {
+        private static const string webUrl = @"http://www.ziyangsoft.com/Config.ashx";
+        private static const string systemName = "XTHospatal";
+        private static const string WebServicesURLConfig = "WebServicesURL";
+        private static const string LastAppNoConfig = "LastAppNo";
+        private static string LastAppNo = string.Empty;
+
         /// <summary>
         /// hide
         /// </summary>
@@ -102,7 +108,17 @@ namespace UI
         private void FromLogin_Load(object sender, EventArgs e)
         {
             //txtServerURL.Text = ConfigurationManager.AppSettings["WebServicesURL"];
-            txtServerURL.Text = GetConfigFormIni();
+            //txtServerURL.Text = GetConfigFormIni();
+            try
+            {
+                txtServerURL.Text = GetWebConfig(WebServicesURLConfig);
+                LastAppNo = GetWebConfig(LastAppNoConfig);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return;
+            }
             //**************************************
             System.Threading.ThreadStart testWeb = new System.Threading.ThreadStart(TestWebService);
             System.Threading.Thread testWebThread = new System.Threading.Thread(testWeb);
@@ -201,17 +217,12 @@ namespace UI
                     btnConfig.ForeColor = Color.Green;
                     GlobalVal.glostrServicesURL = txtServerURL.Text.Trim() + @"/Service.asmx";
                     //开始检查更新******************************************************************
-                    if (GlobalVal.gloWebSerices == null)
-                    {
-                        GlobalVal.gloWebSerices = new MyWebService(txtServerURL.Text.Trim() + @"/Service.asmx");
-                    }
-                    //获取服务器最新程序号
-                    string newAppNo = GlobalVal.gloWebSerices.GetLastAppNo();
-                    if (!newAppNo.Equals(GlobalVal.glostrAppNo))
+                    ;
+                    if (!LastAppNo.Equals(GlobalVal.glostrAppNo))
                     {
                         try
                         {
-                            System.Diagnostics.Process.Start(Application.StartupPath + @"\UpdateApp.exe", newAppNo);
+                            System.Diagnostics.Process.Start(Application.StartupPath + @"\UpdateApp.exe", LastAppNo);
                         }
                         catch (Win32Exception ex)
                         {
@@ -357,6 +368,28 @@ namespace UI
             swInfo.WriteLine(config);
             swInfo.Flush();
             swInfo.Close();
+        }
+
+        private static string GetWebConfig(string ConfigName)
+        {
+            string strRet = string.Empty;
+            WebRequest req = WebRequest.Create(string.Format("{0}?SystemName={1}&ConfigName={2}", webUrl, systemName, ConfigName));
+            WebResponse res = req.GetResponse();
+            System.IO.Stream resStream = res.GetResponseStream();
+            Encoding encode = System.Text.Encoding.Default;
+            StreamReader readStream = new StreamReader(resStream, encode);
+            Char[] read = new Char[256];
+            int count = readStream.Read(read, 0, 256);
+            while (count > 0)
+            {
+                String str = new String(read, 0, count);
+                strRet = strRet + str;
+                count = readStream.Read(read, 0, 256);
+            }
+            resStream.Close();
+            readStream.Close();
+            res.Close();
+            return strRet;
         }
     }
 }
