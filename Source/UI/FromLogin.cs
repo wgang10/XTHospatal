@@ -14,10 +14,10 @@ namespace UI
 {
     public partial class FromLogin : Form
     {
-        private static const string webUrl = @"http://www.ziyangsoft.com/Config.ashx";
-        private static const string systemName = "XTHospatal";
-        private static const string WebServicesURLConfig = "WebServicesURL";
-        private static const string LastAppNoConfig = "LastAppNo";
+        private static string webUrl = @"http://www.ziyangsoft.com/Config.ashx";
+        private static string systemName = "XTHospatal";
+        private static string WebServicesURLConfig = "WebServicesURL";
+        private static string LastAppNoConfig = "LastAppNo";
         private static string LastAppNo = string.Empty;
 
         /// <summary>

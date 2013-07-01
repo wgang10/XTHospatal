@@ -54,6 +54,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UpdateApp", "UpdateApp\Upda
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Install", "Install\Install.csproj", "{5E2050B2-37F9-4F68-A273-016A171C74F4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnZip", "UnZip\UnZip.csproj", "{9FF28919-2076-4203-BE08-3F1E3F702A8B}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -262,6 +264,18 @@ Global
 		{5E2050B2-37F9-4F68-A273-016A171C74F4}.Release|Mixed Platforms.Build.0 = Release|x86
 		{5E2050B2-37F9-4F68-A273-016A171C74F4}.Release|x86.ActiveCfg = Release|x86
 		{5E2050B2-37F9-4F68-A273-016A171C74F4}.Release|x86.Build.0 = Release|x86
+		{9FF28919-2076-4203-BE08-3F1E3F702A8B}.Debug|.NET.ActiveCfg = Debug|x86
+		{9FF28919-2076-4203-BE08-3F1E3F702A8B}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{9FF28919-2076-4203-BE08-3F1E3F702A8B}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{9FF28919-2076-4203-BE08-3F1E3F702A8B}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{9FF28919-2076-4203-BE08-3F1E3F702A8B}.Debug|x86.ActiveCfg = Debug|x86
+		{9FF28919-2076-4203-BE08-3F1E3F702A8B}.Debug|x86.Build.0 = Debug|x86
+		{9FF28919-2076-4203-BE08-3F1E3F702A8B}.Release|.NET.ActiveCfg = Release|x86
+		{9FF28919-2076-4203-BE08-3F1E3F702A8B}.Release|Any CPU.ActiveCfg = Release|x86
+		{9FF28919-2076-4203-BE08-3F1E3F702A8B}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{9FF28919-2076-4203-BE08-3F1E3F702A8B}.Release|Mixed Platforms.Build.0 = Release|x86
+		{9FF28919-2076-4203-BE08-3F1E3F702A8B}.Release|x86.ActiveCfg = Release|x86
+		{9FF28919-2076-4203-BE08-3F1E3F702A8B}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

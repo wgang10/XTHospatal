@@ -18,10 +18,10 @@ namespace UpdateApp
 {
     public partial class UpdateForm : Form
     {
-        private static const string webUrl = @"http://ziyangsoft.com/Config.ashx";
-        private static const string systemName = "XTHospatal";
+        private static string webUrl = @"http://ziyangsoft.com/Config.ashx";
+        private static string systemName = "XTHospatal";
         delegate void ShowProgressDelegate(int totalStep, int currentStep);
-        private static const string UpdataURLConfig = "UpdataURL";
+        private static string UpdataURLConfig = "UpdataURL";
         private WebClient downWebClient = new WebClient();
         private static string updateURL=string.Empty;
         private static long size;//所有文件大小 

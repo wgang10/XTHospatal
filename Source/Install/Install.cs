@@ -15,11 +15,12 @@ namespace Install
 {
   public partial class Install : Form
   {
-      private static const string webUrl = @"http://ziyangsoft.com/Config.ashx";
-      private static const string systemName = "XTHospatal";
-      private static const string InstallURLConfig = "InstallURL";
-      private static const string InstallFileNameConfig = "InstallFileName";
-      private static const string InstallPathConfig = "InstallPath";
+      private static string webUrl = @"http://ziyangsoft.com/Config.ashx";
+      private static string webUrl2 = @"http://ziyangsoft.com/filelist.ashx";
+      private static string systemName = "XTHospatal";
+      private static string InstallURLConfig = "InstallURL";
+      private static string InstallFileNameConfig = "InstallFileName";
+      private static string InstallPathConfig = "InstallPath";
       private static string InstallURL = string.Empty;
     private WebClient downWebClient = new WebClient();
     private static string fileName = "Install.zip";//当前文件名 
@@ -150,7 +151,7 @@ namespace Install
         num++;
         lbMessageFile.Text = String.Format(
             CultureInfo.InvariantCulture,
-            "更新进度 {0}/{1}",
+            "下载进度 {0}/{1}",
             num,
             fileNames.Length);
         progressBarFile.Value = Convert.ToInt32(((float)num / (float)fileNames.Length) * 100);
@@ -159,7 +160,7 @@ namespace Install
         {
           Directory.CreateDirectory(appPath);
         }
-        string SavePathName = appPath + "\\" + fileName.Replace(".zip","");
+        string SavePathName = appPath + "\\" + fileName.Substring(0,fileName.LastIndexOf(".zip"));
         this.downWebClient.DownloadFileAsync(
             new Uri(DownLoadURL),
             SavePathName);
@@ -175,7 +176,33 @@ namespace Install
     /// </summary> 
     private static void GetDownloadFileList()
     {
-      fileNames = new string[] { "UI.exe.config.zip", "Update.ini.zip", "UI.exe.manifest.zip", "log4net.dll.zip" };
+        fileNames = new string[] { "Install.zip", "UnZip.exe.zip", "ICSharpCode.SharpZipLib.dll.zip" };
+        try
+        {
+            string strRet = string.Empty;
+            WebRequest req = WebRequest.Create(webUrl2);
+            WebResponse res = req.GetResponse();
+            System.IO.Stream resStream = res.GetResponseStream();
+            Encoding encode = System.Text.Encoding.Default;
+            StreamReader readStream = new StreamReader(resStream, encode);
+            Char[] read = new Char[256];
+            int count = readStream.Read(read, 0, 256);
+            while (count > 0)
+            {
+                String str = new String(read, 0, count);
+                strRet = strRet + str;
+                count = readStream.Read(read, 0, 256);
+            }
+            resStream.Close();
+            readStream.Close();
+            res.Close();
+            fileNames = strRet.Split('|');
+        }
+        catch
+        { }
+        finally
+        {   
+        }
     } 
 
     /// <summary>
@@ -211,8 +238,8 @@ namespace Install
     {
       try
       {
-        //System.Diagnostics.Process.Start(Application.StartupPath + @"\UI.exe");
-        MeBox("下载完成！");
+          System.Diagnostics.Process.Start(appPath + @"\UnZip.exe");
+        //MeBox("下载完成！");
       }
       catch (Win32Exception ex)
       {

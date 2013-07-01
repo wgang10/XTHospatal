@@ -1,0 +1,124 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.IO;
+using ICSharpCode.SharpZipLib.Zip;
+using System.Net;
+
+namespace UnZip
+{
+    class Program
+    {
+        private static string webUrl = @"http://ziyangsoft.com/Config.ashx";
+        private static string systemName = "XTHospatal";
+        private static string fileName = "";
+        private static string appPath = @"C:\XTHospatal";
+        private static string InstallFileNameConfig = "InstallFileName";
+        private static string InstallPathConfig = "InstallPath";
+
+        static void Main(string[] args)
+        {
+            try
+            {
+                fileName = GetWebConfig(InstallFileNameConfig);
+                appPath = GetWebConfig(InstallPathConfig);
+                System.Console.WriteLine("开始解压...");
+                UnZipFile(appPath + "\\" + fileName, appPath);
+                System.Console.WriteLine("解压完成...");
+                System.Console.WriteLine("启动程序...");
+                System.Diagnostics.Process.Start(appPath + @"\UI.exe");
+            }
+            catch
+            {
+                return;
+            }
+            finally
+            {
+                
+            }
+        }
+
+        /// <summary>
+        /// 解压缩文件
+        /// </summary>
+        /// <param name="fileName">要解压的文件</param>
+        /// <param name="folder">解压的路径</param>
+        public static void UnZipFile(string fileName, string folder)   //解压缩
+        {
+            if (!Directory.Exists(folder))
+            {
+                Directory.CreateDirectory(folder);     //创建解压的文件夹
+            }
+            ZipInputStream f = new ZipInputStream(File.OpenRead(fileName)); //读取压缩文件，并用此文件流新建 “ZipInputStream”对象
+
+                        A: ZipEntry zp = f.GetNextEntry();    //获取解压文件流中的项目。 另注（我的理解）：在压缩包里每个文件都以“ZipEntry”形式存在，其中包括存放文件的目录信息。如果空目录被压缩，该目录下将出现一个名称为空、大小为 0 、“Crc”属性为 00000000 的“文件”。此文件只是个标记，不会被解压。
+
+            while (zp != null)
+            {
+                string un_tmp2;
+                if (zp.IsDirectory)
+                {
+                    if (!Directory.Exists(folder + "/" + zp.Name))
+                    {
+                        Directory.CreateDirectory(folder + "/" + zp.Name);
+                    }
+                }
+                if (zp.Name.IndexOf(@"/") >= 0) //获取文件的目录信息
+                {
+                    int tmp1 = zp.Name.LastIndexOf("/");
+                    un_tmp2 = zp.Name.Substring(0, tmp1);
+                    un_tmp2 = folder + "/" + un_tmp2;
+                    if (!Directory.Exists(un_tmp2))
+                    {
+                        Directory.CreateDirectory(un_tmp2); //必须先创建目录，否则解压失败 --- （A） 关系到下面的步骤（B）
+                    }
+                }
+                if (!zp.IsDirectory && zp.Crc != 00000000L) //此“ZipEntry”不是“标记文件”
+                {
+                    System.Console.WriteLine(string.Format("正在加压文件 {0}",zp.Name));
+                    int i = 2048;
+                    byte[] b = new byte[i];  //每次缓冲 2048 字节
+                    FileStream s = File.Create(folder + "/" + zp.Name); //（B)-新建文件流
+                    while (true) //持续读取字节，直到一个“ZipEntry”字节读完
+                    {
+                        i = f.Read(b, 0, b.Length); //读取“ZipEntry”中的字节
+                        if (i > 0)
+                        {
+                            s.Write(b, 0, i); //将字节写入新建的文件流
+                        }
+                        else
+                        {
+                            break; //读取的字节为 0 ，跳出循环
+                        }
+                    }
+                    s.Close();
+                }
+                goto A; //进入下一个“ZipEntry”
+            }
+            f.Close();
+        }
+
+        private static string GetWebConfig(string ConfigName)
+        {
+            string strRet = string.Empty;
+            WebRequest req = WebRequest.Create(string.Format("{0}?SystemName={1}&ConfigName={2}", webUrl, systemName, ConfigName));
+            WebResponse res = req.GetResponse();
+            System.IO.Stream resStream = res.GetResponseStream();
+            Encoding encode = System.Text.Encoding.Default;
+            StreamReader readStream = new StreamReader(resStream, encode);
+            Char[] read = new Char[256];
+            int count = readStream.Read(read, 0, 256);
+            while (count > 0)
+            {
+                String str = new String(read, 0, count);
+                strRet = strRet + str;
+                count = readStream.Read(read, 0, 256);
+            }
+            resStream.Close();
+            readStream.Close();
+            res.Close();
+            return strRet;
+        }
+    }
+}
