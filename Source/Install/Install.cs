@@ -10,13 +10,14 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace Install
 {
   public partial class Install : Form
   {
       private static string webUrl = @"http://ziyangsoft.com/Config.ashx";
-      private static string webUrl2 = @"http://ziyangsoft.com/filelist.ashx";
+      private static string webUrl2 = @"http://ziyangsoft.com/filelist.ashx?InstallOrUpdate=Install";
       private static string systemName = "XTHospatal";
       private static string InstallURLConfig = "InstallURL";
       private static string InstallFileNameConfig = "InstallFileName";
@@ -35,6 +36,12 @@ namespace Install
 
     private void Install_Shown(object sender, EventArgs e)
     {
+        Thread t = new Thread(new ThreadStart(BeginInstall));
+        t.Start();
+    }
+
+    private void BeginInstall()
+    {
         try
         {
             InstallURL = GetWebConfig(InstallURLConfig);
@@ -46,8 +53,8 @@ namespace Install
             MeBox(ex.Message);
             return;
         }
-      GetDownloadFileList();
-      UpdaterStart();
+        GetDownloadFileList();
+        UpdaterStart();
     }
 
     /// <summary> 
@@ -116,10 +123,10 @@ namespace Install
           //Environment.GetFolderPath(Environment.SpecialFolder.System);
           
           //删除已有的下载包
-          if (File.Exists(appPath + "\\" + fileName))
-          {
-            File.Delete(appPath + "\\" + fileName);
-          }
+          //if (File.Exists(appPath + "\\" + fileName))
+          //{
+          //  File.Delete(appPath + "\\" + fileName);
+          //}
           //移动下载包
           //File.Move(Application.StartupPath + "\\AutoUpdater\\" + fileName, Application.StartupPath + "\\" + fileName);               
           
@@ -149,6 +156,11 @@ namespace Install
       { 
         fileName = fileNames[arry];
         num++;
+        //删除已有的下载包
+        if (File.Exists(appPath + "\\" + fileName))
+        {
+            File.Delete(appPath + "\\" + fileName);
+        }
         lbMessageFile.Text = String.Format(
             CultureInfo.InvariantCulture,
             "下载进度 {0}/{1}",

@@ -5,6 +5,7 @@ using System.Text;
 using System.IO;
 using ICSharpCode.SharpZipLib.Zip;
 using System.Net;
+using System.Threading;
 
 namespace UnZip
 {
@@ -24,9 +25,14 @@ namespace UnZip
                 fileName = GetWebConfig(InstallFileNameConfig);
                 appPath = GetWebConfig(InstallPathConfig);
                 System.Console.WriteLine("开始解压...");
+                Thread.Sleep(5000);
                 UnZipFile(appPath + "\\" + fileName, appPath);
                 System.Console.WriteLine("解压完成...");
+                System.Console.WriteLine("开始创建桌面快捷方式...");
+                Thread.Sleep(5000);
+                CreateDesktopLnk();
                 System.Console.WriteLine("启动程序...");
+                Thread.Sleep(5000);
                 System.Diagnostics.Process.Start(appPath + @"\UI.exe");
             }
             catch
@@ -119,6 +125,21 @@ namespace UnZip
             readStream.Close();
             res.Close();
             return strRet;
+        }
+
+        private static void CreateDesktopLnk()
+        {
+            string DesktopPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Desktop);//得到桌面文件夹 
+            IWshRuntimeLibrary.WshShell shell = new IWshRuntimeLibrary.WshShellClass();
+            IWshRuntimeLibrary.IWshShortcut shortcut = (IWshRuntimeLibrary.IWshShortcut)shell.CreateShortcut(DesktopPath + "\\体检系统.lnk");
+            shortcut.TargetPath = appPath + @"\UI.exe";
+            shortcut.Arguments = "";// 参数 
+            shortcut.Description = "体检系统";
+            shortcut.WorkingDirectory = appPath;//程序所在文件夹，在快捷方式图标点击右键可以看到此属性 
+            shortcut.IconLocation = appPath + @"\UI.exe,0";//图标 
+            shortcut.Hotkey = "CTRL+SHIFT+T";//热键 
+            shortcut.WindowStyle = 1;
+            shortcut.Save();
         }
     }
 }

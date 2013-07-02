@@ -19,18 +19,22 @@ namespace UpdateApp
     public partial class UpdateForm : Form
     {
         private static string webUrl = @"http://ziyangsoft.com/Config.ashx";
+        private static string webUrl2 = @"http://ziyangsoft.com/filelist.ashx?InstallOrUpdate=Update";
         private static string systemName = "XTHospatal";
         delegate void ShowProgressDelegate(int totalStep, int currentStep);
         private static string UpdataURLConfig = "UpdataURL";
+        private static string InstallPathConfig = "InstallPath";
         private WebClient downWebClient = new WebClient();
         private static string updateURL=string.Empty;
         private static long size;//所有文件大小 
         private static int count;//文件总数 
         private static string[] fileNames;
-        private static int num;//已更新文件数 
+        private static int num=0;//已更新文件数 
         private static long upsize;//已更新文件大小 
         private static string fileName="Update.zip";//当前文件名 
         private static long filesize;//当前文件大小
+        private static string appPath = @"C:\XTHospatal";
+        private static string LastAppNoConfig = "LastAppNo";
         public UpdateForm()
         {
             InitializeComponent();
@@ -43,6 +47,7 @@ namespace UpdateApp
             try
             {
                 updateURL = GetWebConfig(UpdataURLConfig);
+                appPath = GetWebConfig(InstallPathConfig);
             }
             catch (Exception ex)
             {
@@ -52,18 +57,12 @@ namespace UpdateApp
 
             if (string.IsNullOrEmpty(Common.globalAppVNo)&& string.IsNullOrEmpty(Common.globalAppMD5No))
             {
-                this.Height = 276;
-                
+                this.Height = 276;                
             }
             else
             {
-                this.Height = 142;
-                
+                this.Height = 142;                
                 this.Text ="自动更新程序---------" + Common.globalAppVNo + "@" + Common.globalAppMD5No;
-                //if (MessageBox.Show("是否更新？", "update?", MessageBoxButtons.OKCancel) == DialogResult.OK)
-                //{
-                //    UpdaterStart();
-                //}
                 UpdaterStart();
             }
         }
@@ -75,9 +74,41 @@ namespace UpdateApp
 
         private void button2_Click(object sender, EventArgs e)
         {
-            progressBarSize.Maximum = 100;
-            UpdaterStart();
-            btnUpdate.Enabled = false;
+            string LastAppNo = GetWebConfig(LastAppNoConfig);
+            string OldAppNo = GetAppNo();
+            if (!LastAppNo.Equals(OldAppNo)
+                && MessageBox.Show("需要更新，要更新吗？","",MessageBoxButtons.YesNo)==DialogResult.Yes)
+            {
+                string[] strTemp = LastAppNo.Split('@');
+                Common.globalAppVNo = strTemp[0];
+                Common.globalAppMD5No = strTemp[1];
+                UpdaterStart();
+                //btnUpdate.Enabled = false;
+            }
+        }
+
+        /// <summary>
+        /// 从配置文件中获取程序号
+        /// </summary>
+        /// <returns></returns>
+        public static string GetAppNo()
+        {
+            string filePath = appPath + "\\Update.ini";
+            StreamReader sr = new StreamReader(filePath, Encoding.Default);
+            string s = string.Empty;
+            string version = string.Empty;
+            int lines = 0;
+            while ((s = sr.ReadLine()) != null && lines<2)
+            {
+                version = version + "@" + s;
+                lines++;
+            }
+            if (version.IndexOf("@") == 0)
+            {
+                version = version.Substring(1);
+            }
+            sr.Close();
+            return version;
         }
 
         /// <summary> 
@@ -137,6 +168,40 @@ namespace UpdateApp
                 str = tempf.ToString(CultureInfo.InvariantCulture) + "B";
             }
             return str;
+        }
+
+        /// <summary> 
+        /// 获取文件列表并下载 
+        /// </summary> 
+        private static void GetDownloadFileList()
+        {
+            fileNames = new string[] { "Update.zip" };
+            try
+            {
+                string strRet = string.Empty;
+                WebRequest req = WebRequest.Create(webUrl2);
+                WebResponse res = req.GetResponse();
+                System.IO.Stream resStream = res.GetResponseStream();
+                Encoding encode = System.Text.Encoding.Default;
+                StreamReader readStream = new StreamReader(resStream, encode);
+                Char[] read = new Char[256];
+                int count = readStream.Read(read, 0, 256);
+                while (count > 0)
+                {
+                    String str = new String(read, 0, count);
+                    strRet = strRet + str;
+                    count = readStream.Read(read, 0, 256);
+                }
+                resStream.Close();
+                readStream.Close();
+                res.Close();
+                fileNames = strRet.Split('|');
+            }
+            catch
+            { }
+            finally
+            {
+            }
         } 
 
         /// <summary> 
@@ -168,25 +233,36 @@ namespace UpdateApp
                 }
                 else
                 {
-                    //获取程序包的MD5值
-                    string appMD5 = Common.GetMD5HashFromFile(Application.StartupPath + "\\" + fileName);
-                    if (!appMD5.Equals(Common.globalAppMD5No))
+                    if (fileName.EndsWith(".zip"))
                     {
-                        MessageBox.Show("所下载的更新包不完整，请尝试重新启动程序。");
-                        Application.Exit();
-                        return;
+                        //获取程序包的MD5值
+                        string appMD5 = Common.GetMD5HashFromFile(appPath + "\\" + fileName);
+                        if (!appMD5.Equals(Common.globalAppMD5No))
+                        {
+                            MessageBox.Show("所下载的更新包不完整，请尝试重新启动程序。");
+                            Application.Exit();
+                            return;
+                        }
+                        //解压缩
+                        Common.UnZipFile(appPath + "\\" + fileName, appPath);
                     }
                     //移动下载包
-                    //File.Move(Application.StartupPath + "\\AutoUpdater\\" + fileName, Application.StartupPath + "\\" + fileName);               
-                    //解压缩
-                    Common.UnZipFile(Application.StartupPath + "\\"+fileName, Application.StartupPath);
-                    //设置最新的程序号
-                    string[] newAppNo = { Common.globalAppVNo, Common.globalAppMD5No };
-                    SetConfigAppNo(newAppNo);
-                    UpdaterClose();
+                    //File.Move(Application.StartupPath + "\\AutoUpdater\\" + fileName, Application.StartupPath + "\\" + fileName);
+                    if (num < fileNames.Length)
+                    {
+                        DownloadFile(num);
+                    }
+                    else
+                    {   
+                        //设置最新的程序号
+                        string[] newAppNo = { Common.globalAppVNo, Common.globalAppMD5No };
+                        SetConfigAppNo(newAppNo);
+                        UpdaterClose();
+                    }
                 }
             };
-            DownloadFile(0);
+            GetDownloadFileList();
+            DownloadFile(num);
         }
 
         /// <summary> 
@@ -197,25 +273,26 @@ namespace UpdateApp
         {
             try
             {
+                
+                fileName = fileNames[arry];
                 num++;
-                //fileName = fileNames[arry];
                 //删除已有的下载包
-                if (File.Exists(Application.StartupPath + "\\" + fileName))
+                if (File.Exists(appPath + "\\" + fileName))
                 {
-                    File.Delete(Application.StartupPath + "\\" + fileName);
+                    File.Delete(appPath + "\\" + fileName);
                 }
                 lbMessageFile.Text = String.Format(
                     CultureInfo.InvariantCulture,
-                    "更新进度 {0}/{1}  [ {2} ]",
+                    "更新进度 {0}/{1}",
                     num,
-                    count,
-                    ConvertSize(size));
-                string DownLoadURL = updateURL;
-                if(!Directory.Exists(Application.StartupPath))
+                    fileNames.Length);
+                progressBarFile.Value = Convert.ToInt32(((float)num / (float)fileNames.Length) * 100);
+                if (!Directory.Exists(appPath))
                 {
-                    Directory.CreateDirectory(Application.StartupPath);
+                    Directory.CreateDirectory(appPath);
                 }
-                string SavePathName=Application.StartupPath + "\\" + fileName;
+                string DownLoadURL = updateURL + @"/" + fileName;
+                string SavePathName = appPath + "\\" + fileName;
                 this.downWebClient.DownloadFileAsync(
                     new Uri(DownLoadURL),
                     SavePathName);
@@ -248,7 +325,7 @@ namespace UpdateApp
         {
             try
             {
-                System.Diagnostics.Process.Start(Application.StartupPath + @"\UI.exe");
+                System.Diagnostics.Process.Start(appPath + @"\UI.exe");
             }
             catch (Win32Exception ex)
             {
@@ -264,7 +341,7 @@ namespace UpdateApp
 
         private void SetConfigAppNo(string[] appNos)
         {
-            FileStream fsInfo = new FileStream(Application.StartupPath+"\\Update.ini",FileMode.OpenOrCreate); 
+            FileStream fsInfo = new FileStream(appPath + "\\Update.ini", FileMode.OpenOrCreate); 
             StreamWriter swInfo = new StreamWriter( fsInfo ); 
             swInfo.Flush(); 
             swInfo.BaseStream.Seek( 0, SeekOrigin.Begin );

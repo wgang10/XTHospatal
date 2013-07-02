@@ -26,10 +26,10 @@ namespace UI
         {
             try
             {
-                if (ConfigurationManager.AppSettings["WebServicesURL"] != null)
-                {
-                    GlobalVal.glostrServicesURL = ConfigurationManager.AppSettings["WebServicesURL"].Trim() + @"/Service.asmx";
-                }
+                //if (ConfigurationManager.AppSettings["WebServicesURL"] != null)
+                //{
+                //    GlobalVal.glostrServicesURL = ConfigurationManager.AppSettings["WebServicesURL"].Trim() + @"/Service.asmx";
+                //}
                 //if (!ReadProperties())
                 //{
                 //    Application.Exit();
@@ -89,7 +89,7 @@ namespace UI
             {
                 if (GlobalVal.gloWebSerices == null)
                 {
-                    GlobalVal.gloWebSerices = new MyWebService(GlobalVal.glostrServicesURL);
+                    GlobalVal.gloWebSerices = new MyWebService(GlobalVal.glostrServicesURL + @"/Service.asmx");
                 }
                 string strResoult = GlobalVal.gloWebSerices.CheckWebServices();
                 if (strResoult.Trim() == "WanGang")
@@ -169,9 +169,11 @@ namespace UI
             StreamReader sr = new StreamReader(filePath, Encoding.Default);
             string s = string.Empty;
             string version = string.Empty;
-            while ((s = sr.ReadLine()) != null)
+            int lines = 0;
+            while ((s = sr.ReadLine()) != null && lines<2)
             {
                 version = version + "@" + s;
+                lines++;
             }
             if (version.IndexOf("@") == 0)
             {

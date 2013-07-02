@@ -80,7 +80,7 @@ namespace UI
             {
                 if (GlobalVal.gloWebSerices == null)
                 {
-                    GlobalVal.gloWebSerices = new MyWebService(GlobalVal.glostrServicesURL);
+                    GlobalVal.gloWebSerices = new MyWebService(GlobalVal.glostrServicesURL+@"/Service.asmx");
                 }
                 string[] resoult = GlobalVal.gloWebSerices.ValidateUserNoYearMonth(GlobalVal.gloStrLoginUserID, GlobalVal.gloStrTerminalCD, strUserID, strUserPWD);
                 if (resoult[0] == "1")
@@ -215,7 +215,7 @@ namespace UI
                 {
                     blws = true;
                     btnConfig.ForeColor = Color.Green;
-                    GlobalVal.glostrServicesURL = txtServerURL.Text.Trim() + @"/Service.asmx";
+                    GlobalVal.glostrServicesURL = txtServerURL.Text.Trim();
                     //开始检查更新******************************************************************
                     ;
                     if (!LastAppNo.Equals(GlobalVal.glostrAppNo))
@@ -274,7 +274,7 @@ namespace UI
                     //config.Save(ConfigurationSaveMode.Modified);
                     //ConfigurationManager.RefreshSection("appSettings");
                     SaveConfigIni(txtServerURL.Text);
-                    GlobalVal.glostrServicesURL = txtServerURL.Text.Trim() + @"/Service.asmx";
+                    GlobalVal.glostrServicesURL = txtServerURL.Text.Trim();
 
                     blws = true;
                     MessageBox.Show("成功连接服务！", "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
