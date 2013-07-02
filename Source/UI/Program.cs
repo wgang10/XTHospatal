@@ -64,7 +64,7 @@ namespace UI
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                 GlobalVal.SplashObj = SplashObject.GetSplash();
-                GlobalVal.glostrAppNo = GetAppNo();
+                GlobalVal.glostrAppNo = GetAppNoFromTxt();
                 Application.Run(new FromMain());
             }
         }
@@ -181,6 +181,24 @@ namespace UI
             }
             sr.Close();
             return version;
+        }
+
+        /// <summary>
+        /// 从配置文件中获取程序号
+        /// </summary>
+        /// <returns></returns>
+        public static string GetAppNoFromTxt()
+        {
+            string filePath = Application.StartupPath + "\\Update.ini";
+            string[] strs = File.ReadAllLines(filePath);
+            if (strs.Length > 0)
+            {
+                return strs[0];
+            }
+            else
+            {
+                return "";
+            }
         }
 
     }

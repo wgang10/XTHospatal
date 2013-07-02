@@ -55,14 +55,16 @@ namespace UpdateApp
                 return;
             }
 
-            if (string.IsNullOrEmpty(Common.globalAppVNo)&& string.IsNullOrEmpty(Common.globalAppMD5No))
+            //if (string.IsNullOrEmpty(Common.globalAppVNo)&& string.IsNullOrEmpty(Common.globalAppMD5No))
+            if (string.IsNullOrEmpty(Common.globalAppMD5No))
             {
                 this.Height = 276;                
             }
             else
             {
                 this.Height = 142;                
-                this.Text ="自动更新程序---------" + Common.globalAppVNo + "@" + Common.globalAppMD5No;
+                //this.Text ="自动更新程序---------" + Common.globalAppVNo + "@" + Common.globalAppMD5No;
+                this.Text = "自动更新程序=====>" + Common.globalAppMD5No;
                 UpdaterStart();
             }
         }
@@ -74,14 +76,17 @@ namespace UpdateApp
 
         private void button2_Click(object sender, EventArgs e)
         {
-            string LastAppNo = GetWebConfig(LastAppNoConfig);
-            string OldAppNo = GetAppNo();
+            //string LastAppNo = GetWebConfig(LastAppNoConfig);
+            string LastAppNo = GetAppNoFromTxt();
+            //string OldAppNo = GetAppNo();
+            string OldAppNo = GetAppNoFromTxt();
             if (!LastAppNo.Equals(OldAppNo)
                 && MessageBox.Show("需要更新，要更新吗？","",MessageBoxButtons.YesNo)==DialogResult.Yes)
             {
-                string[] strTemp = LastAppNo.Split('@');
-                Common.globalAppVNo = strTemp[0];
-                Common.globalAppMD5No = strTemp[1];
+                //string[] strTemp = LastAppNo.Split('@');
+                //Common.globalAppVNo = strTemp[0];
+                //Common.globalAppMD5No = strTemp[1];
+                Common.globalAppMD5No = LastAppNo;
                 UpdaterStart();
                 //btnUpdate.Enabled = false;
             }
@@ -109,6 +114,24 @@ namespace UpdateApp
             }
             sr.Close();
             return version;
+        }
+
+        /// <summary>
+        /// 从配置文件中获取程序号
+        /// </summary>
+        /// <returns></returns>
+        public static string GetAppNoFromTxt()
+        {
+            string filePath = appPath + "\\Update.ini";
+            string[] strs = File.ReadAllLines(filePath);
+            if (strs.Length > 0)
+            {
+                return strs[0];
+            }
+            else
+            {
+                return "";
+            }
         }
 
         /// <summary> 
@@ -221,7 +244,6 @@ namespace UpdateApp
                     ConvertSize(ex.TotalBytesToReceive));
 
                 tempf = (float)ex.BytesReceived / (float)ex.TotalBytesToReceive;
-                progressBarFile.Value = 50;
                 progressBarSize.Value = Convert.ToInt32(tempf * 100);
             };
             //委托下载完成时事件 
@@ -255,8 +277,9 @@ namespace UpdateApp
                     else
                     {   
                         //设置最新的程序号
-                        string[] newAppNo = { Common.globalAppVNo, Common.globalAppMD5No };
-                        SetConfigAppNo(newAppNo);
+                        //string[] newAppNo = { Common.globalAppVNo, Common.globalAppMD5No };
+                        //SetConfigAppNo(newAppNo);
+                        SetConfigAppNo(Common.globalAppMD5No);
                         UpdaterClose();
                     }
                 }
@@ -272,8 +295,7 @@ namespace UpdateApp
         private void DownloadFile(int arry)
         {
             try
-            {
-                
+            {                
                 fileName = fileNames[arry];
                 num++;
                 //删除已有的下载包
@@ -351,6 +373,11 @@ namespace UpdateApp
             }
             swInfo.Flush(); 
             swInfo.Close();
+        }
+
+        private void SetConfigAppNo(string appNo)
+        {
+            File.WriteAllText(appPath + "\\Update.ini", appNo); 
         }
 
         private void btnMD5_Click(object sender, EventArgs e)
