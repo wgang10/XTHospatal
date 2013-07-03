@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.IO;
 using ICSharpCode.SharpZipLib.Zip;
@@ -25,14 +24,18 @@ namespace UnZip
                 fileName = GetWebConfig(InstallFileNameConfig);
                 appPath = GetWebConfig(InstallPathConfig);
                 System.Console.WriteLine("开始解压...");
-                Thread.Sleep(5000);
                 UnZipFile(appPath + "\\" + fileName, appPath);
                 System.Console.WriteLine("解压完成...");
-                System.Console.WriteLine("开始创建桌面快捷方式...");
-                Thread.Sleep(5000);
-                CreateDesktopLnk();
+                Thread t1 = new Thread(new ThreadStart(CreateDesktopLnk));
+                t1.Start();
                 System.Console.WriteLine("启动程序...");
-                Thread.Sleep(5000);
+                int i = 0;
+                while (!File.Exists(appPath + @"\UI.exe") && i < 20)
+                {
+                    Thread.Sleep(500);
+                    System.Console.WriteLine(i.ToString()+"...");
+                    i++;
+                }
                 System.Diagnostics.Process.Start(appPath + @"\UI.exe");
             }
             catch
@@ -129,6 +132,14 @@ namespace UnZip
 
         private static void CreateDesktopLnk()
         {
+            System.Console.WriteLine("开始创建桌面快捷方式...");
+            int i = 0;
+            while(!File.Exists(appPath + @"\UI.exe")&&i<20)
+            {
+                Thread.Sleep(500);
+                System.Console.WriteLine(i.ToString() + "...");
+                i++;
+            }
             string DesktopPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Desktop);//得到桌面文件夹 
             IWshRuntimeLibrary.WshShell shell = new IWshRuntimeLibrary.WshShellClass();
             IWshRuntimeLibrary.IWshShortcut shortcut = (IWshRuntimeLibrary.IWshShortcut)shell.CreateShortcut(DesktopPath + "\\体检系统.lnk");

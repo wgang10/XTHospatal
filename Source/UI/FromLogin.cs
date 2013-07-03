@@ -115,21 +115,43 @@ namespace UI
                 txtServerURL.Text = GetWebConfig(WebServicesURLConfig);
                 //LastAppNo = GetWebConfig(LastAppNoConfig);
                 LastAppNo = GetServerUpdateFileMD5();
+
+                //开始检查更新******************************************************************                    ;
+                if (!LastAppNo.Equals(GlobalVal.glostrAppNo)
+                    && MessageBox.Show("发现有新程序可以更新，是否更新？", "发现更新", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    try
+                    {
+                        System.Diagnostics.Process.Start(Application.StartupPath + @"\UpdateApp.exe", LastAppNo);
+                    }
+                    catch (Win32Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    GlobalVal.blCloseForm = true;
+                    Application.Exit();
+                }
+                //****************************************************************************
+                else
+                {
+                    //**************************************
+                    System.Threading.ThreadStart testWeb = new System.Threading.ThreadStart(TestWebService);
+                    System.Threading.Thread testWebThread = new System.Threading.Thread(testWeb);
+                    testWebThread.Start();
+                    //**************************************
+                    this.Height = windowHeight1;
+                    btnConfig.Text = "▼";
+                    this.Activate();
+                    //Method.CmbDataBound("YearMonth", cmbYearMonth);
+                }
+                
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
                 return;
             }
-            //**************************************
-            System.Threading.ThreadStart testWeb = new System.Threading.ThreadStart(TestWebService);
-            System.Threading.Thread testWebThread = new System.Threading.Thread(testWeb);
-            testWebThread.Start();
-            //**************************************
-            this.Height = windowHeight1;
-            btnConfig.Text = "▼";
-            this.Activate();
-            //Method.CmbDataBound("YearMonth", cmbYearMonth);
+            
         }
 
         /// <summary>
@@ -218,22 +240,6 @@ namespace UI
                     blws = true;
                     btnConfig.ForeColor = Color.Green;
                     GlobalVal.glostrServicesURL = txtServerURL.Text.Trim();
-                    //开始检查更新******************************************************************
-                    ;
-                    if (!LastAppNo.Equals(GlobalVal.glostrAppNo))
-                    {
-                        try
-                        {
-                            System.Diagnostics.Process.Start(Application.StartupPath + @"\UpdateApp.exe", LastAppNo);
-                        }
-                        catch (Win32Exception ex)
-                        {
-                            MessageBox.Show(ex.Message);
-                        }
-                        GlobalVal.blCloseForm = true;
-                        Application.Exit();   
-                    }
-                    //****************************************************************************
                 }
             }
             catch (Exception ex)
@@ -275,7 +281,7 @@ namespace UI
                     //}
                     //config.Save(ConfigurationSaveMode.Modified);
                     //ConfigurationManager.RefreshSection("appSettings");
-                    SaveConfigIni(txtServerURL.Text);
+                    //SaveConfigIni(txtServerURL.Text);
                     GlobalVal.glostrServicesURL = txtServerURL.Text.Trim();
 
                     blws = true;

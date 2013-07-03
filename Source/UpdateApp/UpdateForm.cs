@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Threading;
@@ -20,6 +19,7 @@ namespace UpdateApp
     {
         private static string webUrl = @"http://ziyangsoft.com/Config.ashx";
         private static string webUrl2 = @"http://ziyangsoft.com/filelist.ashx?InstallOrUpdate=Update";
+        private static string webUrl3 = @"http://www.ziyangsoft.com/GetFileMD5.ashx";
         private static string systemName = "XTHospatal";
         delegate void ShowProgressDelegate(int totalStep, int currentStep);
         private static string UpdataURLConfig = "UpdataURL";
@@ -77,7 +77,7 @@ namespace UpdateApp
         private void button2_Click(object sender, EventArgs e)
         {
             //string LastAppNo = GetWebConfig(LastAppNoConfig);
-            string LastAppNo = GetAppNoFromTxt();
+            string LastAppNo = GetServerUpdateFileMD5();
             //string OldAppNo = GetAppNo();
             string OldAppNo = GetAppNoFromTxt();
             if (!LastAppNo.Equals(OldAppNo)
@@ -389,6 +389,28 @@ namespace UpdateApp
         {
             string strRet = string.Empty;
             WebRequest req = WebRequest.Create(string.Format("{0}?SystemName={1}&ConfigName={2}", webUrl, systemName, ConfigName));
+            WebResponse res = req.GetResponse();
+            System.IO.Stream resStream = res.GetResponseStream();
+            Encoding encode = System.Text.Encoding.Default;
+            StreamReader readStream = new StreamReader(resStream, encode);
+            Char[] read = new Char[256];
+            int count = readStream.Read(read, 0, 256);
+            while (count > 0)
+            {
+                String str = new String(read, 0, count);
+                strRet = strRet + str;
+                count = readStream.Read(read, 0, 256);
+            }
+            resStream.Close();
+            readStream.Close();
+            res.Close();
+            return strRet;
+        }
+
+        private static string GetServerUpdateFileMD5()
+        {
+            string strRet = string.Empty;
+            WebRequest req = WebRequest.Create(string.Format("{0}?FileName={1}", webUrl3, "Update.zip"));
             WebResponse res = req.GetResponse();
             System.IO.Stream resStream = res.GetResponseStream();
             Encoding encode = System.Text.Encoding.Default;
