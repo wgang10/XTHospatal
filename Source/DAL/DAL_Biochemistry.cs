@@ -45,7 +45,7 @@ HY_AFP=@HY_AFP,
 HY_CEA=@HY_CEA
 where EmployeeID=@EmployeeID and YearMoth=@YearMonth ";
 
-        private string GetAll_SQL = !"select * from Biochemistry";
+        private string GetAll_SQL = @"select * from Biochemistry";
 
         public ReturnValue Add(Biochemistry model)
         {

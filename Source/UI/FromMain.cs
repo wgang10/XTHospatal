@@ -68,9 +68,15 @@ namespace UI
                     //CheckProject.ShowDialog();
                     GlobalVal.EmpCheckProject.ShowDialog();
                     break;
+                case "btnStatistics":
+                    GlobalVal.ShowForm.Hide();
+                    GlobalVal.SplashObj = SplashObject.GetLoading();
+                    //GlobalVal.FormConfig.ShowDialog();
+                    FormStatistics statistics = new FormStatistics();
+                    statistics.ShowDialog();
+                    break;
                 case "btnConfig":
                 case "btnSystem":
-                case "btnStatistics":
                 case "btnHelp":
                     GlobalVal.ShowForm.Hide();
                     GlobalVal.SplashObj = SplashObject.GetLoading();

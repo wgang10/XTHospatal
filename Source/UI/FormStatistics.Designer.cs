@@ -55,6 +55,7 @@
             this.btnImport.TabIndex = 42;
             this.btnImport.Text = "导入";
             this.btnImport.UseVisualStyleBackColor = true;
+            this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
             // 
             // btnSearch
             // 

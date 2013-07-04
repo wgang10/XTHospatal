@@ -44,6 +44,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DataSetSurrogate">
+      <HintPath>..\..\lib\DataSetSurrogate.dll</HintPath>
+    </Reference>
     <Reference Include="log4net">
       <HintPath>..\..\lib\log4net.dll</HintPath>
     </Reference>
@@ -54,7 +57,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataSetSurrogate.cs" />
     <Compile Include="DataSetZip.cs" />
     <Compile Include="Enum.cs" />
     <Compile Include="GlobalVal.cs" />

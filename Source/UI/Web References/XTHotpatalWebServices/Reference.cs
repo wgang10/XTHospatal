@@ -92,6 +92,8 @@ namespace UI.XTHotpatalWebServices {
         
         private System.Threading.SendOrPostCallback GetLastAppNoOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetAllBiochemistryDataOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -222,6 +224,9 @@ namespace UI.XTHotpatalWebServices {
         
         /// <remarks/>
         public event GetLastAppNoCompletedEventHandler GetLastAppNoCompleted;
+        
+        /// <remarks/>
+        public event GetAllBiochemistryDataCompletedEventHandler GetAllBiochemistryDataCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/CheckWebServices", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -1136,6 +1141,34 @@ namespace UI.XTHotpatalWebServices {
             if ((this.GetLastAppNoCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetLastAppNoCompleted(this, new GetLastAppNoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetAllBiochemistryData", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute(DataType="base64Binary")]
+        public byte[] GetAllBiochemistryData() {
+            object[] results = this.Invoke("GetAllBiochemistryData", new object[0]);
+            return ((byte[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetAllBiochemistryDataAsync() {
+            this.GetAllBiochemistryDataAsync(null);
+        }
+        
+        /// <remarks/>
+        public void GetAllBiochemistryDataAsync(object userState) {
+            if ((this.GetAllBiochemistryDataOperationCompleted == null)) {
+                this.GetAllBiochemistryDataOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetAllBiochemistryDataOperationCompleted);
+            }
+            this.InvokeAsync("GetAllBiochemistryData", new object[0], this.GetAllBiochemistryDataOperationCompleted, userState);
+        }
+        
+        private void OnGetAllBiochemistryDataOperationCompleted(object arg) {
+            if ((this.GetAllBiochemistryDataCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetAllBiochemistryDataCompleted(this, new GetAllBiochemistryDataCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -5079,6 +5112,32 @@ namespace UI.XTHotpatalWebServices {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void GetAllBiochemistryDataCompletedEventHandler(object sender, GetAllBiochemistryDataCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetAllBiochemistryDataCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetAllBiochemistryDataCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public byte[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((byte[])(this.results[0]));
             }
         }
     }
