@@ -28,5 +28,10 @@ namespace XTHospital.BLL
             }
             return resoult;
         }
+
+        public ReturnValue GetAll()
+        {
+            return dalBiochemistry.GetAll();
+        }
     }
 }

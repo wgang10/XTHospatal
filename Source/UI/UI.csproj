@@ -148,6 +148,12 @@
     <Compile Include="FormLoading.designer.cs">
       <DependentUpon>FormLoading.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormStatistics.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormStatistics.Designer.cs">
+      <DependentUpon>FormStatistics.cs</DependentUpon>
+    </Compile>
     <Compile Include="FromLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -188,6 +194,8 @@
       <DependentUpon>UserManage.cs</DependentUpon>
     </Compile>
     <Compile Include="Utility\DataSetHelper.cs" />
+    <Compile Include="Utility\DataSetSurrogate.cs" />
+    <Compile Include="Utility\DataSetZip.cs" />
     <Compile Include="Utility\Enum.cs" />
     <Compile Include="Utility\GlobalVal.cs" />
     <Compile Include="Utility\LogManager.cs" />
@@ -231,6 +239,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormLoading.resx">
       <DependentUpon>FormLoading.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormStatistics.resx">
+      <DependentUpon>FormStatistics.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FromLogin.resx">
       <DependentUpon>FromLogin.cs</DependentUpon>

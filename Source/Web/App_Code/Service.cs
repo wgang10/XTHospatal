@@ -343,4 +343,19 @@ public class Service : System.Web.Services.WebService
         sr.Close();
         return version;
     }
+
+    [WebMethod(Description = "获取全部生化数据")]
+    public byte[] GetAllBiochemistryData()
+    {
+        BLL_Biochemistry bll = new BLL_Biochemistry();
+        ReturnValue resoult = bll.GetAll();
+        if (resoult.ErrorFlag && resoult.Count > 0)
+        {
+            return DataSetZip.GetDataSetZipBytes(resoult.ResultDataSet);
+        }
+        else
+        {
+            return null;
+        }
+    }
 }

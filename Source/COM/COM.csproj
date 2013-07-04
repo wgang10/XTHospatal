@@ -54,6 +54,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataSetSurrogate.cs" />
+    <Compile Include="DataSetZip.cs" />
     <Compile Include="Enum.cs" />
     <Compile Include="GlobalVal.cs" />
     <Compile Include="Mothod.cs" />

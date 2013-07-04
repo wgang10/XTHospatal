@@ -52,6 +52,8 @@ HYALP=@HYALP,
 HYUA=@HYUA
 where EmployeeID=@EmployeeID and YearMoth=@YearMonth ";
 
+        private string GetAll_SQL = @"select * from Biochemistry";
+
         public ReturnValue Add(Biochemistry model)
         {
             OleDbParameter[] parameters = {
@@ -196,6 +198,11 @@ where EmployeeID=@EmployeeID and YearMoth=@YearMonth ";
             parametersUpdate[29].Value = model.EmployeeID;
             parametersUpdate[30].Value = model.YearMonth;
             return OleDbHelper.ExecuteSql(Update_SQL, parametersUpdate);
+        }
+
+        public ReturnValue GetAll()
+        {
+            return OleDbHelper.Query(GetAll_SQL);
         }
     }
 }

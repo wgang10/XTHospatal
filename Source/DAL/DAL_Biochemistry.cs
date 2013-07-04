@@ -45,6 +45,8 @@ HY_AFP=@HY_AFP,
 HY_CEA=@HY_CEA
 where EmployeeID=@EmployeeID and YearMoth=@YearMonth ";
 
+        private string GetAll_SQL = !"select * from Biochemistry";
+
         public ReturnValue Add(Biochemistry model)
         {
             SqlParameter[] parameters = {
@@ -161,6 +163,11 @@ where EmployeeID=@EmployeeID and YearMoth=@YearMonth ";
             parametersUpdate[22].Value = model.HY_AFP;
             parametersUpdate[23].Value = model.HY_CEA;
             return SqlHelper.ExecuteSql(Update_SQL, parametersUpdate);
+        }
+
+        public ReturnValue GetAll()
+        {
+            return SqlHelper.Query(GetAll_SQL);
         }
     }
 }

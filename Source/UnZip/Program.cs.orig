@@ -24,6 +24,7 @@ namespace UnZip
                 fileName = GetWebConfig(InstallFileNameConfig);
                 appPath = GetWebConfig(InstallPathConfig);
                 System.Console.WriteLine("开始解压...");
+<<<<<<< Updated upstream
                 //UnZipFile(appPath + "\\" + fileName, appPath);
                 System.Console.WriteLine("解压完成...");
                 Thread t1 = new Thread(new ThreadStart(CreateDesktopLnk));
@@ -36,6 +37,17 @@ namespace UnZip
                     System.Console.WriteLine(i.ToString()+"...");
                     i++;
                 }
+=======
+                //Thread.Sleep(5000);
+                //UnZipFile(appPath + "\\" + fileName, appPath);
+                System.Console.WriteLine("解压完成...");
+                System.Console.WriteLine("开始创建桌面快捷方式...");
+                //Thread.Sleep(5000);
+                CreateDesktopLnk();
+                System.Console.WriteLine("启动程序...");
+                //Thread.Sleep(5000);
+                //System.Diagnostics.Process.Start(appPath + @"\UI.exe");
+>>>>>>> Stashed changes
             }
             catch
             {
