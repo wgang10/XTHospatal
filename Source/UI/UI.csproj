@@ -214,6 +214,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
+    <Compile Include="Web References\ZiYangWebService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <None Include="Web References\ZiYangWebService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\ZiYangWebService\ZiYangWebService.disco" />
     <EmbeddedResource Include="AlphaBlendingBringer.resx">
       <DependentUpon>AlphaBlendingBringer.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -304,21 +314,33 @@
       <DependentUpon>Reference.map</DependentUpon>
     </None>
     <None Include="Web References\XTHotpatalWebServices\Service.wsdl" />
+    <None Include="Web References\ZiYangWebService\ZiYangWebService.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://localhost/Service.asmx">
+    <WebReferenceUrl Include="http://localhost:17761/Web/Service.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\XTHotpatalWebServices\</RelPath>
-      <UpdateFromURL>http://localhost/Service.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost:17761/Web/Service.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>UI_XTHotpatalWebServices_Service</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost:1354/ZiYangWebService.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\ZiYangWebService\</RelPath>
+      <UpdateFromURL>http://localhost:1354/ZiYangWebService.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>UI_ZiYangWebService_ZiYangWebService</CachedSettingsPropName>
     </WebReferenceUrl>
   </ItemGroup>
   <ItemGroup>

@@ -23,15 +23,25 @@ namespace UI
 
         private void FormStatistics_Load(object sender, EventArgs e)
         {
+          Initial();
             GlobalVal.SplashObj.Dispose();
+
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            this.dataGridView1.DataSource = null;
-            GlobalVal.gloWebSerices.GetAllBiochemistryDataCompleted += new XTHotpatalWebServices.GetAllBiochemistryDataCompletedEventHandler(gloWebSerices_GetAllBiochemistryDataCompleted);
-            GlobalVal.gloWebSerices.GetAllBiochemistryDataAsync();
-            btnSearch.Enabled = false;
+            //this.dataGridView1.DataSource = null;
+            //GlobalVal.gloWebSerices.GetAllBiochemistryDataCompleted += new XTHotpatalWebServices.GetAllBiochemistryDataCompletedEventHandler(gloWebSerices_GetAllBiochemistryDataCompleted);
+            //GlobalVal.gloWebSerices.GetAllBiochemistryDataAsync();
+            //btnSearch.Enabled = false;
+          XTHotpatalWebServices.Service sw = new XTHotpatalWebServices.Service();
+          byte[] buffer = sw.GetAllBiochemistryData();
+          if (buffer != null)
+          {
+            DataSet ds = DataSetZip.Decompress(buffer);
+            this.dataGridView1.DataSource = ds.Tables[0];
+            this.label1.Text = ds.Tables[0].Rows.Count.ToString();
+          }
         }
 
         void gloWebSerices_GetAllBiochemistryDataCompleted(object sender, XTHotpatalWebServices.GetAllBiochemistryDataCompletedEventArgs e)
@@ -57,13 +67,133 @@ namespace UI
 
         private void btnImport_Click(object sender, EventArgs e)
         {
-            this.dataGridView1.DataSource = null;
-            byte[] buffer = GlobalVal.gloWebSerices.GetAllBiochemistryData();
-            if (buffer != null)
+            //this.dataGridView1.DataSource = null;
+            //byte[] buffer = GlobalVal.gloWebSerices.GetAllBiochemistryData();
+            //if (buffer != null)
+            //{
+            //    DataSet ds = DataSetZip.Decompress(buffer);
+            //    this.dataGridView1.DataSource = ds.Tables[0];
+            //}
+          ZiYangWebService.ZiYangWebService ws = new ZiYangWebService.ZiYangWebService();
+          XTHotpatalWebServices.Service sw=new XTHotpatalWebServices.Service();
+          byte[] buffer = sw.GetAllBiochemistryData();
+          bool resoult = ws.InportBiochemistryData(buffer);
+          if (resoult)
+          {
+            MessageBox.Show("导入成功");
+          }
+          else
+          {
+            MessageBox.Show("导入失败");
+          }
+        }
+
+      /// <summary>
+      /// 获得统计数据
+      /// </summary>
+      /// <param name="sender"></param>
+      /// <param name="e"></param>
+        private void button1_Click(object sender, EventArgs e)
+        {
+          ZiYangWebService.ZiYangWebService ws = new ZiYangWebService.ZiYangWebService();
+          byte[] buffer = ws.GetStatisticsData();
+          if (buffer != null)
+          {
+            DataSet ds = DataSetZip.Decompress(buffer);
+            if (ds.Tables.Count > 0)
             {
-                DataSet ds = DataSetZip.Decompress(buffer);
-                this.dataGridView1.DataSource = ds.Tables[0];
+              this.dataGridView1.DataSource = ds.Tables[0];
             }
+          }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Initial()
+        {
+          GridViewInitial();
+          BindGridData();
+        }
+
+        private void BindGridData()
+        {
+          XTHotpatalWebServices.Service sw = new XTHotpatalWebServices.Service();
+          try
+          {
+            XTHotpatalWebServices.ReturnValue resoult = sw.GetListEmployee(" Where Employee.EmployeeID <> '000000000000000000'");
+            if (resoult.ErrorFlag)
+            {
+              for (int i = 0; i < resoult.ResultDataSet.Tables[0].Rows.Count; i++)
+              {
+                grdMain.Rows.Add((i + 1).ToString(),
+                    resoult.ResultDataSet.Tables[0].Rows[i]["EmployeeID"].ToString().Trim(),
+                    resoult.ResultDataSet.Tables[0].Rows[i]["EmployeeName"].ToString().Trim(),
+                    resoult.ResultDataSet.Tables[0].Rows[i]["EmpSex"].ToString().Trim(),
+                    resoult.ResultDataSet.Tables[0].Rows[i]["EmployeeBM"].ToString().Trim() == "请选择" ? "" : resoult.ResultDataSet.Tables[0].Rows[i]["EmployeeBM"].ToString().Trim(),
+                    resoult.ResultDataSet.Tables[0].Rows[i]["EmployeeDW"].ToString().Trim(),
+                    resoult.ResultDataSet.Tables[0].Rows[i]["EmployeeJG"].ToString().Trim(),
+                    resoult.ResultDataSet.Tables[0].Rows[i]["EmployeeGZID"].ToString().Trim());
+              }
+            }
+            else
+            {
+              MessageBox.Show(resoult.ErrorID);
+            }
+          }
+          catch
+          {
+            this.Cursor = Cursors.Default;
+          }
+          this.Cursor = Cursors.Default;
+        }
+
+        private void GridViewInitial()
+        {
+          grdMain.ScrollBars = ScrollBars.Both;
+          grdMain.RowHeadersVisible = false;
+          grdMain.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+          grdMain.ReadOnly = true;
+          grdMain.AllowUserToAddRows = false;
+          grdMain.TabStop = false;
+          grdMain.AllowUserToResizeRows = false;
+          grdMain.Columns.Add("NO", "NO.");
+          grdMain.Columns.Add("EmployeeID", "身份证号码");
+          grdMain.Columns.Add("EmployeeName", "姓名");
+          grdMain.Columns.Add("EmployeeSex", "性别");
+          grdMain.Columns.Add("EmployeeBM", "部门");
+          grdMain.Columns.Add("EmployeeDW", "单位");
+          grdMain.Columns.Add("EmployeeJG", "籍贯");
+          grdMain.Columns.Add("EmployeeGZID", "查询账号");
+          grdMain.Columns["NO"].Width = 30;
+          grdMain.Columns["EmployeeID"].Width = 120;
+          grdMain.Columns["EmployeeName"].Width = 70;
+          grdMain.Columns["EmployeeSex"].Width = 60;
+          grdMain.Columns["EmployeeBM"].Width = 150;
+          grdMain.Columns["EmployeeDW"].Width = 147;
+          grdMain.Columns["EmployeeJG"].Width = 110;
+          grdMain.Columns["EmployeeGZID"].Width = 110;
+
+          grdMain.Columns["NO"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+          grdMain.Columns["NO"].Frozen = true;
+        }
+
+        private void grdMain_DoubleClick(object sender, EventArgs e)
+        {
+          string EmployeeID = grdMain.CurrentRow.Cells["EmployeeID"].Value.ToString();
+          ZiYangWebService.ZiYangWebService ws = new ZiYangWebService.ZiYangWebService();
+          byte[] buffer = ws.GetStatisticsDataByID(EmployeeID);
+          if (buffer != null)
+          {
+            DataSet ds = DataSetZip.Decompress(buffer);
+            if (ds.Tables.Count > 0)
+            {
+              this.dataGridView1.DataSource = ds.Tables[0];
+            }
+          }
+
         }
     }
 }
