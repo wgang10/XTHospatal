@@ -50,8 +50,8 @@ public partial class WebUserControlEmployeeInfo : System.Web.UI.UserControl
     public string strHYAPOAI = string.Empty;//载脂蛋白AI(APOAI)
     public string strHYAPOB = string.Empty;//载脂蛋白B(APOB)
     public string strHYAST = string.Empty;//天门冬氨酸氨基转移酶(AST)
-    public string strHYGT = string.Empty;//γ-谷胺酰转氨酶(γ-GT)
-    public string strHYALP = string.Empty;//碱性磷铵酶(ALP)
+    public string strHYGT = string.Empty;//γ-谷胺酰转肽酶(γ-GT)
+    public string strHYALP = string.Empty;//碱性磷酸酶(ALP)
     public string strHYUA = string.Empty;//尿酸（UA）
 
     //**********体格检查（五官）*****************
@@ -329,8 +329,8 @@ public partial class WebUserControlEmployeeInfo : System.Web.UI.UserControl
                 strHYAPOAI = resoult.ResultDataSet.Tables[0].Rows[0]["Bio_HYAPOAI"].ToString();//载脂蛋白AI(APOAI)
                 strHYAPOB = resoult.ResultDataSet.Tables[0].Rows[0]["Bio_HYAPOB"].ToString();//载脂蛋白B(APOB)
                 strHYAST = resoult.ResultDataSet.Tables[0].Rows[0]["Bio_HYAST"].ToString();//天门冬氨酸氨基转移酶(AST)
-                strHYGT = resoult.ResultDataSet.Tables[0].Rows[0]["Bio_HYGT"].ToString();//γ-谷胺酰转氨酶(γ-GT)
-                strHYALP = resoult.ResultDataSet.Tables[0].Rows[0]["Bio_HYALP"].ToString();//碱性磷铵酶(ALP)
+                strHYGT = resoult.ResultDataSet.Tables[0].Rows[0]["Bio_HYGT"].ToString();//γ-谷胺酰转肽酶(γ-GT)
+                strHYALP = resoult.ResultDataSet.Tables[0].Rows[0]["Bio_HYALP"].ToString();//碱性磷酸酶(ALP)
                 strHYUA = resoult.ResultDataSet.Tables[0].Rows[0]["Bio_HYUA"].ToString();//尿酸（UA）
 
                 if (resoult.ResultDataSet.Tables[0].Rows[0]["Bio_HYHBsAg"].ToString() == "0")//HBsAg

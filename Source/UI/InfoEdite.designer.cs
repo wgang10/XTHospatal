@@ -1629,7 +1629,7 @@
             this.label184.Name = "label184";
             this.label184.Size = new System.Drawing.Size(95, 12);
             this.label184.TabIndex = 22;
-            this.label184.Text = "碱性磷铵酶(ALP)";
+            this.label184.Text = "碱性磷酸酶(ALP)";
             // 
             // label181
             // 
@@ -1657,7 +1657,7 @@
             this.label182.Name = "label182";
             this.label182.Size = new System.Drawing.Size(137, 12);
             this.label182.TabIndex = 19;
-            this.label182.Text = "γ-谷胺酰转氨酶(γ-GT)";
+            this.label182.Text = "γ-谷胺酰转肽酶(γ-GT)";
             // 
             // label176
             // 

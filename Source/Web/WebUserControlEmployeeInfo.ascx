@@ -152,12 +152,12 @@
             <td>&nbsp;</td>
           </tr>
           <tr>
-            <td>γ-谷胺酰转氨酶(γ-GT):<span class="ReultStyle"><%=strHYGT%></span></td>
+            <td>γ-谷胺酰转肽酶(γ-GT):<span class="ReultStyle"><%=strHYGT%></span></td>
             <td colspan="2">U/L 参考 男11-50 女7-32</td>
             <td>&nbsp;</td>
           </tr>
           <tr>
-            <td>碱性磷铵酶(ALP):<span class="ReultStyle"><%=strHYALP%></span></td>
+            <td>碱性磷酸酶(ALP):<span class="ReultStyle"><%=strHYALP%></span></td>
             <td colspan="2">U/L 参考 男53-128 女42-141</td>
             <td>&nbsp;</td>
           </tr>

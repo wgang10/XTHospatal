@@ -217,7 +217,7 @@ namespace XTHospital.Model
             get { return _hy_ast; }
         }
         /// <summary>
-        /// γ-谷胺酰转氨酶(γ-GT)
+        /// γ-谷胺酰转肽酶(γ-GT)
         /// </summary>
         public string HYGT
         {
@@ -225,7 +225,7 @@ namespace XTHospital.Model
             get { return _hy_gt; }
         }
         /// <summary>
-        /// 碱性磷铵酶(ALP)
+        /// 碱性磷酸酶(ALP)
         /// </summary>
         public string HYALP
         {

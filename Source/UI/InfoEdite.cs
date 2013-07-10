@@ -1003,8 +1003,8 @@ namespace UI
                     this.txtHYAPOAI.Text = resoult.ResultDataSet.Tables[0].Rows[0]["Bio_HYAPOAI"].ToString();//载脂蛋白AI(APOAI)
                     this.txtHYAPOB.Text = resoult.ResultDataSet.Tables[0].Rows[0]["Bio_HYAPOB"].ToString();//载脂蛋白B(APOB)
                     this.txtHYAST.Text = resoult.ResultDataSet.Tables[0].Rows[0]["Bio_HYAST"].ToString();//天门冬氨酸氨基转移酶(AST)
-                    this.txtHYGT.Text = resoult.ResultDataSet.Tables[0].Rows[0]["Bio_HYGT"].ToString();//γ-谷胺酰转氨酶(γ-GT)
-                    this.txtHYALP.Text = resoult.ResultDataSet.Tables[0].Rows[0]["Bio_HYALP"].ToString();//碱性磷铵酶(ALP)
+                    this.txtHYGT.Text = resoult.ResultDataSet.Tables[0].Rows[0]["Bio_HYGT"].ToString();//γ-谷胺酰转肽酶(γ-GT)
+                    this.txtHYALP.Text = resoult.ResultDataSet.Tables[0].Rows[0]["Bio_HYALP"].ToString();//碱性磷酸酶(ALP)
                     this.txtHYUA.Text = resoult.ResultDataSet.Tables[0].Rows[0]["Bio_HYUA"].ToString();//尿酸（UA）
 
                     this.txtHY_TBIL.Text = resoult.ResultDataSet.Tables[0].Rows[0]["Bio_HYTBIL"].ToString();//总胆红素(TBIL)
