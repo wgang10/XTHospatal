@@ -65,8 +65,8 @@ namespace UI
                 Application.SetCompatibleTextRenderingDefault(false);
                 GlobalVal.SplashObj = SplashObject.GetSplash();
                 GlobalVal.glostrAppNo = GetAppNoFromTxt();
-                //Application.Run(new FromMain());
-                Application.Run(new FormStatistics());
+                Application.Run(new FromMain());
+                //Application.Run(new FormStatistics());
             }
         }
 
@@ -191,8 +191,12 @@ namespace UI
         public static string GetAppNoFromTxt()
         {
             string filePath = Application.StartupPath + "\\Update.ini";
-            string[] strs = File.ReadAllLines(filePath);
-            if (strs.Length > 0)
+            string[] strs = null ;
+            if (File.Exists(filePath))
+            {
+                strs = File.ReadAllLines(filePath);
+            }
+            if (strs != null && strs.Length > 0)
             {
                 return strs[0];
             }

@@ -22,12 +22,14 @@ namespace UI
         private static FormConfig _formConfig;
         private static EmployeeManage _empManage;
         private static EmployeeCheckNum _empCheckProject;
+        private static FormStatistics _formStatistics;
 
 
         /// <summary>
         /// 登录用户名
         /// </summary>
         public static string gloStrLoginUserID = string.Empty;
+        
 
         /// <summary>
         /// 登录用户权限
@@ -98,6 +100,11 @@ namespace UI
         /// SplashForm Object
         /// </summary>
         public static SplashObject SplashObj;
+
+        /// <summary>
+        /// 当前统计员工编号
+        /// </summary>
+        public static string StatisticsEmployeeID = string.Empty;
 
         /// <summary>
         /// Message DataSet
@@ -225,6 +232,21 @@ namespace UI
                     _empCheckProject = new EmployeeCheckNum();
                 }
                 return _empCheckProject;
+            }
+        }
+
+        /// <summary>
+        /// 统计窗体
+        /// </summary>
+        public static FormStatistics Statistics
+        {
+            get
+            {
+                if (_formStatistics == null)
+                {
+                    _formStatistics = new FormStatistics();
+                }
+                return _formStatistics;
             }
         }
     }

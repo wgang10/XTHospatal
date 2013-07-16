@@ -117,7 +117,8 @@ namespace UI
                 LastAppNo = GetServerUpdateFileMD5();
 
                 //开始检查更新******************************************************************                    ;
-                if (!LastAppNo.Equals(GlobalVal.glostrAppNo)
+                if (!LastAppNo.Equals("NoUpdate",StringComparison.CurrentCultureIgnoreCase) 
+                    && !LastAppNo.Equals(GlobalVal.glostrAppNo)
                     && MessageBox.Show("发现有新程序可以更新，是否更新？", "发现更新", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     try
@@ -285,7 +286,7 @@ namespace UI
                     GlobalVal.glostrServicesURL = txtServerURL.Text.Trim();
 
                     blws = true;
-                    MessageBox.Show("成功连接服务！", "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //MessageBox.Show("成功连接服务！", "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     //System.Configuration.ConfigurationManager.AppSettings.Set("","");
                     this.Height = windowHeight1;
                     btnConfig.Text = "▼";

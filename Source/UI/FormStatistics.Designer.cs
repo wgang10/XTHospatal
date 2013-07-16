@@ -47,6 +47,7 @@
             this.ckbXT = new System.Windows.Forms.CheckBox();
             this.ckbSG = new System.Windows.Forms.CheckBox();
             this.ckbFA = new System.Windows.Forms.CheckBox();
+            this.btnPersonal = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdMain)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -56,7 +57,7 @@
             // btnClose
             // 
             this.btnClose.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnClose.Location = new System.Drawing.Point(869, 466);
+            this.btnClose.Location = new System.Drawing.Point(881, 73);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(91, 30);
             this.btnClose.TabIndex = 41;
@@ -99,11 +100,11 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button1.Location = new System.Drawing.Point(217, 466);
+            this.button1.Location = new System.Drawing.Point(675, 73);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(91, 30);
             this.button1.TabIndex = 46;
-            this.button1.Text = "统计";
+            this.button1.Text = "整体统计";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -267,6 +268,17 @@
             this.ckbFA.UseVisualStyleBackColor = true;
             this.ckbFA.CheckedChanged += new System.EventHandler(this.ItemCheckedChanged);
             // 
+            // btnPersonal
+            // 
+            this.btnPersonal.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnPersonal.Location = new System.Drawing.Point(772, 73);
+            this.btnPersonal.Name = "btnPersonal";
+            this.btnPersonal.Size = new System.Drawing.Size(91, 30);
+            this.btnPersonal.TabIndex = 49;
+            this.btnPersonal.Text = "个人统计";
+            this.btnPersonal.UseVisualStyleBackColor = true;
+            this.btnPersonal.Click += new System.EventHandler(this.btnPersonal_Click);
+            // 
             // FormStatistics
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -280,6 +292,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.grdMain);
+            this.Controls.Add(this.btnPersonal);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
@@ -295,6 +308,7 @@
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.button1, 0);
             this.Controls.SetChildIndex(this.button2, 0);
+            this.Controls.SetChildIndex(this.btnPersonal, 0);
             this.Controls.SetChildIndex(this.grdMain, 0);
             this.Controls.SetChildIndex(this.dataGridView1, 0);
             this.Controls.SetChildIndex(this.groupBox1, 0);
@@ -329,5 +343,6 @@
         private System.Windows.Forms.CheckBox ckbXT;
         private System.Windows.Forms.CheckBox ckbSG;
         private System.Windows.Forms.CheckBox ckbFA;
+        private System.Windows.Forms.Button btnPersonal;
     }
 }

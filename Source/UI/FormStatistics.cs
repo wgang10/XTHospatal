@@ -115,7 +115,7 @@ namespace UI
             {
               this.dataGridView1.DataSource = ds.Tables[0];
               tbStatistics = ds.Tables[0];
-              //BindChart(ds.Tables[0]);
+              BindChart(tbStatistics);
             }
           }
         }
@@ -364,6 +364,102 @@ namespace UI
                 series1.YValueMembers = series[i];
             }
             chart2.DataBind();
+        }
+
+        /// <summary>
+        /// 个人统计，打开员工选择窗口
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnPersonal_Click(object sender, EventArgs e)
+        {
+            if (GlobalVal.EmpManage.ShowDialog(this) == DialogResult.OK)
+            {
+                ZiYangWebService.ZiYangWebService ws = new ZiYangWebService.ZiYangWebService();
+                byte[] buffer = ws.GetStatisticsDataByID(GlobalVal.StatisticsEmployeeID);
+                if (buffer != null)
+                {
+                    DataSet ds = DataSetZip.Decompress(buffer);
+                    if (ds.Tables.Count > 0)
+                    {
+                        this.dataGridView1.DataSource = ds.Tables[0];
+
+
+                        int length = 0;
+                        int lenghtCopy = 0;
+                        if (ckbFA.Checked)//防癌
+                        {
+                            length += FA.Length;
+                        }
+                        if (ckbXZ.Checked)//血脂
+                        {
+                            length += XZ.Length;
+                        }
+                        if (ckbGG.Checked)//肝功
+                        {
+                            length += GG.Length;
+                        }
+                        if (ckbSG.Checked)//肾功
+                        {
+                            length += SG.Length;
+                        }
+                        if (ckbXT.Checked)//血糖
+                        {
+                            length += XT.Length;
+                        }
+                        string[] series = new string[length];
+                        if (ckbFA.Checked)//防癌
+                        {
+                            FA.CopyTo(series, lenghtCopy);
+                            lenghtCopy += FA.Length;
+                        }
+                        if (ckbXZ.Checked)//血脂
+                        {
+                            XZ.CopyTo(series, lenghtCopy);
+                            lenghtCopy += XZ.Length;
+                        }
+                        if (ckbGG.Checked)//肝功
+                        {
+                            GG.CopyTo(series, lenghtCopy);
+                            lenghtCopy += GG.Length;
+                        }
+                        if (ckbSG.Checked)//肾功
+                        {
+                            SG.CopyTo(series, lenghtCopy);
+                            lenghtCopy += SG.Length;
+                        }
+                        if (ckbXT.Checked)//血糖
+                        {
+                            XT.CopyTo(series, lenghtCopy);
+                            lenghtCopy += XT.Length;
+                        }
+
+                        try
+                        {
+                            chart2.Series.Clear();
+                            chart2.DataSource = ds.Tables[0];
+
+                            for (int i = 0; i < series.Length; i++)
+                            {
+                                Series series1 = new Series(series[i]);
+                                series1.ChartType = SeriesChartType.Column;
+                                chart2.Series.Add(series1);
+                                series1.XValueMember = "YearMonth";
+                                series1.YValueMembers = series[i];
+                            }
+                            chart2.DataBind();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                
+            }
         }
     }
 }

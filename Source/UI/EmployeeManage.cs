@@ -103,8 +103,17 @@ namespace UI
 
         private void grdMain_DoubleClick(object sender, EventArgs e)
         {
-            EmployeeEdite employeeEdite = new EmployeeEdite(grdMain.CurrentRow.Cells["EmployeeID"].Value.ToString());
-            employeeEdite.ShowDialog();
+            if (this.Owner is FormStatistics)
+            {
+                GlobalVal.StatisticsEmployeeID = grdMain.CurrentRow.Cells["EmployeeID"].Value.ToString();
+                this.DialogResult = DialogResult.OK;
+                this.Hide();
+            }
+            else
+            {
+                EmployeeEdite employeeEdite = new EmployeeEdite(grdMain.CurrentRow.Cells["EmployeeID"].Value.ToString());
+                employeeEdite.ShowDialog();
+            }
         }
 
         private void btnSearch_Click(object sender, EventArgs e)

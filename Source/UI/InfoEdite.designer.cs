@@ -5672,14 +5672,14 @@
             this.txtReview.Location = new System.Drawing.Point(21, 116);
             this.txtReview.MaxLength = 1024;
             this.txtReview.Name = "txtReview";
-            this.txtReview.Size = new System.Drawing.Size(718, 64);
+            this.txtReview.Size = new System.Drawing.Size(718, 102);
             this.txtReview.TabIndex = 2;
             this.txtReview.Text = "";
             // 
             // txtRemarks
             // 
             this.txtRemarks.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.txtRemarks.Location = new System.Drawing.Point(21, 203);
+            this.txtRemarks.Location = new System.Drawing.Point(21, 236);
             this.txtRemarks.MaxLength = 1024;
             this.txtRemarks.Name = "txtRemarks";
             this.txtRemarks.Size = new System.Drawing.Size(718, 77);
@@ -5717,7 +5717,7 @@
             // label133
             // 
             this.label133.AutoSize = true;
-            this.label133.Location = new System.Drawing.Point(20, 188);
+            this.label133.Location = new System.Drawing.Point(20, 221);
             this.label133.Name = "label133";
             this.label133.Size = new System.Drawing.Size(41, 12);
             this.label133.TabIndex = 2;
