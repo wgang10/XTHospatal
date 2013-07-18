@@ -65,8 +65,8 @@ namespace UI
                 Application.SetCompatibleTextRenderingDefault(false);
                 GlobalVal.SplashObj = SplashObject.GetSplash();
                 GlobalVal.glostrAppNo = GetAppNoFromTxt();
-                Application.Run(new FromMain());
-                //Application.Run(new FormStatistics());
+                //Application.Run(new FromMain());
+                Application.Run(new FormStatistics());
             }
         }
 

@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace UI
 {
@@ -122,7 +124,15 @@ namespace UI
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            string responseFromServer=@"{""client_id"":""100289171"",""openid"":""1AC83BAA19BB2E892033E0C07C27AC24""}";
+            var user = JsonConvert.DeserializeObject<ObjUser>(responseFromServer);
+            string openid = string.Empty;
+            JsonReader Jreader = new JsonTextReader(new StringReader(responseFromServer));
+            while (Jreader.Read())
+            {
+                Console.WriteLine(Jreader.TokenType + "\t\t" + Jreader.ValueType + "\t\t" + Jreader.Value);
+                //openid = Jreader.Value.ToString();
+            }
         }
 
         private void Initial()
@@ -460,6 +470,20 @@ namespace UI
             {
                 
             }
+        }
+    }
+    class ObjUser
+    {
+        public string client_id
+        {
+            set;
+            get;
+        }
+
+        public string openid
+        {
+            set;
+            get;
         }
     }
 }
