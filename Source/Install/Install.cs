@@ -246,20 +246,23 @@ namespace Install
     /// </summary> 
     private static void UpdaterClose()
     {
-      try
-      {
-          System.Diagnostics.Process.Start(appPath + @"\UnZip.exe");
-        //MeBox("下载完成！");
-      }
-      catch (Win32Exception ex)
-      {
-        MeBox(ex.Message);
-      }
-      catch (Exception ex)
-      {
-        MeBox(ex.Message);
-      }
-      Application.Exit();
+        try
+        {
+            System.Diagnostics.Process.Start(appPath + @"\UnZip.exe");
+            //MeBox("下载完成！");
+        }
+        catch (Win32Exception ex)
+        {
+            MeBox(ex.Message);
+        }
+        catch (Exception ex)
+        {
+            MeBox(ex.Message);
+        }
+        finally
+        {
+            Application.Exit();
+        }
     }
 
     /// <summary> 

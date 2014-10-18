@@ -26,6 +26,7 @@ namespace UI
         {
             try
             {
+                ReadProperties();
                 //if (ConfigurationManager.AppSettings["WebServicesURL"] != null)
                 //{
                 //    GlobalVal.glostrServicesURL = ConfigurationManager.AppSettings["WebServicesURL"].Trim() + @"/Service.asmx";
@@ -65,8 +66,8 @@ namespace UI
                 Application.SetCompatibleTextRenderingDefault(false);
                 GlobalVal.SplashObj = SplashObject.GetSplash();
                 GlobalVal.glostrAppNo = GetAppNoFromTxt();
-                //Application.Run(new FromMain());
-                Application.Run(new FormStatistics());
+                Application.Run(new FromMain());
+                //Application.Run(new FormStatistics());
             }
         }
 
@@ -84,27 +85,28 @@ namespace UI
             //    Method.MessageShow("");
             //    return false;
             //}
+
             //测试Web Service是否可用
-            bool blws = false;
-            try
-            {
-                if (GlobalVal.gloWebSerices == null)
-                {
-                    GlobalVal.gloWebSerices = new MyWebService(GlobalVal.glostrServicesURL + @"/Service.asmx");
-                }
-                string strResoult = GlobalVal.gloWebSerices.CheckWebServices();
-                if (strResoult.Trim() == "WanGang")
-                {
-                    blws = true;
-                }
-            }
-            catch
-            { }
-            if (!blws)
-            {
-                MessageBox.Show("不能连接Web Service服务器！", "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return false;
-            }
+            //bool blws = false;
+            //try
+            //{
+            //    if (GlobalVal.gloWebSerices == null)
+            //    {
+            //        GlobalVal.gloWebSerices = new MyWebService(GlobalVal.glostrServicesURL + @"/Service.asmx");
+            //    }
+            //    string strResoult = GlobalVal.gloWebSerices.CheckWebServices();
+            //    if (strResoult.Trim() == "WanGang")
+            //    {
+            //        blws = true;
+            //    }
+            //}
+            //catch
+            //{ }
+            //if (!blws)
+            //{
+            //    MessageBox.Show("不能连接Web Service服务器！", "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    return false;
+            //}
 
             //GlobalVal.glostrIniFilePath = System.Configuration.ConfigurationManager.AppSettings["PropertiesPath"];
             //if (GlobalVal.glostrIniFilePath.Trim().Length < 1)
@@ -198,7 +200,7 @@ namespace UI
             }
             if (strs != null && strs.Length > 0)
             {
-                return strs[0];
+                return strs[0].Trim();
             }
             else
             {

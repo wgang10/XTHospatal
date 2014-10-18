@@ -43,6 +43,8 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.alphaBlendingBringer1 = new UI.AlphaBlendingBringer(this.components);
+            this.btnTest = new System.Windows.Forms.Button();
+            this.btnForTest = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -60,7 +62,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label1.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label1.Location = new System.Drawing.Point(10, 79);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(74, 21);
@@ -69,7 +71,7 @@
             // 
             // txtUserID
             // 
-            this.txtUserID.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtUserID.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtUserID.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.txtUserID.Location = new System.Drawing.Point(82, 76);
             this.txtUserID.MaxLength = 20;
@@ -79,7 +81,7 @@
             // 
             // txtUserPwd
             // 
-            this.txtUserPwd.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtUserPwd.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtUserPwd.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.txtUserPwd.Location = new System.Drawing.Point(82, 111);
             this.txtUserPwd.MaxLength = 20;
@@ -91,7 +93,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label2.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label2.Location = new System.Drawing.Point(10, 114);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(68, 21);
@@ -100,7 +102,7 @@
             // 
             // btnLogin
             // 
-            this.btnLogin.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnLogin.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnLogin.Location = new System.Drawing.Point(103, 155);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(91, 30);
@@ -111,7 +113,7 @@
             // 
             // btnExit
             // 
-            this.btnExit.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnExit.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnExit.Location = new System.Drawing.Point(216, 155);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(91, 30);
@@ -132,7 +134,7 @@
             // 
             // txtServerURL
             // 
-            this.txtServerURL.Font = new System.Drawing.Font("微软雅黑", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtServerURL.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtServerURL.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.txtServerURL.Location = new System.Drawing.Point(6, 20);
             this.txtServerURL.MaxLength = 100;
@@ -142,10 +144,11 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnTest);
             this.groupBox1.Controls.Add(this.txtServerURL);
             this.groupBox1.Controls.Add(this.btnCancel);
             this.groupBox1.Controls.Add(this.btnSave);
-            this.groupBox1.Location = new System.Drawing.Point(0, 234);
+            this.groupBox1.Location = new System.Drawing.Point(0, 225);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(319, 80);
             this.groupBox1.TabIndex = 12;
@@ -154,10 +157,10 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Font = new System.Drawing.Font("微软雅黑", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnCancel.Location = new System.Drawing.Point(119, 48);
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnCancel.Location = new System.Drawing.Point(55, 48);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(91, 26);
+            this.btnCancel.Size = new System.Drawing.Size(80, 26);
             this.btnCancel.TabIndex = 5;
             this.btnCancel.Text = "取消";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -165,14 +168,35 @@
             // 
             // btnSave
             // 
-            this.btnSave.Font = new System.Drawing.Font("微软雅黑", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnSave.Location = new System.Drawing.Point(216, 48);
+            this.btnSave.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnSave.Location = new System.Drawing.Point(227, 48);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(91, 26);
+            this.btnSave.Size = new System.Drawing.Size(80, 26);
             this.btnSave.TabIndex = 5;
             this.btnSave.Text = "保存";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // btnTest
+            // 
+            this.btnTest.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnTest.Location = new System.Drawing.Point(141, 48);
+            this.btnTest.Name = "btnTest";
+            this.btnTest.Size = new System.Drawing.Size(80, 26);
+            this.btnTest.TabIndex = 12;
+            this.btnTest.Text = "测试";
+            this.btnTest.UseVisualStyleBackColor = true;
+            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
+            // 
+            // btnForTest
+            // 
+            this.btnForTest.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnForTest.Location = new System.Drawing.Point(141, 48);
+            this.btnForTest.Name = "btnForTest";
+            this.btnForTest.Size = new System.Drawing.Size(80, 26);
+            this.btnForTest.TabIndex = 12;
+            this.btnForTest.Text = "测试";
+            this.btnForTest.UseVisualStyleBackColor = true;
             // 
             // FromLogin
             // 
@@ -219,5 +243,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnTest;
+        private System.Windows.Forms.Button btnForTest;
     }
 }

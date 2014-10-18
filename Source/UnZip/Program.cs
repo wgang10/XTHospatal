@@ -24,7 +24,7 @@ namespace UnZip
                 fileName = GetWebConfig(InstallFileNameConfig);
                 appPath = GetWebConfig(InstallPathConfig);
                 System.Console.WriteLine("开始解压...");
-                //UnZipFile(appPath + "\\" + fileName, appPath);
+                UnZipFile(appPath + "\\" + fileName, appPath);
                 System.Console.WriteLine("解压完成...");
                 Thread t1 = new Thread(new ThreadStart(CreateDesktopLnk));
                 t1.Start();
