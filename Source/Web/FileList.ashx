@@ -13,16 +13,7 @@ public class FileList : IHttpHandler {
         string fileList = string.Empty;
         try
         {
-            string path = string.Empty;
-            string parameter = context.Request.QueryString["InstallOrUpdate"];
-            if (parameter.Equals("Install"))
-            {
-                path = context.Server.MapPath("App/Install");
-            }
-            else if (parameter.Equals("Update"))
-            {
-                path = context.Server.MapPath("App/Update");
-            }
+            string path = context.Server.MapPath("App/Install");
             DirectoryInfo dr = new DirectoryInfo(path);
             FileInfo[] files = dr.GetFiles();
             for (int i = 0; i < files.Length; i++)

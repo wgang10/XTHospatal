@@ -8,6 +8,7 @@ using System.Threading;
 using System.Configuration;
 using System.IO;
 using System.Text;
+using System.Net;
 
 namespace UI
 {
@@ -18,11 +19,15 @@ namespace UI
         [DllImport("User32.dll")]//呼出Win32 API関数
         private static extern bool SetForegroundWindow(IntPtr hWnd);
         private const int WS_SHOWNORMAL = 1;
+        private static string appPath = @"C:\XTHospatal";
+        private static string systemName = "XTHospatal";
+        private static string InstallPathConfig = "InstallPath";
+        private static string GetConfigWebUrl = @"http://localhost/Config.ashx";
         /// <summary>
         /// 应用程序的主入口点。
         /// </summary>
         [STAThread]
-        static void Main()
+        static void Main(string[] args)
         {
             try
             {
@@ -65,10 +70,41 @@ namespace UI
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                 GlobalVal.SplashObj = SplashObject.GetSplash();
-                GlobalVal.glostrAppNo = GetAppNoFromTxt();
+                //GlobalVal.glostrAppNo = GetAppNoFromTxt();
+                if (args.Length > 0)
+                {
+                    if (args[0].Equals("Install", StringComparison.CurrentCultureIgnoreCase))
+                    {
+                        Thread t1 = new Thread(new ThreadStart(CreateDesktopLnk));
+                        t1.Start();
+                    }
+                }                
                 Application.Run(new FromMain());
                 //Application.Run(new FormStatistics());
             }
+        }
+
+        private static void CreateDesktopLnk()
+        {
+            System.Console.WriteLine("开始创建桌面快捷方式...");
+            int i = 0;
+            while (!File.Exists(appPath + @"\UI.exe") && i < 20)
+            {
+                Thread.Sleep(500);
+                System.Console.WriteLine(i.ToString() + "...");
+                i++;
+            }
+            string DesktopPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Desktop);//得到桌面文件夹 
+            IWshRuntimeLibrary.WshShell shell = new IWshRuntimeLibrary.WshShellClass();
+            IWshRuntimeLibrary.IWshShortcut shortcut = (IWshRuntimeLibrary.IWshShortcut)shell.CreateShortcut(DesktopPath + "\\体检系统.lnk");
+            shortcut.TargetPath = appPath + @"\UI.exe";
+            shortcut.Arguments = "";// 参数 
+            shortcut.Description = "体检系统";
+            shortcut.WorkingDirectory = appPath;//程序所在文件夹，在快捷方式图标点击右键可以看到此属性 
+            shortcut.IconLocation = appPath + @"\UI.exe,0";//图标 
+            shortcut.Hotkey = "CTRL+SHIFT+T";//热键 
+            shortcut.WindowStyle = 1;
+            shortcut.Save();
         }
 
         /// <summary>
@@ -79,6 +115,7 @@ namespace UI
         {
             //获得当前计算机名+当前系统登陆用户名
             GlobalVal.gloStrTerminalCD = Environment.UserDomainName + "@" + Environment.UserName;
+            appPath = GetWebConfig(InstallPathConfig);
             //GlobalVal.gloDataTableMessage = Method.GetMsgDataTable();
             //if (GlobalVal.gloDataTableMessage.Rows.Count < 1)
             //{
@@ -129,6 +166,28 @@ namespace UI
             //    return false;
             //}
             return true;
+        }
+
+        private static string GetWebConfig(string ConfigName)
+        {
+            string strRet = string.Empty;
+            WebRequest req = WebRequest.Create(string.Format("{0}?SystemName={1}&ConfigName={2}", GetConfigWebUrl, systemName, ConfigName));
+            WebResponse res = req.GetResponse();
+            System.IO.Stream resStream = res.GetResponseStream();
+            Encoding encode = System.Text.Encoding.Default;
+            StreamReader readStream = new StreamReader(resStream, encode);
+            Char[] read = new Char[256];
+            int count = readStream.Read(read, 0, 256);
+            while (count > 0)
+            {
+                String str = new String(read, 0, count);
+                strRet = strRet + str;
+                count = readStream.Read(read, 0, 256);
+            }
+            resStream.Close();
+            readStream.Close();
+            res.Close();
+            return strRet;
         }
 
         /// <summary>

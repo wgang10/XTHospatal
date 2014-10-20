@@ -101,9 +101,7 @@ namespace UI
                     BindChartData();
                     try
                     {
-                        this.Text = GlobalVal.glostrSystemName + "    "
-                            + GlobalVal.glostrAppNo.Substring(0, GlobalVal.glostrAppNo.IndexOf("@"))
-                            + "    " + GlobalVal.gloStrLoginUserID;
+                        this.Text = GlobalVal.glostrSystemName + "    " + GlobalVal.gloStrLoginUserID;
                     }
                     catch { }
                 }

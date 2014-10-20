@@ -2,9 +2,7 @@
 <Config>
   <System Name ="XTHospatal">
     <WebServicesURL>http://www.ziyangsoft.com</WebServicesURL>
-    <UpdataURL>http://www.ziyangsoft.com/App/Update</UpdataURL>
     <InstallURL>http://www.ziyangsoft.com/App/Install</InstallURL>
-    <InstallFileName>Install.zip</InstallFileName>
     <InstallPath>C:\XTHospatal</InstallPath>
   </System>
 </Config>

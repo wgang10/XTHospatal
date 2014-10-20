@@ -84,7 +84,7 @@ namespace UI
         /// <summary>
         /// 程序号
         /// </summary>
-        public static string glostrAppNo = "";
+        //public static string glostrAppNo = "";
 
         /// <summary>
         /// 

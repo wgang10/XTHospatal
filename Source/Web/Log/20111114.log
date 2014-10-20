@@ -1,4 +1,0 @@
-2011-11-14 12:13:07,313 [3436] Form:UtilityLog   [GTA@wangang] 语法错误 (操作符丢失) 在查询表达式 '(Department.ID = Emp.EmployeeBM)
-    Left Join Department Dep On (Dep.ID = Emp.EmployeeBM)' 中。
-2011-11-14 13:04:31,123 [7240] Form:UtilityLog   [GTA@wangang] 语法错误 (操作符丢失) 在查询表达式 '(Department.ID = Emp.EmployeeBM)
-    Left Join Department Dep On (Dep.ID = Emp.EmployeeBM)' 中。

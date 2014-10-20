@@ -9,17 +9,21 @@ using System.Windows.Forms;
 using UI.Properties;
 using System.Configuration;
 using System.IO;
+using Newtonsoft.Json;
 
 namespace UI
 {
     public partial class FromLogin : Form
     {
-        private static string webUrl = @"http://www.ziyangsoft.com/Config.ashx";
-        private static string webUrl2 = @"http://www.ziyangsoft.com/GetFileMD5.ashx";
+        private static string webUrl = @"http://localhost/Config.ashx";
+        private static string GetFileMD5webUrl = @"http://localhost/GetFileMD5.ashx";
+        private static string GetFilesMD5webUrl = @"http://localhost/GetFilesMD5.ashx";
         private static string systemName = "XTHospatal";
         private static string WebServicesURLConfig = "WebServicesURL";
         private static string LastAppNoConfig = "LastAppNo";
-        private static string LastAppNo = string.Empty;
+        private static Dictionary<string,string> updateFiles = null;
+        private static Dictionary<string, string> deleteFiles = null;
+        private static string updateFileList = string.Empty;
 
         /// <summary>
         /// hide
@@ -110,15 +114,51 @@ namespace UI
         {
             //txtServerURL.Text = ConfigurationManager.AppSettings["WebServicesURL"];
             //txtServerURL.Text = GetConfigFormIni();
+            List<app> apps = new List<app>();
             try
             {
                 txtServerURL.Text = GetWebConfig(WebServicesURLConfig);
-                //LastAppNo = GetWebConfig(LastAppNoConfig);
-                LastAppNo = GetServerUpdateFileMD5();
+                //string result = GetServerUpdateFileMD5();
+                string result = GetServerLastFilesMD5();
+                if (result.Length > 0)
+                {
+                    //服务器文件列表
+                    apps = JsonConvert.DeserializeObject<List<app>>(result);
+                }
 
-                //开始检查更新******************************************************************                    ;
-                if (LastAppNo.Equals("NoUpdate",StringComparison.CurrentCultureIgnoreCase) 
-                    || LastAppNo.Equals(GlobalVal.glostrAppNo))
+                //获取本地文件列表
+                DirectoryInfo dir = new DirectoryInfo(System.Environment.CurrentDirectory);
+                FileInfo[] files = dir.GetFiles();
+                string md5 = string.Empty;
+                updateFiles = new Dictionary<string, string>();
+                deleteFiles = new Dictionary<string, string>();
+                for (int f = 0; f < files.Length; f++)
+                {
+                    
+                    md5=Method.GetMD5HashFromFile(files[f].FullName);
+                    if (apps.Exists(p=>p.name== files[f].Name))//如果本地文件在服务器列表中，判断MD5值
+                    {
+                        if (md5 != apps.Find(p => p.name == files[f].Name).md5)
+                        {
+                            updateFiles.Add(files[f].Name, md5);
+                            updateFileList += files[f].Name+"|";
+                        }
+                    }
+                    else//如果本地文件不在服务器列表中，加入删除列表
+                    {
+                        deleteFiles.Add(files[f].Name, md5);
+                    }                    
+                }
+                if (updateFileList.Length > 0)
+                {
+                    updateFileList=updateFileList.Substring(0, updateFileList.LastIndexOf("|"));
+                }
+
+
+                    //LastNos = GetServerUpdateFileMD5();
+
+                    //开始检查更新******************************************************************                    ;
+                if (updateFiles.Count == 0)
                 {
                     //**************************************
                     System.Threading.ThreadStart testWeb = new System.Threading.ThreadStart(TestWebService);
@@ -137,7 +177,7 @@ namespace UI
                     {
                         try
                         {
-                            System.Diagnostics.Process.Start(Application.StartupPath + @"\UpdateApp.exe", LastAppNo);
+                            System.Diagnostics.Process.Start(Application.StartupPath + @"\UpdateApp.exe", updateFileList);
                         }
                         catch (Win32Exception ex)
                         {
@@ -165,8 +205,7 @@ namespace UI
             {
                 MessageBox.Show(ex.Message);
                 return;
-            }
-            
+            }            
         }
 
         /// <summary>
@@ -416,7 +455,29 @@ namespace UI
         private static string GetServerUpdateFileMD5()
         {
             string strRet = string.Empty;
-            WebRequest req = WebRequest.Create(string.Format("{0}?FileName={1}", webUrl2, "Update.zip"));
+            WebRequest req = WebRequest.Create(string.Format("{0}?FileName={1}", GetFileMD5webUrl, "Update.zip"));
+            WebResponse res = req.GetResponse();
+            System.IO.Stream resStream = res.GetResponseStream();
+            Encoding encode = System.Text.Encoding.Default;
+            StreamReader readStream = new StreamReader(resStream, encode);
+            Char[] read = new Char[256];
+            int count = readStream.Read(read, 0, 256);
+            while (count > 0)
+            {
+                String str = new String(read, 0, count);
+                strRet = strRet + str;
+                count = readStream.Read(read, 0, 256);
+            }
+            resStream.Close();
+            readStream.Close();
+            res.Close();
+            return strRet;
+        }
+
+        private static string GetServerLastFilesMD5()
+        {
+            string strRet = string.Empty;
+            WebRequest req = WebRequest.Create(GetFilesMD5webUrl);
             WebResponse res = req.GetResponse();
             System.IO.Stream resStream = res.GetResponseStream();
             Encoding encode = System.Text.Encoding.Default;
@@ -462,6 +523,17 @@ namespace UI
                     MessageBox.Show("不能连接到服务器！", "消息", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
+        }
+
+        class app
+        {
+            public app(string appName, string appMD5)
+            {
+                name = appName;
+                md5 = appMD5;
+            }
+            public string name { get; set; }
+            public string md5 { get; set; }
         }
     }
 }

@@ -11,15 +11,16 @@ using System.Configuration;
 using System.Globalization;
 using System.IO;
 using System.Xml;
+using Newtonsoft.Json;
 
 
 namespace UpdateApp
 {
     public partial class UpdateForm : Form
     {
-        private static string webUrl = @"http://ziyangsoft.com/Config.ashx";
-        private static string webUrl2 = @"http://ziyangsoft.com/filelist.ashx?InstallOrUpdate=Update";
-        private static string webUrl3 = @"http://www.ziyangsoft.com/GetFileMD5.ashx";
+        private static string GitConfigWebUrl = @"http://localhost/Config.ashx";
+        //private static string webUrl2 = @"http://localhost/filelist.ashx?InstallOrUpdate=Update";
+        //private static string webUrl3 = @"http://localhost/GetFileMD5.ashx";
         private static string systemName = "XTHospatal";
         delegate void ShowProgressDelegate(int totalStep, int currentStep);
         private static string UpdataURLConfig = "UpdataURL";
@@ -33,7 +34,7 @@ namespace UpdateApp
         private static long upsize;//已更新文件大小 
         private static string fileName="Update.zip";//当前文件名 
         private static long filesize;//当前文件大小
-        private static string appPath = @"C:\XTHospatal";
+        private static string appPath = @"C:\XTHospatal";//安装路径，默认C盘
         private static string LastAppNoConfig = "LastAppNo";
         public UpdateForm()
         {
@@ -56,15 +57,16 @@ namespace UpdateApp
             }
 
             //if (string.IsNullOrEmpty(Common.globalAppVNo)&& string.IsNullOrEmpty(Common.globalAppMD5No))
-            if (string.IsNullOrEmpty(Common.globalAppMD5No))
+            if (string.IsNullOrEmpty(Common.globalUpdateList))
             {
-                this.Height = 276;                
+                this.Height = 450;                
             }
             else
             {
                 this.Height = 142;                
                 //this.Text ="自动更新程序---------" + Common.globalAppVNo + "@" + Common.globalAppMD5No;
-                this.Text = "自动更新程序=====>" + Common.globalAppMD5No;
+
+                this.Text = "自动更新程序=====>" + Common.globalUpdateList;
                 UpdaterStart();
             }
         }
@@ -86,7 +88,7 @@ namespace UpdateApp
                 //string[] strTemp = LastAppNo.Split('@');
                 //Common.globalAppVNo = strTemp[0];
                 //Common.globalAppMD5No = strTemp[1];
-                Common.globalAppMD5No = LastAppNo;
+                //Common.globalAppMD5No = LastAppNo;
                 UpdaterStart();
                 //btnUpdate.Enabled = false;
             }
@@ -202,7 +204,7 @@ namespace UpdateApp
             try
             {
                 string strRet = string.Empty;
-                WebRequest req = WebRequest.Create(webUrl2);
+                WebRequest req = WebRequest.Create(@"http://ziyangsoft.com/filelist.ashx?InstallOrUpdate=Update");
                 WebResponse res = req.GetResponse();
                 System.IO.Stream resStream = res.GetResponseStream();
                 Encoding encode = System.Text.Encoding.Default;
@@ -225,7 +227,12 @@ namespace UpdateApp
             finally
             {
             }
-        } 
+        }
+
+        private static void GetUpdateFileList()
+        {
+            fileNames = Common.globalUpdateList.Split('|');
+        }
 
         /// <summary> 
         /// 开始更新 
@@ -255,19 +262,19 @@ namespace UpdateApp
                 }
                 else
                 {
-                    if (fileName.EndsWith(".zip"))
-                    {
+                    //if (fileName.EndsWith(".zip"))
+                    //{
                         //获取程序包的MD5值
-                        string appMD5 = Common.GetMD5HashFromFile(appPath + "\\" + fileName);
-                        if (!appMD5.Equals(Common.globalAppMD5No))
-                        {
-                            MessageBox.Show("所下载的更新包不完整，请尝试重新启动程序。");
-                            Application.Exit();
-                            return;
-                        }
+                        //string appMD5 = Common.GetMD5HashFromFile(appPath + "\\" + fileName);
+                        //if (!appMD5.Equals(Common.globalAppMD5No))
+                        //{
+                        //    MessageBox.Show("所下载的更新包不完整，请尝试重新启动程序。");
+                        //    Application.Exit();
+                        //    return;
+                        //}
                         //解压缩
-                        Common.UnZipFile(appPath + "\\" + fileName, appPath);
-                    }
+                        //Common.UnZipFile(appPath + "\\" + fileName, appPath);
+                    //}
                     //移动下载包
                     //File.Move(Application.StartupPath + "\\AutoUpdater\\" + fileName, Application.StartupPath + "\\" + fileName);
                     if (num < fileNames.Length)
@@ -279,12 +286,19 @@ namespace UpdateApp
                         //设置最新的程序号
                         //string[] newAppNo = { Common.globalAppVNo, Common.globalAppMD5No };
                         //SetConfigAppNo(newAppNo);
-                        SetConfigAppNo(Common.globalAppMD5No);
+                        //SetConfigAppNo(Common.globalAppMD5No);//根据实际服务器文件列表更新,不需要更新本地配置列表
+                        int i = 0;
+                        while (i<50)
+                        {
+                            Thread.Sleep(100);
+                            i++;
+                        }
                         UpdaterClose();
                     }
                 }
             };
-            GetDownloadFileList();
+            //GetDownloadFileList();
+            GetUpdateFileList();
             DownloadFile(num);
         }
 
@@ -314,7 +328,8 @@ namespace UpdateApp
                     Directory.CreateDirectory(appPath);
                 }
                 string DownLoadURL = updateURL + @"/" + fileName;
-                string SavePathName = appPath + "\\" + fileName;
+                //string SavePathName = appPath + "\\" + fileName;
+                string SavePathName = appPath + "\\" + fileName.Substring(0, fileName.LastIndexOf(".zip"));
                 this.downWebClient.DownloadFileAsync(
                     new Uri(DownLoadURL),
                     SavePathName);
@@ -382,13 +397,13 @@ namespace UpdateApp
 
         private void btnMD5_Click(object sender, EventArgs e)
         {
-            txtMD5.Text = Common.GetMD5HashFromFile(txtMD5.Text);
+            listBox1.Items.Add(Common.GetMD5HashFromFile(txtMD5.Text));
         }
 
         private static string GetWebConfig(string ConfigName)
         {
             string strRet = string.Empty;
-            WebRequest req = WebRequest.Create(string.Format("{0}?SystemName={1}&ConfigName={2}", webUrl, systemName, ConfigName));
+            WebRequest req = WebRequest.Create(string.Format("{0}?SystemName={1}&ConfigName={2}", GitConfigWebUrl, systemName, ConfigName));
             WebResponse res = req.GetResponse();
             System.IO.Stream resStream = res.GetResponseStream();
             Encoding encode = System.Text.Encoding.Default;
@@ -410,7 +425,7 @@ namespace UpdateApp
         private static string GetServerUpdateFileMD5()
         {
             string strRet = string.Empty;
-            WebRequest req = WebRequest.Create(string.Format("{0}?FileName={1}", webUrl3, "Update.zip"));
+            WebRequest req = WebRequest.Create(string.Format("{0}?FileName={1}", @"http://www.ziyangsoft.com/GetFileMD5.ashx", "Update.zip"));
             WebResponse res = req.GetResponse();
             System.IO.Stream resStream = res.GetResponseStream();
             Encoding encode = System.Text.Encoding.Default;
@@ -427,6 +442,44 @@ namespace UpdateApp
             readStream.Close();
             res.Close();
             return strRet;
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            listBox1.Items.Clear();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            //DirectoryInfo directoryInfo = new DirectoryInfo(System.Environment.CurrentDirectory);
+            DirectoryInfo directoryInfo = new DirectoryInfo(@"D:\PublishWeb\App\Install");
+            FileInfo[] files = directoryInfo.GetFiles();
+            string MD5s=string.Empty;
+            List<app> apps = new List<app>();
+            for(int i=0;i<files.Length;i++)
+            {
+                app app = new app(files[i].Name, Common.GetMD5HashFromFile(files[i].FullName));
+                apps.Add(app);
+            }
+            txtMD5.Text = JsonConvert.SerializeObject(apps);
+            apps.Clear();
+            apps = JsonConvert.DeserializeObject<List<app>>(txtMD5.Text);
+
+            for(int j=0;j<apps.Count;j++)
+            {
+                listBox1.Items.Add(apps[j].name+":"+apps[j].md5);            
+            }
+        }
+
+        class app
+        {
+            public app(string appName, string appMD5)
+            {
+                name = appName;
+                md5 = appMD5;
+            }
+            public string name { get; set; }
+            public string md5 { get; set; }
         }
     }
 }

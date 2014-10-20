@@ -30,7 +30,7 @@
         </asp:contentplaceholder>
 	</div>	
 	<div id="footer">
-		版权所有©西安运动创伤医院 技术支持：<a href="http://www.ziyangsoft.com/" target="_blank">子杨软件</a> <a href="http://www.ziyangsoft.com/App/install.zip" target="_blank">安装</a></div>	
+		版权所有©西安运动创伤医院 技术支持：<a href="http://www.ziyangsoft.com/" target="_blank">子杨软件</a> <a href="/App/install.zip" target="_blank">安装</a></div>	
 </div>
     </form>
 </body>

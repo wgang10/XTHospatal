@@ -165,9 +165,11 @@ namespace UpdateApp
             }
         }
 
-        public static string globalAppVNo = string.Empty;
+        //public static string globalAppVNo = string.Empty;
 
-        public static string globalAppMD5No = string.Empty;
+        //public static string globalAppMD5No = string.Empty;
+
+        public static string globalUpdateList = string.Empty;
 
         /// <summary>
         /// 从配置文件中获取配置项

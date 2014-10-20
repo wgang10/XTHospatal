@@ -46,7 +46,7 @@ namespace UpdateApp
                         //string[] strTemp = args[0].Split('@');
                         //Common.globalAppVNo = strTemp[0];
                         //Common.globalAppMD5No = strTemp[1];
-                        Common.globalAppMD5No = args[0];
+                        Common.globalUpdateList = args[0];
                     }
                     catch { }
                 }

@@ -37,6 +37,9 @@
             this.btnUnZip = new System.Windows.Forms.Button();
             this.btnMD5 = new System.Windows.Forms.Button();
             this.txtMD5 = new System.Windows.Forms.TextBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // progressBarFile
@@ -56,7 +59,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(478, 214);
+            this.button1.Location = new System.Drawing.Point(478, 359);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 2;
@@ -66,7 +69,7 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(380, 214);
+            this.btnUpdate.Location = new System.Drawing.Point(478, 272);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 23);
             this.btnUpdate.TabIndex = 3;
@@ -91,7 +94,7 @@
             // 
             // btnUnZip
             // 
-            this.btnUnZip.Location = new System.Drawing.Point(287, 214);
+            this.btnUnZip.Location = new System.Drawing.Point(478, 243);
             this.btnUnZip.Name = "btnUnZip";
             this.btnUnZip.Size = new System.Drawing.Size(75, 23);
             this.btnUnZip.TabIndex = 6;
@@ -101,7 +104,7 @@
             // 
             // btnMD5
             // 
-            this.btnMD5.Location = new System.Drawing.Point(196, 214);
+            this.btnMD5.Location = new System.Drawing.Point(478, 214);
             this.btnMD5.Name = "btnMD5";
             this.btnMD5.Size = new System.Drawing.Size(75, 23);
             this.btnMD5.TabIndex = 7;
@@ -116,11 +119,43 @@
             this.txtMD5.Size = new System.Drawing.Size(541, 21);
             this.txtMD5.TabIndex = 8;
             // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 12;
+            this.listBox1.Location = new System.Drawing.Point(14, 215);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(458, 196);
+            this.listBox1.TabIndex = 9;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(478, 330);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 10;
+            this.button2.Text = "clear";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(478, 301);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 11;
+            this.button3.Text = "Json";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // UpdateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(565, 251);
+            this.ClientSize = new System.Drawing.Size(565, 427);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.txtMD5);
             this.Controls.Add(this.btnMD5);
             this.Controls.Add(this.btnUnZip);
@@ -151,5 +186,8 @@
         private System.Windows.Forms.Button btnUnZip;
         private System.Windows.Forms.Button btnMD5;
         private System.Windows.Forms.TextBox txtMD5;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
     }
 }

@@ -14,11 +14,10 @@ namespace Install
 {
   public partial class Install : Form
   {
-      private static string webUrl = @"http://ziyangsoft.com/Config.ashx";
-      private static string webUrl2 = @"http://ziyangsoft.com/filelist.ashx?InstallOrUpdate=Install";
+      private static string GetConfigWebUrl = @"http://localhost/Config.ashx";
+      private static string GetInstallFileListWebUrl = @"http://localhost/filelist.ashx";
       private static string systemName = "XTHospatal";
       private static string InstallURLConfig = "InstallURL";
-      private static string InstallFileNameConfig = "InstallFileName";
       private static string InstallPathConfig = "InstallPath";
       private static string InstallURL = string.Empty;
     private WebClient downWebClient = new WebClient();
@@ -43,7 +42,6 @@ namespace Install
         try
         {
             InstallURL = GetWebConfig(InstallURLConfig);
-            fileName = GetWebConfig(InstallFileNameConfig);
             appPath = GetWebConfig(InstallPathConfig);
         }
         catch (Exception ex)
@@ -137,12 +135,71 @@ namespace Install
           }
           else
           {
-            UpdaterClose();
+              //UpdaterClose();//不需要解压
+              //fileName = GetWebConfig(InstallFileNameConfig);
+              //appPath = GetWebConfig(InstallPathConfig);
+              //System.Console.WriteLine("开始解压...");
+              //UnZipFile(appPath + "\\" + fileName, appPath);
+              System.Console.WriteLine("开始配置程序...");
+              //Thread t1 = new Thread(new ThreadStart(CreateDesktopLnk));
+              //t1.Start();
+              //while (t1.ThreadState == ThreadState.Running)
+              //{
+              //    Thread.Sleep(500);
+              //}
+              System.Console.WriteLine("配置完成，开始启动程序...");
+              int i = 0;
+              while (!File.Exists(appPath + @"\UI.exe") && i < 20)
+              {
+                  Thread.Sleep(1000);
+                  System.Console.WriteLine(i.ToString() + "...");
+                  i++;
+              }
+
+              try
+              {
+                  System.Diagnostics.Process.Start(appPath + @"\UI.exe","Install");
+              }
+              catch (Win32Exception e)
+              {
+                  MeBox(e.Message);
+              }
+              catch (Exception e)
+              {
+                  MeBox(e.Message);
+              }
+              finally
+              {
+                  Application.Exit();
+              }
           }
         }
       };
       DownloadFile(num);
     }
+
+    //private static void CreateDesktopLnk()
+    //{
+    //    System.Console.WriteLine("开始创建桌面快捷方式...");
+    //    int i = 0;
+    //    while (!File.Exists(appPath + @"\UI.exe") && i < 20)
+    //    {
+    //        Thread.Sleep(500);
+    //        System.Console.WriteLine(i.ToString() + "...");
+    //        i++;
+    //    }
+    //    string DesktopPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Desktop);//得到桌面文件夹 
+    //    IWshRuntimeLibrary.WshShell shell = new IWshRuntimeLibrary.WshShellClass();
+    //    IWshRuntimeLibrary.IWshShortcut shortcut = (IWshRuntimeLibrary.IWshShortcut)shell.CreateShortcut(DesktopPath + "\\体检系统.lnk");
+    //    shortcut.TargetPath = appPath + @"\UI.exe";
+    //    shortcut.Arguments = "";// 参数 
+    //    shortcut.Description = "体检系统";
+    //    shortcut.WorkingDirectory = appPath;//程序所在文件夹，在快捷方式图标点击右键可以看到此属性 
+    //    shortcut.IconLocation = appPath + @"\UI.exe,0";//图标 
+    //    shortcut.Hotkey = "CTRL+SHIFT+T";//热键 
+    //    shortcut.WindowStyle = 1;
+    //    shortcut.Save();
+    //}
 
     /// <summary> 
     /// 下载文件 
@@ -186,11 +243,17 @@ namespace Install
     /// </summary> 
     private static void GetDownloadFileList()
     {
-        fileNames = new string[] { "Install.zip", "UnZip.exe.zip", "ICSharpCode.SharpZipLib.dll.zip" };
+        fileNames = new string[] { "ICSharpCode.SharpZipLib.dll.zip"
+        ,"Interop.IWshRuntimeLibrary.dll.zip"
+        ,"log4net.dll.zip" 
+        ,"System.Windows.Forms.DataVisualization.dll.zip"
+        ,"UI.exe.config.zip"
+        ,"UI.exe.zip"
+        ,"UpdateApp.exe.zip"};
         try
         {
             string strRet = string.Empty;
-            WebRequest req = WebRequest.Create(webUrl2);
+            WebRequest req = WebRequest.Create(GetInstallFileListWebUrl);
             WebResponse res = req.GetResponse();
             System.IO.Stream resStream = res.GetResponseStream();
             Encoding encode = System.Text.Encoding.Default;
@@ -283,7 +346,7 @@ namespace Install
     private static string GetWebConfig(string ConfigName)
     {
         string strRet = string.Empty;
-        WebRequest req = WebRequest.Create(string.Format("{0}?SystemName={1}&ConfigName={2}", webUrl,systemName,ConfigName));
+        WebRequest req = WebRequest.Create(string.Format("{0}?SystemName={1}&ConfigName={2}", GetConfigWebUrl,systemName,ConfigName));
         WebResponse res = req.GetResponse();
         System.IO.Stream resStream = res.GetResponseStream();
         Encoding encode = System.Text.Encoding.Default;
