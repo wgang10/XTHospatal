@@ -75,27 +75,27 @@
           </tr>
           <tr>
             <td>总胆固醇(TC):<span class="ReultStyle"><%=strHY_TC%></span></td>
-            <td>mmol/L 参考 2.33-5.69 </td>
+            <td>mmol/L 参考 ≦5.60 </td>
             <td>血糖(GLU):<span class="ReultStyle"><%=strGLU%></span></td>
-            <td>mmol/L 参考 3.9-6.1 </td>
+            <td>mmol/L 参考 3.3-6.1 </td>
           </tr>
           <tr>
             <td>甘油三酯(TG):<span class="ReultStyle"><%=strHY_TG%></span></td>
-            <td>mmol/L 参考 0.56-1.69</td>
+            <td>mmol/L 参考 ≦2.30</td>
             <td class="boldStyle">肾功</td>
             <td>&nbsp;</td>
           </tr>
           <tr>
             <td>高密度脂蛋白胆固醇(HDL-C):<span class="ReultStyle"><%=strHY_HDL_C%></span></td>
-            <td>mmol/L 参考 1.03-1.55</td>
+            <td>mmol/L 参考 1.20-1.68</td>
             <td>尿素(urea):<span class="ReultStyle"><%=strUREA%></span></td>
-            <td>mmol/L 参考 2.8-7.2 </td>
+            <td>mmol/L 参考 1.7-8.3 </td>
           </tr>
           <tr>
             <td>低密度脂蛋白胆固醇(LDL-C):<span class="ReultStyle"><%=strHYLDLC%></span></td>
             <td>mmol/L参考 2.07-3.10</td>
             <td>肌酐(Cr):<span class="ReultStyle"><%=strCR%></span></td>
-            <td>umol/L 参考 34-140</td>
+            <td>umol/L 参考 44.0-106.0</td>
           </tr>
           <tr>
             <td>载脂蛋白AI(APOAI):<span class="ReultStyle"><%=strHYAPOAI%></span></td>
@@ -117,19 +117,19 @@
           </tr>
           <tr>
             <td>总胆红素(TBIL):<span class="ReultStyle"><%=strHY_TBIL%></span></td>
-            <td>u mol/L 参考 2-18</td>
+            <td>u mol/L 参考 5.1-19.0</td>
             <td>甲胎蛋白(AFP):<span class="ReultStyle"><%=strAFP%></span></td>
             <td>ng/L 参考 ≦20</td>
           </tr>
           <tr>
             <td>直接胆红素(DBIL):<span class="ReultStyle"><%=strHY_DBIL%></span></td>
-            <td>u mol/L 参考 2-8</td>
+            <td>u mol/L 参考 1.7-6.8</td>
             <td>癌胚抗原(CEA):<span class="ReultStyle"><%=strCEA%></span></td>
             <td>ng/L 参考 ≦5 </td>
           </tr>
           <tr>
             <td>总蛋白(TP):<span class="ReultStyle"><%=strHY_TP%></span></td>
-            <td>g/L 参考 60-80 </td>
+            <td>g/L 参考 38.0-51.0 </td>
             <td></td>
             <td>&nbsp;</td>
           </tr>
@@ -153,7 +153,7 @@
           </tr>
           <tr>
             <td>γ-谷胺酰转肽酶(γ-GT):<span class="ReultStyle"><%=strHYGT%></span></td>
-            <td colspan="2">U/L 参考 男11-50 女7-32</td>
+            <td colspan="2">U/L 参考 9.0-61.0</td>
             <td>&nbsp;</td>
           </tr>
           <tr>

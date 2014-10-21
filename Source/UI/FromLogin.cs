@@ -114,79 +114,100 @@ namespace UI
         {
             //txtServerURL.Text = ConfigurationManager.AppSettings["WebServicesURL"];
             //txtServerURL.Text = GetConfigFormIni();
-            List<app> apps = new List<app>();
             try
             {
                 txtServerURL.Text = GetWebConfig(WebServicesURLConfig);
-                //string result = GetServerUpdateFileMD5();
-                string result = GetServerLastFilesMD5();
-                if (result.Length > 0)
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return;
+            }
+            if (GlobalVal.gloStrTerminalCD.Equals("Install", StringComparison.CurrentCultureIgnoreCase)
+                || GlobalVal.gloStrTerminalCD.Equals("Update", StringComparison.CurrentCultureIgnoreCase))
+            {
+                //**************************************
+                System.Threading.ThreadStart testWeb = new System.Threading.ThreadStart(TestWebService);
+                System.Threading.Thread testWebThread = new System.Threading.Thread(testWeb);
+                testWebThread.Start();
+                //**************************************
+                this.Height = windowHeight1;
+                btnConfig.Text = "▼";
+                this.Activate();
+            }
+            else
+            {
+                List<app> apps = new List<app>();
+                try
                 {
-                    //服务器文件列表
-                    apps = JsonConvert.DeserializeObject<List<app>>(result);
-                }
-
-                //获取本地文件列表
-                DirectoryInfo dir = new DirectoryInfo(System.Environment.CurrentDirectory);
-                FileInfo[] files = dir.GetFiles();
-                string md5 = string.Empty;
-                updateFiles = new Dictionary<string, string>();
-                deleteFiles = new Dictionary<string, string>();
-                for (int f = 0; f < files.Length; f++)
-                {
-                    
-                    md5=Method.GetMD5HashFromFile(files[f].FullName);
-                    if (apps.Exists(p=>p.name== files[f].Name))//如果本地文件在服务器列表中，判断MD5值
+                    //txtServerURL.Text = GetWebConfig(WebServicesURLConfig);
+                    //string result = GetServerUpdateFileMD5();
+                    string result = GetServerLastFilesMD5();
+                    if (result.Length > 0)
                     {
-                        if (md5 != apps.Find(p => p.name == files[f].Name).md5)
+                        //服务器文件列表
+                        apps = JsonConvert.DeserializeObject<List<app>>(result);
+                    }
+
+                    //获取本地文件列表
+                    DirectoryInfo dir = new DirectoryInfo(System.Environment.CurrentDirectory);
+                    FileInfo[] files = dir.GetFiles();
+                    string md5 = string.Empty;
+                    updateFiles = new Dictionary<string, string>();
+                    deleteFiles = new Dictionary<string, string>();
+                    bool isFind = false;
+                    for (int f = 0; f < files.Length; f++)//遍历所有本地文件,找本地和服务器端都存在的文件然后对比MD5
+                    {
+                        isFind = false;
+                        foreach (app p in apps)//同服务器文件列表对比
                         {
-                            updateFiles.Add(files[f].Name, md5);
-                            updateFileList += files[f].Name+"|";
+                            if (p.name.Equals(files[f].Name + ".zip", StringComparison.InvariantCultureIgnoreCase))
+                            {
+                                md5 = Method.GetMD5HashFromFile(files[f].FullName);
+                                isFind = true;
+                                if (!p.md5.Equals(md5))//如果文件名相同，对比MD5
+                                {
+                                    updateFiles.Add(files[f].Name + ".zip", md5);
+                                    updateFileList += files[f].Name + ".zip|";
+                                }
+                                break;
+                            }
+                        }
+
+                        if (!isFind)//如果本地文件不在服务器列表中，加入删除列表
+                        {
+                            deleteFiles.Add(files[f].Name, "");
                         }
                     }
-                    else//如果本地文件不在服务器列表中，加入删除列表
+
+                    for (int k = 0; k < apps.Count; k++)//找到本地不存在，服务器端存在的文件列表
                     {
-                        deleteFiles.Add(files[f].Name, md5);
-                    }                    
-                }
-                if (updateFileList.Length > 0)
-                {
-                    updateFileList=updateFileList.Substring(0, updateFileList.LastIndexOf("|"));
-                }
+                        isFind = false;
+                        for (int l = 0; l < files.Length; l++)
+                        {
+                            if ((files[l].Name + ".zip").Equals(apps[k].name, StringComparison.InvariantCultureIgnoreCase))
+                            {
+                                isFind = true;
+                                break;
+                            }
+                        }
+                        if (!isFind)
+                        {
+                            updateFiles.Add(apps[k].name, "");
+                            updateFileList += apps[k].name + "|";
+                        }
+                    }
+
+                    if (updateFileList.Length > 0)
+                    {
+                        updateFileList = updateFileList.Substring(0, updateFileList.LastIndexOf("|"));
+                    }
 
 
                     //LastNos = GetServerUpdateFileMD5();
 
                     //开始检查更新******************************************************************                    ;
-                if (updateFiles.Count == 0)
-                {
-                    //**************************************
-                    System.Threading.ThreadStart testWeb = new System.Threading.ThreadStart(TestWebService);
-                    System.Threading.Thread testWebThread = new System.Threading.Thread(testWeb);
-                    testWebThread.Start();
-                    //**************************************
-                    this.Height = windowHeight1;
-                    btnConfig.Text = "▼";
-                    this.Activate();
-                    //Method.CmbDataBound("YearMonth", cmbYearMonth);
-                }
-                //****************************************************************************
-                else
-                {
-                    if (MessageBox.Show("发现有新程序可以更新，是否更新？", "发现更新", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                    {
-                        try
-                        {
-                            System.Diagnostics.Process.Start(Application.StartupPath + @"\UpdateApp.exe", updateFileList);
-                        }
-                        catch (Win32Exception ex)
-                        {
-                            MessageBox.Show(ex.Message);
-                        }
-                        GlobalVal.blCloseForm = true;
-                        Application.Exit();
-                    }
-                    else
+                    if (updateFiles.Count == 0)
                     {
                         //**************************************
                         System.Threading.ThreadStart testWeb = new System.Threading.ThreadStart(TestWebService);
@@ -198,14 +219,43 @@ namespace UI
                         this.Activate();
                         //Method.CmbDataBound("YearMonth", cmbYearMonth);
                     }
+                    //****************************************************************************
+                    else
+                    {
+                        if (MessageBox.Show("发现有新程序可以更新，是否更新？\n" + updateFileList, "发现更新：" + updateFiles.Count.ToString() + "个文件", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        {
+                            try
+                            {
+                                System.Diagnostics.Process.Start(Application.StartupPath + @"\UpdateApp.exe", updateFileList);
+                            }
+                            catch (Win32Exception ex)
+                            {
+                                MessageBox.Show(ex.Message);
+                            }
+                            GlobalVal.blCloseForm = true;
+                            Application.Exit();
+                        }
+                        else
+                        {
+                            //**************************************
+                            System.Threading.ThreadStart testWeb = new System.Threading.ThreadStart(TestWebService);
+                            System.Threading.Thread testWebThread = new System.Threading.Thread(testWeb);
+                            testWebThread.Start();
+                            //**************************************
+                            this.Height = windowHeight1;
+                            btnConfig.Text = "▼";
+                            this.Activate();
+                            //Method.CmbDataBound("YearMonth", cmbYearMonth);
+                        }
+                    }
+
                 }
-                
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    return;
+                }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                return;
-            }            
         }
 
         /// <summary>

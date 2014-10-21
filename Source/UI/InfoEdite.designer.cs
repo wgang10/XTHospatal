@@ -767,7 +767,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnAdd.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnAdd.Location = new System.Drawing.Point(663, 324);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(91, 30);
@@ -1248,9 +1248,9 @@
             this.label144.AutoSize = true;
             this.label144.Location = new System.Drawing.Point(232, 38);
             this.label144.Name = "label144";
-            this.label144.Size = new System.Drawing.Size(113, 12);
+            this.label144.Size = new System.Drawing.Size(137, 12);
             this.label144.TabIndex = 9;
-            this.label144.Text = "umol/L 参考 34-140";
+            this.label144.Text = "umol/L 参考 44.0-106.0";
             // 
             // label145
             // 
@@ -1277,7 +1277,7 @@
             this.label130.Name = "label130";
             this.label130.Size = new System.Drawing.Size(119, 12);
             this.label130.TabIndex = 6;
-            this.label130.Text = "mmol/L 参考 2.8-7.2";
+            this.label130.Text = "mmol/L 参考 1.7-8.3";
             // 
             // label142
             // 
@@ -1325,7 +1325,7 @@
             this.label141.Name = "label141";
             this.label141.Size = new System.Drawing.Size(119, 12);
             this.label141.TabIndex = 6;
-            this.label141.Text = "mmol/L 参考 3.9-6.1";
+            this.label141.Text = "mmol/L 参考 3.3-6.1";
             // 
             // label146
             // 
@@ -1346,7 +1346,7 @@
             // 
             // btnHY_Add
             // 
-            this.btnHY_Add.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnHY_Add.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnHY_Add.Location = new System.Drawing.Point(663, 324);
             this.btnHY_Add.Name = "btnHY_Add";
             this.btnHY_Add.Size = new System.Drawing.Size(91, 30);
@@ -1636,9 +1636,9 @@
             this.label181.AutoSize = true;
             this.label181.Location = new System.Drawing.Point(229, 154);
             this.label181.Name = "label181";
-            this.label181.Size = new System.Drawing.Size(113, 12);
+            this.label181.Size = new System.Drawing.Size(77, 12);
             this.label181.TabIndex = 21;
-            this.label181.Text = "U/L 男11-50 女7-32";
+            this.label181.Text = "U/L 9.0-61.0";
             // 
             // txtHYGT
             // 
@@ -1701,9 +1701,9 @@
             this.label29.AutoSize = true;
             this.label29.Location = new System.Drawing.Point(229, 85);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(113, 12);
+            this.label29.Size = new System.Drawing.Size(137, 12);
             this.label29.TabIndex = 14;
-            this.label29.Text = "g/L     参考 35-55";
+            this.label29.Text = "g/L     参考 38.0-51.0";
             // 
             // label28
             // 
@@ -1810,18 +1810,18 @@
             this.label23.AutoSize = true;
             this.label23.Location = new System.Drawing.Point(229, 39);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(101, 12);
+            this.label23.Size = new System.Drawing.Size(125, 12);
             this.label23.TabIndex = 2;
-            this.label23.Text = "u mol/L 参考 2-8";
+            this.label23.Text = "u mol/L 参考 1.7-6.8";
             // 
             // label22
             // 
             this.label22.AutoSize = true;
             this.label22.Location = new System.Drawing.Point(229, 15);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(107, 12);
+            this.label22.Size = new System.Drawing.Size(131, 12);
             this.label22.TabIndex = 1;
-            this.label22.Text = "u mol/L 参考 2-18";
+            this.label22.Text = "u mol/L 参考 5.1-19.0";
             // 
             // groupBox1
             // 
@@ -1967,9 +1967,9 @@
             this.label19.AutoSize = true;
             this.label19.Location = new System.Drawing.Point(232, 16);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(131, 12);
+            this.label19.Size = new System.Drawing.Size(107, 12);
             this.label19.TabIndex = 6;
-            this.label19.Text = "mmol/L 参考 2.33-5.69";
+            this.label19.Text = "mmol/L 参考≦5.60";
             // 
             // label18
             // 
@@ -1978,16 +1978,16 @@
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(131, 12);
             this.label18.TabIndex = 5;
-            this.label18.Text = "mmol/L 参考 1.03-1.55";
+            this.label18.Text = "mmol/L 参考 1.20-1.68";
             // 
             // label17
             // 
             this.label17.AutoSize = true;
             this.label17.Location = new System.Drawing.Point(232, 37);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(131, 12);
+            this.label17.Size = new System.Drawing.Size(107, 12);
             this.label17.TabIndex = 4;
-            this.label17.Text = "mmol/L 参考 0.56-1.69";
+            this.label17.Text = "mmol/L 参考≦2.30";
             // 
             // label16
             // 
@@ -2046,7 +2046,7 @@
             // btnSaveMBFeatures
             // 
             this.btnSaveMBFeatures.BackColor = System.Drawing.Color.Transparent;
-            this.btnSaveMBFeatures.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnSaveMBFeatures.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnSaveMBFeatures.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnSaveMBFeatures.Location = new System.Drawing.Point(329, 324);
             this.btnSaveMBFeatures.Name = "btnSaveMBFeatures";
@@ -2127,7 +2127,7 @@
             // 
             // btnInputMBFeatures
             // 
-            this.btnInputMBFeatures.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnInputMBFeatures.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnInputMBFeatures.Location = new System.Drawing.Point(555, 324);
             this.btnInputMBFeatures.Name = "btnInputMBFeatures";
             this.btnInputMBFeatures.Size = new System.Drawing.Size(91, 30);
@@ -2207,7 +2207,7 @@
             // 
             // btnTG_WGAdd
             // 
-            this.btnTG_WGAdd.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnTG_WGAdd.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnTG_WGAdd.Location = new System.Drawing.Point(663, 324);
             this.btnTG_WGAdd.Name = "btnTG_WGAdd";
             this.btnTG_WGAdd.Size = new System.Drawing.Size(91, 30);
@@ -2647,7 +2647,7 @@
             // 
             // btnSaveMBSurgery
             // 
-            this.btnSaveMBSurgery.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnSaveMBSurgery.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnSaveMBSurgery.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnSaveMBSurgery.Location = new System.Drawing.Point(257, 324);
             this.btnSaveMBSurgery.Name = "btnSaveMBSurgery";
@@ -3048,7 +3048,7 @@
             // 
             // btnInputMBSurgery
             // 
-            this.btnInputMBSurgery.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnInputMBSurgery.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnInputMBSurgery.Location = new System.Drawing.Point(555, 324);
             this.btnInputMBSurgery.Name = "btnInputMBSurgery";
             this.btnInputMBSurgery.Size = new System.Drawing.Size(91, 30);
@@ -3059,7 +3059,7 @@
             // 
             // btnTG_WKAdd
             // 
-            this.btnTG_WKAdd.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnTG_WKAdd.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnTG_WKAdd.Location = new System.Drawing.Point(663, 324);
             this.btnTG_WKAdd.Name = "btnTG_WKAdd";
             this.btnTG_WKAdd.Size = new System.Drawing.Size(91, 30);
@@ -3083,7 +3083,7 @@
             // 
             // btnSaveMBInternalMedicine
             // 
-            this.btnSaveMBInternalMedicine.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnSaveMBInternalMedicine.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnSaveMBInternalMedicine.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnSaveMBInternalMedicine.Location = new System.Drawing.Point(252, 324);
             this.btnSaveMBInternalMedicine.Name = "btnSaveMBInternalMedicine";
@@ -3354,7 +3354,7 @@
             // 
             // btnInputMBInternalMedicine
             // 
-            this.btnInputMBInternalMedicine.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnInputMBInternalMedicine.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnInputMBInternalMedicine.Location = new System.Drawing.Point(555, 324);
             this.btnInputMBInternalMedicine.Name = "btnInputMBInternalMedicine";
             this.btnInputMBInternalMedicine.Size = new System.Drawing.Size(91, 30);
@@ -3365,7 +3365,7 @@
             // 
             // btnTG_NKAdd
             // 
-            this.btnTG_NKAdd.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnTG_NKAdd.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnTG_NKAdd.Location = new System.Drawing.Point(663, 324);
             this.btnTG_NKAdd.Name = "btnTG_NKAdd";
             this.btnTG_NKAdd.Size = new System.Drawing.Size(91, 30);
@@ -3409,7 +3409,7 @@
             // 
             // btnSaveMBECG
             // 
-            this.btnSaveMBECG.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnSaveMBECG.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnSaveMBECG.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnSaveMBECG.Location = new System.Drawing.Point(252, 324);
             this.btnSaveMBECG.Name = "btnSaveMBECG";
@@ -3421,7 +3421,7 @@
             // 
             // btnInputMBECG
             // 
-            this.btnInputMBECG.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnInputMBECG.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnInputMBECG.Location = new System.Drawing.Point(558, 324);
             this.btnInputMBECG.Name = "btnInputMBECG";
             this.btnInputMBECG.Size = new System.Drawing.Size(91, 30);
@@ -3432,7 +3432,7 @@
             // 
             // btnECGAdd
             // 
-            this.btnECGAdd.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnECGAdd.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnECGAdd.Location = new System.Drawing.Point(663, 324);
             this.btnECGAdd.Name = "btnECGAdd";
             this.btnECGAdd.Size = new System.Drawing.Size(91, 30);
@@ -3672,7 +3672,7 @@
             // 
             // btnSaveMBXray
             // 
-            this.btnSaveMBXray.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnSaveMBXray.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnSaveMBXray.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnSaveMBXray.Location = new System.Drawing.Point(250, 324);
             this.btnSaveMBXray.Name = "btnSaveMBXray";
@@ -3684,7 +3684,7 @@
             // 
             // btnInputMBXray
             // 
-            this.btnInputMBXray.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnInputMBXray.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnInputMBXray.Location = new System.Drawing.Point(555, 324);
             this.btnInputMBXray.Name = "btnInputMBXray";
             this.btnInputMBXray.Size = new System.Drawing.Size(91, 30);
@@ -3695,7 +3695,7 @@
             // 
             // btnXRayImageAdd
             // 
-            this.btnXRayImageAdd.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnXRayImageAdd.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnXRayImageAdd.Location = new System.Drawing.Point(663, 324);
             this.btnXRayImageAdd.Name = "btnXRayImageAdd";
             this.btnXRayImageAdd.Size = new System.Drawing.Size(91, 30);
@@ -3922,7 +3922,7 @@
             // 
             // btnSaveMBBexamination
             // 
-            this.btnSaveMBBexamination.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnSaveMBBexamination.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnSaveMBBexamination.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnSaveMBBexamination.Location = new System.Drawing.Point(251, 324);
             this.btnSaveMBBexamination.Name = "btnSaveMBBexamination";
@@ -3934,7 +3934,7 @@
             // 
             // btnInputMBBexamination
             // 
-            this.btnInputMBBexamination.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnInputMBBexamination.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnInputMBBexamination.Location = new System.Drawing.Point(555, 324);
             this.btnInputMBBexamination.Name = "btnInputMBBexamination";
             this.btnInputMBBexamination.Size = new System.Drawing.Size(91, 30);
@@ -3945,7 +3945,7 @@
             // 
             // btnBAdd
             // 
-            this.btnBAdd.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnBAdd.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnBAdd.Location = new System.Drawing.Point(663, 324);
             this.btnBAdd.Name = "btnBAdd";
             this.btnBAdd.Size = new System.Drawing.Size(91, 30);
@@ -4308,7 +4308,7 @@
             // 
             // btnComposition
             // 
-            this.btnComposition.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnComposition.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnComposition.Location = new System.Drawing.Point(663, 324);
             this.btnComposition.Name = "btnComposition";
             this.btnComposition.Size = new System.Drawing.Size(91, 30);
@@ -4485,7 +4485,7 @@
             // 
             // btnFemeAdd
             // 
-            this.btnFemeAdd.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnFemeAdd.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnFemeAdd.Location = new System.Drawing.Point(663, 324);
             this.btnFemeAdd.Name = "btnFemeAdd";
             this.btnFemeAdd.Size = new System.Drawing.Size(91, 30);
@@ -5657,7 +5657,7 @@
             // 
             // btnReportAdd
             // 
-            this.btnReportAdd.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnReportAdd.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnReportAdd.Location = new System.Drawing.Point(663, 324);
             this.btnReportAdd.Name = "btnReportAdd";
             this.btnReportAdd.Size = new System.Drawing.Size(91, 30);
@@ -5744,7 +5744,7 @@
             // 
             // btnExit
             // 
-            this.btnExit.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnExit.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnExit.Location = new System.Drawing.Point(679, 533);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(91, 30);
@@ -5937,7 +5937,7 @@
             // 
             // txtGlobal_EmployeeID
             // 
-            this.txtGlobal_EmployeeID.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtGlobal_EmployeeID.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtGlobal_EmployeeID.Location = new System.Drawing.Point(468, 70);
             this.txtGlobal_EmployeeID.MaxLength = 18;
             this.txtGlobal_EmployeeID.Name = "txtGlobal_EmployeeID";
@@ -5949,7 +5949,7 @@
             // label135
             // 
             this.label135.AutoSize = true;
-            this.label135.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label135.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label135.Location = new System.Drawing.Point(404, 73);
             this.label135.Name = "label135";
             this.label135.Size = new System.Drawing.Size(58, 22);
@@ -5958,7 +5958,7 @@
             // 
             // txtGlobal_EmployeeName
             // 
-            this.txtGlobal_EmployeeName.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtGlobal_EmployeeName.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtGlobal_EmployeeName.Location = new System.Drawing.Point(648, 70);
             this.txtGlobal_EmployeeName.MaxLength = 20;
             this.txtGlobal_EmployeeName.Name = "txtGlobal_EmployeeName";
@@ -5970,7 +5970,7 @@
             // label136
             // 
             this.label136.AutoSize = true;
-            this.label136.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label136.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label136.Location = new System.Drawing.Point(605, 74);
             this.label136.Name = "label136";
             this.label136.Size = new System.Drawing.Size(42, 22);
@@ -5990,7 +5990,7 @@
             // 
             // btnNew
             // 
-            this.btnNew.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnNew.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnNew.Location = new System.Drawing.Point(571, 533);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(91, 30);
@@ -6002,7 +6002,7 @@
             // label169
             // 
             this.label169.AutoSize = true;
-            this.label169.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label169.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label169.Location = new System.Drawing.Point(14, 73);
             this.label169.Name = "label169";
             this.label169.Size = new System.Drawing.Size(74, 22);
@@ -6011,7 +6011,7 @@
             // 
             // txtYearMonth
             // 
-            this.txtYearMonth.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtYearMonth.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtYearMonth.Location = new System.Drawing.Point(90, 68);
             this.txtYearMonth.MaxLength = 18;
             this.txtYearMonth.Name = "txtYearMonth";

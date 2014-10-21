@@ -23,10 +23,10 @@ namespace UpdateApp
         //private static string webUrl3 = @"http://localhost/GetFileMD5.ashx";
         private static string systemName = "XTHospatal";
         delegate void ShowProgressDelegate(int totalStep, int currentStep);
-        private static string UpdataURLConfig = "UpdataURL";
+        private static string UpdataURLConfig = "InstallURL";
         private static string InstallPathConfig = "InstallPath";
         private WebClient downWebClient = new WebClient();
-        private static string updateURL=string.Empty;
+        private static string InstallURL=string.Empty;
         private static long size;//所有文件大小 
         private static int count;//文件总数 
         private static string[] fileNames;
@@ -34,7 +34,7 @@ namespace UpdateApp
         private static long upsize;//已更新文件大小 
         private static string fileName="Update.zip";//当前文件名 
         private static long filesize;//当前文件大小
-        private static string appPath = @"C:\XTHospatal";//安装路径，默认C盘
+        private static string InstallPath = @"C:\XTHospatal";//安装路径，默认C盘
         private static string LastAppNoConfig = "LastAppNo";
         public UpdateForm()
         {
@@ -47,8 +47,8 @@ namespace UpdateApp
             //updateURL = Common.GetConfigFormIni();
             try
             {
-                updateURL = GetWebConfig(UpdataURLConfig);
-                appPath = GetWebConfig(InstallPathConfig);
+                InstallURL = GetWebConfig(UpdataURLConfig);//http://localhost/App/Install
+                InstallPath = GetWebConfig(InstallPathConfig);//C:\XTHospatal
             }
             catch (Exception ex)
             {
@@ -100,7 +100,7 @@ namespace UpdateApp
         /// <returns></returns>
         public static string GetAppNo()
         {
-            string filePath = appPath + "\\Update.ini";
+            string filePath = InstallPath + "\\Update.ini";
             StreamReader sr = new StreamReader(filePath, Encoding.Default);
             string s = string.Empty;
             string version = string.Empty;
@@ -124,7 +124,7 @@ namespace UpdateApp
         /// <returns></returns>
         public static string GetAppNoFromTxt()
         {
-            string filePath = appPath + "\\Update.ini";
+            string filePath = InstallPath + "\\Update.ini";
             string[] strs = File.ReadAllLines(filePath);
             if (strs.Length > 0)
             {
@@ -286,13 +286,7 @@ namespace UpdateApp
                         //设置最新的程序号
                         //string[] newAppNo = { Common.globalAppVNo, Common.globalAppMD5No };
                         //SetConfigAppNo(newAppNo);
-                        //SetConfigAppNo(Common.globalAppMD5No);//根据实际服务器文件列表更新,不需要更新本地配置列表
-                        int i = 0;
-                        while (i<50)
-                        {
-                            Thread.Sleep(100);
-                            i++;
-                        }
+                        //SetConfigAppNo(Common.globalAppMD5No);//根据实际服务器文件列表更新,不需要更新本地配置列表                        
                         UpdaterClose();
                     }
                 }
@@ -313,9 +307,9 @@ namespace UpdateApp
                 fileName = fileNames[arry];
                 num++;
                 //删除已有的下载包
-                if (File.Exists(appPath + "\\" + fileName))
+                if (File.Exists(InstallPath + "\\" + fileName))
                 {
-                    File.Delete(appPath + "\\" + fileName);
+                    File.Delete(InstallPath + "\\" + fileName);
                 }
                 lbMessageFile.Text = String.Format(
                     CultureInfo.InvariantCulture,
@@ -323,13 +317,13 @@ namespace UpdateApp
                     num,
                     fileNames.Length);
                 progressBarFile.Value = Convert.ToInt32(((float)num / (float)fileNames.Length) * 100);
-                if (!Directory.Exists(appPath))
+                if (!Directory.Exists(InstallPath))
                 {
-                    Directory.CreateDirectory(appPath);
+                    Directory.CreateDirectory(InstallPath);
                 }
-                string DownLoadURL = updateURL + @"/" + fileName;
+                string DownLoadURL = InstallURL + @"/" + fileName;
                 //string SavePathName = appPath + "\\" + fileName;
-                string SavePathName = appPath + "\\" + fileName.Substring(0, fileName.LastIndexOf(".zip"));
+                string SavePathName = InstallPath + "\\" + fileName.Substring(0, fileName.LastIndexOf(".zip"));
                 this.downWebClient.DownloadFileAsync(
                     new Uri(DownLoadURL),
                     SavePathName);
@@ -359,10 +353,10 @@ namespace UpdateApp
         /// 关闭程序 
         /// </summary> 
         private static void UpdaterClose()
-        {
+        {            
             try
             {
-                System.Diagnostics.Process.Start(appPath + @"\UI.exe");
+                System.Diagnostics.Process.Start(InstallPath + @"\UI.exe", "Update");
             }
             catch (Win32Exception ex)
             {
@@ -378,7 +372,7 @@ namespace UpdateApp
 
         private void SetConfigAppNo(string[] appNos)
         {
-            FileStream fsInfo = new FileStream(appPath + "\\Update.ini", FileMode.OpenOrCreate); 
+            FileStream fsInfo = new FileStream(InstallPath + "\\Update.ini", FileMode.OpenOrCreate); 
             StreamWriter swInfo = new StreamWriter( fsInfo ); 
             swInfo.Flush(); 
             swInfo.BaseStream.Seek( 0, SeekOrigin.Begin );
@@ -392,7 +386,7 @@ namespace UpdateApp
 
         private void SetConfigAppNo(string appNo)
         {
-            File.WriteAllText(appPath + "\\Update.ini", appNo); 
+            File.WriteAllText(InstallPath + "\\Update.ini", appNo); 
         }
 
         private void btnMD5_Click(object sender, EventArgs e)

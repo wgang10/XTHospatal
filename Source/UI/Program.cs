@@ -28,7 +28,7 @@ namespace UI
         /// </summary>
         [STAThread]
         static void Main(string[] args)
-        {
+        {            
             try
             {
                 ReadProperties();
@@ -73,8 +73,9 @@ namespace UI
                 //GlobalVal.glostrAppNo = GetAppNoFromTxt();
                 if (args.Length > 0)
                 {
+                    GlobalVal.gloStrTerminalCD = args[0];
                     if (args[0].Equals("Install", StringComparison.CurrentCultureIgnoreCase))
-                    {
+                    {   
                         Thread t1 = new Thread(new ThreadStart(CreateDesktopLnk));
                         t1.Start();
                     }

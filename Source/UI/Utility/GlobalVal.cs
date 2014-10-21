@@ -42,6 +42,11 @@ namespace UI
         public static string gloStrTerminalCD =string.Empty;
 
         /// <summary>
+        /// 启动类型
+        /// </summary>
+        public static string gloLaunchType= string.Empty;
+
+        /// <summary>
         /// 
         /// </summary>
         public static Image gloImage = null;

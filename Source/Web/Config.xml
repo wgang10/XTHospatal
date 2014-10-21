@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Config>
   <System Name ="XTHospatal">
-    <WebServicesURL>http://www.ziyangsoft.com</WebServicesURL>
-    <InstallURL>http://www.ziyangsoft.com/App/Install</InstallURL>
+    <WebServicesURL>http://localhost</WebServicesURL>
+    <InstallURL>http://localhost/App/Install</InstallURL>
     <InstallPath>C:\XTHospatal</InstallPath>
   </System>
 </Config>
