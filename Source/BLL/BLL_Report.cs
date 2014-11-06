@@ -21,10 +21,18 @@ namespace XTHospital.BLL
             if (resoult.Count > 0)
             {
                 resoult = dalReport.Update(model);
+                if (resoult.ErrorFlag)
+                {
+                    BLL_Log.AddLog(model.UPDATER_ID + " 修改了用户 " + model.EmployeeID + " 的体检报告信息", "1", model.TERMINAL_CD);
+                }
             }
             else
             {
                 resoult = dalReport.Add(model);
+                if (resoult.ErrorFlag)
+                {
+                    BLL_Log.AddLog(model.UPDATER_ID + " 修改了用户 " + model.EmployeeID + " 的体检报告信息", "1", model.TERMINAL_CD);
+                }
             }
             return resoult;
         }

@@ -7,7 +7,7 @@ namespace UI
     [System.Diagnostics.DebuggerStepThrough()
     ,System.ComponentModel.DesignerCategory("code")
     ,System.Web.Services.WebServiceBinding(Name = "",Namespace = "")]
-    public class MyWebService : UI.XTHotpatalWebServices.Service
+    public class MyWebService : UI.webService.Service
     {
         //public MyWebService():base()
         //{

@@ -119,7 +119,7 @@ namespace UI
         private void BindChartData()
         {
 
-            XTHotpatalWebServices.ReturnValue resoult = GlobalVal.gloWebSerices.StatisticNums();
+            webService.ReturnValue resoult = GlobalVal.gloWebSerices.StatisticNums();
             if (resoult.ErrorFlag)
             {
                 DataSetHelper dsHelper = new DataSetHelper();

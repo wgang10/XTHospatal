@@ -75,37 +75,37 @@
           </tr>
           <tr>
             <td>总胆固醇(TC):<span class="ReultStyle"><%=strHY_TC%></span></td>
-            <td>mmol/L 参考 ≦5.60 </td>
+            <td><%=T_HY_TC%></td>
             <td>血糖(GLU):<span class="ReultStyle"><%=strGLU%></span></td>
-            <td>mmol/L 参考 3.3-6.1 </td>
+            <td><%=T_GLU%></td>
           </tr>
           <tr>
             <td>甘油三酯(TG):<span class="ReultStyle"><%=strHY_TG%></span></td>
-            <td>mmol/L 参考 ≦2.30</td>
+            <td><%=T_HY_TG%></td>
             <td class="boldStyle">肾功</td>
             <td>&nbsp;</td>
           </tr>
           <tr>
             <td>高密度脂蛋白胆固醇(HDL-C):<span class="ReultStyle"><%=strHY_HDL_C%></span></td>
-            <td>mmol/L 参考 1.20-1.68</td>
+            <td><%=T_HY_HDL_C%></td>
             <td>尿素(urea):<span class="ReultStyle"><%=strUREA%></span></td>
-            <td>mmol/L 参考 1.7-8.3 </td>
+            <td><%=T_UREA%></td>
           </tr>
           <tr>
             <td>低密度脂蛋白胆固醇(LDL-C):<span class="ReultStyle"><%=strHYLDLC%></span></td>
-            <td>mmol/L参考 2.07-3.10</td>
+            <td><%=T_HYLDLC%></td>
             <td>肌酐(Cr):<span class="ReultStyle"><%=strCR%></span></td>
-            <td>umol/L 参考 44.0-106.0</td>
+            <td><%=T_CR%></td>
           </tr>
           <tr>
             <td>载脂蛋白AI(APOAI):<span class="ReultStyle"><%=strHYAPOAI%></span></td>
-            <td>g/L 参考 1.00-1.60</td>
+            <td><%=T_HYAPOAI%></td>
             <td>尿酸(UA):<span class="ReultStyle"><%=strHYUA%></span></td>
-            <td>umol/L 参考 142.0-416.0</td>
+            <td><%=T_HYUA%></td>
           </tr>
           <tr>
             <td>载脂蛋白B(APOB):<span class="ReultStyle"><%=strHYAPOB%></span></td>
-            <td>g/L 参考 0.6-1.1</td>
+            <td><%=T_HYAPOB%></td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
           </tr>
@@ -117,48 +117,48 @@
           </tr>
           <tr>
             <td>总胆红素(TBIL):<span class="ReultStyle"><%=strHY_TBIL%></span></td>
-            <td>u mol/L 参考 5.1-19.0</td>
+            <td><%=T_HY_TBIL%></td>
             <td>甲胎蛋白(AFP):<span class="ReultStyle"><%=strAFP%></span></td>
-            <td>ng/L 参考 ≦20</td>
+            <td><%=T_AFP%></td>
           </tr>
           <tr>
             <td>直接胆红素(DBIL):<span class="ReultStyle"><%=strHY_DBIL%></span></td>
-            <td>u mol/L 参考 1.7-6.8</td>
+            <td><%=T_HY_DBIL%></td>
             <td>癌胚抗原(CEA):<span class="ReultStyle"><%=strCEA%></span></td>
-            <td>ng/L 参考 ≦5 </td>
+            <td><%=T_CEA%></td>
           </tr>
           <tr>
             <td>总蛋白(TP):<span class="ReultStyle"><%=strHY_TP%></span></td>
-            <td>g/L 参考 38.0-51.0 </td>
+            <td><%=T_HY_TP%></td>
             <td></td>
             <td>&nbsp;</td>
           </tr>
           <tr>
             <td>白蛋白(ALB):<span class="ReultStyle"><%=strHY_ALB%></span></td>
-            <td>g/L 参考 35-55</td>
+            <td><%=T_HY_ALB%></td>
             <td></td>
             <td> &nbsp;</td>
           </tr>
           <tr>
             <td>丙氨酸氨基转移酶(ALT):<span class="ReultStyle"><%=strHY_ALT%></span></td>
-            <td>g/L 参考 ≦41.0 </td>
+            <td><%=T_HY_ALT%> </td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
           </tr>
           <tr>
             <td>天门冬氨酸氨基转移酶(AST):<span class="ReultStyle"><%=strHYAST%></span></td>
-            <td>U/L 参考 ≦37.0</td>
+            <td><%=T_HYAST%></td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
           </tr>
           <tr>
             <td>γ-谷胺酰转肽酶(γ-GT):<span class="ReultStyle"><%=strHYGT%></span></td>
-            <td colspan="2">U/L 参考 9.0-61.0</td>
+            <td colspan="2"><%=T_HYGT%></td>
             <td>&nbsp;</td>
           </tr>
           <tr>
             <td>碱性磷酸酶(ALP):<span class="ReultStyle"><%=strHYALP%></span></td>
-            <td colspan="2">U/L 参考 男53-128 女42-141</td>
+            <td colspan="2"><%=T_HYALP%></td>
             <td>&nbsp;</td>
           </tr>
           <tr>

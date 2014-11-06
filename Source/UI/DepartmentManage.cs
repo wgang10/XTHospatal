@@ -35,7 +35,7 @@ namespace UI
                 MessageBox.Show("部门名称不能为空！", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-            XTHotpatalWebServices.Department model = new UI.XTHotpatalWebServices.Department();
+            webService.Department model = new UI.webService.Department();
             model.Name = txtDepartName.Text.Trim();
             if (txtDepartmentID.Text.Trim().Length < 1)
             {
@@ -58,7 +58,7 @@ namespace UI
             model.UPDATER_ID = GlobalVal.gloStrLoginUserID;
             model.TERMINAL_CD = GlobalVal.gloStrTerminalCD;
             
-            XTHotpatalWebServices.ReturnValue resoult;
+            webService.ReturnValue resoult;
             try
             {
                 resoult = GlobalVal.gloWebSerices.AddUpdateDepartment(model);
@@ -125,7 +125,7 @@ namespace UI
                 return;
             }
             
-            XTHotpatalWebServices.ReturnValue resoult;
+            webService.ReturnValue resoult;
             resoult = GlobalVal.gloWebSerices.DeleteDepartment(txtDepartmentID.Text.Trim());
             if (resoult.ErrorFlag)
             {
@@ -161,7 +161,7 @@ namespace UI
             GridViewInitial();
             this.Cursor = Cursors.WaitCursor;
             
-            XTHotpatalWebServices.ReturnValue returnValue;
+            webService.ReturnValue returnValue;
             try
             {
                 returnValue = GlobalVal.gloWebSerices.GetDepartmentList();

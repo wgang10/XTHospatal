@@ -34,7 +34,7 @@ namespace UI
         private void BindEmployeeInfo(string EmployeeID)
         {
 
-            XTHotpatalWebServices.ReturnValue resoult = GlobalVal.gloWebSerices.GetEmployeeInfo(EmployeeID);
+            webService.ReturnValue resoult = GlobalVal.gloWebSerices.GetEmployeeInfo(EmployeeID);
             if (resoult.ErrorFlag)
             {
                 if (resoult.Count > 0)
@@ -136,7 +136,7 @@ namespace UI
                 MessageBox.Show("姓名、工资号、查询密码及身份证不能为空！", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-            XTHotpatalWebServices.Employee model = new UI.XTHotpatalWebServices.Employee();
+            webService.Employee model = new UI.webService.Employee();
             model.EmployeeName = txtName.Text.Trim();
             model.EmployeeID = txtEmployeeID.Text.Trim();
             model.EmployeeGZID = txtEmployeeGZID.Text.Trim();
@@ -182,7 +182,7 @@ namespace UI
             model.EmployeeEmail = txtEmail.Text;
             model.EmployeePhone = txtEmployeePhone.Text;
 
-            XTHotpatalWebServices.ReturnValue resoult = GlobalVal.gloWebSerices.AddEmployee(model);
+            webService.ReturnValue resoult = GlobalVal.gloWebSerices.AddEmployee(model);
             if (resoult.ErrorFlag)
             {
                 if (DialogResult.OK == MessageBox.Show("操作成功！是否关闭本窗口？", "系统提示", MessageBoxButtons.OKCancel))

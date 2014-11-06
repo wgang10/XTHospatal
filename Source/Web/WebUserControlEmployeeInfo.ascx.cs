@@ -45,7 +45,6 @@ public partial class WebUserControlEmployeeInfo : System.Web.UI.UserControl
     public string strHBeAg = string.Empty;//HBeAg
     public string strHBeAb = string.Empty;//HBeAb
     public string strHBcAb = string.Empty;//HBcAb
-
     public string strHYLDLC = string.Empty;//低密度脂蛋白胆固醇(LDL-C)
     public string strHYAPOAI = string.Empty;//载脂蛋白AI(APOAI)
     public string strHYAPOB = string.Empty;//载脂蛋白B(APOB)
@@ -53,6 +52,32 @@ public partial class WebUserControlEmployeeInfo : System.Web.UI.UserControl
     public string strHYGT = string.Empty;//γ-谷胺酰转肽酶(γ-GT)
     public string strHYALP = string.Empty;//碱性磷酸酶(ALP)
     public string strHYUA = string.Empty;//尿酸（UA）
+    //参考值
+    public string T_HY_TC = string.Empty;//总胆固醇(TC)
+    public string T_HY_TG = string.Empty;//甘油三脂(TG)
+    public string T_HY_HDL_C = string.Empty;//高密度脂蛋白胆固醇(HDL-C)
+    public string T_HY_TBIL = string.Empty;//总胆红素(TBIL)
+    public string T_HY_DBIL = string.Empty;//直接胆红素(DBIL)
+    public string T_HY_TP = string.Empty;//总蛋白(TP)
+    public string T_HY_ALB = string.Empty;//白蛋白(ALB)
+    public string T_HY_ALT = string.Empty;//谷丙转氨酶(ALT)
+    public string T_GLU = string.Empty;//血糖
+    public string T_UREA = string.Empty;//尿素
+    public string T_CR = string.Empty;//肌酐
+    public string T_AFP = string.Empty;//甲胎蛋白
+    public string T_CEA = string.Empty;//癌胚抗原
+    public string T_HBsAg = string.Empty;//HBsAg
+    public string T_HBsAb = string.Empty;//HBsAb
+    public string T_HBeAg = string.Empty;//HBeAg
+    public string T_HBeAb = string.Empty;//HBeAb
+    public string T_HBcAb = string.Empty;//HBcAb
+    public string T_HYLDLC = string.Empty;//低密度脂蛋白胆固醇(LDL-C)
+    public string T_HYAPOAI = string.Empty;//载脂蛋白AI(APOAI)
+    public string T_HYAPOB = string.Empty;//载脂蛋白B(APOB)
+    public string T_HYAST = string.Empty;//天门冬氨酸氨基转移酶(AST)
+    public string T_HYGT = string.Empty;//γ-谷胺酰转肽酶(γ-GT)
+    public string T_HYALP = string.Empty;//碱性磷酸酶(ALP)
+    public string T_HYUA = string.Empty;//尿酸（UA）
 
     //**********体格检查（五官）*****************
     public string strLeftEye = string.Empty;//视力左
@@ -172,10 +197,6 @@ public partial class WebUserControlEmployeeInfo : System.Web.UI.UserControl
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (!IsPostBack)
-        {
-            SetDepYearMonth();
-        }
         try
         {
             if (Request.QueryString["FromType"] == "UI")
@@ -198,7 +219,9 @@ public partial class WebUserControlEmployeeInfo : System.Web.UI.UserControl
                 string YearMonth = Request.QueryString["YearMonth"];
                 drpYearMonth.SelectedValue = YearMonth;
                 drpYearMonth.Enabled = false;
+                SetDepYearMonth();
                 ShowData(UserID, YearMonth);
+                ShowBioTData();//生化参考值
             }
             else if (Session["LoginUserID"] == null || Session["LoginUserID"].ToString() == "")
             {
@@ -206,9 +229,11 @@ public partial class WebUserControlEmployeeInfo : System.Web.UI.UserControl
             }
             else if (!IsPostBack)
             {
+                SetDepYearMonth();
                 string UserID = Session["LoginUserID"].ToString();
                 string YearMonth = drpYearMonth.SelectedValue;
                 ShowData(UserID, YearMonth);
+                ShowBioTData();//生化参考值
             }
         }
         catch
@@ -219,12 +244,10 @@ public partial class WebUserControlEmployeeInfo : System.Web.UI.UserControl
 
     private void SetDepYearMonth()
     {
-        XTHospital.COM.ReturnValue resoult = null;
-        //Hashtable YearMonthHashTable = new Hashtable();
-        XTHospital.BLL.BLL_LoginUser bll = new XTHospital.BLL.BLL_LoginUser();
+        XTWebService.ReturnValue resoult = null;
         try
         {
-            resoult = bll.GetYearMonth();
+            resoult = GlobalValue.GloWebSerices.GetYearMonth();
         }
         catch
         {
@@ -251,9 +274,8 @@ public partial class WebUserControlEmployeeInfo : System.Web.UI.UserControl
     }
 
     private void ShowData(string LoginUserID, string YearMonth)
-    {
-        XTHospital.BLL.BLL_Employee bll = new XTHospital.BLL.BLL_Employee();
-        XTHospital.COM.ReturnValue resoult = bll.SearchMyInfo(LoginUserID, YearMonth);
+    {        
+        XTWebService.ReturnValue resoult = GlobalValue.GloWebSerices.SearchMyInfo(LoginUserID, YearMonth);
         if (resoult.ErrorFlag)
         {
             if (resoult.Count > 0)
@@ -324,14 +346,13 @@ public partial class WebUserControlEmployeeInfo : System.Web.UI.UserControl
                 strCR = resoult.ResultDataSet.Tables[0].Rows[0]["Bio_HY_CR"].ToString();//肌酐
                 strAFP = resoult.ResultDataSet.Tables[0].Rows[0]["Bio_HY_AFP"].ToString();//甲胎蛋白
                 strCEA = resoult.ResultDataSet.Tables[0].Rows[0]["Bio_HY_CEA"].ToString();//癌胚抗原
-
                 strHYLDLC = resoult.ResultDataSet.Tables[0].Rows[0]["Bio_HYLDLC"].ToString();//低密度脂蛋白胆固醇(LDL-C)
                 strHYAPOAI = resoult.ResultDataSet.Tables[0].Rows[0]["Bio_HYAPOAI"].ToString();//载脂蛋白AI(APOAI)
                 strHYAPOB = resoult.ResultDataSet.Tables[0].Rows[0]["Bio_HYAPOB"].ToString();//载脂蛋白B(APOB)
                 strHYAST = resoult.ResultDataSet.Tables[0].Rows[0]["Bio_HYAST"].ToString();//天门冬氨酸氨基转移酶(AST)
                 strHYGT = resoult.ResultDataSet.Tables[0].Rows[0]["Bio_HYGT"].ToString();//γ-谷胺酰转肽酶(γ-GT)
                 strHYALP = resoult.ResultDataSet.Tables[0].Rows[0]["Bio_HYALP"].ToString();//碱性磷酸酶(ALP)
-                strHYUA = resoult.ResultDataSet.Tables[0].Rows[0]["Bio_HYUA"].ToString();//尿酸（UA）
+                strHYUA = resoult.ResultDataSet.Tables[0].Rows[0]["Bio_HYUA"].ToString();//尿酸（UA）                
 
                 if (resoult.ResultDataSet.Tables[0].Rows[0]["Bio_HYHBsAg"].ToString() == "0")//HBsAg
                 {
@@ -712,6 +733,40 @@ public partial class WebUserControlEmployeeInfo : System.Web.UI.UserControl
                 strReview = resoult.ResultDataSet.Tables[0].Rows[0]["Review"].ToString();//（审查单位意见）建议
                 strRemarks = resoult.ResultDataSet.Tables[0].Rows[0]["Remarks"].ToString();//备注
                 #endregion
+
+                GlobalValue.GloWebSerices.AddLog("查询用户[" + strName + "]进行了体检信息的查询.", "1", Page.Request.UserHostAddress);//添加日志
+            }
+        }
+    }
+
+    private void ShowBioTData()
+    {
+        XTWebService.ReturnValue resoult = GlobalValue.GloWebSerices.GetBioTInfo();
+        if (resoult.ErrorFlag)
+        {
+            if (resoult.Count > 0)
+            {
+                //参考值           
+                T_HY_TC = resoult.ResultDataSet.Tables[0].Rows[0]["_Bio_HYTC"].ToString();//总胆固醇(TC)
+                T_HY_TG = resoult.ResultDataSet.Tables[0].Rows[0]["_Bio_HYTG"].ToString();//甘油三脂(TG)
+                T_HY_HDL_C = resoult.ResultDataSet.Tables[0].Rows[0]["_Bio_HYHDLC"].ToString();//高密度脂蛋白胆固醇(HDL-C)
+                T_HY_TBIL = resoult.ResultDataSet.Tables[0].Rows[0]["_Bio_HYTBIL"].ToString();//总胆红素(TBIL)
+                T_HY_DBIL = resoult.ResultDataSet.Tables[0].Rows[0]["_Bio_HYDBIL"].ToString();//直接胆红素(DBIL)
+                T_HY_TP = resoult.ResultDataSet.Tables[0].Rows[0]["_Bio_HYTP"].ToString();//总蛋白(TP)
+                T_HY_ALB = resoult.ResultDataSet.Tables[0].Rows[0]["_Bio_HYALB"].ToString();//白蛋白(ALB)
+                T_HY_ALT = resoult.ResultDataSet.Tables[0].Rows[0]["_Bio_HYALT"].ToString();//谷丙转氨酶(ALT)
+                T_GLU = resoult.ResultDataSet.Tables[0].Rows[0]["_Bio_HY_GLU"].ToString();//血糖
+                T_UREA = resoult.ResultDataSet.Tables[0].Rows[0]["_Bio_HY_UREA"].ToString();//尿素
+                T_CR = resoult.ResultDataSet.Tables[0].Rows[0]["_Bio_HY_CR"].ToString();//肌酐
+                T_AFP = resoult.ResultDataSet.Tables[0].Rows[0]["_Bio_HY_AFP"].ToString();//甲胎蛋白
+                T_CEA = resoult.ResultDataSet.Tables[0].Rows[0]["_Bio_HY_CEA"].ToString();//癌胚抗原
+                T_HYLDLC = resoult.ResultDataSet.Tables[0].Rows[0]["_Bio_HYLDLC"].ToString();//低密度脂蛋白胆固醇(LDL-C)
+                T_HYAPOAI = resoult.ResultDataSet.Tables[0].Rows[0]["_Bio_HYAPOAI"].ToString();//载脂蛋白AI(APOAI)
+                T_HYAPOB = resoult.ResultDataSet.Tables[0].Rows[0]["_Bio_HYAPOB"].ToString();//载脂蛋白B(APOB)
+                T_HYAST = resoult.ResultDataSet.Tables[0].Rows[0]["_Bio_HYAST"].ToString();//天门冬氨酸氨基转移酶(AST)
+                T_HYGT = resoult.ResultDataSet.Tables[0].Rows[0]["_Bio_HYGT"].ToString();//γ-谷胺酰转肽酶(γ-GT)
+                T_HYALP = resoult.ResultDataSet.Tables[0].Rows[0]["_Bio_HYALP"].ToString();//碱性磷酸酶(ALP)
+                T_HYUA = resoult.ResultDataSet.Tables[0].Rows[0]["_Bio_HYUA"].ToString();//尿酸（UA）                
             }
         }
     }

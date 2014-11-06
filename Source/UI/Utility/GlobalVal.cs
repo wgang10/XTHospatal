@@ -94,7 +94,7 @@ namespace UI
         /// <summary>
         /// 
         /// </summary>
-        public static XTHotpatalWebServices.Service gloWebSerices = null;
+        public static webService.Service gloWebSerices = null;
 
         /// <summary>
         /// INI File Path

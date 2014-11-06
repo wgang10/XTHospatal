@@ -33,7 +33,7 @@ namespace UI
                 MessageBox.Show("用户名和密码不能为空！", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-            XTHotpatalWebServices.LoginUser model = new UI.XTHotpatalWebServices.LoginUser();
+            webService.LoginUser model = new UI.webService.LoginUser();
             model.UserID = txtUSER_ID.Text.Trim();
             model.UserPwd = txtUSER_WD.Text.Trim();
             model.MEMO = txtMEMO.Text.Trim();
@@ -41,7 +41,7 @@ namespace UI
             model.UPDATER_ID = GlobalVal.gloStrLoginUserID;
             model.TERMINAL_CD = GlobalVal.gloStrTerminalCD;
             
-            XTHotpatalWebServices.ReturnValue resoult;
+            webService.ReturnValue resoult;
             resoult = GlobalVal.gloWebSerices.AddUser(model);
             if (resoult.ErrorFlag)
             {
@@ -100,7 +100,7 @@ namespace UI
                 return;
             }
             
-            XTHotpatalWebServices.ReturnValue resoult;
+            webService.ReturnValue resoult;
             resoult = GlobalVal.gloWebSerices.DeleteUser(txtUSER_ID.Text.Trim());
             if (resoult.ErrorFlag)
             {
@@ -135,7 +135,7 @@ namespace UI
             GridViewInitial();
             this.Cursor = Cursors.WaitCursor;
             
-            XTHotpatalWebServices.ReturnValue returnValue;
+            webService.ReturnValue returnValue;
             try
             {
                 returnValue = GlobalVal.gloWebSerices.GetUserList();

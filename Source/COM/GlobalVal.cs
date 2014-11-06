@@ -18,6 +18,6 @@ namespace XTHospital.COM
                 catch{}
                 return gloPage;
             }
-        }        
+        }
     }
 }

@@ -43,16 +43,15 @@ public partial class ChangePassWord : System.Web.UI.Page
         }
         else
         {
-            XTHospital.Model.Employee model = new XTHospital.Model.Employee();
+            XTWebService.Employee model = new XTWebService.Employee();
             model.UPDATER_ID = Session["LoginUserID"].ToString();
             model.TERMINAL_CD="";
             model.EmployeePWD = txtOldPWD.Text.Trim();
             model.EmployeeNewPWD=txtConfirmNewPWD.Text.Trim();
             model.EmployeeEmail=txtMail.Text.Trim();
             model.EmployeePhone=txtEmployeePhone.Text.Trim();
-            model.EmployeeID = Session["EmployeeID"].ToString();            
-            XTHospital.BLL.BLL_Employee bll = new XTHospital.BLL.BLL_Employee();
-            XTHospital.COM.ReturnValue resoult = bll.ChangePassWord(model);
+            model.EmployeeID = Session["EmployeeID"].ToString();      
+            XTWebService.ReturnValue resoult = GlobalValue.GloWebSerices.ChangePassWord(model);
             if (!resoult.ErrorFlag)
             {
                 LiteralMsg.Text = resoult.ErrorID;

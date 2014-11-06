@@ -22,6 +22,8 @@ namespace XTHospital.IDAL
 
         ReturnValue SearchMyInfo(string EmployeeID, string YearMoth);
 
+        ReturnValue SearchBioTInfo();
+
         ReturnValue ChangePassWord(Employee model);
 
         ReturnValue GetCheckEmployeeNum(string YearMonth,string strWhere);

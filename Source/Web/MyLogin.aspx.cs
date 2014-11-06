@@ -29,13 +29,12 @@ public partial class MyLogin : System.Web.UI.Page
                 string strUserID = txtLoginID.Text.Trim();
                 string strUserPWD = txtPWD.Text.Trim();
                 string strEmployeeName = string.Empty;
-                XTHospital.BLL.BLL_LoginUser bll = new XTHospital.BLL.BLL_LoginUser();
-                XTHospital.COM.ReturnValue resoult = bll.GetEmployeePWD(strUserID);
+                XTWebService.ReturnValue resoult = GlobalValue.GloWebSerices.GetEmployeePWD(strUserID);
                 if (resoult.ErrorFlag)
                 {
                     if (resoult.Count < 1)
                     {
-                        XTHospital.BLL.BLL_Log.AddLog("查询用户[" + strUserID + "]尝试登录系统失败，用户名或密码错误！", "1", Page.Request.UserHostAddress);//添加日志
+                        GlobalValue.GloWebSerices.AddLog("查询用户[" + strUserID + "]尝试登录系统失败，用户名或密码错误！", "1", Page.Request.UserHostAddress);//添加日志
                         LiteralMsg.Text = "用户名或密码错误！";
                         LiteralMsg.DataBind();
                         return;
@@ -50,7 +49,7 @@ public partial class MyLogin : System.Web.UI.Page
                             Session["EmployeeID"] = resoult.ResultDataSet.Tables[0].Rows[0]["EmployeeID"].ToString().Trim();
                             Session["EmployeeMail"] = resoult.ResultDataSet.Tables[0].Rows[0]["EmployeeEmail"].ToString().Trim();
                             Session["EmployeePhone"] = resoult.ResultDataSet.Tables[0].Rows[0]["EmployeePhone"].ToString().Trim();
-                            XTHospital.BLL.BLL_Log.AddLog("查询用户[" + strEmployeeName + "]登录了系统.", "1", Page.Request.UserHostAddress);//添加日志
+                            GlobalValue.GloWebSerices.AddLog("查询用户[" + strEmployeeName + "]登录了系统.", "1", Page.Request.UserHostAddress);//添加日志
                             Response.Redirect("Default.aspx");
                         }
                         else
@@ -75,8 +74,11 @@ public partial class MyLogin : System.Web.UI.Page
                 return;
             }
         }
-        catch
-        {   
+        catch(Exception ex)
+        {
+            LiteralMsg.Text = ex.Message;
+            LiteralMsg.DataBind();
+            return;
         }
     }  
 

@@ -505,6 +505,35 @@ From ((((((((((Employee Emp
     Left Join Department On (Department.ID = Emp.EmployeeBM)
 Where Emp.EmployeeGZID = @EmployeeGZID";
 
+        private string SearchBioTInfo_SQL = @"SELECT 
+BioT.HYTC as _Bio_HYTC
+,BioT.HYTG as _Bio_HYTG
+,BioT.HYHDLC as _Bio_HYHDLC
+,BioT.HYTBIL as _Bio_HYTBIL
+,BioT.HYDBIL as _Bio_HYDBIL
+,BioT.HYTP as _Bio_HYTP
+,BioT.HYALB as _Bio_HYALB
+,BioT.HYALT as _Bio_HYALT
+,BioT.HY_GLU as _Bio_HY_GLU
+,BioT.HY_UREA as _Bio_HY_UREA
+,BioT.HY_CR as _Bio_HY_CR
+,BioT.HY_AFP as _Bio_HY_AFP
+,BioT.HY_CEA as _Bio_HY_CEA
+,BioT.HYHBsAg as _Bio_HYHBsAg
+,BioT.HYHBsAb as _Bio_HYHBsAb
+,BioT.HYHBeAg as _Bio_HYHBeAg
+,BioT.HYHBeAb as _Bio_HYHBeAb
+,BioT.HYHBcAb as _Bio_HYHBcAb
+,BioT.HYLDLC as _Bio_HYLDLC
+,BioT.HYAPOAI as _Bio_HYAPOAI
+,BioT.HYAPOB as _Bio_HYAPOB
+,BioT.HYAST as _Bio_HYAST
+,BioT.HYGT as _Bio_HYGT
+,BioT.HYALP as _Bio_HYALP
+,BioT.HYUA as _Bio_HYUA
+From Biochemistry BioT
+Where BioT.EmployeeID = '88888888'";
+
         public ReturnValue Add(Employee model)
         {
             OleDbParameter[] parametersAdd = {
@@ -644,6 +673,12 @@ Where EmployeeID='123'
             parameters[0].Value = EmployeeGZID;
             parameters[1].Value = YearMonth;
             return OleDbHelper.Query(SearchMyInfo_SQL, parameters);
+        }
+
+        //生化参考值
+        public ReturnValue SearchBioTInfo()
+        {
+            return OleDbHelper.Query(SearchBioTInfo_SQL);
         }
 
         public ReturnValue ChangePassWord(Employee model)

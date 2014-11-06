@@ -530,6 +530,11 @@ Where Emp.EmployeeGZID = @EmployeeGZID";
             return SqlHelper.Query(SearchMyInfo_SQL, parameters);
         }
 
+        public ReturnValue SearchBioTInfo()
+        {
+            return null;
+        }
+
         public ReturnValue GetEmployeeInfo(string EmployeeID)
         {
             SqlParameter[] parametersSearchID = { new SqlParameter("@EmployeeID", SqlDbType.NVarChar, 18) };

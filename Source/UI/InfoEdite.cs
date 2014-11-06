@@ -33,6 +33,7 @@ namespace UI
             //if (frm.ShowDialog() == DialogResult.OK)
             //{
             InitializationCombox();//初始化部门下拉框
+            BindBioTInfo();//绑定生化参考值信息
             if (GlobalVal.gloStrLoginUserType == "0")//管理员
             {
                 //btnUserManage.Visible = true;
@@ -249,7 +250,7 @@ namespace UI
                 MessageBox.Show("姓名、工资号、查询密码及身份证不能为空！", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-            XTHotpatalWebServices.Employee model = new UI.XTHotpatalWebServices.Employee();
+            webService.Employee model = new UI.webService.Employee();
             model.EmployeeName = txtName.Text.Trim();
             model.EmployeeID = txtEmployeeID.Text.Trim();
             model.EmployeeGZID = txtEmployeeGZID.Text.Trim();
@@ -295,7 +296,7 @@ namespace UI
             model.EmployeeEmail = txtEmail.Text;
             model.EmployeePhone = txtEmployeePhone.Text;
 
-            XTHotpatalWebServices.ReturnValue resoult = GlobalVal.gloWebSerices.AddEmployee(model);
+            webService.ReturnValue resoult = GlobalVal.gloWebSerices.AddEmployee(model);
             if (resoult.ErrorFlag)
             {
                 MessageBox.Show("操作成功！");
@@ -323,7 +324,7 @@ namespace UI
                 MessageBox.Show("请先进行人员选择或添加人员！", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-            XTHotpatalWebServices.Biochemistry model = new UI.XTHotpatalWebServices.Biochemistry();
+            webService.Biochemistry model = new UI.webService.Biochemistry();
             model.EmployeeID = GlobalVal.EmployeeID;
             model.YearMonth = GlobalVal.gloYearMonth;
             model.HYNo = txtHY_No.Text.Trim();
@@ -418,7 +419,7 @@ namespace UI
             model.UPDATER_ID = GlobalVal.gloStrLoginUserID;
             model.TERMINAL_CD = GlobalVal.gloStrTerminalCD;
 
-            XTHotpatalWebServices.ReturnValue resoult = GlobalVal.gloWebSerices.AddUpdateBiochemistry(model);
+            webService.ReturnValue resoult = GlobalVal.gloWebSerices.AddUpdateBiochemistry(model);
             if (resoult.ErrorFlag)
             {
                 MessageBox.Show("操作成功！");
@@ -441,7 +442,7 @@ namespace UI
                 MessageBox.Show("请先进行人员选择或添加人员！", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-            XTHotpatalWebServices.Features model = new UI.XTHotpatalWebServices.Features();
+            webService.Features model = new UI.webService.Features();
             model.EmployeeID = GlobalVal.EmployeeID;
             model.YearMonth = GlobalVal.gloYearMonth;
             model.LeftEye = this.txtLeftEye.Text.Trim();
@@ -469,7 +470,7 @@ namespace UI
             model.UPDATER_ID = GlobalVal.gloStrLoginUserID;
             model.TERMINAL_CD = GlobalVal.gloStrTerminalCD;
 
-            XTHotpatalWebServices.ReturnValue resoult = GlobalVal.gloWebSerices.AddUpdateFeatures(model);
+            webService.ReturnValue resoult = GlobalVal.gloWebSerices.AddUpdateFeatures(model);
             if (resoult.ErrorFlag)
             {
                 MessageBox.Show("操作成功！");
@@ -492,7 +493,7 @@ namespace UI
                 MessageBox.Show("请先进行人员选择或添加人员！", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-            XTHotpatalWebServices.Surgery model = new UI.XTHotpatalWebServices.Surgery();
+            webService.Surgery model = new UI.webService.Surgery();
             model.EmployeeID = GlobalVal.EmployeeID;
             model.YearMonth = GlobalVal.gloYearMonth;
             model.Length=this.txtLength.Text.Trim ();
@@ -515,7 +516,7 @@ namespace UI
             model.UPDATER_ID = GlobalVal.gloStrLoginUserID;
             model.TERMINAL_CD = GlobalVal.gloStrTerminalCD;
 
-            XTHotpatalWebServices.ReturnValue resoult = GlobalVal.gloWebSerices.AddUpdateSurgery(model);
+            webService.ReturnValue resoult = GlobalVal.gloWebSerices.AddUpdateSurgery(model);
             if (resoult.ErrorFlag)
             {
                 MessageBox.Show("操作成功！");
@@ -538,7 +539,7 @@ namespace UI
                 MessageBox.Show("请先进行人员选择或添加人员！", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-            XTHotpatalWebServices.InternalMedicine model = new UI.XTHotpatalWebServices.InternalMedicine();
+            webService.InternalMedicine model = new UI.webService.InternalMedicine();
             model.EmployeeID = GlobalVal.EmployeeID;
             model.YearMonth = GlobalVal.gloYearMonth;
             model.BloodPressure=this.txtBloodPressure.Text.Trim();
@@ -556,7 +557,7 @@ namespace UI
             model.UPDATER_ID = GlobalVal.gloStrLoginUserID;
             model.TERMINAL_CD = GlobalVal.gloStrTerminalCD;
 
-            XTHotpatalWebServices.ReturnValue resoult = GlobalVal.gloWebSerices.AddUpdateInternalMeicine(model);
+            webService.ReturnValue resoult = GlobalVal.gloWebSerices.AddUpdateInternalMeicine(model);
             if (resoult.ErrorFlag)
             {
                 MessageBox.Show("操作成功！");
@@ -579,7 +580,7 @@ namespace UI
                 MessageBox.Show("请先进行人员选择或添加人员！", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-            XTHotpatalWebServices.ECG model = new UI.XTHotpatalWebServices.ECG();
+            webService.ECG model = new UI.webService.ECG();
             model.EmployeeID = GlobalVal.EmployeeID;
             model.YearMonth = GlobalVal.gloYearMonth;
 
@@ -619,7 +620,7 @@ namespace UI
             model.UPDATER_ID = GlobalVal.gloStrLoginUserID;
             model.TERMINAL_CD = GlobalVal.gloStrTerminalCD;
 
-            XTHotpatalWebServices.ReturnValue resoult = GlobalVal.gloWebSerices.AddUpdateECG(model);
+            webService.ReturnValue resoult = GlobalVal.gloWebSerices.AddUpdateECG(model);
             if (resoult.ErrorFlag)
             {
                 MessageBox.Show("操作成功！");
@@ -642,7 +643,7 @@ namespace UI
                 MessageBox.Show("请先进行人员选择或添加人员！", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-            XTHotpatalWebServices.Xray model = new UI.XTHotpatalWebServices.Xray();
+            webService.Xray model = new UI.webService.Xray();
             model.EmployeeID = GlobalVal.EmployeeID;
             model.YearMonth = GlobalVal.gloYearMonth;
             model.PhotoNo = this.txtPhotoNo.Text.Trim();
@@ -669,7 +670,7 @@ namespace UI
             model.UPDATER_ID = GlobalVal.gloStrLoginUserID;
             model.TERMINAL_CD = GlobalVal.gloStrTerminalCD;
 
-            XTHotpatalWebServices.ReturnValue resoult = GlobalVal.gloWebSerices.AddUpdateXray(model);
+            webService.ReturnValue resoult = GlobalVal.gloWebSerices.AddUpdateXray(model);
             if (resoult.ErrorFlag)
             {
                 MessageBox.Show("操作成功！");
@@ -692,7 +693,7 @@ namespace UI
                 MessageBox.Show("请先进行人员选择或添加人员！", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-            XTHotpatalWebServices.Bexamination model = new UI.XTHotpatalWebServices.Bexamination();
+            webService.Bexamination model = new UI.webService.Bexamination();
             model.EmployeeID = GlobalVal.EmployeeID;
             model.YearMonth = GlobalVal.gloYearMonth;
 
@@ -719,7 +720,7 @@ namespace UI
             model.UPDATER_ID = GlobalVal.gloStrLoginUserID;
             model.TERMINAL_CD = GlobalVal.gloStrTerminalCD;
 
-            XTHotpatalWebServices.ReturnValue resoult = GlobalVal.gloWebSerices.AddUpdateBexamination(model);
+            webService.ReturnValue resoult = GlobalVal.gloWebSerices.AddUpdateBexamination(model);
             if (resoult.ErrorFlag)
             {
                 MessageBox.Show("操作成功！");
@@ -742,7 +743,7 @@ namespace UI
                 MessageBox.Show("请先进行人员选择或添加人员！", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-            XTHotpatalWebServices.Report model = new UI.XTHotpatalWebServices.Report();
+            webService.Report model = new UI.webService.Report();
             model.EmployeeID = GlobalVal.EmployeeID;
             model.YearMonth = GlobalVal.gloYearMonth;
             model.ChestPerspective = this.txtChestPerspective.Text.Trim();
@@ -752,7 +753,7 @@ namespace UI
             model.UPDATER_ID = GlobalVal.gloStrLoginUserID;
             model.TERMINAL_CD = GlobalVal.gloStrTerminalCD;
 
-            XTHotpatalWebServices.ReturnValue resoult = GlobalVal.gloWebSerices.AddUpdateReport(model);
+            webService.ReturnValue resoult = GlobalVal.gloWebSerices.AddUpdateReport(model);
             if (resoult.ErrorFlag)
             {
                 MessageBox.Show("操作成功！");
@@ -915,7 +916,7 @@ namespace UI
         private void BindAllInfo(string EmployeeID, string YearMonth)
         {
 
-            XTHotpatalWebServices.ReturnValue resoult = GlobalVal.gloWebSerices.SearchEmployeeAllInfo(EmployeeID, YearMonth);
+            webService.ReturnValue resoult = GlobalVal.gloWebSerices.SearchEmployeeAllInfo(EmployeeID, YearMonth);
             if (resoult.ErrorFlag)
             {
                 if (resoult.Count > 0)
@@ -1955,6 +1956,51 @@ namespace UI
         }
 
         /// <summary>
+        /// 绑定生化参考值信息
+        /// </summary>
+        private void BindBioTInfo()
+        {
+
+            webService.ReturnValue resoult =  GlobalVal.gloWebSerices.GetBioTInfo();
+            if (resoult.ErrorFlag)
+            {
+                if (resoult.Count > 0)
+                {
+
+                    // **********生化检验单*****************
+                    this.lbHY_TC.Text = resoult.ResultDataSet.Tables[0].Rows[0]["_Bio_HYTC"].ToString();//总胆固醇(TC)
+                    this.lbHY_TG.Text = resoult.ResultDataSet.Tables[0].Rows[0]["_Bio_HYTG"].ToString();//甘油三脂(TG)
+                    this.lbHY_HDL_C.Text = resoult.ResultDataSet.Tables[0].Rows[0]["_Bio_HYHDLC"].ToString();//高密度脂蛋白胆固醇(HDL-C)
+
+                    this.lbHYLDLC.Text = resoult.ResultDataSet.Tables[0].Rows[0]["_Bio_HYLDLC"].ToString();//低密度脂蛋白胆固醇(LDL-C)
+                    this.lbHYAPOAI.Text = resoult.ResultDataSet.Tables[0].Rows[0]["_Bio_HYAPOAI"].ToString();//载脂蛋白AI(APOAI)
+                    this.lbHYAPOB.Text = resoult.ResultDataSet.Tables[0].Rows[0]["_Bio_HYAPOB"].ToString();//载脂蛋白B(APOB)
+                    this.lbHYAST.Text = resoult.ResultDataSet.Tables[0].Rows[0]["_Bio_HYAST"].ToString();//天门冬氨酸氨基转移酶(AST)
+                    this.lbHYGT.Text = resoult.ResultDataSet.Tables[0].Rows[0]["_Bio_HYGT"].ToString();//γ-谷胺酰转肽酶(γ-GT)
+                    this.lbHYALP.Text = resoult.ResultDataSet.Tables[0].Rows[0]["_Bio_HYALP"].ToString();//碱性磷酸酶(ALP)
+                    this.lbHYUA.Text = resoult.ResultDataSet.Tables[0].Rows[0]["_Bio_HYUA"].ToString();//尿酸（UA）
+
+                    this.lbHY_TBIL.Text = resoult.ResultDataSet.Tables[0].Rows[0]["_Bio_HYTBIL"].ToString();//总胆红素(TBIL)
+                    this.lbHY_DBIL.Text = resoult.ResultDataSet.Tables[0].Rows[0]["_Bio_HYDBIL"].ToString();//直接胆红素(DBIL)
+                    this.lbHY_TP.Text = resoult.ResultDataSet.Tables[0].Rows[0]["_Bio_HYTP"].ToString();//总蛋白(TP)
+                    this.lbHY_ALB.Text = resoult.ResultDataSet.Tables[0].Rows[0]["_Bio_HYALB"].ToString();//白蛋白(ALB)
+                    this.lbHY_ALT.Text = resoult.ResultDataSet.Tables[0].Rows[0]["_Bio_HYALT"].ToString();//谷丙转氨酶(ALT)
+                    this.lbGLU.Text = resoult.ResultDataSet.Tables[0].Rows[0]["_Bio_HY_GLU"].ToString();//血糖
+                    this.lbUREA.Text = resoult.ResultDataSet.Tables[0].Rows[0]["_Bio_HY_UREA"].ToString();//尿素
+                    this.lbCR.Text = resoult.ResultDataSet.Tables[0].Rows[0]["_Bio_HY_CR"].ToString();//肌酐
+                    this.lbAFP.Text = resoult.ResultDataSet.Tables[0].Rows[0]["_Bio_HY_AFP"].ToString();//甲胎蛋白
+                    this.lbCEA.Text = resoult.ResultDataSet.Tables[0].Rows[0]["_Bio_HY_CEA"].ToString();//癌胚抗原
+                    //***************************************************************************
+
+                }
+                else
+                {
+                    MessageBox.Show(resoult.ErrorID);
+                }
+            }
+        }
+
+        /// <summary>
         /// 新建
         /// </summary>
         /// <param name="sender"></param>
@@ -2238,7 +2284,7 @@ namespace UI
         /// <param name="e"></param>
         private void btnSaveMBBexamination_Click(object sender, EventArgs e)
         {            
-            XTHotpatalWebServices.Bexamination model = new UI.XTHotpatalWebServices.Bexamination();
+            webService.Bexamination model = new UI.webService.Bexamination();
             model.EmployeeID = "000000000000000000";
             model.YearMonth = "000000";
             model.BID = this.txtBID.Text.Trim();
@@ -2264,7 +2310,7 @@ namespace UI
             model.UPDATER_ID = GlobalVal.gloStrLoginUserID;
             model.TERMINAL_CD = GlobalVal.gloStrTerminalCD;
 
-            XTHotpatalWebServices.ReturnValue resoult = GlobalVal.gloWebSerices.AddUpdateBexamination(model);
+            webService.ReturnValue resoult = GlobalVal.gloWebSerices.AddUpdateBexamination(model);
             if (resoult.ErrorFlag)
             {
                 MessageBox.Show("操作成功！");
@@ -2282,7 +2328,7 @@ namespace UI
         /// <param name="e"></param>
         private void btnSaveMBXray_Click(object sender, EventArgs e)
         {   
-            XTHotpatalWebServices.Xray model = new UI.XTHotpatalWebServices.Xray();
+            webService.Xray model = new UI.webService.Xray();
             model.EmployeeID = "000000000000000000";
             model.YearMonth = "000000";
             model.PhotoNo = this.txtPhotoNo.Text.Trim();
@@ -2309,7 +2355,7 @@ namespace UI
             model.UPDATER_ID = GlobalVal.gloStrLoginUserID;
             model.TERMINAL_CD = GlobalVal.gloStrTerminalCD;
 
-            XTHotpatalWebServices.ReturnValue resoult = GlobalVal.gloWebSerices.AddUpdateXray(model);
+            webService.ReturnValue resoult = GlobalVal.gloWebSerices.AddUpdateXray(model);
             if (resoult.ErrorFlag)
             {
                 MessageBox.Show("操作成功！");
@@ -2327,7 +2373,7 @@ namespace UI
         /// <param name="e"></param>
         private void btnSaveMBECG_Click(object sender, EventArgs e)
         {
-            XTHotpatalWebServices.ECG model = new UI.XTHotpatalWebServices.ECG();
+            webService.ECG model = new UI.webService.ECG();
             model.EmployeeID = "000000000000000000";
             model.YearMonth = "000000";
 
@@ -2367,7 +2413,7 @@ namespace UI
             model.UPDATER_ID = GlobalVal.gloStrLoginUserID;
             model.TERMINAL_CD = GlobalVal.gloStrTerminalCD;
 
-            XTHotpatalWebServices.ReturnValue resoult = GlobalVal.gloWebSerices.AddUpdateECG(model);
+            webService.ReturnValue resoult = GlobalVal.gloWebSerices.AddUpdateECG(model);
             if (resoult.ErrorFlag)
             {
                 MessageBox.Show("操作成功！");
@@ -2385,7 +2431,7 @@ namespace UI
         /// <param name="e"></param>
         private void btnSaveMBInternalMedicine_Click(object sender, EventArgs e)
         {   
-            XTHotpatalWebServices.InternalMedicine model = new UI.XTHotpatalWebServices.InternalMedicine();
+            webService.InternalMedicine model = new UI.webService.InternalMedicine();
             model.EmployeeID = "000000000000000000";
             model.YearMonth = "000000";
             model.BloodPressure = this.txtBloodPressure.Text.Trim();
@@ -2403,7 +2449,7 @@ namespace UI
             model.UPDATER_ID = GlobalVal.gloStrLoginUserID;
             model.TERMINAL_CD = GlobalVal.gloStrTerminalCD;
 
-            XTHotpatalWebServices.ReturnValue resoult = GlobalVal.gloWebSerices.AddUpdateInternalMeicine(model);
+            webService.ReturnValue resoult = GlobalVal.gloWebSerices.AddUpdateInternalMeicine(model);
             if (resoult.ErrorFlag)
             {
                 MessageBox.Show("操作成功！");
@@ -2421,7 +2467,7 @@ namespace UI
         /// <param name="e"></param>
         private void btnSaveMBSurgery_Click(object sender, EventArgs e)
         {   
-            XTHotpatalWebServices.Surgery model = new UI.XTHotpatalWebServices.Surgery();
+            webService.Surgery model = new UI.webService.Surgery();
             model.EmployeeID = "000000000000000000";
             model.YearMonth = "000000";
             model.Length = this.txtLength.Text.Trim();
@@ -2444,7 +2490,7 @@ namespace UI
             model.UPDATER_ID = GlobalVal.gloStrLoginUserID;
             model.TERMINAL_CD = GlobalVal.gloStrTerminalCD;
 
-            XTHotpatalWebServices.ReturnValue resoult = GlobalVal.gloWebSerices.AddUpdateSurgery(model);
+            webService.ReturnValue resoult = GlobalVal.gloWebSerices.AddUpdateSurgery(model);
             if (resoult.ErrorFlag)
             {
                 MessageBox.Show("操作成功！");
@@ -2462,7 +2508,7 @@ namespace UI
         /// <param name="e"></param>
         private void btnSaveMBFeatures_Click(object sender, EventArgs e)
         {
-            XTHotpatalWebServices.Features model = new UI.XTHotpatalWebServices.Features();
+            webService.Features model = new UI.webService.Features();
             model.EmployeeID = "000000000000000000";
             model.YearMonth = "000000";
             model.LeftEye = this.txtLeftEye.Text.Trim();
@@ -2490,7 +2536,7 @@ namespace UI
             model.UPDATER_ID = GlobalVal.gloStrLoginUserID;
             model.TERMINAL_CD = GlobalVal.gloStrTerminalCD;
 
-            XTHotpatalWebServices.ReturnValue resoult = GlobalVal.gloWebSerices.AddUpdateFeatures(model);
+            webService.ReturnValue resoult = GlobalVal.gloWebSerices.AddUpdateFeatures(model);
             if (resoult.ErrorFlag)
             {
                 MessageBox.Show("操作成功！");
@@ -2509,7 +2555,7 @@ namespace UI
         private void btnInputMBFeatures_Click(object sender, EventArgs e)
         {
 
-            XTHotpatalWebServices.ReturnValue resoult = GlobalVal.gloWebSerices.SearchEmployeeAllInfo("000000000000000000", "000000");
+            webService.ReturnValue resoult = GlobalVal.gloWebSerices.SearchEmployeeAllInfo("000000000000000000", "000000");
             if (resoult.ErrorFlag)
             {
                 if (resoult.Count > 0)
@@ -2553,7 +2599,7 @@ namespace UI
         private void btnInputMBSurgery_Click(object sender, EventArgs e)
         {
 
-            XTHotpatalWebServices.ReturnValue resoult = GlobalVal.gloWebSerices.SearchEmployeeAllInfo("000000000000000000", "000000");
+            webService.ReturnValue resoult = GlobalVal.gloWebSerices.SearchEmployeeAllInfo("000000000000000000", "000000");
             if (resoult.ErrorFlag)
             {
                 if (resoult.Count > 0)
@@ -2592,7 +2638,7 @@ namespace UI
         private void btnInputMBInternalMedicine_Click(object sender, EventArgs e)
         {
 
-            XTHotpatalWebServices.ReturnValue resoult = GlobalVal.gloWebSerices.SearchEmployeeAllInfo("000000000000000000", "000000");
+            webService.ReturnValue resoult = GlobalVal.gloWebSerices.SearchEmployeeAllInfo("000000000000000000", "000000");
             if (resoult.ErrorFlag)
             {
                 if (resoult.Count > 0)
@@ -2626,7 +2672,7 @@ namespace UI
         private void btnInputMBECG_Click(object sender, EventArgs e)
         {
 
-            XTHotpatalWebServices.ReturnValue resoult = GlobalVal.gloWebSerices.SearchEmployeeAllInfo("000000000000000000", "000000");
+            webService.ReturnValue resoult = GlobalVal.gloWebSerices.SearchEmployeeAllInfo("000000000000000000", "000000");
             if (resoult.ErrorFlag)
             {
                 if (resoult.Count > 0)
@@ -2681,7 +2727,7 @@ namespace UI
         private void btnInputMBXray_Click(object sender, EventArgs e)
         {
 
-            XTHotpatalWebServices.ReturnValue resoult = GlobalVal.gloWebSerices.SearchEmployeeAllInfo("000000000000000000", "000000");
+            webService.ReturnValue resoult = GlobalVal.gloWebSerices.SearchEmployeeAllInfo("000000000000000000", "000000");
             if (resoult.ErrorFlag)
             {
                 if (resoult.Count > 0)
@@ -2722,7 +2768,7 @@ namespace UI
         private void btnInputMBBexamination_Click(object sender, EventArgs e)
         {
 
-            XTHotpatalWebServices.ReturnValue resoult = GlobalVal.gloWebSerices.SearchEmployeeAllInfo("000000000000000000", "000000");
+            webService.ReturnValue resoult = GlobalVal.gloWebSerices.SearchEmployeeAllInfo("000000000000000000", "000000");
             if (resoult.ErrorFlag)
             {
                 if (resoult.Count > 0)
@@ -2765,7 +2811,7 @@ namespace UI
                 MessageBox.Show("请先进行人员选择或添加人员！", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-            XTHotpatalWebServices.Feme model = new UI.XTHotpatalWebServices.Feme();
+            webService.Feme model = new UI.webService.Feme();
             model.EmployeeID = GlobalVal.EmployeeID;
             model.YearMonth = GlobalVal.gloYearMonth;
             model.Menarche=txtMenarche.Text.Trim();				//月经初潮
@@ -3125,7 +3171,7 @@ namespace UI
             model.UPDATER_ID = GlobalVal.gloStrLoginUserID;
             model.TERMINAL_CD = GlobalVal.gloStrTerminalCD;
 
-            XTHotpatalWebServices.ReturnValue resoult = GlobalVal.gloWebSerices.AddUpdateFeme(model);
+            webService.ReturnValue resoult = GlobalVal.gloWebSerices.AddUpdateFeme(model);
             if (resoult.ErrorFlag)
             {
                 MessageBox.Show("操作成功！");
@@ -3162,7 +3208,7 @@ namespace UI
                 MessageBox.Show("请先进行人员选择或添加人员！", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-            XTHotpatalWebServices.Composition model = new UI.XTHotpatalWebServices.Composition();
+            webService.Composition model = new UI.webService.Composition();
             model.EmployeeID = GlobalVal.EmployeeID;
             model.YearMonth = GlobalVal.gloYearMonth;
 
@@ -3229,7 +3275,7 @@ namespace UI
             model.UPDATER_ID = GlobalVal.gloStrLoginUserID;
             model.TERMINAL_CD = GlobalVal.gloStrTerminalCD;
 
-            XTHotpatalWebServices.ReturnValue resoult = GlobalVal.gloWebSerices.AddUpdateComposition(model);
+            webService.ReturnValue resoult = GlobalVal.gloWebSerices.AddUpdateComposition(model);
             if (resoult.ErrorFlag)
             {
                 MessageBox.Show("操作成功！");

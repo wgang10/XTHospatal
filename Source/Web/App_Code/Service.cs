@@ -24,12 +24,12 @@ public class Service : System.Web.Services.WebService
         return "WanGang";
     }
 
-    [WebMethod(Description = "测试Web Service")]
-    public ReturnValue SearchYearMonth()
-    {
-        BLL_LoginUser bll = new BLL_LoginUser();
-        return bll.GetYearMonth();
-    }
+    //[WebMethod(Description = "测试Web Service")]
+    //public ReturnValue SearchYearMonth()
+    //{
+    //    BLL_LoginUser bll = new BLL_LoginUser();
+    //    return bll.GetYearMonth();
+    //}
 
     [WebMethod(Description = "验证用户")]
     public string[] ValidateUser(string LoginUserID, string TerminalCD,string UserID, string userPWD,string YearMonth)
@@ -358,4 +358,108 @@ public class Service : System.Web.Services.WebService
             return null;
         }
     }
+
+    [WebMethod(Description = "获取生化参考值数据")]
+    public ReturnValue GetBioTInfo()
+    {
+        BLL_Employee bll = new BLL_Employee();
+        return bll.SearchBioTInfo();
+    }
+
+    [WebMethod(Description = "导入生化数据")]
+    public bool InportBiochemistryData(byte[] buffer)
+    {
+        bool resoult = false;
+        //if (buffer != null)
+        //{
+        //    DataSet ds = DataSetZip.Decompress(buffer);
+        //    if (ds.Tables.Count > 0)
+        //    {
+
+        //        List<Biochemistry> list = new List<Biochemistry>();
+        //        for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+        //        {
+        //            Biochemistry entity = new Biochemistry();
+        //            entity.UPDATE_DATETIME = ds.Tables[0].Rows[i]["UPDATE_DATETIME"].ToString();
+        //            entity.EmployeeID = ds.Tables[0].Rows[i]["EmployeeID"].ToString();
+        //            entity.YearMonth = ds.Tables[0].Rows[i]["YearMoth"].ToString();
+        //            entity.HYNo = ds.Tables[0].Rows[i]["HYNo"].ToString();
+        //            entity.HYTC = ConvertFloat(ds.Tables[0].Rows[i]["HYTC"].ToString());
+        //            entity.HYTG = ConvertFloat(ds.Tables[0].Rows[i]["HYTG"].ToString());
+        //            entity.HYHDLC = ConvertFloat(ds.Tables[0].Rows[i]["HYHDLC"].ToString());
+        //            entity.HYLDLC = ConvertFloat(ds.Tables[0].Rows[i]["HYLDLC"].ToString());
+        //            entity.HYAPOAI = ConvertFloat(ds.Tables[0].Rows[i]["HYAPOAI"].ToString());
+        //            entity.HYAPOB = ConvertFloat(ds.Tables[0].Rows[i]["HYAPOB"].ToString());
+        //            entity.HYTBIL = ConvertFloat(ds.Tables[0].Rows[i]["HYTBIL"].ToString());
+        //            entity.HYDBIL = ConvertFloat(ds.Tables[0].Rows[i]["HYDBIL"].ToString());
+        //            entity.HYTP = ConvertFloat(ds.Tables[0].Rows[i]["HYTP"].ToString());
+        //            entity.HYALB = ConvertFloat(ds.Tables[0].Rows[i]["HYALB"].ToString());
+        //            entity.HYALT = ConvertFloat(ds.Tables[0].Rows[i]["HYALT"].ToString());
+        //            entity.HYAST = ConvertFloat(ds.Tables[0].Rows[i]["HYAST"].ToString());
+        //            entity.HYGT = ConvertFloat(ds.Tables[0].Rows[i]["HYGT"].ToString());
+        //            entity.HYALP = ConvertFloat(ds.Tables[0].Rows[i]["HYALP"].ToString());
+        //            entity.HYHBsAg = ds.Tables[0].Rows[i]["HYHBsAg"].ToString();
+        //            entity.HYHBsAb = ds.Tables[0].Rows[i]["HYHBsAb"].ToString();
+        //            entity.HYHBeAg = ds.Tables[0].Rows[i]["HYHBeAg"].ToString();
+        //            entity.HYHBeAb = ds.Tables[0].Rows[i]["HYHBeAb"].ToString();
+        //            entity.HYHBcAb = ds.Tables[0].Rows[i]["HYHBcAb"].ToString();
+        //            entity.HY_GLU = ConvertFloat(ds.Tables[0].Rows[i]["HY_GLU"].ToString());
+        //            entity.HY_UREA = ConvertFloat(ds.Tables[0].Rows[i]["HY_UREA"].ToString());
+        //            entity.HY_CR = ConvertFloat(ds.Tables[0].Rows[i]["HY_CR"].ToString());
+        //            entity.HYUA = ConvertFloat(ds.Tables[0].Rows[i]["HYUA"].ToString());
+        //            entity.HY_AFP = ConvertFloat(ds.Tables[0].Rows[i]["HY_AFP"].ToString());
+        //            entity.HY_CEA = ConvertFloat(ds.Tables[0].Rows[i]["HY_CEA"].ToString());
+        //            list.Add(entity);
+        //        }
+        //        resoult = ZYSoft.ORM.Operation.BiochemistryOP.SaveData(list);
+        //    }
+        //}
+        return resoult;
+    }
+
+    private float ConvertFloat(string str)
+    {
+        float r = 0;
+        float.TryParse(str, out r);
+        return r;
+    }
+
+    [WebMethod(Description = "取得统计数据")]
+    public byte[] GetStatisticsData()
+    {
+        //return ZYSoft.ORM.Operation.BiochemistryOP.GetStatisticsData();
+        return null;
+    }
+
+    [WebMethod(Description = "取得单个人的统计数据")]
+    public byte[] GetStatisticsDataByID(string ID)
+    {
+        //return ZYSoft.ORM.Operation.BiochemistryOP.GetEmployeeInfoByID(ID);
+        return null;
+    }
+
+    #region 网站部分Services
+
+    [WebMethod(Description = "取得密码")]
+    public ReturnValue GetEmployeePWD(string EmployeeGZID)
+    {
+        BLL_LoginUser bll = new BLL_LoginUser();
+        return bll.GetEmployeePWD(EmployeeGZID);
+    }
+
+    [WebMethod(Description = "取得体检数据")]
+    public ReturnValue SearchMyInfo(string EmployeeGZID, string YearMonth)
+    {
+        BLL_Employee bll = new BLL_Employee();
+        return bll.SearchMyInfo(EmployeeGZID, YearMonth);
+    }
+
+    [WebMethod(Description = "修改密码")]
+    public ReturnValue ChangePassWord(Employee model)
+    {
+        BLL_Employee bll = new BLL_Employee();
+        return bll.ChangePassWord(model);
+    }
+
+    #endregion
 }

@@ -51,11 +51,11 @@
 		    版权所有©西安运动创伤医院 技术支持：<a href="http://www.ziyangsoft.com/" target="_blank">子杨软件</a>
 	</div>	
 </div>
-
-
     </form>
-
-
+    <script type="text/javascript">
+        var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+        document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fe491a982a18fc2fecde42966222fad6c' type='text/javascript'%3E%3C/script%3E"));
+</script>
 </body>
 </html>
 

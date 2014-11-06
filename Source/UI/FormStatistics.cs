@@ -42,10 +42,10 @@ namespace UI
         private void btnSearch_Click(object sender, EventArgs e)
         {
             //this.dataGridView1.DataSource = null;
-            //GlobalVal.gloWebSerices.GetAllBiochemistryDataCompleted += new XTHotpatalWebServices.GetAllBiochemistryDataCompletedEventHandler(gloWebSerices_GetAllBiochemistryDataCompleted);
+            //GlobalVal.gloWebSerices.GetAllBiochemistryDataCompleted += new webService.GetAllBiochemistryDataCompletedEventHandler(gloWebSerices_GetAllBiochemistryDataCompleted);
             //GlobalVal.gloWebSerices.GetAllBiochemistryDataAsync();
             //btnSearch.Enabled = false;
-          XTHotpatalWebServices.Service sw = new XTHotpatalWebServices.Service();
+          webService.Service sw = new webService.Service();
           byte[] buffer = sw.GetAllBiochemistryData();
           if (buffer != null)
           {
@@ -57,7 +57,7 @@ namespace UI
           BindGridData();
         }
 
-        void gloWebSerices_GetAllBiochemistryDataCompleted(object sender, XTHotpatalWebServices.GetAllBiochemistryDataCompletedEventArgs e)
+        void gloWebSerices_GetAllBiochemistryDataCompleted(object sender, webService.GetAllBiochemistryDataCompletedEventArgs e)
         {
             if (e.Error == null)
             {
@@ -87,8 +87,8 @@ namespace UI
             //    DataSet ds = DataSetZip.Decompress(buffer);
             //    this.dataGridView1.DataSource = ds.Tables[0];
             //}
-          ZiYangWebService.ZiYangWebService ws = new ZiYangWebService.ZiYangWebService();
-          XTHotpatalWebServices.Service sw=new XTHotpatalWebServices.Service();
+          webService.Service ws = new webService.Service();
+          webService.Service sw=new webService.Service();
           byte[] buffer = sw.GetAllBiochemistryData();
           bool resoult = ws.InportBiochemistryData(buffer);
           if (resoult)
@@ -108,7 +108,7 @@ namespace UI
       /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
-          ZiYangWebService.ZiYangWebService ws = new ZiYangWebService.ZiYangWebService();
+          webService.Service ws = new webService.Service();
           byte[] buffer = ws.GetStatisticsData();
           if (buffer != null)
           {
@@ -142,10 +142,10 @@ namespace UI
 
         private void BindGridData()
         {
-          XTHotpatalWebServices.Service sw = new XTHotpatalWebServices.Service();
+          webService.Service sw = new webService.Service();
           try
           {
-            XTHotpatalWebServices.ReturnValue resoult = sw.GetListEmployee(" Where Employee.EmployeeID <> '000000000000000000'");
+            webService.ReturnValue resoult = sw.GetListEmployee(" Where Employee.EmployeeID <> '000000000000000000'");
             if (resoult.ErrorFlag)
             {
               for (int i = 0; i < resoult.ResultDataSet.Tables[0].Rows.Count; i++)
@@ -205,7 +205,7 @@ namespace UI
         private void grdMain_DoubleClick(object sender, EventArgs e)
         {
           string EmployeeID = grdMain.CurrentRow.Cells["EmployeeID"].Value.ToString();
-          ZiYangWebService.ZiYangWebService ws = new ZiYangWebService.ZiYangWebService();
+          webService.Service ws = new webService.Service();
           byte[] buffer = ws.GetStatisticsDataByID(EmployeeID);
           if (buffer != null)
           {
@@ -385,7 +385,7 @@ namespace UI
         {
             if (GlobalVal.EmpManage.ShowDialog(this) == DialogResult.OK)
             {
-                ZiYangWebService.ZiYangWebService ws = new ZiYangWebService.ZiYangWebService();
+                webService.Service ws = new webService.Service();
                 byte[] buffer = ws.GetStatisticsDataByID(GlobalVal.StatisticsEmployeeID);
                 if (buffer != null)
                 {

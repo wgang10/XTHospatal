@@ -27,10 +27,18 @@ namespace XTHospital.BLL
             if (resoult.Count > 0)
             {
                 resoult = dalComposition.Update(model);
+                if (resoult.ErrorFlag)
+                {
+                    BLL_Log.AddLog(model.UPDATER_ID + " 修改了用户 " + model.EmployeeID + " 的体成分信息", "1", model.TERMINAL_CD);
+                }
             }
             else
             {
                 resoult = dalComposition.Add(model);
+                if (resoult.ErrorFlag)
+                {
+                    BLL_Log.AddLog(model.UPDATER_ID + " 修改了用户 " + model.EmployeeID + " 的体成分信息", "1", model.TERMINAL_CD);
+                }
             }
             return resoult;
         }

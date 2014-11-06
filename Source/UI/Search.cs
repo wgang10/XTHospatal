@@ -79,7 +79,7 @@ namespace UI
             
             try
             {
-                XTHotpatalWebServices.ReturnValue resoult = GlobalVal.gloWebSerices.GetListEmployee(" Where Employee.EmployeeID <> '000000000000000000'");
+                webService.ReturnValue resoult = GlobalVal.gloWebSerices.GetListEmployee(" Where Employee.EmployeeID <> '000000000000000000'");
                 if (resoult.ErrorFlag)
                 {
                     for (int i = 0; i < resoult.ResultDataSet.Tables[0].Rows.Count; i++)
@@ -156,7 +156,7 @@ namespace UI
             
             try
             {
-                XTHotpatalWebServices.ReturnValue resoult = GlobalVal.gloWebSerices.GetListEmployee(strWhere);
+                webService.ReturnValue resoult = GlobalVal.gloWebSerices.GetListEmployee(strWhere);
                 if (resoult.ErrorFlag)
                 {
                     for (int i = 0; i < resoult.ResultDataSet.Tables[0].Rows.Count; i++)

@@ -23,10 +23,18 @@ namespace XTHospital.BLL
             if (resoult.Count > 0)
             {
                 resoult = dalEmployee.Update(model);
+                if (resoult.ErrorFlag)
+                {
+                    BLL_Log.AddLog(model.UPDATER_ID + " 修改了用户 " + model.EmployeeName, "1", model.TERMINAL_CD);
+                }
             }
             else
             {
                 resoult = dalEmployee.Add(model);
+                if (resoult.ErrorFlag)
+                {
+                    BLL_Log.AddLog(model.UPDATER_ID + " 添加了用户 " + model.EmployeeName, "1", model.TERMINAL_CD);
+                }
             }
             return resoult;
         }
@@ -44,6 +52,15 @@ namespace XTHospital.BLL
         public ReturnValue SearchMyInfo(string EmployeeGZID, string YearMonth)
         {
             return dalEmployee.SearchMyInfo(EmployeeGZID, YearMonth);
+        }
+
+        /// <summary>
+        /// 取得生化参考值信息
+        /// </summary>
+        /// <returns></returns>
+        public ReturnValue SearchBioTInfo()
+        {
+            return dalEmployee.SearchBioTInfo();
         }
 
         public ReturnValue GetEmployeeInfo(string EmployeeID)

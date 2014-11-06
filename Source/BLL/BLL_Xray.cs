@@ -24,10 +24,18 @@ namespace XTHospital.BLL
             if (resoult.Count > 0)
             {
                 resoult = dalXray.Update(model);
+                if (resoult.ErrorFlag)
+                {
+                    BLL_Log.AddLog(model.UPDATER_ID + " 修改了用户 " + model.EmployeeID + " 的X射线信息", "1", model.TERMINAL_CD);
+                }
             }
             else
             {
                 resoult = dalXray.Add(model);
+                if (resoult.ErrorFlag)
+                {
+                    BLL_Log.AddLog(model.UPDATER_ID + " 修改了用户 " + model.EmployeeID + " 的X射线信息", "1", model.TERMINAL_CD);
+                }
             }
             return resoult;
         }

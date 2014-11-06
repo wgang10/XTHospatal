@@ -754,7 +754,7 @@ namespace UI
                     //cmbControl.Items.Clear();
                     cmbControl.DataSource = null;
 
-                    XTHotpatalWebServices.ReturnValue resoult = GlobalVal.gloWebSerices.GetYearMonth();
+                    webService.ReturnValue resoult = GlobalVal.gloWebSerices.GetYearMonth();
                     if (resoult.ErrorFlag)
                     {
                         System.Data.DataTable tb = resoult.ResultDataSet.Tables[0];
@@ -769,7 +769,7 @@ namespace UI
                     break;
                 case "Department":
                     cmbControl.DataSource = null;                    
-                    XTHotpatalWebServices.ReturnValue resoultDep = GlobalVal.gloWebSerices.GetDepartmentList();
+                    webService.ReturnValue resoultDep = GlobalVal.gloWebSerices.GetDepartmentList();
                     if (resoultDep.ErrorFlag)
                     {
                         System.Data.DataTable tb = resoultDep.ResultDataSet.Tables[0];

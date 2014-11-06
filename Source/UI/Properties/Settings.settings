@@ -2,11 +2,8 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="UI.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="UI_XTHotpatalWebServices_Service" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://localhost:17761/Web/Service.asmx</Value>
-    </Setting>
-    <Setting Name="UI_ZiYangWebService_ZiYangWebService" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://localhost:1354/ZiYangWebService.asmx</Value>
+    <Setting Name="UI_webService_Service" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost/Service.asmx</Value>
     </Setting>
   </Settings>
 </SettingsFile>

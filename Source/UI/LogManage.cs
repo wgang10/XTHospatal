@@ -80,7 +80,7 @@ namespace UI
                 {
                     strDateTo += "235959";
                 }
-                XTHotpatalWebServices.ReturnValue resoult = GlobalVal.gloWebSerices.GetLogList(strDateFrom, strDateTo, "");
+                webService.ReturnValue resoult = GlobalVal.gloWebSerices.GetLogList(strDateFrom, strDateTo, "");
                 if (resoult.ErrorFlag)
                 {
                     for (int i = 0; i < resoult.ResultDataSet.Tables[0].Rows.Count; i++)

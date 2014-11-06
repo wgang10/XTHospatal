@@ -1,0 +1,1861 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="CheckWebServices">
+        <s:complexType />
+      </s:element>
+      <s:element name="CheckWebServicesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CheckWebServicesResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchYearMonth">
+        <s:complexType />
+      </s:element>
+      <s:element name="SearchYearMonthResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchYearMonthResult" type="tns:ReturnValue" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ReturnValue">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ErrorFlag" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResultDataSet">
+            <s:complexType>
+              <s:sequence>
+                <s:element ref="s:schema" />
+                <s:any />
+              </s:sequence>
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="1" maxOccurs="1" name="Count" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ValidateUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoginUserID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TerminalCD" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userPWD" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="YearMonth" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidateUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ValidateUserResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SetYearMonth">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoginUserID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TerminalCD" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="YearMonth" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetYearMonthResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SetYearMonthResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidateUserNoYearMonth">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoginUserID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TerminalCD" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userPWD" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidateUserNoYearMonthResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ValidateUserNoYearMonthResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserList">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetUserListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserListResult" type="tns:ReturnValue" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="model" type="tns:LoginUser" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="LoginUser">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CREATE_DATETIME" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UPDATE_DATETIME" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TRANS_STATE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UPDATER_ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TERMINAL_CD" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProvinceCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProvinceName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserPwd" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MEMO" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddUserResult" type="tns:ReturnValue" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteUserResult" type="tns:ReturnValue" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetYearMonth">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetYearMonthResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetYearMonthResult" type="tns:ReturnValue" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddUpdateBiochemistry">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="model" type="tns:Biochemistry" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Biochemistry">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CREATE_DATETIME" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UPDATE_DATETIME" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TRANS_STATE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UPDATER_ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TERMINAL_CD" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EmployeeID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="YearMonth" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HYNo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HYDr" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HYTC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HYTG" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HYHDLC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HYLDLC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HYAPOAI" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HYAPOB" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HYTBIL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HYDBIL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HYTP" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HYALB" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HYALT" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HYAST" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HYGT" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HYALP" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HYHBsAg" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HYHBsAb" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HYHBeAg" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HYHBeAb" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HYHBcAb" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HY_GLU" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HY_UREA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HY_CR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HYUA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HY_AFP" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HY_CEA" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddUpdateBiochemistryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddUpdateBiochemistryResult" type="tns:ReturnValue" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddUpdateBexamination">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="model" type="tns:Bexamination" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Bexamination">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CREATE_DATETIME" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UPDATE_DATETIME" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TRANS_STATE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UPDATER_ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TERMINAL_CD" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EmployeeID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="YearMonth" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HistorySigns" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LaboratoryExamination" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Diagnosis" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Purpose" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Results" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BImage" type="s:base64Binary" />
+          <s:element minOccurs="0" maxOccurs="1" name="Physicians" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddUpdateBexaminationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddUpdateBexaminationResult" type="tns:ReturnValue" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddUpdateECG">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="model" type="tns:ECG" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ECG">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CREATE_DATETIME" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UPDATE_DATETIME" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TRANS_STATE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UPDATER_ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TERMINAL_CD" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EmployeeID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="YearMonth" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ECGNo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ClinicalDiagnosis" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UsedDrugs" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SummaryHistory" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SummaryBody" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PatientSituation" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MedicalAdvice" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ECGImage" type="s:base64Binary" />
+          <s:element minOccurs="0" maxOccurs="1" name="Physicians" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddUpdateECGResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddUpdateECGResult" type="tns:ReturnValue" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddEmployee">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="model" type="tns:Employee" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Employee">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CREATE_DATETIME" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UPDATE_DATETIME" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TRANS_STATE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UPDATER_ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TERMINAL_CD" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EmployeeID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EmployeeName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EmployeeSex" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EmployeeBirthday" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EmployeeWHCD" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EmployeeHF" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EmployeeJG" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EmployeeXJD" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EmployeeBM" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EmployeeDW" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EmployeeJWBS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EmployeeGZID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EmployeePWD" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EmployeeNewPWD" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EmployeeEmail" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EmployeePhone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EmployeeValidateCode" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddEmployeeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddEmployeeResult" type="tns:ReturnValue" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetListEmployee">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strWhere" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetListEmployeeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetListEmployeeResult" type="tns:ReturnValue" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchEmployeeAllInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EmployeeID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="YearMoth" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchEmployeeAllInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchEmployeeAllInfoResult" type="tns:ReturnValue" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddUpdateFeatures">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="model" type="tns:Features" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Features">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CREATE_DATETIME" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UPDATE_DATETIME" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TRANS_STATE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UPDATER_ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TERMINAL_CD" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EmployeeID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="YearMonth" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LeftEye" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RightEye" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CorrectedLeft" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CorrectedRight" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ColorVisionForce" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TrachomaLeft" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TrachomaRight" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OtherEye" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ListeningLeft" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ListeningRight" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Ear" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Olfactory" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NoseParanasalSinusDisease" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Throat" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LipPalate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Stuttering" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Caries" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MissingTeeth" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PeriodontalDisease" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Other" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MedicalAdvice" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Physicians" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddUpdateFeaturesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddUpdateFeaturesResult" type="tns:ReturnValue" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddUpdateSurgery">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="model" type="tns:Surgery" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Surgery">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CREATE_DATETIME" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UPDATE_DATETIME" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TRANS_STATE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UPDATER_ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TERMINAL_CD" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EmployeeID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="YearMonth" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Length" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Bust" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Weight" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BadBreath" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Skin" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Lymphoid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Thyroid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Spine" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Limbs" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Joint" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Flatfoot" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Genitourinary" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Anal" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Hernia" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Other" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MedicalAdvice" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Physicians" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddUpdateSurgeryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddUpdateSurgeryResult" type="tns:ReturnValue" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddUpdateInternalMeicine">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="model" type="tns:InternalMedicine" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="InternalMedicine">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CREATE_DATETIME" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UPDATE_DATETIME" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TRANS_STATE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UPDATER_ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TERMINAL_CD" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EmployeeID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="YearMonth" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BloodPressure" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BloodPressure1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DevelopmentStatus" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Neurological" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Lung" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HeartBlood" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AbdominalOrgans" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Liver" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Spleen" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Other" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MedicalAdvice" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Physicians" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddUpdateInternalMeicineResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddUpdateInternalMeicineResult" type="tns:ReturnValue" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddUpdateXray">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="model" type="tns:Xray" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Xray">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CREATE_DATETIME" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UPDATE_DATETIME" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TRANS_STATE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UPDATER_ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TERMINAL_CD" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EmployeeID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="YearMonth" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PhotoNo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Symptoms" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Laboratory" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Diagnosis" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Perspective" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Camera" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Results" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="XImage" type="s:base64Binary" />
+          <s:element minOccurs="0" maxOccurs="1" name="Physicians" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddUpdateXrayResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddUpdateXrayResult" type="tns:ReturnValue" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddUpdateComposition">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="model" type="tns:Composition" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Composition">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CREATE_DATETIME" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UPDATE_DATETIME" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TRANS_STATE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UPDATER_ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TERMINAL_CD" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EmployeeID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="YearMonth" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FatType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FatEvaluate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FatTarget" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MuscleTarget" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BodyWeightTarget" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Physicians" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddUpdateCompositionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddUpdateCompositionResult" type="tns:ReturnValue" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddUpdateFeme">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="model" type="tns:Feme" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Feme">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CREATE_DATETIME" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UPDATE_DATETIME" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TRANS_STATE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UPDATER_ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TERMINAL_CD" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EmployeeID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="YearMonth" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Menarche" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MenopauseAge" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MenstrualCycle" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MenstrualVolume" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Dysmenorrhea" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DiseaseHistory" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FamilyTumorTistory" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DiseaseHistoryOther" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AndrogenUsed" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EstrogenUsed" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Cervical" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Uterine" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Genital" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Leucorrhea" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Vaginal" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AnnexLeft" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AnnexRight" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CheckCases" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="InfraredScanBreast" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Conclusion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Physicians" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddUpdateFemeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddUpdateFemeResult" type="tns:ReturnValue" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddUpdateReport">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="model" type="tns:Report" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Report">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CREATE_DATETIME" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UPDATE_DATETIME" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TRANS_STATE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UPDATER_ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TERMINAL_CD" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EmployeeID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="YearMonth" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ChestPerspective" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Laboratory" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Review" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Remarks" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddUpdateReportResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddUpdateReportResult" type="tns:ReturnValue" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddLog">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strContent" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strClint" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddLogResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetLogList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DateFrom" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DateTo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Type" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLogListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLogListResult" type="tns:ReturnValue" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddUpdateDepartment">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="model" type="tns:Department" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Department">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CREATE_DATETIME" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UPDATE_DATETIME" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TRANS_STATE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UPDATER_ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TERMINAL_CD" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Notes" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddUpdateDepartmentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddUpdateDepartmentResult" type="tns:ReturnValue" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDepartmentList">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetDepartmentListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDepartmentListResult" type="tns:ReturnValue" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteDepartment">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DepartmentID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteDepartmentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteDepartmentResult" type="tns:ReturnValue" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StatisticNums">
+        <s:complexType />
+      </s:element>
+      <s:element name="StatisticNumsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="StatisticNumsResult" type="tns:ReturnValue" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEmployeeInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EmployeeID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEmployeeInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetEmployeeInfoResult" type="tns:ReturnValue" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCheckEmployeeNum">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="YearMonth" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EmployeeName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EmployeeBM" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCheckEmployeeNumResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCheckEmployeeNumResult" type="tns:ReturnValue" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLastAppNo">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetLastAppNoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLastAppNoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllBiochemistryData">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllBiochemistryDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllBiochemistryDataResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBioTInfo">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetBioTInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBioTInfoResult" type="tns:ReturnValue" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InportBiochemistryData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="buffer" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InportBiochemistryDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="InportBiochemistryDataResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStatisticsData">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetStatisticsDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetStatisticsDataResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStatisticsDataByID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStatisticsDataByIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetStatisticsDataByIDResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="CheckWebServicesSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckWebServices" />
+  </wsdl:message>
+  <wsdl:message name="CheckWebServicesSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckWebServicesResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchYearMonthSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchYearMonth" />
+  </wsdl:message>
+  <wsdl:message name="SearchYearMonthSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchYearMonthResponse" />
+  </wsdl:message>
+  <wsdl:message name="ValidateUserSoapIn">
+    <wsdl:part name="parameters" element="tns:ValidateUser" />
+  </wsdl:message>
+  <wsdl:message name="ValidateUserSoapOut">
+    <wsdl:part name="parameters" element="tns:ValidateUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetYearMonthSoapIn">
+    <wsdl:part name="parameters" element="tns:SetYearMonth" />
+  </wsdl:message>
+  <wsdl:message name="SetYearMonthSoapOut">
+    <wsdl:part name="parameters" element="tns:SetYearMonthResponse" />
+  </wsdl:message>
+  <wsdl:message name="ValidateUserNoYearMonthSoapIn">
+    <wsdl:part name="parameters" element="tns:ValidateUserNoYearMonth" />
+  </wsdl:message>
+  <wsdl:message name="ValidateUserNoYearMonthSoapOut">
+    <wsdl:part name="parameters" element="tns:ValidateUserNoYearMonthResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserList" />
+  </wsdl:message>
+  <wsdl:message name="GetUserListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserListResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddUserSoapIn">
+    <wsdl:part name="parameters" element="tns:AddUser" />
+  </wsdl:message>
+  <wsdl:message name="AddUserSoapOut">
+    <wsdl:part name="parameters" element="tns:AddUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteUserSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteUser" />
+  </wsdl:message>
+  <wsdl:message name="DeleteUserSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetYearMonthSoapIn">
+    <wsdl:part name="parameters" element="tns:GetYearMonth" />
+  </wsdl:message>
+  <wsdl:message name="GetYearMonthSoapOut">
+    <wsdl:part name="parameters" element="tns:GetYearMonthResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddUpdateBiochemistrySoapIn">
+    <wsdl:part name="parameters" element="tns:AddUpdateBiochemistry" />
+  </wsdl:message>
+  <wsdl:message name="AddUpdateBiochemistrySoapOut">
+    <wsdl:part name="parameters" element="tns:AddUpdateBiochemistryResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddUpdateBexaminationSoapIn">
+    <wsdl:part name="parameters" element="tns:AddUpdateBexamination" />
+  </wsdl:message>
+  <wsdl:message name="AddUpdateBexaminationSoapOut">
+    <wsdl:part name="parameters" element="tns:AddUpdateBexaminationResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddUpdateECGSoapIn">
+    <wsdl:part name="parameters" element="tns:AddUpdateECG" />
+  </wsdl:message>
+  <wsdl:message name="AddUpdateECGSoapOut">
+    <wsdl:part name="parameters" element="tns:AddUpdateECGResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddEmployeeSoapIn">
+    <wsdl:part name="parameters" element="tns:AddEmployee" />
+  </wsdl:message>
+  <wsdl:message name="AddEmployeeSoapOut">
+    <wsdl:part name="parameters" element="tns:AddEmployeeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetListEmployeeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetListEmployee" />
+  </wsdl:message>
+  <wsdl:message name="GetListEmployeeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetListEmployeeResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchEmployeeAllInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchEmployeeAllInfo" />
+  </wsdl:message>
+  <wsdl:message name="SearchEmployeeAllInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchEmployeeAllInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddUpdateFeaturesSoapIn">
+    <wsdl:part name="parameters" element="tns:AddUpdateFeatures" />
+  </wsdl:message>
+  <wsdl:message name="AddUpdateFeaturesSoapOut">
+    <wsdl:part name="parameters" element="tns:AddUpdateFeaturesResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddUpdateSurgerySoapIn">
+    <wsdl:part name="parameters" element="tns:AddUpdateSurgery" />
+  </wsdl:message>
+  <wsdl:message name="AddUpdateSurgerySoapOut">
+    <wsdl:part name="parameters" element="tns:AddUpdateSurgeryResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddUpdateInternalMeicineSoapIn">
+    <wsdl:part name="parameters" element="tns:AddUpdateInternalMeicine" />
+  </wsdl:message>
+  <wsdl:message name="AddUpdateInternalMeicineSoapOut">
+    <wsdl:part name="parameters" element="tns:AddUpdateInternalMeicineResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddUpdateXraySoapIn">
+    <wsdl:part name="parameters" element="tns:AddUpdateXray" />
+  </wsdl:message>
+  <wsdl:message name="AddUpdateXraySoapOut">
+    <wsdl:part name="parameters" element="tns:AddUpdateXrayResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddUpdateCompositionSoapIn">
+    <wsdl:part name="parameters" element="tns:AddUpdateComposition" />
+  </wsdl:message>
+  <wsdl:message name="AddUpdateCompositionSoapOut">
+    <wsdl:part name="parameters" element="tns:AddUpdateCompositionResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddUpdateFemeSoapIn">
+    <wsdl:part name="parameters" element="tns:AddUpdateFeme" />
+  </wsdl:message>
+  <wsdl:message name="AddUpdateFemeSoapOut">
+    <wsdl:part name="parameters" element="tns:AddUpdateFemeResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddUpdateReportSoapIn">
+    <wsdl:part name="parameters" element="tns:AddUpdateReport" />
+  </wsdl:message>
+  <wsdl:message name="AddUpdateReportSoapOut">
+    <wsdl:part name="parameters" element="tns:AddUpdateReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddLogSoapIn">
+    <wsdl:part name="parameters" element="tns:AddLog" />
+  </wsdl:message>
+  <wsdl:message name="AddLogSoapOut">
+    <wsdl:part name="parameters" element="tns:AddLogResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLogListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLogList" />
+  </wsdl:message>
+  <wsdl:message name="GetLogListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLogListResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddUpdateDepartmentSoapIn">
+    <wsdl:part name="parameters" element="tns:AddUpdateDepartment" />
+  </wsdl:message>
+  <wsdl:message name="AddUpdateDepartmentSoapOut">
+    <wsdl:part name="parameters" element="tns:AddUpdateDepartmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDepartmentListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDepartmentList" />
+  </wsdl:message>
+  <wsdl:message name="GetDepartmentListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDepartmentListResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteDepartmentSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteDepartment" />
+  </wsdl:message>
+  <wsdl:message name="DeleteDepartmentSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteDepartmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="StatisticNumsSoapIn">
+    <wsdl:part name="parameters" element="tns:StatisticNums" />
+  </wsdl:message>
+  <wsdl:message name="StatisticNumsSoapOut">
+    <wsdl:part name="parameters" element="tns:StatisticNumsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEmployeeInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEmployeeInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetEmployeeInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEmployeeInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCheckEmployeeNumSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCheckEmployeeNum" />
+  </wsdl:message>
+  <wsdl:message name="GetCheckEmployeeNumSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCheckEmployeeNumResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLastAppNoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLastAppNo" />
+  </wsdl:message>
+  <wsdl:message name="GetLastAppNoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLastAppNoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllBiochemistryDataSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllBiochemistryData" />
+  </wsdl:message>
+  <wsdl:message name="GetAllBiochemistryDataSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllBiochemistryDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBioTInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBioTInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetBioTInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBioTInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="InportBiochemistryDataSoapIn">
+    <wsdl:part name="parameters" element="tns:InportBiochemistryData" />
+  </wsdl:message>
+  <wsdl:message name="InportBiochemistryDataSoapOut">
+    <wsdl:part name="parameters" element="tns:InportBiochemistryDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetStatisticsDataSoapIn">
+    <wsdl:part name="parameters" element="tns:GetStatisticsData" />
+  </wsdl:message>
+  <wsdl:message name="GetStatisticsDataSoapOut">
+    <wsdl:part name="parameters" element="tns:GetStatisticsDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetStatisticsDataByIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetStatisticsDataByID" />
+  </wsdl:message>
+  <wsdl:message name="GetStatisticsDataByIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetStatisticsDataByIDResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ServiceSoap">
+    <wsdl:operation name="CheckWebServices">
+      <wsdl:input message="tns:CheckWebServicesSoapIn" />
+      <wsdl:output message="tns:CheckWebServicesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchYearMonth">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">测试Web Service</wsdl:documentation>
+      <wsdl:input message="tns:SearchYearMonthSoapIn" />
+      <wsdl:output message="tns:SearchYearMonthSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateUser">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">验证用户</wsdl:documentation>
+      <wsdl:input message="tns:ValidateUserSoapIn" />
+      <wsdl:output message="tns:ValidateUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetYearMonth">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">添加体检年月日</wsdl:documentation>
+      <wsdl:input message="tns:SetYearMonthSoapIn" />
+      <wsdl:output message="tns:SetYearMonthSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateUserNoYearMonth">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">验证用户</wsdl:documentation>
+      <wsdl:input message="tns:ValidateUserNoYearMonthSoapIn" />
+      <wsdl:output message="tns:ValidateUserNoYearMonthSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">用户一览</wsdl:documentation>
+      <wsdl:input message="tns:GetUserListSoapIn" />
+      <wsdl:output message="tns:GetUserListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUser">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">添加用户</wsdl:documentation>
+      <wsdl:input message="tns:AddUserSoapIn" />
+      <wsdl:output message="tns:AddUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUser">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">删除用户</wsdl:documentation>
+      <wsdl:input message="tns:DeleteUserSoapIn" />
+      <wsdl:output message="tns:DeleteUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetYearMonth">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获得已有年月</wsdl:documentation>
+      <wsdl:input message="tns:GetYearMonthSoapIn" />
+      <wsdl:output message="tns:GetYearMonthSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUpdateBiochemistry">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">生化检验</wsdl:documentation>
+      <wsdl:input message="tns:AddUpdateBiochemistrySoapIn" />
+      <wsdl:output message="tns:AddUpdateBiochemistrySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUpdateBexamination">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">B超</wsdl:documentation>
+      <wsdl:input message="tns:AddUpdateBexaminationSoapIn" />
+      <wsdl:output message="tns:AddUpdateBexaminationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUpdateECG">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">心电图</wsdl:documentation>
+      <wsdl:input message="tns:AddUpdateECGSoapIn" />
+      <wsdl:output message="tns:AddUpdateECGSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddEmployee">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">员工添加</wsdl:documentation>
+      <wsdl:input message="tns:AddEmployeeSoapIn" />
+      <wsdl:output message="tns:AddEmployeeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetListEmployee">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">员工一览</wsdl:documentation>
+      <wsdl:input message="tns:GetListEmployeeSoapIn" />
+      <wsdl:output message="tns:GetListEmployeeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchEmployeeAllInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">员工信息检索</wsdl:documentation>
+      <wsdl:input message="tns:SearchEmployeeAllInfoSoapIn" />
+      <wsdl:output message="tns:SearchEmployeeAllInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUpdateFeatures">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">体格检查-五官</wsdl:documentation>
+      <wsdl:input message="tns:AddUpdateFeaturesSoapIn" />
+      <wsdl:output message="tns:AddUpdateFeaturesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUpdateSurgery">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">体格检查-外科</wsdl:documentation>
+      <wsdl:input message="tns:AddUpdateSurgerySoapIn" />
+      <wsdl:output message="tns:AddUpdateSurgerySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUpdateInternalMeicine">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">体格检查-内科</wsdl:documentation>
+      <wsdl:input message="tns:AddUpdateInternalMeicineSoapIn" />
+      <wsdl:output message="tns:AddUpdateInternalMeicineSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUpdateXray">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">X射线</wsdl:documentation>
+      <wsdl:input message="tns:AddUpdateXraySoapIn" />
+      <wsdl:output message="tns:AddUpdateXraySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUpdateComposition">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">体格检查</wsdl:documentation>
+      <wsdl:input message="tns:AddUpdateCompositionSoapIn" />
+      <wsdl:output message="tns:AddUpdateCompositionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUpdateFeme">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">妇科检查</wsdl:documentation>
+      <wsdl:input message="tns:AddUpdateFemeSoapIn" />
+      <wsdl:output message="tns:AddUpdateFemeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUpdateReport">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">报告</wsdl:documentation>
+      <wsdl:input message="tns:AddUpdateReportSoapIn" />
+      <wsdl:output message="tns:AddUpdateReportSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddLog">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">写日志</wsdl:documentation>
+      <wsdl:input message="tns:AddLogSoapIn" />
+      <wsdl:output message="tns:AddLogSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLogList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">取得日志</wsdl:documentation>
+      <wsdl:input message="tns:GetLogListSoapIn" />
+      <wsdl:output message="tns:GetLogListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUpdateDepartment">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">添加修改部门</wsdl:documentation>
+      <wsdl:input message="tns:AddUpdateDepartmentSoapIn" />
+      <wsdl:output message="tns:AddUpdateDepartmentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDepartmentList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">取得部门</wsdl:documentation>
+      <wsdl:input message="tns:GetDepartmentListSoapIn" />
+      <wsdl:output message="tns:GetDepartmentListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDepartment">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">删除部门</wsdl:documentation>
+      <wsdl:input message="tns:DeleteDepartmentSoapIn" />
+      <wsdl:output message="tns:DeleteDepartmentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="StatisticNums">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">按年统计体检人数</wsdl:documentation>
+      <wsdl:input message="tns:StatisticNumsSoapIn" />
+      <wsdl:output message="tns:StatisticNumsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployeeInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">取得员工信息</wsdl:documentation>
+      <wsdl:input message="tns:GetEmployeeInfoSoapIn" />
+      <wsdl:output message="tns:GetEmployeeInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCheckEmployeeNum">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">按年查询人员各项检查项是否已经有记录</wsdl:documentation>
+      <wsdl:input message="tns:GetCheckEmployeeNumSoapIn" />
+      <wsdl:output message="tns:GetCheckEmployeeNumSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLastAppNo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查询程序最新版本</wsdl:documentation>
+      <wsdl:input message="tns:GetLastAppNoSoapIn" />
+      <wsdl:output message="tns:GetLastAppNoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllBiochemistryData">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取全部生化数据</wsdl:documentation>
+      <wsdl:input message="tns:GetAllBiochemistryDataSoapIn" />
+      <wsdl:output message="tns:GetAllBiochemistryDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBioTInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取生化参考值数据</wsdl:documentation>
+      <wsdl:input message="tns:GetBioTInfoSoapIn" />
+      <wsdl:output message="tns:GetBioTInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InportBiochemistryData">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">导入生化数据</wsdl:documentation>
+      <wsdl:input message="tns:InportBiochemistryDataSoapIn" />
+      <wsdl:output message="tns:InportBiochemistryDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStatisticsData">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">取得统计数据</wsdl:documentation>
+      <wsdl:input message="tns:GetStatisticsDataSoapIn" />
+      <wsdl:output message="tns:GetStatisticsDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStatisticsDataByID">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">取得单个人的统计数据</wsdl:documentation>
+      <wsdl:input message="tns:GetStatisticsDataByIDSoapIn" />
+      <wsdl:output message="tns:GetStatisticsDataByIDSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServiceSoap" type="tns:ServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CheckWebServices">
+      <soap:operation soapAction="http://tempuri.org/CheckWebServices" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchYearMonth">
+      <soap:operation soapAction="http://tempuri.org/SearchYearMonth" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateUser">
+      <soap:operation soapAction="http://tempuri.org/ValidateUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetYearMonth">
+      <soap:operation soapAction="http://tempuri.org/SetYearMonth" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateUserNoYearMonth">
+      <soap:operation soapAction="http://tempuri.org/ValidateUserNoYearMonth" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserList">
+      <soap:operation soapAction="http://tempuri.org/GetUserList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUser">
+      <soap:operation soapAction="http://tempuri.org/AddUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUser">
+      <soap:operation soapAction="http://tempuri.org/DeleteUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetYearMonth">
+      <soap:operation soapAction="http://tempuri.org/GetYearMonth" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUpdateBiochemistry">
+      <soap:operation soapAction="http://tempuri.org/AddUpdateBiochemistry" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUpdateBexamination">
+      <soap:operation soapAction="http://tempuri.org/AddUpdateBexamination" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUpdateECG">
+      <soap:operation soapAction="http://tempuri.org/AddUpdateECG" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddEmployee">
+      <soap:operation soapAction="http://tempuri.org/AddEmployee" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListEmployee">
+      <soap:operation soapAction="http://tempuri.org/GetListEmployee" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchEmployeeAllInfo">
+      <soap:operation soapAction="http://tempuri.org/SearchEmployeeAllInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUpdateFeatures">
+      <soap:operation soapAction="http://tempuri.org/AddUpdateFeatures" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUpdateSurgery">
+      <soap:operation soapAction="http://tempuri.org/AddUpdateSurgery" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUpdateInternalMeicine">
+      <soap:operation soapAction="http://tempuri.org/AddUpdateInternalMeicine" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUpdateXray">
+      <soap:operation soapAction="http://tempuri.org/AddUpdateXray" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUpdateComposition">
+      <soap:operation soapAction="http://tempuri.org/AddUpdateComposition" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUpdateFeme">
+      <soap:operation soapAction="http://tempuri.org/AddUpdateFeme" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUpdateReport">
+      <soap:operation soapAction="http://tempuri.org/AddUpdateReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddLog">
+      <soap:operation soapAction="http://tempuri.org/AddLog" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLogList">
+      <soap:operation soapAction="http://tempuri.org/GetLogList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUpdateDepartment">
+      <soap:operation soapAction="http://tempuri.org/AddUpdateDepartment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDepartmentList">
+      <soap:operation soapAction="http://tempuri.org/GetDepartmentList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDepartment">
+      <soap:operation soapAction="http://tempuri.org/DeleteDepartment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StatisticNums">
+      <soap:operation soapAction="http://tempuri.org/StatisticNums" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployeeInfo">
+      <soap:operation soapAction="http://tempuri.org/GetEmployeeInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCheckEmployeeNum">
+      <soap:operation soapAction="http://tempuri.org/GetCheckEmployeeNum" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLastAppNo">
+      <soap:operation soapAction="http://tempuri.org/GetLastAppNo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllBiochemistryData">
+      <soap:operation soapAction="http://tempuri.org/GetAllBiochemistryData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBioTInfo">
+      <soap:operation soapAction="http://tempuri.org/GetBioTInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InportBiochemistryData">
+      <soap:operation soapAction="http://tempuri.org/InportBiochemistryData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStatisticsData">
+      <soap:operation soapAction="http://tempuri.org/GetStatisticsData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStatisticsDataByID">
+      <soap:operation soapAction="http://tempuri.org/GetStatisticsDataByID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceSoap12" type="tns:ServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CheckWebServices">
+      <soap12:operation soapAction="http://tempuri.org/CheckWebServices" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchYearMonth">
+      <soap12:operation soapAction="http://tempuri.org/SearchYearMonth" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateUser">
+      <soap12:operation soapAction="http://tempuri.org/ValidateUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetYearMonth">
+      <soap12:operation soapAction="http://tempuri.org/SetYearMonth" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateUserNoYearMonth">
+      <soap12:operation soapAction="http://tempuri.org/ValidateUserNoYearMonth" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserList">
+      <soap12:operation soapAction="http://tempuri.org/GetUserList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUser">
+      <soap12:operation soapAction="http://tempuri.org/AddUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUser">
+      <soap12:operation soapAction="http://tempuri.org/DeleteUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetYearMonth">
+      <soap12:operation soapAction="http://tempuri.org/GetYearMonth" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUpdateBiochemistry">
+      <soap12:operation soapAction="http://tempuri.org/AddUpdateBiochemistry" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUpdateBexamination">
+      <soap12:operation soapAction="http://tempuri.org/AddUpdateBexamination" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUpdateECG">
+      <soap12:operation soapAction="http://tempuri.org/AddUpdateECG" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddEmployee">
+      <soap12:operation soapAction="http://tempuri.org/AddEmployee" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListEmployee">
+      <soap12:operation soapAction="http://tempuri.org/GetListEmployee" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchEmployeeAllInfo">
+      <soap12:operation soapAction="http://tempuri.org/SearchEmployeeAllInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUpdateFeatures">
+      <soap12:operation soapAction="http://tempuri.org/AddUpdateFeatures" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUpdateSurgery">
+      <soap12:operation soapAction="http://tempuri.org/AddUpdateSurgery" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUpdateInternalMeicine">
+      <soap12:operation soapAction="http://tempuri.org/AddUpdateInternalMeicine" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUpdateXray">
+      <soap12:operation soapAction="http://tempuri.org/AddUpdateXray" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUpdateComposition">
+      <soap12:operation soapAction="http://tempuri.org/AddUpdateComposition" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUpdateFeme">
+      <soap12:operation soapAction="http://tempuri.org/AddUpdateFeme" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUpdateReport">
+      <soap12:operation soapAction="http://tempuri.org/AddUpdateReport" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddLog">
+      <soap12:operation soapAction="http://tempuri.org/AddLog" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLogList">
+      <soap12:operation soapAction="http://tempuri.org/GetLogList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUpdateDepartment">
+      <soap12:operation soapAction="http://tempuri.org/AddUpdateDepartment" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDepartmentList">
+      <soap12:operation soapAction="http://tempuri.org/GetDepartmentList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDepartment">
+      <soap12:operation soapAction="http://tempuri.org/DeleteDepartment" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StatisticNums">
+      <soap12:operation soapAction="http://tempuri.org/StatisticNums" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployeeInfo">
+      <soap12:operation soapAction="http://tempuri.org/GetEmployeeInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCheckEmployeeNum">
+      <soap12:operation soapAction="http://tempuri.org/GetCheckEmployeeNum" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLastAppNo">
+      <soap12:operation soapAction="http://tempuri.org/GetLastAppNo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllBiochemistryData">
+      <soap12:operation soapAction="http://tempuri.org/GetAllBiochemistryData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBioTInfo">
+      <soap12:operation soapAction="http://tempuri.org/GetBioTInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InportBiochemistryData">
+      <soap12:operation soapAction="http://tempuri.org/InportBiochemistryData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStatisticsData">
+      <soap12:operation soapAction="http://tempuri.org/GetStatisticsData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStatisticsDataByID">
+      <soap12:operation soapAction="http://tempuri.org/GetStatisticsDataByID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service">
+    <wsdl:port name="ServiceSoap" binding="tns:ServiceSoap">
+      <soap:address location="http://localhost/Service.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServiceSoap12" binding="tns:ServiceSoap12">
+      <soap12:address location="http://localhost/Service.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
