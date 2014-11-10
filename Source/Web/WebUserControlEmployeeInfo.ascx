@@ -64,8 +64,7 @@
           <tr>
             <td>化验号:<span class="ReultStyle"><%=strHY_No%></span></td>
             <td></td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
+            <td colspan="2"><span class="TitleBioT">注意:蓝色斜体为参考值</span></td>
           </tr>
           <tr>
             <td class="boldStyle">血脂</td>
@@ -75,37 +74,37 @@
           </tr>
           <tr>
             <td>总胆固醇(TC):<span class="ReultStyle"><%=strHY_TC%></span></td>
-            <td><%=T_HY_TC%></td>
+            <td><span class="TitleBioT"><%=T_HY_TC%></span></td>
             <td>血糖(GLU):<span class="ReultStyle"><%=strGLU%></span></td>
-            <td><%=T_GLU%></td>
+            <td><span class="TitleBioT"><%=T_GLU%></span></td>
           </tr>
           <tr>
             <td>甘油三酯(TG):<span class="ReultStyle"><%=strHY_TG%></span></td>
-            <td><%=T_HY_TG%></td>
+            <td><span class="TitleBioT"><%=T_HY_TG%></span></td>
             <td class="boldStyle">肾功</td>
             <td>&nbsp;</td>
           </tr>
           <tr>
             <td>高密度脂蛋白胆固醇(HDL-C):<span class="ReultStyle"><%=strHY_HDL_C%></span></td>
-            <td><%=T_HY_HDL_C%></td>
+            <td><span class="TitleBioT"><%=T_HY_HDL_C%></span></td>
             <td>尿素(urea):<span class="ReultStyle"><%=strUREA%></span></td>
-            <td><%=T_UREA%></td>
+            <td><span class="TitleBioT"><%=T_UREA%></span></td>
           </tr>
           <tr>
             <td>低密度脂蛋白胆固醇(LDL-C):<span class="ReultStyle"><%=strHYLDLC%></span></td>
-            <td><%=T_HYLDLC%></td>
+            <td><span class="TitleBioT"><%=T_HYLDLC%></span></td>
             <td>肌酐(Cr):<span class="ReultStyle"><%=strCR%></span></td>
-            <td><%=T_CR%></td>
+            <td><span class="TitleBioT"><%=T_CR%></span></td>
           </tr>
           <tr>
             <td>载脂蛋白AI(APOAI):<span class="ReultStyle"><%=strHYAPOAI%></span></td>
-            <td><%=T_HYAPOAI%></td>
+            <td><span class="TitleBioT"><%=T_HYAPOAI%></span></td>
             <td>尿酸(UA):<span class="ReultStyle"><%=strHYUA%></span></td>
-            <td><%=T_HYUA%></td>
+            <td><span class="TitleBioT"><%=T_HYUA%></span></td>
           </tr>
           <tr>
             <td>载脂蛋白B(APOB):<span class="ReultStyle"><%=strHYAPOB%></span></td>
-            <td><%=T_HYAPOB%></td>
+            <td><span class="TitleBioT"><%=T_HYAPOB%></span></td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
           </tr>
@@ -117,48 +116,48 @@
           </tr>
           <tr>
             <td>总胆红素(TBIL):<span class="ReultStyle"><%=strHY_TBIL%></span></td>
-            <td><%=T_HY_TBIL%></td>
+            <td><span class="TitleBioT"><%=T_HY_TBIL%></span></td>
             <td>甲胎蛋白(AFP):<span class="ReultStyle"><%=strAFP%></span></td>
-            <td><%=T_AFP%></td>
+            <td><span class="TitleBioT"><%=T_AFP%></span></td>
           </tr>
           <tr>
             <td>直接胆红素(DBIL):<span class="ReultStyle"><%=strHY_DBIL%></span></td>
-            <td><%=T_HY_DBIL%></td>
+            <td><span class="TitleBioT"><%=T_HY_DBIL%></span></td>
             <td>癌胚抗原(CEA):<span class="ReultStyle"><%=strCEA%></span></td>
-            <td><%=T_CEA%></td>
+            <td><span class="TitleBioT"><%=T_CEA%></span></td>
           </tr>
           <tr>
             <td>总蛋白(TP):<span class="ReultStyle"><%=strHY_TP%></span></td>
-            <td><%=T_HY_TP%></td>
+            <td><span class="TitleBioT"><%=T_HY_TP%></span></td>
             <td></td>
             <td>&nbsp;</td>
           </tr>
           <tr>
             <td>白蛋白(ALB):<span class="ReultStyle"><%=strHY_ALB%></span></td>
-            <td><%=T_HY_ALB%></td>
+            <td><span class="TitleBioT"><%=T_HY_ALB%></span></td>
             <td></td>
             <td> &nbsp;</td>
           </tr>
           <tr>
             <td>丙氨酸氨基转移酶(ALT):<span class="ReultStyle"><%=strHY_ALT%></span></td>
-            <td><%=T_HY_ALT%> </td>
+            <td><span class="TitleBioT"><%=T_HY_ALT%></span></td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
           </tr>
           <tr>
             <td>天门冬氨酸氨基转移酶(AST):<span class="ReultStyle"><%=strHYAST%></span></td>
-            <td><%=T_HYAST%></td>
+            <td><span class="TitleBioT"><%=T_HYAST%></span></td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
           </tr>
           <tr>
             <td>γ-谷胺酰转肽酶(γ-GT):<span class="ReultStyle"><%=strHYGT%></span></td>
-            <td colspan="2"><%=T_HYGT%></td>
+            <td colspan="2"><span class="TitleBioT"><%=T_HYGT%></span></td>
             <td>&nbsp;</td>
           </tr>
           <tr>
             <td>碱性磷酸酶(ALP):<span class="ReultStyle"><%=strHYALP%></span></td>
-            <td colspan="2"><%=T_HYALP%></td>
+            <td colspan="2"><span class="TitleBioT"><%=T_HYALP%></span></td>
             <td>&nbsp;</td>
           </tr>
           <tr>

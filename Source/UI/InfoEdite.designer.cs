@@ -5991,11 +5991,11 @@
             // txtGlobal_EmployeeID
             // 
             this.txtGlobal_EmployeeID.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtGlobal_EmployeeID.Location = new System.Drawing.Point(468, 70);
+            this.txtGlobal_EmployeeID.Location = new System.Drawing.Point(384, 70);
             this.txtGlobal_EmployeeID.MaxLength = 18;
             this.txtGlobal_EmployeeID.Name = "txtGlobal_EmployeeID";
             this.txtGlobal_EmployeeID.ReadOnly = true;
-            this.txtGlobal_EmployeeID.Size = new System.Drawing.Size(128, 29);
+            this.txtGlobal_EmployeeID.Size = new System.Drawing.Size(212, 29);
             this.txtGlobal_EmployeeID.TabIndex = 33;
             this.txtGlobal_EmployeeID.TabStop = false;
             // 
@@ -6003,7 +6003,7 @@
             // 
             this.label135.AutoSize = true;
             this.label135.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label135.Location = new System.Drawing.Point(404, 73);
+            this.label135.Location = new System.Drawing.Point(320, 73);
             this.label135.Name = "label135";
             this.label135.Size = new System.Drawing.Size(58, 22);
             this.label135.TabIndex = 34;
