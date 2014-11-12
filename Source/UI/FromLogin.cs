@@ -112,6 +112,16 @@ namespace UI
 
         private void FromLogin_Load(object sender, EventArgs e)
         {
+            try
+            {
+                WebClient wc = new WebClient();
+                Image image = Image.FromStream(wc.OpenRead(GlobalVal.gloStrPictureLoginUrl));
+                this.pictureBox1.Image = image;
+            }
+            catch(Exception ex)
+            {
+                GlobalVal.gloWebSerices.AddLog("加载图片[" + GlobalVal.gloStrPictureLoginUrl + "]失败."+ex.Message , "3", Dns.GetHostAddresses(Dns.GetHostName())[0].ToString());
+            }
             //txtServerURL.Text = ConfigurationManager.AppSettings["WebServicesURL"];
             //txtServerURL.Text = GetConfigFormIni();
             try
@@ -555,21 +565,29 @@ namespace UI
                 {
                     GlobalVal.gloWebSerices = new MyWebService(txtServerURL.Text.Trim() + @"/Service.asmx");
                 }
+                if (txtServerURL.Text.Trim().IndexOf(@"http://") < 0)
+                {
+                    txtServerURL.Text = "http://" + txtServerURL.Text.Trim();
+                }
                 GlobalVal.gloWebSerices.Url = txtServerURL.Text.Trim() + @"/Service.asmx";
                 string strResoult = GlobalVal.gloWebSerices.CheckWebServices();
                 if (strResoult.Trim() == "WanGang")
                 {
                     blws = true;
+                    btnConfig.ForeColor = Color.Green;
+                    MessageBox.Show("服务器测试成功！", "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
             {
+                btnConfig.ForeColor = Color.Red;
                 //MessageBox.Show(ex.Message, "消息", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
                 if (!blws)
                 {
+                    btnConfig.ForeColor = Color.Red;
                     MessageBox.Show("不能连接到服务器！", "消息", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }

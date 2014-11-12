@@ -25,11 +25,14 @@ namespace UI
         private static FormStatistics _formStatistics;
 
 
+        public static string gloStrPictureLoadingUrl = @"http://localhost/images/test.gif";
+        public static string gloStrPictureLoginUrl = @"http://localhost/images/test.gif";
+        public static string gloStrPictureTopUrl = @"http://localhost/images/test.gif";
+
         /// <summary>
         /// 登录用户名
         /// </summary>
-        public static string gloStrLoginUserID = string.Empty;
-        
+        public static string gloStrLoginUserID { get; set; }
 
         /// <summary>
         /// 登录用户权限

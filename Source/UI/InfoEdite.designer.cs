@@ -716,7 +716,7 @@
             // 
             // txtEmployeePWD
             // 
-            this.txtEmployeePWD.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.txtEmployeePWD.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.txtEmployeePWD.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.txtEmployeePWD.Location = new System.Drawing.Point(288, 44);
             this.txtEmployeePWD.MaxLength = 20;
@@ -735,7 +735,7 @@
             // 
             // txtEmployeeGZID
             // 
-            this.txtEmployeeGZID.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.txtEmployeeGZID.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.txtEmployeeGZID.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.txtEmployeeGZID.Location = new System.Drawing.Point(76, 45);
             this.txtEmployeeGZID.MaxLength = 10;
@@ -917,7 +917,7 @@
             // 
             // txtEmployeeID
             // 
-            this.txtEmployeeID.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.txtEmployeeID.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.txtEmployeeID.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.txtEmployeeID.Location = new System.Drawing.Point(76, 71);
             this.txtEmployeeID.MaxLength = 18;
@@ -1072,7 +1072,7 @@
             // 
             // txtName
             // 
-            this.txtName.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.txtName.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.txtName.ImeMode = System.Windows.Forms.ImeMode.On;
             this.txtName.Location = new System.Drawing.Point(76, 18);
             this.txtName.MaxLength = 20;

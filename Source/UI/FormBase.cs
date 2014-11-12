@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Net;
 using System.Text;
 using System.Windows.Forms;
 
@@ -239,12 +240,26 @@ namespace UI
 
         #endregion
 
+        /// <summary>
+        /// 设置当前登录用户
+        /// </summary>
+        public string LoginUser { set { this.lbUser.Text = "当前登录用户：" + value; } }
+
         private void FormBase_Load(object sender, EventArgs e)
-        {
+        {            
             linkLabel1.Text = GlobalVal.glostrSupportCompanyName;
             label139.Text = GlobalVal.glostrCopyright;
-            lbUser.Text = GlobalVal.gloStrLoginUserID;
-            
+            lbUser.Text = "当前登录用户："+GlobalVal.gloStrLoginUserID;
+            try
+            {
+                WebClient wc = new WebClient();
+                Image image = Image.FromStream(wc.OpenRead(GlobalVal.gloStrPictureTopUrl));
+                this.pictureBox4.Image = image;
+            }
+            catch (Exception ex)
+            {
+                GlobalVal.gloWebSerices.AddLog("加载图片[" + GlobalVal.gloStrPictureLoginUrl + "]失败."+ex.Message, "3", Dns.GetHostAddresses(Dns.GetHostName())[0].ToString());
+            }
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

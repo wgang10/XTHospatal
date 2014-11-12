@@ -101,7 +101,8 @@ namespace UI
                     BindChartData();
                     try
                     {
-                        this.Text = GlobalVal.glostrSystemName + "    " + GlobalVal.gloStrLoginUserID;
+                        this.Text = GlobalVal.glostrSystemName + "    当前登录用户：" + GlobalVal.gloStrLoginUserID;
+                        LoginUser = GlobalVal.gloStrLoginUserID;
                     }
                     catch { }
                 }
