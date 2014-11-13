@@ -115,12 +115,12 @@ namespace UI
             try
             {
                 WebClient wc = new WebClient();
-                Image image = Image.FromStream(wc.OpenRead(GlobalVal.gloStrPictureLoginUrl));
+                Image image = Image.FromStream(wc.OpenRead(GlobalVal.gloPictureLoginUrl));
                 this.pictureBox1.Image = image;
             }
             catch(Exception ex)
             {
-                GlobalVal.gloWebSerices.AddLog("加载图片[" + GlobalVal.gloStrPictureLoginUrl + "]失败."+ex.Message , "3", Dns.GetHostAddresses(Dns.GetHostName())[0].ToString());
+                //GlobalVal.gloWebSerices.AddLog("加载图片[" + GlobalVal.gloPictureLoginUrl + "]失败."+ex.Message , "3", Dns.GetHostAddresses(Dns.GetHostName())[0].ToString());
             }
             //txtServerURL.Text = ConfigurationManager.AppSettings["WebServicesURL"];
             //txtServerURL.Text = GetConfigFormIni();

@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace UI
 {
-    public partial class EmployeeManage : FormBase
+    public partial class FormEmployeeManage : FormBase
     {
-        public EmployeeManage()
+        public FormEmployeeManage()
         {
             InitializeComponent();
         }
@@ -111,7 +111,7 @@ namespace UI
             }
             else
             {
-                EmployeeEdite employeeEdite = new EmployeeEdite(grdMain.CurrentRow.Cells["EmployeeID"].Value.ToString());
+                FormEmployeeEdite employeeEdite = new FormEmployeeEdite(grdMain.CurrentRow.Cells["EmployeeID"].Value.ToString());
                 employeeEdite.ShowDialog();
             }
         }
@@ -185,7 +185,7 @@ namespace UI
         /// <param name="e"></param>
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            EmployeeEdite employeeEdite = new EmployeeEdite();
+            FormEmployeeEdite employeeEdite = new FormEmployeeEdite();
             employeeEdite.ShowDialog();
         }
     }

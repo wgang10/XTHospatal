@@ -253,12 +253,12 @@ namespace UI
             try
             {
                 WebClient wc = new WebClient();
-                Image image = Image.FromStream(wc.OpenRead(GlobalVal.gloStrPictureTopUrl));
+                Image image = Image.FromStream(wc.OpenRead(GlobalVal.gloPictureTopUrl));
                 this.pictureBox4.Image = image;
             }
             catch (Exception ex)
             {
-                GlobalVal.gloWebSerices.AddLog("º”‘ÿÕº∆¨[" + GlobalVal.gloStrPictureLoginUrl + "] ß∞‹."+ex.Message, "3", Dns.GetHostAddresses(Dns.GetHostName())[0].ToString());
+                //GlobalVal.gloWebSerices.AddLog("º”‘ÿÕº∆¨[" + GlobalVal.gloPictureLoginUrl + "] ß∞‹."+ex.Message, "3", Dns.GetHostAddresses(Dns.GetHostName())[0].ToString());
             }
         }
 

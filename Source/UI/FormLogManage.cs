@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace UI
 {
-    public partial class LogManage : FormBase
+    public partial class FormLogManage : FormBase
     {
-        public LogManage()
+        public FormLogManage()
         {
             InitializeComponent();
         }

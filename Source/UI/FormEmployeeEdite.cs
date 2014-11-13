@@ -8,15 +8,15 @@ using System.Windows.Forms;
 
 namespace UI
 {
-    public partial class EmployeeEdite : FormBase
+    public partial class FormEmployeeEdite : FormBase
     {
         private string G_EmployeeID = string.Empty;
-        public EmployeeEdite()
+        public FormEmployeeEdite()
         {
             InitializeComponent();
         }
 
-        public EmployeeEdite(string EmployeeID)
+        public FormEmployeeEdite(string EmployeeID)
         {   
             InitializeComponent();
             G_EmployeeID = EmployeeID;

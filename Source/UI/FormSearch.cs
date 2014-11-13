@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace UI
 {
-    public partial class Search : FormBase
+    public partial class FormSearch : FormBase
     {
-        public Search()
+        public FormSearch()
         {
             InitializeComponent();
             this.Load += delegate { this.alphaBlendingBringer1.SetAlphaBlending(this); };
@@ -118,7 +118,7 @@ namespace UI
             GlobalVal.EmployeeID = grdMain.CurrentRow.Cells["EmployeeID"].Value.ToString();
             GlobalVal.EmployeeName = grdMain.CurrentRow.Cells["EmployeeName"].Value.ToString();
             GlobalVal.gloYearMonth = cmbYearMonth.Text.Trim();
-            InfoEdite infoEdite = new InfoEdite();
+            FormInfoEdite infoEdite = new FormInfoEdite();
             infoEdite.ShowDialog();
         }
 

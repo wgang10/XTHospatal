@@ -8,15 +8,17 @@ using System.Windows.Forms;
 
 namespace UI
 {
-    public partial class UserManage : FormBase
+    public partial class FormDepartmentManage : FormBase
     {
-        public UserManage()
+        public FormDepartmentManage()
         {
             InitializeComponent();
         }
 
         private void btnExit_Click(object sender, EventArgs e)
         {
+            //GlobalVal.ShowForm.Show();
+            //this.Hide();
             GlobalVal.ShowForm.Show();
             this.Close();
         }
@@ -28,26 +30,49 @@ namespace UI
         /// <param name="e"></param>
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (txtUSER_ID.Text.Trim().Length < 1 || txtUSER_WD.Text.Trim().Length < 1)
+            if (txtDepartName.Text.Trim().Length < 1)
             {
-                MessageBox.Show("用户名和密码不能为空！", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("部门名称不能为空！", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-            webService.LoginUser model = new UI.webService.LoginUser();
-            model.UserID = txtUSER_ID.Text.Trim();
-            model.UserPwd = txtUSER_WD.Text.Trim();
-            model.MEMO = txtMEMO.Text.Trim();
-            model.UserType = cmbUSER_GROUP.SelectedIndex.ToString();
+            webService.Department model = new UI.webService.Department();
+            model.Name = txtDepartName.Text.Trim();
+            if (txtDepartmentID.Text.Trim().Length < 1)
+            {
+
+                if (MessageBox.Show("确定要添加新部门吗?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) != DialogResult.Yes)//确定要添加新部门吗?
+                {
+                    return;
+                }
+                model.ID = System.Guid.NewGuid().ToString();
+            }
+            else
+            {
+                if (MessageBox.Show("确定要修改该部门吗?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) != DialogResult.Yes)//确定要修改该部门吗?
+                {
+                    return;
+                }
+                model.ID = txtDepartmentID.Text.Trim();
+            }
+            model.Notes = txtMEMO.Text.Trim();
             model.UPDATER_ID = GlobalVal.gloStrLoginUserID;
             model.TERMINAL_CD = GlobalVal.gloStrTerminalCD;
             
             webService.ReturnValue resoult;
-            resoult = GlobalVal.gloWebSerices.AddUser(model);
+            try
+            {
+                resoult = GlobalVal.gloWebSerices.AddUpdateDepartment(model);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return;
+            }
             if (resoult.ErrorFlag)
             {
                 ControlInitial();
                 BindGridData();
-                MessageBox.Show("操作成功！");
+                //MessageBox.Show("操作成功！");
             }
             else
             {
@@ -90,30 +115,30 @@ namespace UI
         /// <param name="e"></param>
         private void btnDel_Click(object sender, EventArgs e)
         {
-            if (txtUSER_ID.Text.Trim().Length < 1)
+            if (txtDepartmentID.Text.Trim().Length < 1)
             {
-                MessageBox.Show("用户名不能为空！", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("请选择要删除的部门！", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-            if (Method.MessageShow("Q22007") != DialogResult.Yes)//Are You Sure Delete This Data?
+            if (MessageBox.Show("确定要删除该部门吗?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) != DialogResult.Yes)
             {
                 return;
             }
             
             webService.ReturnValue resoult;
-            resoult = GlobalVal.gloWebSerices.DeleteUser(txtUSER_ID.Text.Trim());
+            resoult = GlobalVal.gloWebSerices.DeleteDepartment(txtDepartmentID.Text.Trim());
             if (resoult.ErrorFlag)
             {
                 ControlInitial();
                 BindGridData();
-                MessageBox.Show("操作成功！");
+                //MessageBox.Show("操作成功！");
             }
             else
             {
-                //MessageBox.Show(resoult.ErrorID);
-                Method.MessageShow(resoult.ErrorID);
+                MessageBox.Show(resoult.ErrorID);
             }
         }
+
         /// <summary>
         /// 
         /// </summary>
@@ -123,6 +148,7 @@ namespace UI
             grdMain.Height = 232;
             grdMain.Width = 753;
             ControlInitial();
+            BindGridData();
         }
 
         /// <summary>
@@ -138,7 +164,7 @@ namespace UI
             webService.ReturnValue returnValue;
             try
             {
-                returnValue = GlobalVal.gloWebSerices.GetUserList();
+                returnValue = GlobalVal.gloWebSerices.GetDepartmentList();
                 if (!returnValue.ErrorFlag)
                 {
                     MessageBox.Show(returnValue.ErrorID);
@@ -147,21 +173,19 @@ namespace UI
                 }
                 if (returnValue.ResultDataSet.Tables[0].Rows.Count > 10)
                 {
-                    grdMain.Columns["UserMemo"].Width = 403;
+                    grdMain.Columns["Notes"].Width = 403;
                 }
                 else
                 {
-                    grdMain.Columns["UserMemo"].Width = 420;
+                    grdMain.Columns["Notes"].Width = 420;
                 }
                 grpList.Text = "一览 共" + returnValue.Count  + "条数据";
                 for (int i = 0; i < returnValue.ResultDataSet.Tables[0].Rows.Count; i++)
                 {
                     grdMain.Rows.Add((i + 1).ToString(),
-                        returnValue.ResultDataSet.Tables[0].Rows[i]["UserID"].ToString().Trim(),
-                        returnValue.ResultDataSet.Tables[0].Rows[i]["UserPwd"].ToString().Trim(),
-                        returnValue.ResultDataSet.Tables[0].Rows[i]["UserType"].ToString().Trim(),
-                        returnValue.ResultDataSet.Tables[0].Rows[i]["UserTypeName"].ToString().Trim(),
-                        returnValue.ResultDataSet.Tables[0].Rows[i]["MEMO"].ToString().Trim());
+                        returnValue.ResultDataSet.Tables[0].Rows[i]["ID"].ToString().Trim(),
+                        returnValue.ResultDataSet.Tables[0].Rows[i]["Name"].ToString().Trim(),
+                        returnValue.ResultDataSet.Tables[0].Rows[i]["Notes"].ToString().Trim());
                 }
             }
             catch
@@ -184,23 +208,21 @@ namespace UI
             grdMain.TabStop = false;
             grdMain.AllowUserToResizeRows = false;
             grdMain.Columns.Add("NO", "NO.");
-            grdMain.Columns.Add("UserID", "用户名");
-            grdMain.Columns.Add("UserPWD", "");
-            grdMain.Columns.Add("UserType", "");
-            grdMain.Columns.Add("UserTypeName", "权限");
-            grdMain.Columns.Add("UserMemo", "备注");
+            grdMain.Columns.Add("ID", "");
+            grdMain.Columns.Add("Name", "部门名称");
+            grdMain.Columns.Add("Notes", "备注");
             grdMain.Columns["NO"].Width = 30;
-            grdMain.Columns["UserID"].Width = 150;
-            grdMain.Columns["UserPWD"].Width = 0;
-            grdMain.Columns["UserType"].Width = 0;
-            grdMain.Columns["UserTypeName"].Width = 150;
-            grdMain.Columns["UserMemo"].Width = 420;
-            grdMain.Columns["UserPWD"].Visible = false;
-            grdMain.Columns["UserType"].Visible = false;
-            grdMain.Columns["NO"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            grdMain.Columns["ID"].Width = 0;
+            grdMain.Columns["Name"].Width = 300;
+            grdMain.Columns["Notes"].Width = 420;
+            grdMain.Columns["ID"].Visible = false;
             grdMain.Columns["NO"].Frozen = true;
-            grdMain.Columns["UserID"].Frozen = true;
-            grdMain.Columns["UserTypeName"].Frozen = true;
+            grdMain.Columns["ID"].Frozen = true;
+            grdMain.Columns["Name"].Frozen = true;
+            grdMain.Columns["NO"].SortMode = DataGridViewColumnSortMode.NotSortable;
+            grdMain.Columns["ID"].SortMode = DataGridViewColumnSortMode.NotSortable;
+            grdMain.Columns["Name"].SortMode = DataGridViewColumnSortMode.NotSortable;
+            grdMain.Columns["Notes"].SortMode = DataGridViewColumnSortMode.NotSortable;
         }
 
         /// <summary>
@@ -208,21 +230,19 @@ namespace UI
         /// </summary>
         private void ControlInitial()
         {
-            txtUSER_ID.Text = "";
-            txtUSER_WD.Text = "";
+            txtDepartName.Text = "";
+            txtDepartmentID.Text = "";
             txtMEMO.Text = "";
-            cmbUSER_GROUP.SelectedIndex  = 0;
-            txtUSER_ID.Focus();
+            txtDepartName.Focus();
         }
 
         private void grdMain_Click(object sender, EventArgs e)
         {
             if (grdMain.Rows.Count > 0)
             {
-                this.txtUSER_ID.Text = grdMain.CurrentRow.Cells["UserID"].Value.ToString();
-                this.txtUSER_WD.Text = grdMain.CurrentRow.Cells["UserPWD"].Value.ToString();
-                this.txtMEMO.Text = grdMain.CurrentRow.Cells["UserMemo"].Value.ToString();
-                this.cmbUSER_GROUP.SelectedIndex =Int32.Parse(grdMain.CurrentRow.Cells["UserType"].Value.ToString());
+                this.txtDepartName.Text = grdMain.CurrentRow.Cells["Name"].Value.ToString();
+                this.txtDepartmentID.Text = grdMain.CurrentRow.Cells["ID"].Value.ToString();
+                this.txtMEMO.Text = grdMain.CurrentRow.Cells["Notes"].Value.ToString();
             }
         }
 

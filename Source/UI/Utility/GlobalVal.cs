@@ -14,21 +14,36 @@ namespace UI
         public static Form ShowForm;
         public static Form UserManageForm;
         public static Form SearchForm;
-        private static Search _formSearch;
-        private static LogManage _formLogManage;
-        private static UserManage _formUserManage;
-        private static InfoEdite _formInfoEdite;
-        private static DepartmentManage _formDepartmentManage;
+        private static FormSearch _formSearch;
+        private static FormLogManage _formLogManage;
+        private static FormUserManage _formUserManage;
+        private static FormInfoEdite _formInfoEdite;
+        private static FormDepartmentManage _formDepartmentManage;
         private static FormConfig _formConfig;
-        private static EmployeeManage _empManage;
-        private static EmployeeCheckNum _empCheckProject;
+        private static FormEmployeeManage _empManage;
+        private static FormEmployeeCheckNum _empCheckProject;
         private static FormStatistics _formStatistics;
 
-
-        public static string gloStrPictureLoadingUrl = @"http://localhost/images/test.gif";
-        public static string gloStrPictureLoginUrl = @"http://localhost/images/test.gif";
-        public static string gloStrPictureTopUrl = @"http://localhost/images/test.gif";
-
+        /// <summary>
+        /// 加载图片url
+        /// </summary>
+        public static string gloPictureLoadingUrl = "";
+        /// <summary>
+        /// 登陆图片url
+        /// </summary>
+        public static string gloPictureLoginUrl = "";
+        /// <summary>
+        /// Top图片url
+        /// </summary>
+        public static string gloPictureTopUrl = "";
+        /// <summary>
+        /// 程序安装路径 默认为C:\XTHospatal
+        /// </summary>
+        public static string gloAappPath = @"C:\XTHospatal";
+        /// <summary>
+        /// 系统名称
+        /// </summary>
+        public static string gloSystemName = @"XTHospatal";
         /// <summary>
         /// 登录用户名
         /// </summary>
@@ -87,7 +102,7 @@ namespace UI
         /// <summary>
         /// 服务器地址
         /// </summary>
-        public static string glostrServicesURL = "";
+        public static string glostrServicesURL = "www.ziyangsoft.com";
 
         /// <summary>
         /// 程序号
@@ -128,13 +143,13 @@ namespace UI
         /// <summary>
         /// 检索窗体
         /// </summary>
-        public static Search FormSearch
+        public static FormSearch FormSearch
         {
             get 
             {
                 if (_formSearch == null)
                 {
-                    _formSearch = new Search();
+                    _formSearch = new FormSearch();
                 }
                 return _formSearch;
             }
@@ -143,13 +158,13 @@ namespace UI
         /// <summary>
         /// 日志查询窗体
         /// </summary>
-        public static LogManage FormLogManage
+        public static FormLogManage FormLogManage
         {
             get
             {
                 if (_formLogManage == null)
                 {
-                    _formLogManage = new LogManage();
+                    _formLogManage = new FormLogManage();
                 }
                 return _formLogManage;
             }
@@ -158,13 +173,13 @@ namespace UI
         /// <summary>
         /// 用户管理窗体
         /// </summary>
-        public static UserManage FormUserManage
+        public static FormUserManage FormUserManage
         {
             get
             {
                 if (_formUserManage == null)
                 {
-                    _formUserManage = new UserManage();
+                    _formUserManage = new FormUserManage();
                 }
                 return _formUserManage;
             }
@@ -173,13 +188,13 @@ namespace UI
         /// <summary>
         /// 体检信息维护窗体
         /// </summary>
-        public static InfoEdite FormInfoEdite
+        public static FormInfoEdite FormInfoEdite
         {
             get
             {
                 if (_formInfoEdite == null)
                 {
-                    _formInfoEdite = new InfoEdite();
+                    _formInfoEdite = new FormInfoEdite();
                 }
                 return _formInfoEdite;
             }
@@ -188,13 +203,13 @@ namespace UI
         /// <summary>
         /// 部门维护窗体
         /// </summary>
-        public static DepartmentManage FormDepartmentManage
+        public static FormDepartmentManage FormDepartmentManage
         {
             get
             {
                 if (_formDepartmentManage == null)
                 {
-                    _formDepartmentManage = new DepartmentManage();
+                    _formDepartmentManage = new FormDepartmentManage();
                 }
                 return _formDepartmentManage;
             }
@@ -218,12 +233,12 @@ namespace UI
         /// <summary>
         /// 教职员工管理
         /// </summary>
-        public static EmployeeManage EmpManage
+        public static FormEmployeeManage FormEmpManage
         {
             get {
                 if (_empManage == null)
                 {
-                    _empManage = new EmployeeManage();
+                    _empManage = new FormEmployeeManage();
                 }
                 return _empManage;
             }
@@ -232,12 +247,12 @@ namespace UI
         /// <summary>
         /// 体检项目
         /// </summary>
-        public static EmployeeCheckNum EmpCheckProject
+        public static FormEmployeeCheckNum FormCheckNum
         {
             get {
                 if (_empCheckProject == null)
                 {
-                    _empCheckProject = new EmployeeCheckNum();
+                    _empCheckProject = new FormEmployeeCheckNum();
                 }
                 return _empCheckProject;
             }

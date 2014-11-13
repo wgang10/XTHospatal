@@ -383,7 +383,7 @@ namespace UI
         /// <param name="e"></param>
         private void btnPersonal_Click(object sender, EventArgs e)
         {
-            if (GlobalVal.EmpManage.ShowDialog(this) == DialogResult.OK)
+            if (GlobalVal.FormEmpManage.ShowDialog(this) == DialogResult.OK)
             {
                 webService.Service ws = new webService.Service();
                 byte[] buffer = ws.GetStatisticsDataByID(GlobalVal.StatisticsEmployeeID);

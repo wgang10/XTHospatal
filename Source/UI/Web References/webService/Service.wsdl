@@ -12,31 +12,6 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="SearchYearMonth">
-        <s:complexType />
-      </s:element>
-      <s:element name="SearchYearMonthResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="SearchYearMonthResult" type="tns:ReturnValue" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:complexType name="ReturnValue">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="ErrorFlag" type="s:boolean" />
-          <s:element minOccurs="0" maxOccurs="1" name="ErrorID" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="ResultDataSet">
-            <s:complexType>
-              <s:sequence>
-                <s:element ref="s:schema" />
-                <s:any />
-              </s:sequence>
-            </s:complexType>
-          </s:element>
-          <s:element minOccurs="1" maxOccurs="1" name="Count" type="s:int" />
-        </s:sequence>
-      </s:complexType>
       <s:element name="ValidateUser">
         <s:complexType>
           <s:sequence>
@@ -103,6 +78,21 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:complexType name="ReturnValue">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ErrorFlag" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResultDataSet">
+            <s:complexType>
+              <s:sequence>
+                <s:element ref="s:schema" />
+                <s:any />
+              </s:sequence>
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="1" maxOccurs="1" name="Count" type="s:int" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="AddUser">
         <s:complexType>
           <s:sequence>
@@ -797,6 +787,76 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetNews">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="nums" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNewsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetNewsResult" type="tns:ArrayOfNews" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfNews">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="News" nillable="true" type="tns:News" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="News">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CreateTime" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Url" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Body" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetEmployeePWD">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EmployeeGZID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEmployeePWDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetEmployeePWDResult" type="tns:ReturnValue" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchMyInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EmployeeGZID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="YearMonth" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchMyInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchMyInfoResult" type="tns:ReturnValue" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChangePassWord">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="model" type="tns:Employee" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChangePassWordResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ChangePassWordResult" type="tns:ReturnValue" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="CheckWebServicesSoapIn">
@@ -804,12 +864,6 @@
   </wsdl:message>
   <wsdl:message name="CheckWebServicesSoapOut">
     <wsdl:part name="parameters" element="tns:CheckWebServicesResponse" />
-  </wsdl:message>
-  <wsdl:message name="SearchYearMonthSoapIn">
-    <wsdl:part name="parameters" element="tns:SearchYearMonth" />
-  </wsdl:message>
-  <wsdl:message name="SearchYearMonthSoapOut">
-    <wsdl:part name="parameters" element="tns:SearchYearMonthResponse" />
   </wsdl:message>
   <wsdl:message name="ValidateUserSoapIn">
     <wsdl:part name="parameters" element="tns:ValidateUser" />
@@ -1015,15 +1069,34 @@
   <wsdl:message name="GetStatisticsDataByIDSoapOut">
     <wsdl:part name="parameters" element="tns:GetStatisticsDataByIDResponse" />
   </wsdl:message>
+  <wsdl:message name="GetNewsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetNews" />
+  </wsdl:message>
+  <wsdl:message name="GetNewsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetNewsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEmployeePWDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEmployeePWD" />
+  </wsdl:message>
+  <wsdl:message name="GetEmployeePWDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEmployeePWDResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchMyInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchMyInfo" />
+  </wsdl:message>
+  <wsdl:message name="SearchMyInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchMyInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ChangePassWordSoapIn">
+    <wsdl:part name="parameters" element="tns:ChangePassWord" />
+  </wsdl:message>
+  <wsdl:message name="ChangePassWordSoapOut">
+    <wsdl:part name="parameters" element="tns:ChangePassWordResponse" />
+  </wsdl:message>
   <wsdl:portType name="ServiceSoap">
     <wsdl:operation name="CheckWebServices">
       <wsdl:input message="tns:CheckWebServicesSoapIn" />
       <wsdl:output message="tns:CheckWebServicesSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="SearchYearMonth">
-      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">测试Web Service</wsdl:documentation>
-      <wsdl:input message="tns:SearchYearMonthSoapIn" />
-      <wsdl:output message="tns:SearchYearMonthSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="ValidateUser">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">验证用户</wsdl:documentation>
@@ -1195,20 +1268,31 @@
       <wsdl:input message="tns:GetStatisticsDataByIDSoapIn" />
       <wsdl:output message="tns:GetStatisticsDataByIDSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetNews">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">取得最新公告</wsdl:documentation>
+      <wsdl:input message="tns:GetNewsSoapIn" />
+      <wsdl:output message="tns:GetNewsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployeePWD">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">取得密码</wsdl:documentation>
+      <wsdl:input message="tns:GetEmployeePWDSoapIn" />
+      <wsdl:output message="tns:GetEmployeePWDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchMyInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">取得体检数据</wsdl:documentation>
+      <wsdl:input message="tns:SearchMyInfoSoapIn" />
+      <wsdl:output message="tns:SearchMyInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangePassWord">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">修改密码</wsdl:documentation>
+      <wsdl:input message="tns:ChangePassWordSoapIn" />
+      <wsdl:output message="tns:ChangePassWordSoapOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="ServiceSoap" type="tns:ServiceSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="CheckWebServices">
       <soap:operation soapAction="http://tempuri.org/CheckWebServices" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="SearchYearMonth">
-      <soap:operation soapAction="http://tempuri.org/SearchYearMonth" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1522,20 +1606,47 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetNews">
+      <soap:operation soapAction="http://tempuri.org/GetNews" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployeePWD">
+      <soap:operation soapAction="http://tempuri.org/GetEmployeePWD" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchMyInfo">
+      <soap:operation soapAction="http://tempuri.org/SearchMyInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangePassWord">
+      <soap:operation soapAction="http://tempuri.org/ChangePassWord" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="ServiceSoap12" type="tns:ServiceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="CheckWebServices">
       <soap12:operation soapAction="http://tempuri.org/CheckWebServices" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="SearchYearMonth">
-      <soap12:operation soapAction="http://tempuri.org/SearchYearMonth" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -1842,6 +1953,42 @@
     </wsdl:operation>
     <wsdl:operation name="GetStatisticsDataByID">
       <soap12:operation soapAction="http://tempuri.org/GetStatisticsDataByID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNews">
+      <soap12:operation soapAction="http://tempuri.org/GetNews" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployeePWD">
+      <soap12:operation soapAction="http://tempuri.org/GetEmployeePWD" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchMyInfo">
+      <soap12:operation soapAction="http://tempuri.org/SearchMyInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangePassWord">
+      <soap12:operation soapAction="http://tempuri.org/ChangePassWord" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

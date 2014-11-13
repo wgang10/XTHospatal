@@ -4,5 +4,8 @@
     <WebServicesURL>http://localhost</WebServicesURL>
     <InstallURL>http://localhost/App/Install</InstallURL>
     <InstallPath>C:\XTHospatal</InstallPath>
+    <PictureLoading>http://localhost/images/UI/Loading.png</PictureLoading>
+    <PictureTop>http://localhost/images/UI/Top.jpg</PictureTop>
+    <PictureLogin>http://localhost/images/UI/Login.jpg</PictureLogin>
   </System>
 </Config>

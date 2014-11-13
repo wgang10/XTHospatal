@@ -18,11 +18,7 @@ namespace UI
         private static extern bool ShowWindowAsync(IntPtr hWnd, int cmdShow);
         [DllImport("User32.dll")]//呼出Win32 API関数
         private static extern bool SetForegroundWindow(IntPtr hWnd);
-        private const int WS_SHOWNORMAL = 1;
-        private static string appPath = @"C:\XTHospatal";
-        private static string systemName = "XTHospatal";
-        private static string InstallPathConfig = "InstallPath";
-        private static string GetConfigWebUrl = @"http://localhost/Config.ashx";
+        private const int WS_SHOWNORMAL = 1;       
         /// <summary>
         /// 应用程序的主入口点。
         /// </summary>
@@ -89,7 +85,7 @@ namespace UI
         {
             System.Console.WriteLine("开始创建桌面快捷方式...");
             int i = 0;
-            while (!File.Exists(appPath + @"\UI.exe") && i < 20)
+            while (!File.Exists(GlobalVal.gloAappPath + @"\UI.exe") && i < 20)
             {
                 Thread.Sleep(500);
                 System.Console.WriteLine(i.ToString() + "...");
@@ -98,11 +94,11 @@ namespace UI
             string DesktopPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Desktop);//得到桌面文件夹 
             IWshRuntimeLibrary.WshShell shell = new IWshRuntimeLibrary.WshShellClass();
             IWshRuntimeLibrary.IWshShortcut shortcut = (IWshRuntimeLibrary.IWshShortcut)shell.CreateShortcut(DesktopPath + "\\体检系统.lnk");
-            shortcut.TargetPath = appPath + @"\UI.exe";
+            shortcut.TargetPath = GlobalVal.gloAappPath + @"\UI.exe";
             shortcut.Arguments = "";// 参数 
             shortcut.Description = "体检系统";
-            shortcut.WorkingDirectory = appPath;//程序所在文件夹，在快捷方式图标点击右键可以看到此属性 
-            shortcut.IconLocation = appPath + @"\UI.exe,0";//图标 
+            shortcut.WorkingDirectory = GlobalVal.gloAappPath;//程序所在文件夹，在快捷方式图标点击右键可以看到此属性 
+            shortcut.IconLocation = GlobalVal.gloAappPath + @"\UI.exe,0";//图标 
             shortcut.Hotkey = "CTRL+SHIFT+T";//热键 
             shortcut.WindowStyle = 1;
             shortcut.Save();
@@ -116,7 +112,10 @@ namespace UI
         {
             //获得当前计算机名+当前系统登陆用户名
             GlobalVal.gloStrTerminalCD = Environment.UserDomainName + "@" + Environment.UserName;
-            appPath = GetWebConfig(InstallPathConfig);
+            GlobalVal.gloAappPath = GetWebConfig(ConfigName.InstallPath);
+            GlobalVal.gloPictureLoadingUrl = GetWebConfig(ConfigName.PictureLoading);
+            GlobalVal.gloPictureLoginUrl = GetWebConfig(ConfigName.PictureLogin);
+            GlobalVal.gloPictureTopUrl = GetWebConfig(ConfigName.PictureTop);
             //GlobalVal.gloDataTableMessage = Method.GetMsgDataTable();
             //if (GlobalVal.gloDataTableMessage.Rows.Count < 1)
             //{
@@ -169,26 +168,33 @@ namespace UI
             return true;
         }
 
-        private static string GetWebConfig(string ConfigName)
+        private static string GetWebConfig(ConfigName configName)
         {
-            string strRet = string.Empty;
-            WebRequest req = WebRequest.Create(string.Format("{0}?SystemName={1}&ConfigName={2}", GetConfigWebUrl, systemName, ConfigName));
-            WebResponse res = req.GetResponse();
-            System.IO.Stream resStream = res.GetResponseStream();
-            Encoding encode = System.Text.Encoding.Default;
-            StreamReader readStream = new StreamReader(resStream, encode);
-            Char[] read = new Char[256];
-            int count = readStream.Read(read, 0, 256);
-            while (count > 0)
+            string strValue = string.Empty;
+            try
             {
-                String str = new String(read, 0, count);
-                strRet = strRet + str;
-                count = readStream.Read(read, 0, 256);
+                WebRequest req = WebRequest.Create(string.Format(@"{0}/Config.ashx?SystemName={1}&ConfigName={2}", GlobalVal.glostrServicesURL, GlobalVal.gloSystemName, configName.ToString()));
+                WebResponse res = req.GetResponse();
+                System.IO.Stream resStream = res.GetResponseStream();
+                Encoding encode = System.Text.Encoding.Default;
+                StreamReader readStream = new StreamReader(resStream, encode);
+                Char[] read = new Char[256];
+                int count = readStream.Read(read, 0, 256);
+                while (count > 0)
+                {
+                    String str = new String(read, 0, count);
+                    strValue = strValue + str;
+                    count = readStream.Read(read, 0, 256);
+                }
+                resStream.Close();
+                readStream.Close();
+                res.Close();
+                return strValue;
             }
-            resStream.Close();
-            readStream.Close();
-            res.Close();
-            return strRet;
+            catch (Exception ex) 
+            {
+                return strValue;
+            }
         }
 
         /// <summary>

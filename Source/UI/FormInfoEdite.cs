@@ -11,9 +11,9 @@ using System.Net;
 
 namespace UI
 {
-    public partial class InfoEdite : FormBase
+    public partial class FormInfoEdite : FormBase
     {
-        public InfoEdite()
+        public FormInfoEdite()
         {
             InitializeComponent();
         }
@@ -772,7 +772,7 @@ namespace UI
         private void btnUserManage_Click(object sender, EventArgs e)
         {
             GlobalVal.ShowForm = this;
-            UserManage frm = new UserManage();
+            FormUserManage frm = new FormUserManage();
             frm.Show();
         }
 
@@ -3185,14 +3185,14 @@ namespace UI
         private void btnLog_Click(object sender, EventArgs e)
         {
             GlobalVal.ShowForm = this;
-            LogManage frm = new LogManage();
+            FormLogManage frm = new FormLogManage();
             frm.Show();
         }
 
         private void btnDepartment_Click(object sender, EventArgs e)
         {   
             GlobalVal.ShowForm = this;
-            DepartmentManage frm = new DepartmentManage();
+            FormDepartmentManage frm = new FormDepartmentManage();
             frm.Show();
         }
 

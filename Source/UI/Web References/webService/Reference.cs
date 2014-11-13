@@ -32,8 +32,6 @@ namespace UI.webService {
         
         private System.Threading.SendOrPostCallback CheckWebServicesOperationCompleted;
         
-        private System.Threading.SendOrPostCallback SearchYearMonthOperationCompleted;
-        
         private System.Threading.SendOrPostCallback ValidateUserOperationCompleted;
         
         private System.Threading.SendOrPostCallback SetYearMonthOperationCompleted;
@@ -102,6 +100,14 @@ namespace UI.webService {
         
         private System.Threading.SendOrPostCallback GetStatisticsDataByIDOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetNewsOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetEmployeePWDOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback SearchMyInfoOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback ChangePassWordOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -142,9 +148,6 @@ namespace UI.webService {
         
         /// <remarks/>
         public event CheckWebServicesCompletedEventHandler CheckWebServicesCompleted;
-        
-        /// <remarks/>
-        public event SearchYearMonthCompletedEventHandler SearchYearMonthCompleted;
         
         /// <remarks/>
         public event ValidateUserCompletedEventHandler ValidateUserCompleted;
@@ -249,6 +252,18 @@ namespace UI.webService {
         public event GetStatisticsDataByIDCompletedEventHandler GetStatisticsDataByIDCompleted;
         
         /// <remarks/>
+        public event GetNewsCompletedEventHandler GetNewsCompleted;
+        
+        /// <remarks/>
+        public event GetEmployeePWDCompletedEventHandler GetEmployeePWDCompleted;
+        
+        /// <remarks/>
+        public event SearchMyInfoCompletedEventHandler SearchMyInfoCompleted;
+        
+        /// <remarks/>
+        public event ChangePassWordCompletedEventHandler ChangePassWordCompleted;
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/CheckWebServices", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public string CheckWebServices() {
             object[] results = this.Invoke("CheckWebServices", new object[0]);
@@ -272,33 +287,6 @@ namespace UI.webService {
             if ((this.CheckWebServicesCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.CheckWebServicesCompleted(this, new CheckWebServicesCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/SearchYearMonth", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public ReturnValue SearchYearMonth() {
-            object[] results = this.Invoke("SearchYearMonth", new object[0]);
-            return ((ReturnValue)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void SearchYearMonthAsync() {
-            this.SearchYearMonthAsync(null);
-        }
-        
-        /// <remarks/>
-        public void SearchYearMonthAsync(object userState) {
-            if ((this.SearchYearMonthOperationCompleted == null)) {
-                this.SearchYearMonthOperationCompleted = new System.Threading.SendOrPostCallback(this.OnSearchYearMonthOperationCompleted);
-            }
-            this.InvokeAsync("SearchYearMonth", new object[0], this.SearchYearMonthOperationCompleted, userState);
-        }
-        
-        private void OnSearchYearMonthOperationCompleted(object arg) {
-            if ((this.SearchYearMonthCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.SearchYearMonthCompleted(this, new SearchYearMonthCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -1307,6 +1295,124 @@ namespace UI.webService {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetNews", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public News[] GetNews(int nums) {
+            object[] results = this.Invoke("GetNews", new object[] {
+                        nums});
+            return ((News[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetNewsAsync(int nums) {
+            this.GetNewsAsync(nums, null);
+        }
+        
+        /// <remarks/>
+        public void GetNewsAsync(int nums, object userState) {
+            if ((this.GetNewsOperationCompleted == null)) {
+                this.GetNewsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetNewsOperationCompleted);
+            }
+            this.InvokeAsync("GetNews", new object[] {
+                        nums}, this.GetNewsOperationCompleted, userState);
+        }
+        
+        private void OnGetNewsOperationCompleted(object arg) {
+            if ((this.GetNewsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetNewsCompleted(this, new GetNewsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetEmployeePWD", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public ReturnValue GetEmployeePWD(string EmployeeGZID) {
+            object[] results = this.Invoke("GetEmployeePWD", new object[] {
+                        EmployeeGZID});
+            return ((ReturnValue)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetEmployeePWDAsync(string EmployeeGZID) {
+            this.GetEmployeePWDAsync(EmployeeGZID, null);
+        }
+        
+        /// <remarks/>
+        public void GetEmployeePWDAsync(string EmployeeGZID, object userState) {
+            if ((this.GetEmployeePWDOperationCompleted == null)) {
+                this.GetEmployeePWDOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetEmployeePWDOperationCompleted);
+            }
+            this.InvokeAsync("GetEmployeePWD", new object[] {
+                        EmployeeGZID}, this.GetEmployeePWDOperationCompleted, userState);
+        }
+        
+        private void OnGetEmployeePWDOperationCompleted(object arg) {
+            if ((this.GetEmployeePWDCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetEmployeePWDCompleted(this, new GetEmployeePWDCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/SearchMyInfo", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public ReturnValue SearchMyInfo(string EmployeeGZID, string YearMonth) {
+            object[] results = this.Invoke("SearchMyInfo", new object[] {
+                        EmployeeGZID,
+                        YearMonth});
+            return ((ReturnValue)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void SearchMyInfoAsync(string EmployeeGZID, string YearMonth) {
+            this.SearchMyInfoAsync(EmployeeGZID, YearMonth, null);
+        }
+        
+        /// <remarks/>
+        public void SearchMyInfoAsync(string EmployeeGZID, string YearMonth, object userState) {
+            if ((this.SearchMyInfoOperationCompleted == null)) {
+                this.SearchMyInfoOperationCompleted = new System.Threading.SendOrPostCallback(this.OnSearchMyInfoOperationCompleted);
+            }
+            this.InvokeAsync("SearchMyInfo", new object[] {
+                        EmployeeGZID,
+                        YearMonth}, this.SearchMyInfoOperationCompleted, userState);
+        }
+        
+        private void OnSearchMyInfoOperationCompleted(object arg) {
+            if ((this.SearchMyInfoCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.SearchMyInfoCompleted(this, new SearchMyInfoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ChangePassWord", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public ReturnValue ChangePassWord(Employee model) {
+            object[] results = this.Invoke("ChangePassWord", new object[] {
+                        model});
+            return ((ReturnValue)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void ChangePassWordAsync(Employee model) {
+            this.ChangePassWordAsync(model, null);
+        }
+        
+        /// <remarks/>
+        public void ChangePassWordAsync(Employee model, object userState) {
+            if ((this.ChangePassWordOperationCompleted == null)) {
+                this.ChangePassWordOperationCompleted = new System.Threading.SendOrPostCallback(this.OnChangePassWordOperationCompleted);
+            }
+            this.InvokeAsync("ChangePassWord", new object[] {
+                        model}, this.ChangePassWordOperationCompleted, userState);
+        }
+        
+        private void OnChangePassWordOperationCompleted(object arg) {
+            if ((this.ChangePassWordCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.ChangePassWordCompleted(this, new ChangePassWordCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -1378,6 +1484,63 @@ namespace UI.webService {
             }
             set {
                 this.countField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.34234")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class News {
+        
+        private System.DateTime createTimeField;
+        
+        private string titleField;
+        
+        private string urlField;
+        
+        private string bodyField;
+        
+        /// <remarks/>
+        public System.DateTime CreateTime {
+            get {
+                return this.createTimeField;
+            }
+            set {
+                this.createTimeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Title {
+            get {
+                return this.titleField;
+            }
+            set {
+                this.titleField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Url {
+            get {
+                return this.urlField;
+            }
+            set {
+                this.urlField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Body {
+            get {
+                return this.bodyField;
+            }
+            set {
+                this.bodyField = value;
             }
         }
     }
@@ -4494,32 +4657,6 @@ namespace UI.webService {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.18408")]
-    public delegate void SearchYearMonthCompletedEventHandler(object sender, SearchYearMonthCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.18408")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class SearchYearMonthCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal SearchYearMonthCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public ReturnValue Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((ReturnValue)(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.18408")]
     public delegate void ValidateUserCompletedEventHandler(object sender, ValidateUserCompletedEventArgs e);
     
     /// <remarks/>
@@ -5376,6 +5513,110 @@ namespace UI.webService {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((byte[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.18408")]
+    public delegate void GetNewsCompletedEventHandler(object sender, GetNewsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.18408")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetNewsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetNewsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public News[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((News[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.18408")]
+    public delegate void GetEmployeePWDCompletedEventHandler(object sender, GetEmployeePWDCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.18408")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetEmployeePWDCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetEmployeePWDCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public ReturnValue Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((ReturnValue)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.18408")]
+    public delegate void SearchMyInfoCompletedEventHandler(object sender, SearchMyInfoCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.18408")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class SearchMyInfoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal SearchMyInfoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public ReturnValue Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((ReturnValue)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.18408")]
+    public delegate void ChangePassWordCompletedEventHandler(object sender, ChangePassWordCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.18408")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class ChangePassWordCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal ChangePassWordCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public ReturnValue Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((ReturnValue)(this.results[0]));
             }
         }
     }

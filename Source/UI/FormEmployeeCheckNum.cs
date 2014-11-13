@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace UI
 {
-    public partial class EmployeeCheckNum : FormBase
+    public partial class FormEmployeeCheckNum : FormBase
     {
-        public EmployeeCheckNum()
+        public FormEmployeeCheckNum()
         {
             InitializeComponent();
         }

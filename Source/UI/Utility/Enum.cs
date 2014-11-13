@@ -59,4 +59,17 @@ namespace UI
         Date,
         AlphaAndNum
     }
+
+    /// <summary>
+    /// 服务器端配置项名称
+    /// </summary>
+    public enum ConfigName
+    {
+        WebServicesURL,
+        InstallURL,
+        InstallPath,
+        PictureLoading,
+        PictureTop,
+        PictureLogin
+    }
 }

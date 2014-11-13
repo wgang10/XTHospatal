@@ -138,13 +138,13 @@ namespace UI
             {
                 //提前读取好图片
                 WebClient wc = new WebClient();
-                Image image = Image.FromStream(wc.OpenRead(GlobalVal.gloStrPictureLoadingUrl));
+                Image image = Image.FromStream(wc.OpenRead(GlobalVal.gloPictureLoadingUrl));
                 si.BackImage = image;
             }
             catch (Exception ex)
             {
                 si.BackImage = Utility.SplashResource.Splash;
-                GlobalVal.gloWebSerices.AddLog("加载图片[" + GlobalVal.gloStrPictureLoginUrl + "]失败." + ex.Message, "3", Dns.GetHostAddresses(Dns.GetHostName())[0].ToString());
+                //GlobalVal.gloWebSerices.AddLog("加载图片[" + GlobalVal.gloPictureLoginUrl + "]失败." + ex.Message, "3", Dns.GetHostAddresses(Dns.GetHostName())[0].ToString());
             }            
             si.ShowCaption = false;
             si.TopMost = true;

@@ -25,9 +25,9 @@ namespace UI
                 case "btnLogManage"://日志管理
                     GlobalVal.ShowForm.Hide();
                     GlobalVal.SplashObj = SplashObject.GetLoading();
-                    //GlobalVal.FormLogManage.ShowDialog();
-                    LogManage logManage = new LogManage();
-                    logManage.ShowDialog();
+                    //GlobalVal.FormLogManage.ShowDialog();//为了每次打开都是最新数据
+                    FormLogManage fromlogManage = new FormLogManage();
+                    fromlogManage.ShowDialog();
                     break;
                 case "btnSearch"://查询
                 case "btnPrint"://打印
@@ -43,7 +43,7 @@ namespace UI
                 case "btnEmployee"://教职工管理
                     GlobalVal.ShowForm.Hide();
                     GlobalVal.SplashObj = SplashObject.GetLoading();
-                    GlobalVal.EmpManage.ShowDialog();
+                    GlobalVal.FormEmpManage.ShowDialog();
                     //EmployeeManage employeeManage = new EmployeeManage();
                     //employeeManage.ShowDialog();
                     break;
@@ -51,14 +51,14 @@ namespace UI
                     GlobalVal.ShowForm.Hide();
                     GlobalVal.SplashObj = SplashObject.GetLoading();
                     //GlobalVal.FormUserManage.ShowDialog();
-                    UserManage userManage = new UserManage();
+                    FormUserManage userManage = new FormUserManage();
                     userManage.ShowDialog();
                     break;
                 case "btnDepartmentManage"://部门管理
                     GlobalVal.ShowForm.Hide();
                     GlobalVal.SplashObj = SplashObject.GetLoading();
                     //GlobalVal.FormDepartmentManage.ShowDialog();
-                    DepartmentManage DepManage = new DepartmentManage();
+                    FormDepartmentManage DepManage = new FormDepartmentManage();
                     DepManage.ShowDialog();
                     break;
                 case "btnProject"://项目检查状况
@@ -66,23 +66,35 @@ namespace UI
                     GlobalVal.SplashObj = SplashObject.GetLoading();
                     //EmployeeCheckNum CheckProject = new EmployeeCheckNum();
                     //CheckProject.ShowDialog();
-                    GlobalVal.EmpCheckProject.ShowDialog();
+                    GlobalVal.FormCheckNum.ShowDialog();
                     break;
-                case "btnStatistics":
+                case "btnStatistics"://信息统计
                     GlobalVal.ShowForm.Hide();
                     GlobalVal.SplashObj = SplashObject.GetLoading();
                     //GlobalVal.FormConfig.ShowDialog();
                     FormStatistics statistics = new FormStatistics();
                     statistics.ShowDialog();
                     break;
-                case "btnConfig":
-                case "btnSystem":
-                case "btnHelp":
+                case "btnConfig"://参数设置
                     GlobalVal.ShowForm.Hide();
                     GlobalVal.SplashObj = SplashObject.GetLoading();
                     //GlobalVal.FormConfig.ShowDialog();
                     FormConfig config = new FormConfig();
                     config.ShowDialog();
+                    break;
+                case "btnSystem"://系统设置
+                    GlobalVal.ShowForm.Hide();
+                    GlobalVal.SplashObj = SplashObject.GetLoading();
+                    //GlobalVal.FormConfig.ShowDialog();
+                    FormSystem formSystem = new FormSystem();
+                    formSystem.ShowDialog();
+                    break;
+                case "btnHelp"://帮助
+                    GlobalVal.ShowForm.Hide();
+                    GlobalVal.SplashObj = SplashObject.GetLoading();
+                    //GlobalVal.FormConfig.ShowDialog();
+                    FormHelp formHelp = new FormHelp();
+                    formHelp.ShowDialog();
                     break;
             }
         }

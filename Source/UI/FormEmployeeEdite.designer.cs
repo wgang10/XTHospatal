@@ -1,6 +1,6 @@
 ﻿namespace UI
 {
-    partial class EmployeeEdite
+    partial class FormEmployeeEdite
     {
         /// <summary>
         /// Required designer variable.

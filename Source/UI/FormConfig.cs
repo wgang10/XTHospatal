@@ -13,40 +13,7 @@ namespace UI
     {
         public FormConfig()
         {
-            InitializeComponent();
-            for (int i = 0; i < 13; i++)
-            {
-                Label lbl = new Label();
-                lblTxt.Add(lbl);
-                lblTxt[i].Top = this.Height - 24;
-                lblTxt[i].Left = 24;
-                lblTxt[i].Visible = false;
-                lblTxt[i].BackColor = Color.Transparent;
-                lblTxt[i].ForeColor = Color.Blue;
-                lblTxt[i].AutoSize = true;
-                this.Controls.Add(lblTxt[i]);
-            }
-            lblTxt[0].Text = "产品名称: CMCSharpSDK";
-            lblTxt[1].Text = "产品全称: CodingMouse C# 开发工具包";
-            lblTxt[2].Text = "当前版本: 1.0.0.0";
-            lblTxt[3].Text = "";
-            lblTxt[4].Text = "程式设计: 邓超 (网络用名: CodingMouse)";
-            lblTxt[5].Text = "";
-            lblTxt[6].Text = "    Qicq: 454811990";
-            lblTxt[7].Text = "  E-mail: CodingMouse@gmail.com";
-            lblTxt[8].Text = "    Blog: http://blog.csdn.net/CodingMouse";
-            lblTxt[9].Text = "";
-            lblTxt[10].Text = "测试环境: Microsoft Windows Server 2003 Enterprise Edition";
-            lblTxt[11].Text = "          Microsoft Visual Studio 2005 Team Suite";
-            lblTxt[12].Text = "          Microsoft SQL Server 2005 Enterprise Edition";
-            // 添加事件监听
-            lblTxt[7].Click += new EventHandler(frmAbout_Email_Click);
-            lblTxt[8].Click += new EventHandler(frmAbout_WebSite_Click);
-            lblTxt[7].MouseMove += new MouseEventHandler(frmAbout_Link_MouseMove);
-            lblTxt[8].MouseMove += new MouseEventHandler(frmAbout_Link_MouseMove);
-            lblTxt[7].MouseLeave += new EventHandler(frmAbout_Link_MouseLeave);
-            lblTxt[8].MouseLeave += new EventHandler(frmAbout_Link_MouseLeave);
-            lblScroll.Add(lblTxt[0]);
+            InitializeComponent();            
         }
 
         #region Private Members
@@ -87,7 +54,7 @@ namespace UI
         private void frmAbout_Link_MouseLeave(object sender, EventArgs e)
         {
             Label currentLabel = (sender as Label);
-            currentLabel.ForeColor = Color.White;
+            currentLabel.ForeColor = Color.Blue;
             currentLabel.Cursor = Cursors.Default;
         }
         /// <summary>
@@ -106,7 +73,7 @@ namespace UI
         /// <param name="e"></param>
         private void frmAbout_WebSite_Click(object sender, EventArgs e)
         {
-            Process.Start("http://ziyangsoft.com");
+            Process.Start(((Label)sender).Tag.ToString());
         }
         /// <summary>
         /// 计时器事件(调度信息字幕显示)
@@ -120,8 +87,7 @@ namespace UI
             {
                 lblScroll[i].Visible = true;
                 lblScroll[i].Top -= 1;
-                if (lblScroll[i] == lblTxt[(lblTxt.Count - 1)] 
-                    && lblScroll[i].Top == this.Height - 84)
+                if (lblScroll[i] == lblTxt[(lblTxt.Count - 1)] && lblScroll[i].Top == this.Height - 84)
                 {
                     index = 0;
                     lblScroll.Add(lblTxt[0]);
@@ -224,6 +190,26 @@ namespace UI
         private void FormConfig_Load(object sender, EventArgs e)
         {
             GlobalVal.SplashObj.Dispose();
+            webService.News[] list = GlobalVal.gloWebSerices.GetNews(5);
+            for (int i = 0; i < list.Length; i++)
+            {
+                Label lbl = new Label();
+                lblTxt.Add(lbl);
+                lblTxt[i].Top = this.Height - 24;
+                lblTxt[i].Left = 24;
+                lblTxt[i].Visible = false;
+                lblTxt[i].BackColor = Color.Transparent;
+                lblTxt[i].ForeColor = Color.Blue;
+                lblTxt[i].AutoSize = true;
+                this.Controls.Add(lblTxt[i]);
+                lblTxt[i].Text = list[i].Title;
+                lblTxt[i].Tag = list[i].Url;
+                // 添加事件监听
+                lblTxt[i].Click += new EventHandler(frmAbout_WebSite_Click);
+                lblTxt[i].MouseMove += new MouseEventHandler(frmAbout_Link_MouseMove);
+                lblTxt[i].MouseLeave += new EventHandler(frmAbout_Link_MouseLeave);
+            }
+            lblScroll.Add(lblTxt[0]);
             timer1.Start();
         }
     }

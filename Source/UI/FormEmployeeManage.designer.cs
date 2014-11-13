@@ -1,6 +1,6 @@
 ﻿namespace UI
 {
-    partial class EmployeeManage
+    partial class FormEmployeeManage
     {
         /// <summary>
         /// 必需的设计器变量。
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EmployeeManage));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormEmployeeManage));
             this.btnClose = new System.Windows.Forms.Button();
             this.alphaBlendingBringer1 = new UI.AlphaBlendingBringer(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();

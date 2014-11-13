@@ -111,29 +111,29 @@
     <Compile Include="AlphaBlendingBringer.Designer.cs">
       <DependentUpon>AlphaBlendingBringer.cs</DependentUpon>
     </Compile>
-    <Compile Include="DepartmentManage.cs">
+    <Compile Include="FormDepartmentManage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DepartmentManage.designer.cs">
-      <DependentUpon>DepartmentManage.cs</DependentUpon>
+    <Compile Include="FormDepartmentManage.designer.cs">
+      <DependentUpon>FormDepartmentManage.cs</DependentUpon>
     </Compile>
-    <Compile Include="EmployeeCheckNum.cs">
+    <Compile Include="FormEmployeeCheckNum.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EmployeeCheckNum.designer.cs">
-      <DependentUpon>EmployeeCheckNum.cs</DependentUpon>
+    <Compile Include="FormEmployeeCheckNum.designer.cs">
+      <DependentUpon>FormEmployeeCheckNum.cs</DependentUpon>
     </Compile>
-    <Compile Include="EmployeeEdite.cs">
+    <Compile Include="FormEmployeeEdite.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EmployeeEdite.designer.cs">
-      <DependentUpon>EmployeeEdite.cs</DependentUpon>
+    <Compile Include="FormEmployeeEdite.designer.cs">
+      <DependentUpon>FormEmployeeEdite.cs</DependentUpon>
     </Compile>
-    <Compile Include="EmployeeManage.cs">
+    <Compile Include="FormEmployeeManage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EmployeeManage.designer.cs">
-      <DependentUpon>EmployeeManage.cs</DependentUpon>
+    <Compile Include="FormEmployeeManage.designer.cs">
+      <DependentUpon>FormEmployeeManage.cs</DependentUpon>
     </Compile>
     <Compile Include="FormBase.cs">
       <SubType>Form</SubType>
@@ -146,6 +146,12 @@
     </Compile>
     <Compile Include="FormConfig.designer.cs">
       <DependentUpon>FormConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormHelp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormHelp.Designer.cs">
+      <DependentUpon>FormHelp.cs</DependentUpon>
     </Compile>
     <Compile Include="FormImage.cs">
       <SubType>Form</SubType>
@@ -165,6 +171,12 @@
     <Compile Include="FormStatistics.Designer.cs">
       <DependentUpon>FormStatistics.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormSystem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSystem.Designer.cs">
+      <DependentUpon>FormSystem.cs</DependentUpon>
+    </Compile>
     <Compile Include="FromLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -177,32 +189,32 @@
     <Compile Include="FromMain.designer.cs">
       <DependentUpon>FromMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="InfoEdite.cs">
+    <Compile Include="FormInfoEdite.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InfoEdite.designer.cs">
-      <DependentUpon>InfoEdite.cs</DependentUpon>
+    <Compile Include="FormInfoEdite.designer.cs">
+      <DependentUpon>FormInfoEdite.cs</DependentUpon>
     </Compile>
-    <Compile Include="LogManage.cs">
+    <Compile Include="FormLogManage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LogManage.designer.cs">
-      <DependentUpon>LogManage.cs</DependentUpon>
+    <Compile Include="FormLogManage.designer.cs">
+      <DependentUpon>FormLogManage.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Search.cs">
+    <Compile Include="FormSearch.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Search.designer.cs">
-      <DependentUpon>Search.cs</DependentUpon>
+    <Compile Include="FormSearch.designer.cs">
+      <DependentUpon>FormSearch.cs</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs" />
-    <Compile Include="UserManage.cs">
+    <Compile Include="FormUserManage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserManage.designer.cs">
-      <DependentUpon>UserManage.cs</DependentUpon>
+    <Compile Include="FormUserManage.designer.cs">
+      <DependentUpon>FormUserManage.cs</DependentUpon>
     </Compile>
     <Compile Include="Utility\DataSetHelper.cs" />
     <Compile Include="Utility\DataSetZip.cs" />
@@ -222,6 +234,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
+    <None Include="Web References\webService\News.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
     <None Include="Web References\webService\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -234,23 +249,26 @@
       <DependentUpon>AlphaBlendingBringer.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="DepartmentManage.resx">
-      <DependentUpon>DepartmentManage.cs</DependentUpon>
+    <EmbeddedResource Include="FormDepartmentManage.resx">
+      <DependentUpon>FormDepartmentManage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EmployeeCheckNum.resx">
-      <DependentUpon>EmployeeCheckNum.cs</DependentUpon>
+    <EmbeddedResource Include="FormEmployeeCheckNum.resx">
+      <DependentUpon>FormEmployeeCheckNum.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EmployeeEdite.resx">
-      <DependentUpon>EmployeeEdite.cs</DependentUpon>
+    <EmbeddedResource Include="FormEmployeeEdite.resx">
+      <DependentUpon>FormEmployeeEdite.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EmployeeManage.resx">
-      <DependentUpon>EmployeeManage.cs</DependentUpon>
+    <EmbeddedResource Include="FormEmployeeManage.resx">
+      <DependentUpon>FormEmployeeManage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormBase.resx">
       <DependentUpon>FormBase.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormConfig.resx">
       <DependentUpon>FormConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormHelp.resx">
+      <DependentUpon>FormHelp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormImage.resx">
       <DependentUpon>FormImage.cs</DependentUpon>
@@ -261,17 +279,20 @@
     <EmbeddedResource Include="FormStatistics.resx">
       <DependentUpon>FormStatistics.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormSystem.resx">
+      <DependentUpon>FormSystem.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FromLogin.resx">
       <DependentUpon>FromLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FromMain.resx">
       <DependentUpon>FromMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InfoEdite.resx">
-      <DependentUpon>InfoEdite.cs</DependentUpon>
+    <EmbeddedResource Include="FormInfoEdite.resx">
+      <DependentUpon>FormInfoEdite.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LogManage.resx">
-      <DependentUpon>LogManage.cs</DependentUpon>
+    <EmbeddedResource Include="FormLogManage.resx">
+      <DependentUpon>FormLogManage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -283,11 +304,11 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Search.resx">
-      <DependentUpon>Search.cs</DependentUpon>
+    <EmbeddedResource Include="FormSearch.resx">
+      <DependentUpon>FormSearch.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserManage.resx">
-      <DependentUpon>UserManage.cs</DependentUpon>
+    <EmbeddedResource Include="FormUserManage.resx">
+      <DependentUpon>FormUserManage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Utility\SplashResource.resx">
       <Generator>ResXFileCodeGenerator</Generator>

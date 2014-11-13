@@ -1,6 +1,6 @@
 ﻿namespace UI
 {
-    partial class EmployeeCheckNum
+    partial class FormEmployeeCheckNum
     {
         /// <summary>
         /// Required designer variable.
