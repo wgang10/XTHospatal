@@ -7,6 +7,7 @@ using System.Data;
 using System.Data.OleDb;
 using System.Data.Odbc;
 using System.IO;
+using System.Net;
 
 namespace UI
 {
@@ -811,6 +812,35 @@ namespace UI
             catch (Exception ex)
             {
                 throw new Exception("error:" + ex.Message);
+            }
+        }
+
+        public static string GetWebConfig(ConfigName configName)
+        {
+            string strValue = string.Empty;
+            try
+            {
+                WebRequest req = WebRequest.Create(string.Format(@"{0}/Config.ashx?SystemName={1}&ConfigName={2}", GlobalVal.ServicesURL, GlobalVal.gloSystemName, configName.ToString()));
+                WebResponse res = req.GetResponse();
+                System.IO.Stream resStream = res.GetResponseStream();
+                Encoding encode = System.Text.Encoding.Default;
+                StreamReader readStream = new StreamReader(resStream, encode);
+                Char[] read = new Char[256];
+                int count = readStream.Read(read, 0, 256);
+                while (count > 0)
+                {
+                    String str = new String(read, 0, count);
+                    strValue = strValue + str;
+                    count = readStream.Read(read, 0, 256);
+                }
+                resStream.Close();
+                readStream.Close();
+                res.Close();
+                return strValue;
+            }
+            catch (Exception ex)
+            {
+                return strValue;
             }
         }
     }

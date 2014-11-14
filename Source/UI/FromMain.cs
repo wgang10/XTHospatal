@@ -105,7 +105,7 @@ namespace UI
             GlobalVal.SplashObj.Dispose();
             try
             {
-                FromLogin frm = new FromLogin();
+                FormLogin frm = new FormLogin();
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
                     this.Activate();

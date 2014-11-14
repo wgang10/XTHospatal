@@ -177,11 +177,11 @@
     <Compile Include="FormSystem.Designer.cs">
       <DependentUpon>FormSystem.cs</DependentUpon>
     </Compile>
-    <Compile Include="FromLogin.cs">
+    <Compile Include="FormLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FromLogin.designer.cs">
-      <DependentUpon>FromLogin.cs</DependentUpon>
+    <Compile Include="FormLogin.designer.cs">
+      <DependentUpon>FormLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="FromMain.cs">
       <SubType>Form</SubType>
@@ -282,8 +282,8 @@
     <EmbeddedResource Include="FormSystem.resx">
       <DependentUpon>FormSystem.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FromLogin.resx">
-      <DependentUpon>FromLogin.cs</DependentUpon>
+    <EmbeddedResource Include="FormLogin.resx">
+      <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FromMain.resx">
       <DependentUpon>FromMain.cs</DependentUpon>
