@@ -18,7 +18,7 @@ namespace UI
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            GlobalVal.ShowForm.Show();
+            GlobalVal.FormShow.Show();
             this.Hide();
         }
 
@@ -79,7 +79,7 @@ namespace UI
             
             try
             {
-                webService.ReturnValue resoult = GlobalVal.gloWebSerices.GetListEmployee(" Where Employee.EmployeeID <> '000000000000000000'");
+                webService.ReturnValue resoult = GlobalVal.WebSerices.GetListEmployee(" Where Employee.EmployeeID <> '000000000000000000'");
                 if (resoult.ErrorFlag)
                 {
                     for (int i = 0; i < resoult.ResultDataSet.Tables[0].Rows.Count; i++)
@@ -117,7 +117,7 @@ namespace UI
         {   
             GlobalVal.EmployeeID = grdMain.CurrentRow.Cells["EmployeeID"].Value.ToString();
             GlobalVal.EmployeeName = grdMain.CurrentRow.Cells["EmployeeName"].Value.ToString();
-            GlobalVal.gloYearMonth = cmbYearMonth.Text.Trim();
+            GlobalVal.YearMonth = cmbYearMonth.Text.Trim();
             FormInfoEdite infoEdite = new FormInfoEdite();
             infoEdite.ShowDialog();
         }
@@ -156,7 +156,7 @@ namespace UI
             
             try
             {
-                webService.ReturnValue resoult = GlobalVal.gloWebSerices.GetListEmployee(strWhere);
+                webService.ReturnValue resoult = GlobalVal.WebSerices.GetListEmployee(strWhere);
                 if (resoult.ErrorFlag)
                 {
                     for (int i = 0; i < resoult.ResultDataSet.Tables[0].Rows.Count; i++)
@@ -239,7 +239,7 @@ namespace UI
                 return;
             }
 
-            string[] resoult = GlobalVal.gloWebSerices.SetYearMonth(GlobalVal.gloStrLoginUserID, GlobalVal.gloStrTerminalCD, strYearMonth);
+            string[] resoult = GlobalVal.WebSerices.SetYearMonth(GlobalVal.LoginUserID, GlobalVal.TerminalCD, strYearMonth);
             if (resoult[0] != "1")
             {
                 MessageBox.Show(resoult[1], "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);

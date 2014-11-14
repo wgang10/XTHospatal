@@ -17,7 +17,7 @@ namespace UI
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            GlobalVal.ShowForm.Show();
+            GlobalVal.FormShow.Show();
             this.Close();
         }
 
@@ -38,11 +38,11 @@ namespace UI
             model.UserPwd = txtUSER_WD.Text.Trim();
             model.MEMO = txtMEMO.Text.Trim();
             model.UserType = cmbUSER_GROUP.SelectedIndex.ToString();
-            model.UPDATER_ID = GlobalVal.gloStrLoginUserID;
-            model.TERMINAL_CD = GlobalVal.gloStrTerminalCD;
+            model.UPDATER_ID = GlobalVal.LoginUserID;
+            model.TERMINAL_CD = GlobalVal.TerminalCD;
             
             webService.ReturnValue resoult;
-            resoult = GlobalVal.gloWebSerices.AddUser(model);
+            resoult = GlobalVal.WebSerices.AddUser(model);
             if (resoult.ErrorFlag)
             {
                 ControlInitial();
@@ -101,7 +101,7 @@ namespace UI
             }
             
             webService.ReturnValue resoult;
-            resoult = GlobalVal.gloWebSerices.DeleteUser(txtUSER_ID.Text.Trim());
+            resoult = GlobalVal.WebSerices.DeleteUser(txtUSER_ID.Text.Trim());
             if (resoult.ErrorFlag)
             {
                 ControlInitial();
@@ -138,7 +138,7 @@ namespace UI
             webService.ReturnValue returnValue;
             try
             {
-                returnValue = GlobalVal.gloWebSerices.GetUserList();
+                returnValue = GlobalVal.WebSerices.GetUserList();
                 if (!returnValue.ErrorFlag)
                 {
                     MessageBox.Show(returnValue.ErrorID);

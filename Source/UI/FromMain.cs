@@ -23,7 +23,7 @@ namespace UI
             switch (btnName)
             {
                 case "btnLogManage"://日志管理
-                    GlobalVal.ShowForm.Hide();
+                    GlobalVal.FormShow.Hide();
                     GlobalVal.SplashObj = SplashObject.GetLoading();
                     //GlobalVal.FormLogManage.ShowDialog();//为了每次打开都是最新数据
                     FormLogManage fromlogManage = new FormLogManage();
@@ -32,7 +32,7 @@ namespace UI
                 case "btnSearch"://查询
                 case "btnPrint"://打印
                 case "btnInfoEdite"://体检信息维护
-                    GlobalVal.ShowForm.Hide();
+                    GlobalVal.FormShow.Hide();
                     GlobalVal.SplashObj = SplashObject.GetLoading();
                     GlobalVal.FormSearch.ShowDialog();
                     break;
@@ -41,56 +41,56 @@ namespace UI
                 //    GlobalVal.FormInfoEdite.ShowDialog();
                 //    break;
                 case "btnEmployee"://教职工管理
-                    GlobalVal.ShowForm.Hide();
+                    GlobalVal.FormShow.Hide();
                     GlobalVal.SplashObj = SplashObject.GetLoading();
                     GlobalVal.FormEmpManage.ShowDialog();
                     //EmployeeManage employeeManage = new EmployeeManage();
                     //employeeManage.ShowDialog();
                     break;
                 case "btnUserManage"://用户管理
-                    GlobalVal.ShowForm.Hide();
+                    GlobalVal.FormShow.Hide();
                     GlobalVal.SplashObj = SplashObject.GetLoading();
                     //GlobalVal.FormUserManage.ShowDialog();
                     FormUserManage userManage = new FormUserManage();
                     userManage.ShowDialog();
                     break;
                 case "btnDepartmentManage"://部门管理
-                    GlobalVal.ShowForm.Hide();
+                    GlobalVal.FormShow.Hide();
                     GlobalVal.SplashObj = SplashObject.GetLoading();
                     //GlobalVal.FormDepartmentManage.ShowDialog();
                     FormDepartmentManage DepManage = new FormDepartmentManage();
                     DepManage.ShowDialog();
                     break;
                 case "btnProject"://项目检查状况
-                    GlobalVal.ShowForm.Hide();
+                    GlobalVal.FormShow.Hide();
                     GlobalVal.SplashObj = SplashObject.GetLoading();
                     //EmployeeCheckNum CheckProject = new EmployeeCheckNum();
                     //CheckProject.ShowDialog();
                     GlobalVal.FormCheckNum.ShowDialog();
                     break;
                 case "btnStatistics"://信息统计
-                    GlobalVal.ShowForm.Hide();
+                    GlobalVal.FormShow.Hide();
                     GlobalVal.SplashObj = SplashObject.GetLoading();
                     //GlobalVal.FormConfig.ShowDialog();
                     FormStatistics statistics = new FormStatistics();
                     statistics.ShowDialog();
                     break;
                 case "btnConfig"://参数设置
-                    GlobalVal.ShowForm.Hide();
+                    GlobalVal.FormShow.Hide();
                     GlobalVal.SplashObj = SplashObject.GetLoading();
                     //GlobalVal.FormConfig.ShowDialog();
                     FormConfig config = new FormConfig();
                     config.ShowDialog();
                     break;
                 case "btnSystem"://系统设置
-                    GlobalVal.ShowForm.Hide();
+                    GlobalVal.FormShow.Hide();
                     GlobalVal.SplashObj = SplashObject.GetLoading();
                     //GlobalVal.FormConfig.ShowDialog();
                     FormSystem formSystem = new FormSystem();
                     formSystem.ShowDialog();
                     break;
                 case "btnHelp"://帮助
-                    GlobalVal.ShowForm.Hide();
+                    GlobalVal.FormShow.Hide();
                     GlobalVal.SplashObj = SplashObject.GetLoading();
                     //GlobalVal.FormConfig.ShowDialog();
                     FormHelp formHelp = new FormHelp();
@@ -109,12 +109,12 @@ namespace UI
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
                     this.Activate();
-                    GlobalVal.ShowForm = this;
+                    GlobalVal.FormShow = this;
                     BindChartData();
                     try
                     {
-                        this.Text = GlobalVal.glostrSystemName + "    当前登录用户：" + GlobalVal.gloStrLoginUserID;
-                        LoginUser = GlobalVal.gloStrLoginUserID;
+                        this.Text = GlobalVal.SystemNameCN + "    当前登录用户：" + GlobalVal.LoginUserID;
+                        LoginUser = GlobalVal.LoginUserID;
                     }
                     catch { }
                 }
@@ -132,7 +132,7 @@ namespace UI
         private void BindChartData()
         {
 
-            webService.ReturnValue resoult = GlobalVal.gloWebSerices.StatisticNums();
+            webService.ReturnValue resoult = GlobalVal.WebSerices.StatisticNums();
             if (resoult.ErrorFlag)
             {
                 DataSetHelper dsHelper = new DataSetHelper();

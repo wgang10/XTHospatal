@@ -19,7 +19,7 @@ namespace UI
         {
             //GlobalVal.ShowForm.Show();
             //this.Hide();
-            GlobalVal.ShowForm.Show();
+            GlobalVal.FormShow.Show();
             this.Close();
         }
 
@@ -55,13 +55,13 @@ namespace UI
                 model.ID = txtDepartmentID.Text.Trim();
             }
             model.Notes = txtMEMO.Text.Trim();
-            model.UPDATER_ID = GlobalVal.gloStrLoginUserID;
-            model.TERMINAL_CD = GlobalVal.gloStrTerminalCD;
+            model.UPDATER_ID = GlobalVal.LoginUserID;
+            model.TERMINAL_CD = GlobalVal.TerminalCD;
             
             webService.ReturnValue resoult;
             try
             {
-                resoult = GlobalVal.gloWebSerices.AddUpdateDepartment(model);
+                resoult = GlobalVal.WebSerices.AddUpdateDepartment(model);
             }
             catch (Exception ex)
             {
@@ -126,7 +126,7 @@ namespace UI
             }
             
             webService.ReturnValue resoult;
-            resoult = GlobalVal.gloWebSerices.DeleteDepartment(txtDepartmentID.Text.Trim());
+            resoult = GlobalVal.WebSerices.DeleteDepartment(txtDepartmentID.Text.Trim());
             if (resoult.ErrorFlag)
             {
                 ControlInitial();
@@ -164,7 +164,7 @@ namespace UI
             webService.ReturnValue returnValue;
             try
             {
-                returnValue = GlobalVal.gloWebSerices.GetDepartmentList();
+                returnValue = GlobalVal.WebSerices.GetDepartmentList();
                 if (!returnValue.ErrorFlag)
                 {
                     MessageBox.Show(returnValue.ErrorID);

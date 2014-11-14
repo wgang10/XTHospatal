@@ -27,14 +27,14 @@ namespace UI
         {
             //GlobalVal.ShowForm.Hide();
             //GlobalVal.SplashObj.Dispose();
-            txtYearMonth.Text = GlobalVal.gloYearMonth;
+            txtYearMonth.Text = GlobalVal.YearMonth;
             cmbBM.SelectedIndex = 0;
             //FromLogin frm = new FromLogin();
             //if (frm.ShowDialog() == DialogResult.OK)
             //{
             InitializationCombox();//初始化部门下拉框
             BindBioTInfo();//绑定生化参考值信息
-            if (GlobalVal.gloStrLoginUserType == "0")//管理员
+            if (GlobalVal.LoginUserType == "0")//管理员
             {
                 //btnUserManage.Visible = true;
                 btnAdd.Visible = true;
@@ -63,7 +63,7 @@ namespace UI
                 //btnLog.Visible = true;
                 btnComposition.Visible = true;
             }
-            else if (GlobalVal.gloStrLoginUserType == "1")//高级用户
+            else if (GlobalVal.LoginUserType == "1")//高级用户
             {
                 //btnUserManage.Visible = false;
                 btnAdd.Visible = true;
@@ -92,7 +92,7 @@ namespace UI
                 //btnLog.Visible = true;
                 btnComposition.Visible = true;
             }
-            else if (GlobalVal.gloStrLoginUserType == "2")//一般用户
+            else if (GlobalVal.LoginUserType == "2")//一般用户
             {
                 //btnUserManage.Visible = false;
                 btnAdd.Visible = false;
@@ -166,9 +166,9 @@ namespace UI
                 InitializationCombox();//再次绑定部门下拉框
                 this.txtGlobal_EmployeeID.Text = GlobalVal.EmployeeID;
                 this.txtGlobal_EmployeeName.Text = GlobalVal.EmployeeName;
-                if (GlobalVal.EmployeeID.Length != 0 && GlobalVal.gloYearMonth.Length != 0)
+                if (GlobalVal.EmployeeID.Length != 0 && GlobalVal.YearMonth.Length != 0)
                 {
-                    BindAllInfo(GlobalVal.EmployeeID, GlobalVal.gloYearMonth);
+                    BindAllInfo(GlobalVal.EmployeeID, GlobalVal.YearMonth);
                 }
             }
         }
@@ -291,12 +291,12 @@ namespace UI
             model.EmployeeBM = cmbBM.SelectedValue.ToString();
             model.EmployeeDW = txtDW.Text.Trim();
             model.EmployeeJWBS = txtJWBS.Text.Trim();
-            model.UPDATER_ID = GlobalVal.gloStrLoginUserID;
-            model.TERMINAL_CD = GlobalVal.gloStrTerminalCD;
+            model.UPDATER_ID = GlobalVal.LoginUserID;
+            model.TERMINAL_CD = GlobalVal.TerminalCD;
             model.EmployeeEmail = txtEmail.Text;
             model.EmployeePhone = txtEmployeePhone.Text;
 
-            webService.ReturnValue resoult = GlobalVal.gloWebSerices.AddEmployee(model);
+            webService.ReturnValue resoult = GlobalVal.WebSerices.AddEmployee(model);
             if (resoult.ErrorFlag)
             {
                 MessageBox.Show("操作成功！");
@@ -326,7 +326,7 @@ namespace UI
             }
             webService.Biochemistry model = new UI.webService.Biochemistry();
             model.EmployeeID = GlobalVal.EmployeeID;
-            model.YearMonth = GlobalVal.gloYearMonth;
+            model.YearMonth = GlobalVal.YearMonth;
             model.HYNo = txtHY_No.Text.Trim();
             model.HYDr = txtHY_Dr.Text.Trim();
             model.HYTC = txtHY_TC.Text.Trim();
@@ -416,10 +416,10 @@ namespace UI
             {
                 model.HYHBcAb = "";
             }
-            model.UPDATER_ID = GlobalVal.gloStrLoginUserID;
-            model.TERMINAL_CD = GlobalVal.gloStrTerminalCD;
+            model.UPDATER_ID = GlobalVal.LoginUserID;
+            model.TERMINAL_CD = GlobalVal.TerminalCD;
 
-            webService.ReturnValue resoult = GlobalVal.gloWebSerices.AddUpdateBiochemistry(model);
+            webService.ReturnValue resoult = GlobalVal.WebSerices.AddUpdateBiochemistry(model);
             if (resoult.ErrorFlag)
             {
                 MessageBox.Show("操作成功！");
@@ -444,7 +444,7 @@ namespace UI
             }
             webService.Features model = new UI.webService.Features();
             model.EmployeeID = GlobalVal.EmployeeID;
-            model.YearMonth = GlobalVal.gloYearMonth;
+            model.YearMonth = GlobalVal.YearMonth;
             model.LeftEye = this.txtLeftEye.Text.Trim();
             model.RightEye = this.txtRightEye.Text.Trim();
             model.CorrectedLeft = this.txtCorrectedLeft.Text.Trim();
@@ -467,10 +467,10 @@ namespace UI
             model.Other = this.txtFeaturesOther.Text.Trim();
             model.MedicalAdvice = this.txtMedicalAdvice.Text.Trim();
             model.Physicians = this.txtFeaturesPhysicians.Text.Trim();
-            model.UPDATER_ID = GlobalVal.gloStrLoginUserID;
-            model.TERMINAL_CD = GlobalVal.gloStrTerminalCD;
+            model.UPDATER_ID = GlobalVal.LoginUserID;
+            model.TERMINAL_CD = GlobalVal.TerminalCD;
 
-            webService.ReturnValue resoult = GlobalVal.gloWebSerices.AddUpdateFeatures(model);
+            webService.ReturnValue resoult = GlobalVal.WebSerices.AddUpdateFeatures(model);
             if (resoult.ErrorFlag)
             {
                 MessageBox.Show("操作成功！");
@@ -495,7 +495,7 @@ namespace UI
             }
             webService.Surgery model = new UI.webService.Surgery();
             model.EmployeeID = GlobalVal.EmployeeID;
-            model.YearMonth = GlobalVal.gloYearMonth;
+            model.YearMonth = GlobalVal.YearMonth;
             model.Length=this.txtLength.Text.Trim ();
             model.Bust=this.txtBust.Text.Trim ();
             model.Weight=this.txtWeight.Text.Trim ();
@@ -513,10 +513,10 @@ namespace UI
             model.Other=this.txtSurgeryOther.Text.Trim ();
             model.MedicalAdvice = this.txtSurgeryMedicalAdvice.Text.Trim();
             model.Physicians=this.txtSurgeryPhysicians.Text.Trim ();
-            model.UPDATER_ID = GlobalVal.gloStrLoginUserID;
-            model.TERMINAL_CD = GlobalVal.gloStrTerminalCD;
+            model.UPDATER_ID = GlobalVal.LoginUserID;
+            model.TERMINAL_CD = GlobalVal.TerminalCD;
 
-            webService.ReturnValue resoult = GlobalVal.gloWebSerices.AddUpdateSurgery(model);
+            webService.ReturnValue resoult = GlobalVal.WebSerices.AddUpdateSurgery(model);
             if (resoult.ErrorFlag)
             {
                 MessageBox.Show("操作成功！");
@@ -541,7 +541,7 @@ namespace UI
             }
             webService.InternalMedicine model = new UI.webService.InternalMedicine();
             model.EmployeeID = GlobalVal.EmployeeID;
-            model.YearMonth = GlobalVal.gloYearMonth;
+            model.YearMonth = GlobalVal.YearMonth;
             model.BloodPressure=this.txtBloodPressure.Text.Trim();
             model.BloodPressure1 = this.txtBloodPressure1.Text.Trim();
             model.DevelopmentStatus=this.txtDevelopmentStatus.Text.Trim();
@@ -554,10 +554,10 @@ namespace UI
             model.Other=this.txtInternalMedicineOther.Text.Trim();
             model.MedicalAdvice=this.txtInternalMedicineMedicalAdvice.Text.Trim();
             model.Physicians = this.txtInternalMedicinePhysicians.Text.Trim();
-            model.UPDATER_ID = GlobalVal.gloStrLoginUserID;
-            model.TERMINAL_CD = GlobalVal.gloStrTerminalCD;
+            model.UPDATER_ID = GlobalVal.LoginUserID;
+            model.TERMINAL_CD = GlobalVal.TerminalCD;
 
-            webService.ReturnValue resoult = GlobalVal.gloWebSerices.AddUpdateInternalMeicine(model);
+            webService.ReturnValue resoult = GlobalVal.WebSerices.AddUpdateInternalMeicine(model);
             if (resoult.ErrorFlag)
             {
                 MessageBox.Show("操作成功！");
@@ -582,7 +582,7 @@ namespace UI
             }
             webService.ECG model = new UI.webService.ECG();
             model.EmployeeID = GlobalVal.EmployeeID;
-            model.YearMonth = GlobalVal.gloYearMonth;
+            model.YearMonth = GlobalVal.YearMonth;
 
             model.ECGNo = this.txtECGNo.Text.Trim();
             model.ClinicalDiagnosis = this.txtClinicalDiagnosis.Text.Trim();
@@ -617,10 +617,10 @@ namespace UI
                 model.ECGImage = null;
             }
             model.Physicians = this.txtECGPhysicians.Text.Trim();
-            model.UPDATER_ID = GlobalVal.gloStrLoginUserID;
-            model.TERMINAL_CD = GlobalVal.gloStrTerminalCD;
+            model.UPDATER_ID = GlobalVal.LoginUserID;
+            model.TERMINAL_CD = GlobalVal.TerminalCD;
 
-            webService.ReturnValue resoult = GlobalVal.gloWebSerices.AddUpdateECG(model);
+            webService.ReturnValue resoult = GlobalVal.WebSerices.AddUpdateECG(model);
             if (resoult.ErrorFlag)
             {
                 MessageBox.Show("操作成功！");
@@ -645,7 +645,7 @@ namespace UI
             }
             webService.Xray model = new UI.webService.Xray();
             model.EmployeeID = GlobalVal.EmployeeID;
-            model.YearMonth = GlobalVal.gloYearMonth;
+            model.YearMonth = GlobalVal.YearMonth;
             model.PhotoNo = this.txtPhotoNo.Text.Trim();
             model.Symptoms = this.txtSymptoms.Text.Trim();
             model.Laboratory = this.txtLaboratory.Text.Trim();
@@ -667,10 +667,10 @@ namespace UI
                 model.XImage = null;
             }
             model.Physicians = this.txtXRayPhysicians.Text.Trim();
-            model.UPDATER_ID = GlobalVal.gloStrLoginUserID;
-            model.TERMINAL_CD = GlobalVal.gloStrTerminalCD;
+            model.UPDATER_ID = GlobalVal.LoginUserID;
+            model.TERMINAL_CD = GlobalVal.TerminalCD;
 
-            webService.ReturnValue resoult = GlobalVal.gloWebSerices.AddUpdateXray(model);
+            webService.ReturnValue resoult = GlobalVal.WebSerices.AddUpdateXray(model);
             if (resoult.ErrorFlag)
             {
                 MessageBox.Show("操作成功！");
@@ -695,7 +695,7 @@ namespace UI
             }
             webService.Bexamination model = new UI.webService.Bexamination();
             model.EmployeeID = GlobalVal.EmployeeID;
-            model.YearMonth = GlobalVal.gloYearMonth;
+            model.YearMonth = GlobalVal.YearMonth;
 
             model.BID = this.txtBID.Text.Trim();
             model.HistorySigns = this.txtHistorySigns.Text.Trim();
@@ -717,10 +717,10 @@ namespace UI
                 model.BImage = null;
             }
             model.Physicians = this.txtBPhysicians.Text.Trim();
-            model.UPDATER_ID = GlobalVal.gloStrLoginUserID;
-            model.TERMINAL_CD = GlobalVal.gloStrTerminalCD;
+            model.UPDATER_ID = GlobalVal.LoginUserID;
+            model.TERMINAL_CD = GlobalVal.TerminalCD;
 
-            webService.ReturnValue resoult = GlobalVal.gloWebSerices.AddUpdateBexamination(model);
+            webService.ReturnValue resoult = GlobalVal.WebSerices.AddUpdateBexamination(model);
             if (resoult.ErrorFlag)
             {
                 MessageBox.Show("操作成功！");
@@ -745,15 +745,15 @@ namespace UI
             }
             webService.Report model = new UI.webService.Report();
             model.EmployeeID = GlobalVal.EmployeeID;
-            model.YearMonth = GlobalVal.gloYearMonth;
+            model.YearMonth = GlobalVal.YearMonth;
             model.ChestPerspective = this.txtChestPerspective.Text.Trim();
             model.Laboratory = this.txtReportLaboratory.Text.Trim();
             model.Review = this.txtReview.Text.Trim();
             model.Remarks = this.txtRemarks.Text.Trim();
-            model.UPDATER_ID = GlobalVal.gloStrLoginUserID;
-            model.TERMINAL_CD = GlobalVal.gloStrTerminalCD;
+            model.UPDATER_ID = GlobalVal.LoginUserID;
+            model.TERMINAL_CD = GlobalVal.TerminalCD;
 
-            webService.ReturnValue resoult = GlobalVal.gloWebSerices.AddUpdateReport(model);
+            webService.ReturnValue resoult = GlobalVal.WebSerices.AddUpdateReport(model);
             if (resoult.ErrorFlag)
             {
                 MessageBox.Show("操作成功！");
@@ -771,7 +771,7 @@ namespace UI
         /// <param name="e"></param>
         private void btnUserManage_Click(object sender, EventArgs e)
         {
-            GlobalVal.ShowForm = this;
+            GlobalVal.FormShow = this;
             FormUserManage frm = new FormUserManage();
             frm.Show();
         }
@@ -872,7 +872,7 @@ namespace UI
         {
             if (picECG.Image != null)
             {
-                GlobalVal.gloImage = picECG.Image;
+                GlobalVal.Image = picECG.Image;
                 FormImage formShow = new FormImage();
                 formShow.ShowDialog();
             }
@@ -887,7 +887,7 @@ namespace UI
         {
             if (picXImage.Image != null)
             {
-                GlobalVal.gloImage = picXImage.Image;
+                GlobalVal.Image = picXImage.Image;
                 FormImage formShow = new FormImage();
                 formShow.ShowDialog();
             }
@@ -902,7 +902,7 @@ namespace UI
         {
             if (picBImage.Image != null)
             {
-                GlobalVal.gloImage = picBImage.Image;
+                GlobalVal.Image = picBImage.Image;
                 FormImage formShow = new FormImage();
                 formShow.ShowDialog();
             }
@@ -916,7 +916,7 @@ namespace UI
         private void BindAllInfo(string EmployeeID, string YearMonth)
         {
 
-            webService.ReturnValue resoult = GlobalVal.gloWebSerices.SearchEmployeeAllInfo(EmployeeID, YearMonth);
+            webService.ReturnValue resoult = GlobalVal.WebSerices.SearchEmployeeAllInfo(EmployeeID, YearMonth);
             if (resoult.ErrorFlag)
             {
                 if (resoult.Count > 0)
@@ -1961,7 +1961,7 @@ namespace UI
         private void BindBioTInfo()
         {
 
-            webService.ReturnValue resoult =  GlobalVal.gloWebSerices.GetBioTInfo();
+            webService.ReturnValue resoult =  GlobalVal.WebSerices.GetBioTInfo();
             if (resoult.ErrorFlag)
             {
                 if (resoult.Count > 0)
@@ -2307,10 +2307,10 @@ namespace UI
                 model.BImage = null;
             }
             model.Physicians = this.txtBPhysicians.Text.Trim();
-            model.UPDATER_ID = GlobalVal.gloStrLoginUserID;
-            model.TERMINAL_CD = GlobalVal.gloStrTerminalCD;
+            model.UPDATER_ID = GlobalVal.LoginUserID;
+            model.TERMINAL_CD = GlobalVal.TerminalCD;
 
-            webService.ReturnValue resoult = GlobalVal.gloWebSerices.AddUpdateBexamination(model);
+            webService.ReturnValue resoult = GlobalVal.WebSerices.AddUpdateBexamination(model);
             if (resoult.ErrorFlag)
             {
                 MessageBox.Show("操作成功！");
@@ -2352,10 +2352,10 @@ namespace UI
                 model.XImage = null;
             }
             model.Physicians = this.txtXRayPhysicians.Text.Trim();
-            model.UPDATER_ID = GlobalVal.gloStrLoginUserID;
-            model.TERMINAL_CD = GlobalVal.gloStrTerminalCD;
+            model.UPDATER_ID = GlobalVal.LoginUserID;
+            model.TERMINAL_CD = GlobalVal.TerminalCD;
 
-            webService.ReturnValue resoult = GlobalVal.gloWebSerices.AddUpdateXray(model);
+            webService.ReturnValue resoult = GlobalVal.WebSerices.AddUpdateXray(model);
             if (resoult.ErrorFlag)
             {
                 MessageBox.Show("操作成功！");
@@ -2410,10 +2410,10 @@ namespace UI
                 model.ECGImage = null;
             }
             model.Physicians = this.txtECGPhysicians.Text.Trim();
-            model.UPDATER_ID = GlobalVal.gloStrLoginUserID;
-            model.TERMINAL_CD = GlobalVal.gloStrTerminalCD;
+            model.UPDATER_ID = GlobalVal.LoginUserID;
+            model.TERMINAL_CD = GlobalVal.TerminalCD;
 
-            webService.ReturnValue resoult = GlobalVal.gloWebSerices.AddUpdateECG(model);
+            webService.ReturnValue resoult = GlobalVal.WebSerices.AddUpdateECG(model);
             if (resoult.ErrorFlag)
             {
                 MessageBox.Show("操作成功！");
@@ -2446,10 +2446,10 @@ namespace UI
             model.Other = this.txtInternalMedicineOther.Text.Trim();
             model.MedicalAdvice = this.txtInternalMedicineMedicalAdvice.Text.Trim();
             model.Physicians = this.txtInternalMedicinePhysicians.Text.Trim();
-            model.UPDATER_ID = GlobalVal.gloStrLoginUserID;
-            model.TERMINAL_CD = GlobalVal.gloStrTerminalCD;
+            model.UPDATER_ID = GlobalVal.LoginUserID;
+            model.TERMINAL_CD = GlobalVal.TerminalCD;
 
-            webService.ReturnValue resoult = GlobalVal.gloWebSerices.AddUpdateInternalMeicine(model);
+            webService.ReturnValue resoult = GlobalVal.WebSerices.AddUpdateInternalMeicine(model);
             if (resoult.ErrorFlag)
             {
                 MessageBox.Show("操作成功！");
@@ -2487,10 +2487,10 @@ namespace UI
             model.Other = this.txtSurgeryOther.Text.Trim();
             model.MedicalAdvice = this.txtSurgeryMedicalAdvice.Text.Trim();
             model.Physicians = this.txtSurgeryPhysicians.Text.Trim();
-            model.UPDATER_ID = GlobalVal.gloStrLoginUserID;
-            model.TERMINAL_CD = GlobalVal.gloStrTerminalCD;
+            model.UPDATER_ID = GlobalVal.LoginUserID;
+            model.TERMINAL_CD = GlobalVal.TerminalCD;
 
-            webService.ReturnValue resoult = GlobalVal.gloWebSerices.AddUpdateSurgery(model);
+            webService.ReturnValue resoult = GlobalVal.WebSerices.AddUpdateSurgery(model);
             if (resoult.ErrorFlag)
             {
                 MessageBox.Show("操作成功！");
@@ -2533,10 +2533,10 @@ namespace UI
             model.Other = this.txtFeaturesOther.Text.Trim();
             model.MedicalAdvice = this.txtMedicalAdvice.Text.Trim();
             model.Physicians = this.txtFeaturesPhysicians.Text.Trim();
-            model.UPDATER_ID = GlobalVal.gloStrLoginUserID;
-            model.TERMINAL_CD = GlobalVal.gloStrTerminalCD;
+            model.UPDATER_ID = GlobalVal.LoginUserID;
+            model.TERMINAL_CD = GlobalVal.TerminalCD;
 
-            webService.ReturnValue resoult = GlobalVal.gloWebSerices.AddUpdateFeatures(model);
+            webService.ReturnValue resoult = GlobalVal.WebSerices.AddUpdateFeatures(model);
             if (resoult.ErrorFlag)
             {
                 MessageBox.Show("操作成功！");
@@ -2555,7 +2555,7 @@ namespace UI
         private void btnInputMBFeatures_Click(object sender, EventArgs e)
         {
 
-            webService.ReturnValue resoult = GlobalVal.gloWebSerices.SearchEmployeeAllInfo("000000000000000000", "000000");
+            webService.ReturnValue resoult = GlobalVal.WebSerices.SearchEmployeeAllInfo("000000000000000000", "000000");
             if (resoult.ErrorFlag)
             {
                 if (resoult.Count > 0)
@@ -2599,7 +2599,7 @@ namespace UI
         private void btnInputMBSurgery_Click(object sender, EventArgs e)
         {
 
-            webService.ReturnValue resoult = GlobalVal.gloWebSerices.SearchEmployeeAllInfo("000000000000000000", "000000");
+            webService.ReturnValue resoult = GlobalVal.WebSerices.SearchEmployeeAllInfo("000000000000000000", "000000");
             if (resoult.ErrorFlag)
             {
                 if (resoult.Count > 0)
@@ -2638,7 +2638,7 @@ namespace UI
         private void btnInputMBInternalMedicine_Click(object sender, EventArgs e)
         {
 
-            webService.ReturnValue resoult = GlobalVal.gloWebSerices.SearchEmployeeAllInfo("000000000000000000", "000000");
+            webService.ReturnValue resoult = GlobalVal.WebSerices.SearchEmployeeAllInfo("000000000000000000", "000000");
             if (resoult.ErrorFlag)
             {
                 if (resoult.Count > 0)
@@ -2672,7 +2672,7 @@ namespace UI
         private void btnInputMBECG_Click(object sender, EventArgs e)
         {
 
-            webService.ReturnValue resoult = GlobalVal.gloWebSerices.SearchEmployeeAllInfo("000000000000000000", "000000");
+            webService.ReturnValue resoult = GlobalVal.WebSerices.SearchEmployeeAllInfo("000000000000000000", "000000");
             if (resoult.ErrorFlag)
             {
                 if (resoult.Count > 0)
@@ -2727,7 +2727,7 @@ namespace UI
         private void btnInputMBXray_Click(object sender, EventArgs e)
         {
 
-            webService.ReturnValue resoult = GlobalVal.gloWebSerices.SearchEmployeeAllInfo("000000000000000000", "000000");
+            webService.ReturnValue resoult = GlobalVal.WebSerices.SearchEmployeeAllInfo("000000000000000000", "000000");
             if (resoult.ErrorFlag)
             {
                 if (resoult.Count > 0)
@@ -2768,7 +2768,7 @@ namespace UI
         private void btnInputMBBexamination_Click(object sender, EventArgs e)
         {
 
-            webService.ReturnValue resoult = GlobalVal.gloWebSerices.SearchEmployeeAllInfo("000000000000000000", "000000");
+            webService.ReturnValue resoult = GlobalVal.WebSerices.SearchEmployeeAllInfo("000000000000000000", "000000");
             if (resoult.ErrorFlag)
             {
                 if (resoult.Count > 0)
@@ -2813,7 +2813,7 @@ namespace UI
             }
             webService.Feme model = new UI.webService.Feme();
             model.EmployeeID = GlobalVal.EmployeeID;
-            model.YearMonth = GlobalVal.gloYearMonth;
+            model.YearMonth = GlobalVal.YearMonth;
             model.Menarche=txtMenarche.Text.Trim();				//月经初潮
             model.MenopauseAge = txtMenopauseAge.Text.Trim();	//绝经年龄
             //*****************************************
@@ -3168,10 +3168,10 @@ namespace UI
             model.InfraredScanBreast = txtInfraredScanBreast.Text.Trim();	    //乳腺红外线扫描
             model.Conclusion = txtFemeConclusion.Text.Trim();			        //结论
             model.Physicians=txtFemePhysicians.Text.Trim();			            //医师
-            model.UPDATER_ID = GlobalVal.gloStrLoginUserID;
-            model.TERMINAL_CD = GlobalVal.gloStrTerminalCD;
+            model.UPDATER_ID = GlobalVal.LoginUserID;
+            model.TERMINAL_CD = GlobalVal.TerminalCD;
 
-            webService.ReturnValue resoult = GlobalVal.gloWebSerices.AddUpdateFeme(model);
+            webService.ReturnValue resoult = GlobalVal.WebSerices.AddUpdateFeme(model);
             if (resoult.ErrorFlag)
             {
                 MessageBox.Show("操作成功！");
@@ -3184,14 +3184,14 @@ namespace UI
 
         private void btnLog_Click(object sender, EventArgs e)
         {
-            GlobalVal.ShowForm = this;
+            GlobalVal.FormShow = this;
             FormLogManage frm = new FormLogManage();
             frm.Show();
         }
 
         private void btnDepartment_Click(object sender, EventArgs e)
         {   
-            GlobalVal.ShowForm = this;
+            GlobalVal.FormShow = this;
             FormDepartmentManage frm = new FormDepartmentManage();
             frm.Show();
         }
@@ -3210,7 +3210,7 @@ namespace UI
             }
             webService.Composition model = new UI.webService.Composition();
             model.EmployeeID = GlobalVal.EmployeeID;
-            model.YearMonth = GlobalVal.gloYearMonth;
+            model.YearMonth = GlobalVal.YearMonth;
 
             if (rdbFatType1.Checked)
             {
@@ -3272,10 +3272,10 @@ namespace UI
             model.MuscleTarget = this.txtMuscleTarget.Text.Trim();
             model.BodyWeightTarget = this.txtBodyWeightTarget.Text.Trim();
             model.Physicians = this.txtCompositionPhysicians.Text.Trim();
-            model.UPDATER_ID = GlobalVal.gloStrLoginUserID;
-            model.TERMINAL_CD = GlobalVal.gloStrTerminalCD;
+            model.UPDATER_ID = GlobalVal.LoginUserID;
+            model.TERMINAL_CD = GlobalVal.TerminalCD;
 
-            webService.ReturnValue resoult = GlobalVal.gloWebSerices.AddUpdateComposition(model);
+            webService.ReturnValue resoult = GlobalVal.WebSerices.AddUpdateComposition(model);
             if (resoult.ErrorFlag)
             {
                 MessageBox.Show("操作成功！");

@@ -138,7 +138,7 @@ namespace UI
             {
                 //提前读取好图片
                 WebClient wc = new WebClient();
-                Image image = Image.FromStream(wc.OpenRead(GlobalVal.gloPictureLoadingUrl));
+                Image image = Image.FromStream(wc.OpenRead(GlobalVal.PictureLoadingUrl));
                 si.BackImage = image;
             }
             catch (Exception ex)

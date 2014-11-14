@@ -69,7 +69,7 @@ namespace UI
                 //GlobalVal.glostrAppNo = GetAppNoFromTxt();
                 if (args.Length > 0)
                 {
-                    GlobalVal.gloStrTerminalCD = args[0];
+                    GlobalVal.TerminalCD = args[0];
                     if (args[0].Equals("Install", StringComparison.CurrentCultureIgnoreCase))
                     {   
                         Thread t1 = new Thread(new ThreadStart(CreateDesktopLnk));
@@ -85,7 +85,7 @@ namespace UI
         {
             System.Console.WriteLine("开始创建桌面快捷方式...");
             int i = 0;
-            while (!File.Exists(GlobalVal.gloAappPath + @"\UI.exe") && i < 20)
+            while (!File.Exists(GlobalVal.AappPath + @"\UI.exe") && i < 20)
             {
                 Thread.Sleep(500);
                 System.Console.WriteLine(i.ToString() + "...");
@@ -94,11 +94,11 @@ namespace UI
             string DesktopPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Desktop);//得到桌面文件夹 
             IWshRuntimeLibrary.WshShell shell = new IWshRuntimeLibrary.WshShellClass();
             IWshRuntimeLibrary.IWshShortcut shortcut = (IWshRuntimeLibrary.IWshShortcut)shell.CreateShortcut(DesktopPath + "\\体检系统.lnk");
-            shortcut.TargetPath = GlobalVal.gloAappPath + @"\UI.exe";
+            shortcut.TargetPath = GlobalVal.AappPath + @"\UI.exe";
             shortcut.Arguments = "";// 参数 
             shortcut.Description = "体检系统";
-            shortcut.WorkingDirectory = GlobalVal.gloAappPath;//程序所在文件夹，在快捷方式图标点击右键可以看到此属性 
-            shortcut.IconLocation = GlobalVal.gloAappPath + @"\UI.exe,0";//图标 
+            shortcut.WorkingDirectory = GlobalVal.AappPath;//程序所在文件夹，在快捷方式图标点击右键可以看到此属性 
+            shortcut.IconLocation = GlobalVal.AappPath + @"\UI.exe,0";//图标 
             shortcut.Hotkey = "CTRL+SHIFT+T";//热键 
             shortcut.WindowStyle = 1;
             shortcut.Save();
@@ -111,11 +111,11 @@ namespace UI
         public static bool ReadProperties()
         {
             //获得当前计算机名+当前系统登陆用户名
-            GlobalVal.gloStrTerminalCD = Environment.UserDomainName + "@" + Environment.UserName;
-            GlobalVal.gloAappPath = Method.GetWebConfig(ConfigName.InstallPath);
-            GlobalVal.gloPictureLoadingUrl = Method.GetWebConfig(ConfigName.PictureLoading);
-            GlobalVal.gloPictureLoginUrl = Method.GetWebConfig(ConfigName.PictureLogin);
-            GlobalVal.gloPictureTopUrl = Method.GetWebConfig(ConfigName.PictureTop);
+            GlobalVal.TerminalCD = Environment.UserDomainName + "@" + Environment.UserName;
+            GlobalVal.AappPath = Method.GetWebConfig(ConfigName.InstallPath);
+            GlobalVal.PictureLoadingUrl = Method.GetWebConfig(ConfigName.PictureLoading);
+            GlobalVal.PictureLoginUrl = Method.GetWebConfig(ConfigName.PictureLogin);
+            GlobalVal.PictureTopUrl = Method.GetWebConfig(ConfigName.PictureTop);
             //GlobalVal.gloDataTableMessage = Method.GetMsgDataTable();
             //if (GlobalVal.gloDataTableMessage.Rows.Count < 1)
             //{

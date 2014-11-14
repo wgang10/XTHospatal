@@ -77,23 +77,23 @@ namespace UI
             //}
             try
             {
-                if (GlobalVal.gloWebSerices == null)
+                if (GlobalVal.WebSerices == null)
                 {
-                    GlobalVal.gloWebSerices = new MyWebService(GlobalVal.ServicesURL+@"/Service.asmx");
+                    GlobalVal.WebSerices = new MyWebService(GlobalVal.ServicesURL+@"/Service.asmx");
                 }
-                string[] resoult = GlobalVal.gloWebSerices.ValidateUserNoYearMonth(GlobalVal.gloStrLoginUserID, GlobalVal.gloStrTerminalCD, strUserID, strUserPWD);
+                string[] resoult = GlobalVal.WebSerices.ValidateUserNoYearMonth(GlobalVal.LoginUserID, GlobalVal.TerminalCD, strUserID, strUserPWD);
                 if (resoult[0] == "1")
                 {
-                    GlobalVal.gloWebSerices.AddLog("管理用户[" + strUserID + "]登录了系统.", "2", Dns.GetHostAddresses(Dns.GetHostName())[0].ToString());
+                    GlobalVal.WebSerices.AddLog("管理用户[" + strUserID + "]登录了系统.", "2", Dns.GetHostAddresses(Dns.GetHostName())[0].ToString());
                     //GlobalVal.gloYearMonth = strYearMonth;
-                    GlobalVal.gloStrLoginUserID = strUserID;
-                    GlobalVal.gloStrLoginUserType = resoult[2];
+                    GlobalVal.LoginUserID = strUserID;
+                    GlobalVal.LoginUserType = resoult[2];
                     this.DialogResult = DialogResult.OK;
                     this.Close();
                 }
                 else
                 {
-                    GlobalVal.gloWebSerices.AddLog("用户[" + strUserID + "]尝试登录管理系统失败." + resoult[1], "2", Dns.GetHostAddresses(Dns.GetHostName())[0].ToString());
+                    GlobalVal.WebSerices.AddLog("用户[" + strUserID + "]尝试登录管理系统失败." + resoult[1], "2", Dns.GetHostAddresses(Dns.GetHostName())[0].ToString());
                     MessageBox.Show(resoult[1], "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return;
                 }
@@ -109,7 +109,7 @@ namespace UI
             try
             {
                 WebClient wc = new WebClient();
-                Image image = Image.FromStream(wc.OpenRead(GlobalVal.gloPictureLoginUrl));
+                Image image = Image.FromStream(wc.OpenRead(GlobalVal.PictureLoginUrl));
                 this.pictureBox1.Image = image;
             }
             catch(Exception ex)
@@ -127,8 +127,8 @@ namespace UI
                 MessageBox.Show(ex.Message);
                 return;
             }
-            if (GlobalVal.gloStrTerminalCD.Equals("Install", StringComparison.CurrentCultureIgnoreCase)
-                || GlobalVal.gloStrTerminalCD.Equals("Update", StringComparison.CurrentCultureIgnoreCase))
+            if (GlobalVal.TerminalCD.Equals("Install", StringComparison.CurrentCultureIgnoreCase)
+                || GlobalVal.TerminalCD.Equals("Update", StringComparison.CurrentCultureIgnoreCase))
             {
                 //**************************************
                 System.Threading.ThreadStart testWeb = new System.Threading.ThreadStart(TestWebService);
@@ -292,7 +292,7 @@ namespace UI
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("IEXPLORE.exe", GlobalVal.glostrSupportCompanyURL);
+            System.Diagnostics.Process.Start("IEXPLORE.exe", GlobalVal.SupportCompanyURL);
         }
 
         private void FromLogin_KeyUp(object sender, KeyEventArgs e)
@@ -337,12 +337,12 @@ namespace UI
             bool blws = false;
             try
             {
-                if (GlobalVal.gloWebSerices == null)
+                if (GlobalVal.WebSerices == null)
                 {
-                    GlobalVal.gloWebSerices = new MyWebService(txtServerURL.Text.Trim() + @"/Service.asmx");
+                    GlobalVal.WebSerices = new MyWebService(txtServerURL.Text.Trim() + @"/Service.asmx");
                 }
-                GlobalVal.gloWebSerices.Url = txtServerURL.Text.Trim() + @"/Service.asmx";
-                string strResoult = GlobalVal.gloWebSerices.CheckWebServices();
+                GlobalVal.WebSerices.Url = txtServerURL.Text.Trim() + @"/Service.asmx";
+                string strResoult = GlobalVal.WebSerices.CheckWebServices();
                 if (strResoult.Trim() == "WanGang")
                 {
                     blws = true;
@@ -369,12 +369,12 @@ namespace UI
             bool blws = false;
             try
             {
-                if (GlobalVal.gloWebSerices == null)
+                if (GlobalVal.WebSerices == null)
                 {
-                    GlobalVal.gloWebSerices = new MyWebService(txtServerURL.Text.Trim() + @"/Service.asmx");
+                    GlobalVal.WebSerices = new MyWebService(txtServerURL.Text.Trim() + @"/Service.asmx");
                 }
-                GlobalVal.gloWebSerices.Url = txtServerURL.Text.Trim() + @"/Service.asmx";
-                string strResoult = GlobalVal.gloWebSerices.CheckWebServices();
+                GlobalVal.WebSerices.Url = txtServerURL.Text.Trim() + @"/Service.asmx";
+                string strResoult = GlobalVal.WebSerices.CheckWebServices();
                 if (strResoult.Trim() == "WanGang")
                 {
                     //修改配置文件
@@ -533,16 +533,16 @@ namespace UI
             bool blws = false;
             try
             {
-                if (GlobalVal.gloWebSerices == null)
+                if (GlobalVal.WebSerices == null)
                 {
-                    GlobalVal.gloWebSerices = new MyWebService(txtServerURL.Text.Trim() + @"/Service.asmx");
+                    GlobalVal.WebSerices = new MyWebService(txtServerURL.Text.Trim() + @"/Service.asmx");
                 }
                 if (txtServerURL.Text.Trim().IndexOf(@"http://") < 0)
                 {
                     txtServerURL.Text = "http://" + txtServerURL.Text.Trim();
                 }
-                GlobalVal.gloWebSerices.Url = txtServerURL.Text.Trim() + @"/Service.asmx";
-                string strResoult = GlobalVal.gloWebSerices.CheckWebServices();
+                GlobalVal.WebSerices.Url = txtServerURL.Text.Trim() + @"/Service.asmx";
+                string strResoult = GlobalVal.WebSerices.CheckWebServices();
                 if (strResoult.Trim() == "WanGang")
                 {
                     blws = true;

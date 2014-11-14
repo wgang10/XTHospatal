@@ -96,7 +96,7 @@ namespace UI
             }
 
 
-            webService.ReturnValue resoult = GlobalVal.gloWebSerices.GetCheckEmployeeNum(cmbYearMonth.Text, txtName.Text.Trim(), EmployeeBM);
+            webService.ReturnValue resoult = GlobalVal.WebSerices.GetCheckEmployeeNum(cmbYearMonth.Text, txtName.Text.Trim(), EmployeeBM);
             if (resoult.ErrorFlag)
             {
                 for (int i = 0; i < resoult.ResultDataSet.Tables[0].Rows.Count; i++)
@@ -127,7 +127,7 @@ namespace UI
         /// <param name="e"></param>
         private void btnClose_Click(object sender, EventArgs e)
         {
-            GlobalVal.ShowForm.Show();
+            GlobalVal.FormShow.Show();
             this.Hide();
         }
 
@@ -150,7 +150,7 @@ namespace UI
         {
             GlobalVal.EmployeeID = grdMain.CurrentRow.Cells["EmployeeID"].Value.ToString();
             GlobalVal.EmployeeName = grdMain.CurrentRow.Cells["EmployeeName"].Value.ToString();
-            GlobalVal.gloYearMonth = cmbYearMonth.Text.Trim();
+            GlobalVal.YearMonth = cmbYearMonth.Text.Trim();
             //GlobalVal.ShowForm.Show();
             GlobalVal.FormInfoEdite.ShowDialog();
             //this.Hide();

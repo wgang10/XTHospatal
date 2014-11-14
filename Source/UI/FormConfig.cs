@@ -183,14 +183,14 @@ namespace UI
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            GlobalVal.ShowForm.Show();
+            GlobalVal.FormShow.Show();
             this.Close();
         }
 
         private void FormConfig_Load(object sender, EventArgs e)
         {
             GlobalVal.SplashObj.Dispose();
-            webService.News[] list = GlobalVal.gloWebSerices.GetNews(5);
+            webService.News[] list = GlobalVal.WebSerices.GetNews(5);
             for (int i = 0; i < list.Length; i++)
             {
                 Label lbl = new Label();

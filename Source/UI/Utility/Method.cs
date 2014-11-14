@@ -36,7 +36,7 @@ namespace UI
                 {
                     if (blnShowMsg)
                     {
-                        GlobalVal.glostrMsg = "W11001";//Can't Empty.
+                        GlobalVal.Msg = "W11001";//Can't Empty.
                     }
                     return false;
                 }
@@ -45,7 +45,7 @@ namespace UI
             {
                 if (blnShowMsg)
                 {
-                    GlobalVal.glostrMsg = "W11012";//Please enter a half-width characters！
+                    GlobalVal.Msg = "W11012";//Please enter a half-width characters！
                 }
                 return false;
             }
@@ -53,7 +53,7 @@ namespace UI
             {
                 if (blnShowMsg)
                 {
-                    GlobalVal.glostrMsg = "W11011";//Please enter a number!
+                    GlobalVal.Msg = "W11011";//Please enter a number!
                 }
                 return false;
             }
@@ -61,7 +61,7 @@ namespace UI
             {
                 if (blnShowMsg)
                 {
-                    GlobalVal.glostrMsg = "W11006";//The length is input Wrong!
+                    GlobalVal.Msg = "W11006";//The length is input Wrong!
                 }
                 return false;
             }
@@ -120,7 +120,7 @@ namespace UI
                 {
                     if (blnShowMsg)
                     {
-                        GlobalVal.glostrMsg = "W11001";//Can't Empty.
+                        GlobalVal.Msg = "W11001";//Can't Empty.
                     }
                     return false;
                 }
@@ -129,7 +129,7 @@ namespace UI
             {
                 if (blnShowMsg)
                 {
-                    GlobalVal.glostrMsg = "W11012";//Please enter a half-width characters！
+                    GlobalVal.Msg = "W11012";//Please enter a half-width characters！
                 }
                 return false;
             }
@@ -154,7 +154,7 @@ namespace UI
                 {
                     if (blnShowMsg)
                     {
-                        GlobalVal.glostrMsg = "W11001";//Can't Empty.
+                        GlobalVal.Msg = "W11001";//Can't Empty.
                     }
                     return false;
                 }
@@ -165,7 +165,7 @@ namespace UI
                 {
                     if (blnShowMsg)
                     {
-                        GlobalVal.glostrMsg = "W11024";//Please enter a valid address E_Mail!
+                        GlobalVal.Msg = "W11024";//Please enter a valid address E_Mail!
                     }
                     return false;
                 }
@@ -195,7 +195,7 @@ namespace UI
                 {
                     if (blnShowMsg)
                     {
-                        GlobalVal.glostrMsg = "W11001";//Can't Empty.
+                        GlobalVal.Msg = "W11001";//Can't Empty.
                     }
                     return false;
                 }
@@ -229,7 +229,7 @@ namespace UI
                 {
                     if (blnShowMsg)
                     {
-                        GlobalVal.glostrMsg = "W11001";//Can't Empty.
+                        GlobalVal.Msg = "W11001";//Can't Empty.
                     }
                     return false;
                 }
@@ -238,7 +238,7 @@ namespace UI
             {
                 if (blnShowMsg)
                 {
-                    GlobalVal.glostrMsg = "W11017";//There is an error in input!
+                    GlobalVal.Msg = "W11017";//There is an error in input!
                 }
                 return false;
             }
@@ -246,7 +246,7 @@ namespace UI
             {
                 if (blnShowMsg)
                 {
-                    GlobalVal.glostrMsg = "W11006";//The length is input Wrong!
+                    GlobalVal.Msg = "W11006";//The length is input Wrong!
                 }
                 return false;
             }
@@ -276,7 +276,7 @@ namespace UI
                 {
                     if (blnShowMsg)
                     {
-                        GlobalVal.glostrMsg = "W11001";//Can't Empty.
+                        GlobalVal.Msg = "W11001";//Can't Empty.
                     }
                     return false;
                 }
@@ -286,7 +286,7 @@ namespace UI
             {
                 if (blnShowMsg)
                 {
-                    GlobalVal.glostrMsg = "W11012";//Please enter a half-width characters！
+                    GlobalVal.Msg = "W11012";//Please enter a half-width characters！
                 }
                 return false;
             }
@@ -295,7 +295,7 @@ namespace UI
             {
                 if (blnShowMsg)
                 {
-                    GlobalVal.glostrMsg = "W11006";//The length is input Wrong!
+                    GlobalVal.Msg = "W11006";//The length is input Wrong!
                 }
                 return false;
 
@@ -306,7 +306,7 @@ namespace UI
             {
                 if (blnShowMsg)
                 {
-                    GlobalVal.glostrMsg = "W11027";//Please Enter the date!
+                    GlobalVal.Msg = "W11027";//Please Enter the date!
                 }
                 return false;
             }
@@ -323,7 +323,7 @@ namespace UI
         /// <returns></returns>
         public static bool IsErrChar(string strVal)
         {
-            if (strVal.IndexOfAny(GlobalVal.glostrInvalidChars.ToCharArray()) >= 0)
+            if (strVal.IndexOfAny(GlobalVal.InvalidChars.ToCharArray()) >= 0)
             {
                 return false;
             }
@@ -411,7 +411,7 @@ namespace UI
                     || '>' == strValue[i] || '\\' == strValue[i]
                     || ',' == strValue[i] || ':' == strValue[i])
                 {
-                    GlobalVal.glostrMsg = "W11016";
+                    GlobalVal.Msg = "W11016";
                     return false;
                 }
             }
@@ -452,7 +452,7 @@ namespace UI
             string strMsgKind = "程序启动失败！错误号[999999]";
             string strMessage = string.Empty;
             string strMsgNoSp = string.Empty;
-            string strTitle = GlobalVal.glostrMsgTitle;
+            string strTitle = GlobalVal.MsgTitle;
             DialogResult DiaResult;
             if (strReplace.Trim().Length == 0)
             {
@@ -643,14 +643,14 @@ namespace UI
         /// <returns></returns>
         public static string ReadFileContext(string strTitle, string strKey)
         {
-            if (GlobalVal.glostrIniFilePath.Trim().Length < 1)
+            if (GlobalVal.IniFilePath.Trim().Length < 1)
             {
                 return string.Empty;
             }
             try
             {
                 StringBuilder sbTemp = new StringBuilder(1024);
-                int i = GetPrivateProfileString(strTitle, strKey, "", sbTemp, 1024, GlobalVal.glostrIniFilePath.Trim());
+                int i = GetPrivateProfileString(strTitle, strKey, "", sbTemp, 1024, GlobalVal.IniFilePath.Trim());
                 return sbTemp.ToString().Trim();
             }
             catch (Exception ex)
@@ -755,7 +755,7 @@ namespace UI
                     //cmbControl.Items.Clear();
                     cmbControl.DataSource = null;
 
-                    webService.ReturnValue resoult = GlobalVal.gloWebSerices.GetYearMonth();
+                    webService.ReturnValue resoult = GlobalVal.WebSerices.GetYearMonth();
                     if (resoult.ErrorFlag)
                     {
                         System.Data.DataTable tb = resoult.ResultDataSet.Tables[0];
@@ -770,7 +770,7 @@ namespace UI
                     break;
                 case "Department":
                     cmbControl.DataSource = null;                    
-                    webService.ReturnValue resoultDep = GlobalVal.gloWebSerices.GetDepartmentList();
+                    webService.ReturnValue resoultDep = GlobalVal.WebSerices.GetDepartmentList();
                     if (resoultDep.ErrorFlag)
                     {
                         System.Data.DataTable tb = resoultDep.ResultDataSet.Tables[0];
@@ -820,7 +820,7 @@ namespace UI
             string strValue = string.Empty;
             try
             {
-                WebRequest req = WebRequest.Create(string.Format(@"{0}/Config.ashx?SystemName={1}&ConfigName={2}", GlobalVal.ServicesURL, GlobalVal.gloSystemName, configName.ToString()));
+                WebRequest req = WebRequest.Create(string.Format(@"{0}/Config.ashx?SystemName={1}&ConfigName={2}", GlobalVal.ServicesURL, GlobalVal.SystemNameEN, configName.ToString()));
                 WebResponse res = req.GetResponse();
                 System.IO.Stream resStream = res.GetResponseStream();
                 Encoding encode = System.Text.Encoding.Default;

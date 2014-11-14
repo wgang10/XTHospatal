@@ -17,7 +17,7 @@ namespace UI
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            GlobalVal.ShowForm.Show();
+            GlobalVal.FormShow.Show();
             this.Close();
         }
 
@@ -80,7 +80,7 @@ namespace UI
                 {
                     strDateTo += "235959";
                 }
-                webService.ReturnValue resoult = GlobalVal.gloWebSerices.GetLogList(strDateFrom, strDateTo, "");
+                webService.ReturnValue resoult = GlobalVal.WebSerices.GetLogList(strDateFrom, strDateTo, "");
                 if (resoult.ErrorFlag)
                 {
                     for (int i = 0; i < resoult.ResultDataSet.Tables[0].Rows.Count; i++)

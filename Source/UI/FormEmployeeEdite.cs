@@ -34,7 +34,7 @@ namespace UI
         private void BindEmployeeInfo(string EmployeeID)
         {
 
-            webService.ReturnValue resoult = GlobalVal.gloWebSerices.GetEmployeeInfo(EmployeeID);
+            webService.ReturnValue resoult = GlobalVal.WebSerices.GetEmployeeInfo(EmployeeID);
             if (resoult.ErrorFlag)
             {
                 if (resoult.Count > 0)
@@ -177,12 +177,12 @@ namespace UI
             model.EmployeeBM = cmbBM.SelectedValue.ToString();
             model.EmployeeDW = txtDW.Text.Trim();
             model.EmployeeJWBS = txtJWBS.Text.Trim();
-            model.UPDATER_ID = GlobalVal.gloStrLoginUserID;
-            model.TERMINAL_CD = GlobalVal.gloStrTerminalCD;
+            model.UPDATER_ID = GlobalVal.LoginUserID;
+            model.TERMINAL_CD = GlobalVal.TerminalCD;
             model.EmployeeEmail = txtEmail.Text;
             model.EmployeePhone = txtEmployeePhone.Text;
 
-            webService.ReturnValue resoult = GlobalVal.gloWebSerices.AddEmployee(model);
+            webService.ReturnValue resoult = GlobalVal.WebSerices.AddEmployee(model);
             if (resoult.ErrorFlag)
             {
                 if (DialogResult.OK == MessageBox.Show("操作成功！是否关闭本窗口？", "系统提示", MessageBoxButtons.OKCancel))

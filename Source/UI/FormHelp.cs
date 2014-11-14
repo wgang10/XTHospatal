@@ -22,7 +22,7 @@ namespace UI
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            GlobalVal.ShowForm.Show();
+            GlobalVal.FormShow.Show();
             this.Close();
         }
     }

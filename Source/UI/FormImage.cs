@@ -17,7 +17,7 @@ namespace UI
 
         private void FormImage_Load(object sender, EventArgs e)
         {
-            picShow.Image = GlobalVal.gloImage;
+            picShow.Image = GlobalVal.Image;
         }
 
         private void picShow_DoubleClick(object sender, EventArgs e)

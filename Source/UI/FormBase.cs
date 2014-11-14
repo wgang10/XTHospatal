@@ -121,7 +121,7 @@ namespace UI
                 case enumCheckItems.ItemID:
                     if (!Method.CheckIsNumber(strValue, 12, blnAllowEmpty, true))
                     {
-                        Method.MessageShow(GlobalVal.glostrMsg);
+                        Method.MessageShow(GlobalVal.Msg);
                         return false;
                     }
                     if (!blnAllowEmpty || strValue.Length != 0)
@@ -141,7 +141,7 @@ namespace UI
                 case enumCheckItems.USER_LOGIN_ID:
                     if (!Method.CheckIsHanAll(strValue,blnAllowEmpty, true))
                     {
-                        Method.MessageShow(GlobalVal.glostrMsg);
+                        Method.MessageShow(GlobalVal.Msg);
                         return false;
                     }
                     if (!blnAllowEmpty || strValue.Length != 0)
@@ -161,7 +161,7 @@ namespace UI
                 case enumCheckItems.ItemName:
                     if (!Method.CheckIsAllInputType(strValue, 25, blnAllowEmpty, true))
                     {
-                        Method.MessageShow(GlobalVal.glostrMsg);
+                        Method.MessageShow(GlobalVal.Msg);
                         return false;
                     }
                     break;
@@ -172,7 +172,7 @@ namespace UI
                 case enumCheckItems.UserGroup:
                     if (!Method.CheckIsAllInputType(strValue, 50, blnAllowEmpty, true))
                     {
-                        Method.MessageShow(GlobalVal.glostrMsg);
+                        Method.MessageShow(GlobalVal.Msg);
                         return false;
                     }
                     break;
@@ -183,7 +183,7 @@ namespace UI
                 case enumCheckItems.DateYMD:
                     if (!Method.CheckIsDate(strValue,blnAllowEmpty, true))
                     {
-                        Method.MessageShow(GlobalVal.glostrMsg);
+                        Method.MessageShow(GlobalVal.Msg);
                         return false;
                     }
                     break;
@@ -194,7 +194,7 @@ namespace UI
                 case enumCheckItems.PHONE_NO:
                     if (!Method.CheckIsTelNo(strValue,blnAllowEmpty, true))
                     {
-                        Method.MessageShow(GlobalVal.glostrMsg);
+                        Method.MessageShow(GlobalVal.Msg);
                         return false;
                     }
                     break;
@@ -204,7 +204,7 @@ namespace UI
                 case enumCheckItems.E_Mail:
                     if (!Method.CheckIsEmail(strValue,blnAllowEmpty, true))
                     {
-                        Method.MessageShow(GlobalVal.glostrMsg);
+                        Method.MessageShow(GlobalVal.Msg);
                         return false;
                     }
                     break;
@@ -214,7 +214,7 @@ namespace UI
                 case enumCheckItems.Post:
                     if (!Method.CheckIsNumber(strValue, 6, blnAllowEmpty, true))
                     {
-                        Method.MessageShow(GlobalVal.glostrMsg);
+                        Method.MessageShow(GlobalVal.Msg);
                         return false;
                     }
                     break;
@@ -225,7 +225,7 @@ namespace UI
                 case enumCheckItems.ItemMEMO:
                     if (!Method.CheckIsAllInputType(strValue, 128, blnAllowEmpty, true))
                     {
-                        Method.MessageShow(GlobalVal.glostrMsg);
+                        Method.MessageShow(GlobalVal.Msg);
                         return false;
                     }
                     break;
@@ -247,13 +247,13 @@ namespace UI
 
         private void FormBase_Load(object sender, EventArgs e)
         {            
-            linkLabel1.Text = GlobalVal.glostrSupportCompanyName;
-            label139.Text = GlobalVal.glostrCopyright;
-            lbUser.Text = "当前登录用户："+GlobalVal.gloStrLoginUserID;
+            linkLabel1.Text = GlobalVal.SupportCompanyName;
+            label139.Text = GlobalVal.Copyright;
+            lbUser.Text = "当前登录用户："+GlobalVal.LoginUserID;
             try
             {
                 WebClient wc = new WebClient();
-                Image image = Image.FromStream(wc.OpenRead(GlobalVal.gloPictureTopUrl));
+                Image image = Image.FromStream(wc.OpenRead(GlobalVal.PictureTopUrl));
                 this.pictureBox4.Image = image;
             }
             catch (Exception ex)
@@ -264,7 +264,7 @@ namespace UI
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("IEXPLORE.exe", GlobalVal.glostrSupportCompanyURL);
+            System.Diagnostics.Process.Start("IEXPLORE.exe", GlobalVal.SupportCompanyURL);
         }
 
     }
