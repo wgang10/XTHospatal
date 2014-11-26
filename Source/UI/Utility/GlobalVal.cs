@@ -245,7 +245,7 @@ namespace UI
         /// <summary>
         /// 服务器地址
         /// </summary>
-        public static string ServicesURL = @"http://www.ziyangsoft.com";
+        public static string ServicesURL = @"http://localhost";
 
         /// <summary>
         /// 程序号

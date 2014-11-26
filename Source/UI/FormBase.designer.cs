@@ -28,21 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormBase));
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.label139 = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.lbUser = new System.Windows.Forms.Label();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox4
             // 
-            this.pictureBox4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pictureBox4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
             this.pictureBox4.Location = new System.Drawing.Point(0, 0);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(994, 64);
+            this.pictureBox4.Size = new System.Drawing.Size(702, 63);
             this.pictureBox4.TabIndex = 36;
             this.pictureBox4.TabStop = false;
             // 
@@ -77,15 +83,32 @@
             this.lbUser.TabIndex = 37;
             this.lbUser.Text = "当前登录用户：张三";
             // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.pictureBox4);
+            this.splitContainer1.Size = new System.Drawing.Size(984, 63);
+            this.splitContainer1.SplitterDistance = 702;
+            this.splitContainer1.TabIndex = 40;
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.tmrShow_Tick);
+            // 
             // FormBase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(994, 718);
+            this.ClientSize = new System.Drawing.Size(984, 712);
+            this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.lbUser);
             this.Controls.Add(this.label139);
-            this.Controls.Add(this.pictureBox4);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -96,6 +119,8 @@
             this.Text = "西安体育学院教职工健康状况信息管理系统";
             this.Load += new System.EventHandler(this.FormBase_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -107,5 +132,8 @@
         private System.Windows.Forms.Label label139;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Label lbUser;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

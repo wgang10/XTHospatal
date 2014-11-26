@@ -134,18 +134,19 @@ namespace UI
         public static SplashObject GetSplash()
         {
             SplashInfo si = new SplashInfo();
-            try
-            {
-                //提前读取好图片
-                WebClient wc = new WebClient();
-                Image image = Image.FromStream(wc.OpenRead(GlobalVal.PictureLoadingUrl));
-                si.BackImage = image;
-            }
-            catch (Exception ex)
-            {
-                si.BackImage = Utility.SplashResource.Splash;
-                //GlobalVal.gloWebSerices.AddLog("加载图片[" + GlobalVal.gloPictureLoginUrl + "]失败." + ex.Message, "3", Dns.GetHostAddresses(Dns.GetHostName())[0].ToString());
-            }            
+            //try
+            //{
+            //    //提前读取好图片
+            //    WebClient wc = new WebClient();
+            //    Image image = Image.FromStream(wc.OpenRead(GlobalVal.PictureLoadingUrl));
+            //    si.BackImage = image;
+            //}
+            //catch (Exception ex)
+            //{
+            //    si.BackImage = Utility.SplashResource.Splash;
+            //    //GlobalVal.gloWebSerices.AddLog("加载图片[" + GlobalVal.gloPictureLoginUrl + "]失败." + ex.Message, "3", Dns.GetHostAddresses(Dns.GetHostName())[0].ToString());
+            //}
+            si.BackImage = Utility.SplashResource.Splash;
             si.ShowCaption = false;
             si.TopMost = true;
             si.GradualMode = false;

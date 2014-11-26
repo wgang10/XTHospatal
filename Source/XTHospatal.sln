@@ -59,6 +59,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Install", "Install\Install.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnZip", "UnZip\UnZip.csproj", "{9FF28919-2076-4203-BE08-3F1E3F702A8B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormAppTest", "WinFormAppTest\WinFormAppTest.csproj", "{7DC219C1-BAB5-4678-BCA3-0BE1AA246ADB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|.NET = Debug|.NET
@@ -275,6 +277,18 @@ Global
 		{9FF28919-2076-4203-BE08-3F1E3F702A8B}.Release|Mixed Platforms.Build.0 = Release|x86
 		{9FF28919-2076-4203-BE08-3F1E3F702A8B}.Release|x86.ActiveCfg = Release|x86
 		{9FF28919-2076-4203-BE08-3F1E3F702A8B}.Release|x86.Build.0 = Release|x86
+		{7DC219C1-BAB5-4678-BCA3-0BE1AA246ADB}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{7DC219C1-BAB5-4678-BCA3-0BE1AA246ADB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DC219C1-BAB5-4678-BCA3-0BE1AA246ADB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DC219C1-BAB5-4678-BCA3-0BE1AA246ADB}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{7DC219C1-BAB5-4678-BCA3-0BE1AA246ADB}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{7DC219C1-BAB5-4678-BCA3-0BE1AA246ADB}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7DC219C1-BAB5-4678-BCA3-0BE1AA246ADB}.Release|.NET.ActiveCfg = Release|Any CPU
+		{7DC219C1-BAB5-4678-BCA3-0BE1AA246ADB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DC219C1-BAB5-4678-BCA3-0BE1AA246ADB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DC219C1-BAB5-4678-BCA3-0BE1AA246ADB}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{7DC219C1-BAB5-4678-BCA3-0BE1AA246ADB}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{7DC219C1-BAB5-4678-BCA3-0BE1AA246ADB}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

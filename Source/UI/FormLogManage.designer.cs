@@ -47,8 +47,8 @@
             // 
             // btnClose
             // 
-            this.btnClose.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnClose.Location = new System.Drawing.Point(545, 29);
+            this.btnClose.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnClose.Location = new System.Drawing.Point(545, 20);
             this.btnClose.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(91, 30);
@@ -65,11 +65,11 @@
             this.groupBox1.Controls.Add(this.dtpDateFrom);
             this.groupBox1.Controls.Add(this.btnSearch);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Location = new System.Drawing.Point(14, 101);
+            this.groupBox1.Location = new System.Drawing.Point(14, 68);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox1.Size = new System.Drawing.Size(896, 75);
+            this.groupBox1.Size = new System.Drawing.Size(896, 60);
             this.groupBox1.TabIndex = 39;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "检索条件";
@@ -77,8 +77,8 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(235, 33);
+            this.label1.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label1.Location = new System.Drawing.Point(235, 24);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(26, 21);
             this.label1.TabIndex = 45;
@@ -87,10 +87,10 @@
             // dateDateTo
             // 
             this.dateDateTo.CustomFormat = "yyyy-MM-dd";
-            this.dateDateTo.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.dateDateTo.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.dateDateTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateDateTo.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.dateDateTo.Location = new System.Drawing.Point(267, 29);
+            this.dateDateTo.Location = new System.Drawing.Point(267, 20);
             this.dateDateTo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dateDateTo.MaxDate = new System.DateTime(2020, 1, 1, 0, 0, 0, 0);
             this.dateDateTo.MinDate = new System.DateTime(1800, 1, 1, 0, 0, 0, 0);
@@ -102,10 +102,10 @@
             // dtpDateFrom
             // 
             this.dtpDateFrom.CustomFormat = "yyyy-MM-dd";
-            this.dtpDateFrom.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.dtpDateFrom.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.dtpDateFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpDateFrom.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.dtpDateFrom.Location = new System.Drawing.Point(95, 29);
+            this.dtpDateFrom.Location = new System.Drawing.Point(95, 20);
             this.dtpDateFrom.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dtpDateFrom.MaxDate = new System.DateTime(2020, 1, 1, 0, 0, 0, 0);
             this.dtpDateFrom.MinDate = new System.DateTime(1800, 1, 1, 0, 0, 0, 0);
@@ -116,8 +116,8 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnSearch.Location = new System.Drawing.Point(426, 29);
+            this.btnSearch.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnSearch.Location = new System.Drawing.Point(426, 20);
             this.btnSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(91, 30);
@@ -129,8 +129,8 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(47, 33);
+            this.label2.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label2.Location = new System.Drawing.Point(47, 24);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(42, 21);
             this.label2.TabIndex = 40;
@@ -139,11 +139,11 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.grdMain);
-            this.groupBox2.Location = new System.Drawing.Point(16, 184);
+            this.groupBox2.Location = new System.Drawing.Point(16, 136);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox2.Size = new System.Drawing.Size(894, 613);
+            this.groupBox2.Size = new System.Drawing.Size(894, 559);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "一览";
@@ -156,23 +156,23 @@
             this.grdMain.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.grdMain.Name = "grdMain";
             this.grdMain.RowTemplate.Height = 23;
-            this.grdMain.Size = new System.Drawing.Size(888, 589);
+            this.grdMain.Size = new System.Drawing.Size(888, 535);
             this.grdMain.TabIndex = 1;
             // 
-            // LogManage
+            // FormLogManage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(924, 812);
+            this.ClientSize = new System.Drawing.Size(930, 726);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
-            this.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximumSize = new System.Drawing.Size(1166, 1049);
-            this.MinimumSize = new System.Drawing.Size(930, 837);
-            this.Name = "LogManage";
+            this.MinimumSize = new System.Drawing.Size(930, 726);
+            this.Name = "FormLogManage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "系统日志";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Search_FormClosing);
