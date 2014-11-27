@@ -75,7 +75,9 @@ namespace WinFormAppTest
         /// <param name="e"></param>
         private void frmAbout_WebSite_Click(object sender, EventArgs e)
         {
-            Process.Start(((Label)sender).Tag.ToString());
+            var lb = (Label)sender;
+            var New = (News)lb.Tag;
+            Process.Start(New.Url);
         }
         /// <summary>
         /// 计时器事件(调度信息字幕显示)
@@ -131,10 +133,11 @@ namespace WinFormAppTest
         /// <param name="e"></param>
         private void frmAbout_MouseHover(object sender, EventArgs e)
         {
-            this.toolTip1.ToolTipIcon = ToolTipIcon.Info;
-            this.toolTip1.ToolTipTitle = "关闭提示";
+            var New = (News)((Label)sender).Tag;
+            this.toolTip1.ToolTipIcon = ToolTipIcon.None;
+            this.toolTip1.ToolTipTitle = New.Title;
             this.toolTip1.Show(
-                "请双击鼠标键来关闭此窗体 ...",
+                New.Body,
                 this, new Point(_mouseLocation.X + 6, _mouseLocation.Y + 6),
                 5000);
         }
@@ -148,12 +151,12 @@ namespace WinFormAppTest
         private void UControlNews_Load(object sender, EventArgs e)
         {
             List<News> list = new List<News>();
-            list.Add(new News(DateTime.Now, "消息111111111baidu1", "www.baidu.com", "内容1111111111111111111"));
-            list.Add(new News(DateTime.Now, "消息222222ziyang2222", "www.ziyangsoft.com", "内容22222222222222222222"));
-            list.Add(new News(DateTime.Now, "消息333333333333bitauto333", "www.bitauto.com", "内容33333333333333333333333"));
-            list.Add(new News(DateTime.Now, "消息4444444444444444444444444", "www.baidu.com", "内容444444444444"));
-            list.Add(new News(DateTime.Now, "消息555555555cnbeta5555", "www.cnbeta.com", "内容55555555555555555555"));
-            list.Add(new News(DateTime.Now, "消息666666taobao666666", "www.taobao.com", "内容6666666666666666666"));
+            list.Add(new News(DateTime.Now, "消息111111111baidu1", "http://www.baidu.com", "内容1111111111111111111"));
+            list.Add(new News(DateTime.Now, "消息222222ziyang2222", "http://www.ziyangsoft.com", "内容22222222222222222222"));
+            list.Add(new News(DateTime.Now, "消息333333333333bitauto333", "http://www.bitauto.com", "内容33333333333333333333333"));
+            list.Add(new News(DateTime.Now, "消息4444444444444444444444444", "http://www.baidu.com", "内容444444444444"));
+            list.Add(new News(DateTime.Now, "消息555555555cnbeta5555", "http://www.cnbeta.com", "内容55555555555555555555"));
+            list.Add(new News(DateTime.Now, "消息666666taobao666666", "http://www.taobao.com", "内容6666666666666666666"));
             for (int i = 0; i < list.Count; i++)
             {
                 Label lbl = new Label();
@@ -166,11 +169,13 @@ namespace WinFormAppTest
                 lblTxt[i].AutoSize = true;
                 this.Controls.Add(lblTxt[i]);
                 lblTxt[i].Text = list[i].Title;
-                lblTxt[i].Tag = list[i].Url;
+                lblTxt[i].Tag = list[i];
                 // 添加事件监听
                 lblTxt[i].Click += new EventHandler(frmAbout_WebSite_Click);
                 lblTxt[i].MouseMove += new MouseEventHandler(frmAbout_Link_MouseMove);
                 lblTxt[i].MouseLeave += new EventHandler(frmAbout_Link_MouseLeave);
+                lblTxt[i].MouseHover += new EventHandler(frmAbout_MouseHover);
+                lblTxt[i].MouseDown += new MouseEventHandler(frmAbout_MouseDown);
                 lblScroll.Add(lblTxt[i]);
             }
             if (!DesignMode)
@@ -179,7 +184,7 @@ namespace WinFormAppTest
             }
         }
 
-        public partial class News
+        public class News
         {
 
             private System.DateTime createTimeField;
