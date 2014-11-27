@@ -440,16 +440,10 @@ public class Service : System.Web.Services.WebService
     }
 
     [WebMethod(Description = "取得最新公告")]
-    public List<News> GetNews(int nums)
+    public List<News> GetNews(string SystemName,int nums)
     {
-        List<News> list = new List<News>();
-        list.Add(new News(DateTime.Now,"消息111111111baidu1","www.baidu.com","内容1111111111111111111"));
-        list.Add(new News(DateTime.Now, "消息222222ziyang2222", "www.ziyangsoft.com", "内容22222222222222222222"));
-        list.Add(new News(DateTime.Now, "消息333333333333bitauto333", "www.bitauto.com", "内容33333333333333333333333"));
-        list.Add(new News(DateTime.Now, "消息4444444444444444444444444", "www.baidu.com", "内容444444444444"));
-        list.Add(new News(DateTime.Now, "消息555555555cnbeta5555", "www.cnbeta.com", "内容55555555555555555555"));
-        list.Add(new News(DateTime.Now, "消息666666taobao666666", "www.taobao.com", "内容6666666666666666666"));
-        return list;
+        BLL_System bll = new BLL_System();
+        return bll.GetNewsList(SystemName, nums);
     }
 
     #region 网站部分Services

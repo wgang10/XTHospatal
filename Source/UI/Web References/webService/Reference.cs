@@ -1296,23 +1296,25 @@ namespace UI.webService {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetNews", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public News[] GetNews(int nums) {
+        public News[] GetNews(string SystemName, int nums) {
             object[] results = this.Invoke("GetNews", new object[] {
+                        SystemName,
                         nums});
             return ((News[])(results[0]));
         }
         
         /// <remarks/>
-        public void GetNewsAsync(int nums) {
-            this.GetNewsAsync(nums, null);
+        public void GetNewsAsync(string SystemName, int nums) {
+            this.GetNewsAsync(SystemName, nums, null);
         }
         
         /// <remarks/>
-        public void GetNewsAsync(int nums, object userState) {
+        public void GetNewsAsync(string SystemName, int nums, object userState) {
             if ((this.GetNewsOperationCompleted == null)) {
                 this.GetNewsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetNewsOperationCompleted);
             }
             this.InvokeAsync("GetNews", new object[] {
+                        SystemName,
                         nums}, this.GetNewsOperationCompleted, userState);
         }
         

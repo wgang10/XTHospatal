@@ -277,5 +277,16 @@ namespace XTHospital.FDAL
             object objType = CreateObject(strPath, strCacheKey);
             return (IDAL_Department)objType;
         }
+
+        /// <summary>
+        /// Creat DAL_System
+        /// </summary>
+        /// <returns></returns>
+        public static XTHospital.IDAL.IDAL_System CreateSystem()
+        {
+            string strCacheKey = strPath + ".DAL_System";
+            object objType = CreateObject(strPath, strCacheKey);
+            return (IDAL_System)objType;
+        }
     }
 }

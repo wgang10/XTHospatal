@@ -55,6 +55,7 @@
     <Compile Include="IDAL_Log.cs" />
     <Compile Include="IDAL_LoginUser.cs" />
     <Compile Include="IDAL_MedicalItems.cs" />
+    <Compile Include="IDAL_System.cs" />
     <Compile Include="IDAL_Proportion.cs" />
     <Compile Include="IDAL_Province.cs" />
     <Compile Include="IDAL_Report.cs" />

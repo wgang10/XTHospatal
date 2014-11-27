@@ -190,7 +190,7 @@ namespace UI
         private void FormConfig_Load(object sender, EventArgs e)
         {
             GlobalVal.SplashObj.Dispose();
-            webService.News[] list = GlobalVal.WebSerices.GetNews(5);
+            webService.News[] list = GlobalVal.WebSerices.GetNews("XTHospatal",5);
             for (int i = 0; i < list.Length; i++)
             {
                 Label lbl = new Label();

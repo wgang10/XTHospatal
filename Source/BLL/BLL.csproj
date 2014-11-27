@@ -67,6 +67,7 @@
     <Compile Include="BLL_Province.cs" />
     <Compile Include="BLL_Report.cs" />
     <Compile Include="BLL_Surgery.cs" />
+    <Compile Include="BLL_System.cs" />
     <Compile Include="BLL_Xray.cs" />
     <Compile Include="BLL_YearMonth.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

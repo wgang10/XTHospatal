@@ -14,8 +14,18 @@ namespace WinFormAppTest
     public partial class UControlNews : UserControl
     {
         #region Private Members
-        List<Label> lblTxt = new List<Label>();
-        List<Label> lblScroll = new List<Label>();
+        List<Label> lbListNews = new List<Label>();
+        List<Label> lbListScroll = new List<Label>();
+        List<News> Newslist;// = new List<News>();
+        Color backColor = Color.CadetBlue;
+        Color foreColor = Color.Blue;
+        /// <summary>
+        /// 刷新周期 单位：分钟
+        /// </summary>
+        int refreshCycle = 10;
+
+        DateTime lastRefreshTime=DateTime.Now;
+        
         int RowHight = 25;//行高
         int RowLeft = 25;//左缩进
         int RowTop = 25;//上边距
@@ -85,27 +95,33 @@ namespace WinFormAppTest
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void tmrShow_Tick(object sender, EventArgs e)
-        {
+        {            
             // 控制字幕滚动
-            for (int i = 0; i < lblScroll.Count; i++)
+            for (int i = 0; i < lbListScroll.Count; i++)
             {
-                if (lblScroll[i].Top <= this.Height && lblScroll[i].Top + RowHight >= RowTop)
+                if (lbListScroll[i].Top <= this.Height && lbListScroll[i].Top + RowHight >= RowTop)
                 {
-                    lblScroll[i].Visible = true;
+                    lbListScroll[i].Visible = true;
                 }
-                lblScroll[i].Top -= 1;
-                if (lblScroll[i].Top + RowHight < 0)
+                lbListScroll[i].Top -= 1;
+                if (lbListScroll[i].Top + RowHight < 0)
                 {
-                    lblScroll[i].Visible = false;
-                    lblScroll.Remove(lblScroll[i]);
+                    lbListScroll[i].Visible = false;
+                    lbListScroll.Remove(lbListScroll[i]);
                 }
             }
-            if (lblScroll.Count == 0)
+            if (lbListScroll.Count == 0)
             {
-                for (int j = 0; j < lblTxt.Count; j++)
+                //刷新
+                if (DateTime.Now.Subtract(lastRefreshTime).Minutes >= refreshCycle)
                 {
-                    lblTxt[j].Top = this.Height + j * RowHight;
-                    lblScroll.Add(lblTxt[j]);
+                    GetLatestNews();
+                    return;
+                }
+                for (int j = 0; j < lbListNews.Count; j++)
+                {
+                    lbListNews[j].Top = this.Height + j * RowHight;
+                    lbListScroll.Add(lbListNews[j]);
                 }
             }
         }
@@ -150,33 +166,33 @@ namespace WinFormAppTest
 
         private void UControlNews_Load(object sender, EventArgs e)
         {
-            List<News> list = new List<News>();
-            list.Add(new News(DateTime.Now, "消息111111111baidu1", "http://www.baidu.com", "内容1111111111111111111"));
-            list.Add(new News(DateTime.Now, "消息222222ziyang2222", "http://www.ziyangsoft.com", "内容22222222222222222222"));
-            list.Add(new News(DateTime.Now, "消息333333333333bitauto333", "http://www.bitauto.com", "内容33333333333333333333333"));
-            list.Add(new News(DateTime.Now, "消息4444444444444444444444444", "http://www.baidu.com", "内容444444444444"));
-            list.Add(new News(DateTime.Now, "消息555555555cnbeta5555", "http://www.cnbeta.com", "内容55555555555555555555"));
-            list.Add(new News(DateTime.Now, "消息666666taobao666666", "http://www.taobao.com", "内容6666666666666666666"));
-            for (int i = 0; i < list.Count; i++)
+            this.NewsBackColor = backColor;
+        }
+
+        private void SetNews()
+        {
+            if (Newslist == null)
+                Newslist = new List<News>();
+            for (int i = 0; i < Newslist.Count; i++)
             {
                 Label lbl = new Label();
-                lblTxt.Add(lbl);
-                lblTxt[i].Top = this.Height + i*RowHight;
-                lblTxt[i].Left = RowLeft;
-                lblTxt[i].Visible = false;
-                lblTxt[i].BackColor = Color.Transparent;
-                lblTxt[i].ForeColor = Color.Blue;
-                lblTxt[i].AutoSize = true;
-                this.Controls.Add(lblTxt[i]);
-                lblTxt[i].Text = list[i].Title;
-                lblTxt[i].Tag = list[i];
+                lbListNews.Add(lbl);
+                lbListNews[i].Top = this.Height + i * RowHight;
+                lbListNews[i].Left = RowLeft;
+                lbListNews[i].Visible = false;
+                lbListNews[i].BackColor = Color.Transparent;
+                lbListNews[i].ForeColor = foreColor;
+                lbListNews[i].AutoSize = true;
+                this.Controls.Add(lbListNews[i]);
+                lbListNews[i].Text = Newslist[i].Title;
+                lbListNews[i].Tag = Newslist[i];
                 // 添加事件监听
-                lblTxt[i].Click += new EventHandler(frmAbout_WebSite_Click);
-                lblTxt[i].MouseMove += new MouseEventHandler(frmAbout_Link_MouseMove);
-                lblTxt[i].MouseLeave += new EventHandler(frmAbout_Link_MouseLeave);
-                lblTxt[i].MouseHover += new EventHandler(frmAbout_MouseHover);
-                lblTxt[i].MouseDown += new MouseEventHandler(frmAbout_MouseDown);
-                lblScroll.Add(lblTxt[i]);
+                lbListNews[i].Click += new EventHandler(frmAbout_WebSite_Click);
+                lbListNews[i].MouseMove += new MouseEventHandler(frmAbout_Link_MouseMove);
+                lbListNews[i].MouseLeave += new EventHandler(frmAbout_Link_MouseLeave);
+                lbListNews[i].MouseHover += new EventHandler(frmAbout_MouseHover);
+                lbListNews[i].MouseDown += new MouseEventHandler(frmAbout_MouseDown);
+                lbListScroll.Add(lbListNews[i]);
             }
             if (!DesignMode)
             {
@@ -184,9 +200,95 @@ namespace WinFormAppTest
             }
         }
 
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            GetLatestNews();
+        }
+
+        private void GetLatestNews()
+        {
+            lastRefreshTime = DateTime.Now;
+            List<News> list=new List<News>();
+            WebService.ServiceSoapClient server = new WebService.ServiceSoapClient();
+            WebService.News[] news = server.GetNews("XTHospatal", 10);
+            for (int i = 0; i < news.Length; i++)
+            {
+                list.Add(new News(news[i].CreateTime, news[i].Title, news[i].Url, news[i].Body));
+            }
+            NewsSource = list;
+        }
+
+        /// <summary>
+        /// 背景色
+        /// </summary>
+        public Color NewsBackColor
+        {
+            set {
+                backColor = value;
+                this.BackColor = value;
+            }
+        }
+
+        /// <summary>
+        /// 字体颜色
+        /// </summary>
+        public Color NewsForeColor
+        {
+            set
+            {
+                foreColor = value;
+                foreach (Label lb in lbListNews)
+                {                    
+                    lb.ForeColor = foreColor;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 刷新周期
+        /// </summary>
+        public int RefreshCycle
+        {
+            set {
+                refreshCycle = value;
+            }
+            get {
+                return refreshCycle;
+            }
+        }
+
+        /// <summary>
+        /// 新闻源
+        /// </summary>
+        public List<News> NewsSource
+        {
+            set {
+                if (value != null && value.Count>0)
+                {
+                    if (Newslist != null)
+                    {
+                        Newslist.Clear();
+                    }                  
+                    foreach (Label lb in lbListNews)
+                    {
+                        lb.Dispose();
+                    }
+                    lbListScroll.Clear();
+                    lbListNews.Clear();
+                    timer1.Stop();
+                    Newslist = value;
+                    SetNews();
+                }
+            }
+        }
+
+        public DateTime LastRefreshTime
+        {
+            get { return lastRefreshTime; }
+        }
+
         public class News
         {
-
             private System.DateTime createTimeField;
 
             private string titleField;

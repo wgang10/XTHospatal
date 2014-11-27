@@ -56,6 +56,7 @@
     <Compile Include="DAL_Province.cs" />
     <Compile Include="DAL_Report.cs" />
     <Compile Include="DAL_Surgery.cs" />
+    <Compile Include="DAL_System.cs" />
     <Compile Include="DAL_Xray.cs" />
     <Compile Include="DAL_YearMonth.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
