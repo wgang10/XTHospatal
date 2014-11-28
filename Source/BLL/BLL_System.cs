@@ -24,7 +24,9 @@ namespace XTHospital.BLL
             {
                 for (int i = 0; i < resoult.Count; i++)
                 {
-                    News news = new News(DateTime.Parse(resoult.ResultDataSet.Tables[0].Rows[i]["CreateTime"].ToString()),
+                    News news = new News(resoult.ResultDataSet.Tables[0].Rows[i]["ID"].ToString(),
+                        resoult.ResultDataSet.Tables[0].Rows[i]["SystemName"].ToString(),
+                        DateTime.Parse(resoult.ResultDataSet.Tables[0].Rows[i]["CreateTime"].ToString()),
                         resoult.ResultDataSet.Tables[0].Rows[i]["Title"].ToString(),
                         resoult.ResultDataSet.Tables[0].Rows[i]["Url"].ToString(),
                         resoult.ResultDataSet.Tables[0].Rows[i]["Body"].ToString());
