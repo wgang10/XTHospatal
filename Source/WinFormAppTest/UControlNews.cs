@@ -213,7 +213,7 @@ namespace WinFormAppTest
             WebService.News[] news = server.GetNews("XTHospatal", 10);
             for (int i = 0; i < news.Length; i++)
             {
-                list.Add(new News(news[i].CreateTime, news[i].Title, news[i].Url, news[i].Body));
+                list.Add(new News(news[i].NewsID,news[i].SystemName,news[i].CreateTime, news[i].Title, news[i].Url, news[i].Body));
             }
             NewsSource = list;
         }
@@ -297,12 +297,18 @@ namespace WinFormAppTest
 
             private string bodyField;
 
-            public News(DateTime createtiem, string title, string url, string body)
+            private string systemNameField;
+
+            private string idField;
+
+            public News(string newsId,string systemName,DateTime createtiem, string title, string url, string body)
             {
-                this.CreateTime = createtiem;
-                this.Title = title;
-                this.Url = url;
-                this.Body = body;
+                this.idField = newsId;
+                this.systemNameField = systemName;
+                this.createTimeField = createtiem;
+                this.titleField = title;
+                this.urlField = url;
+                this.bodyField = body;
             }
 
             /// <remarks/>
@@ -354,6 +360,30 @@ namespace WinFormAppTest
                 set
                 {
                     this.bodyField = value;
+                }
+            }
+
+            public string ID
+            {
+                get
+                {
+                    return this.idField;
+                }
+                set
+                {
+                    this.idField = value;
+                }
+            }
+
+            public string SystemName
+            {
+                get
+                {
+                    return this.systemNameField;
+                }
+                set
+                {
+                    this.systemNameField = value;
                 }
             }
         }

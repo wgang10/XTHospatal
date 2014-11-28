@@ -10,6 +10,7 @@ namespace XTHospital.Model
         public News(string ID,string SystemName,DateTime createtiem,string title,string url,string body) 
         { 
             this.CreateTime = createtiem;
+            this.SystemName = SystemName;
             this.Title = title;
             this.Url = url;
             this.Body = body;

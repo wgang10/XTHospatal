@@ -35,5 +35,7 @@ namespace XTHospital.BLL
             }
             return list;
         }
+
+        
     }
 }

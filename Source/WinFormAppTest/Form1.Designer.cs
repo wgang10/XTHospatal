@@ -37,13 +37,16 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.txtTitle = new System.Windows.Forms.TextBox();
+            this.txtUrl = new System.Windows.Forms.TextBox();
+            this.txtBody = new System.Windows.Forms.RichTextBox();
             this.btnAddNews = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnDelete = new System.Windows.Forms.Button();
             this.uControlNews1 = new WinFormAppTest.UControlNews();
+            this.txtSystemName = new System.Windows.Forms.TextBox();
+            this.lbID = new System.Windows.Forms.Label();
+            this.lbCreatetime = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -107,27 +110,27 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // textBox2
+            // txtTitle
             // 
-            this.textBox2.Location = new System.Drawing.Point(255, 176);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(458, 21);
-            this.textBox2.TabIndex = 7;
+            this.txtTitle.Location = new System.Drawing.Point(255, 189);
+            this.txtTitle.Name = "txtTitle";
+            this.txtTitle.Size = new System.Drawing.Size(458, 21);
+            this.txtTitle.TabIndex = 7;
             // 
-            // textBox3
+            // txtUrl
             // 
-            this.textBox3.Location = new System.Drawing.Point(255, 204);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(458, 21);
-            this.textBox3.TabIndex = 8;
+            this.txtUrl.Location = new System.Drawing.Point(255, 216);
+            this.txtUrl.Name = "txtUrl";
+            this.txtUrl.Size = new System.Drawing.Size(458, 21);
+            this.txtUrl.TabIndex = 8;
             // 
-            // richTextBox1
+            // txtBody
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(255, 243);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(458, 96);
-            this.richTextBox1.TabIndex = 9;
-            this.richTextBox1.Text = "";
+            this.txtBody.Location = new System.Drawing.Point(255, 243);
+            this.txtBody.Name = "txtBody";
+            this.txtBody.Size = new System.Drawing.Size(458, 96);
+            this.txtBody.TabIndex = 9;
+            this.txtBody.Text = "";
             // 
             // btnAddNews
             // 
@@ -148,6 +151,7 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(240, 192);
             this.dataGridView1.TabIndex = 11;
+            this.dataGridView1.Click += new System.EventHandler(this.dataGridView1_Click);
             // 
             // btnDelete
             // 
@@ -167,17 +171,44 @@
             this.uControlNews1.Size = new System.Drawing.Size(466, 144);
             this.uControlNews1.TabIndex = 0;
             // 
+            // txtSystemName
+            // 
+            this.txtSystemName.Location = new System.Drawing.Point(565, 162);
+            this.txtSystemName.Name = "txtSystemName";
+            this.txtSystemName.Size = new System.Drawing.Size(148, 21);
+            this.txtSystemName.TabIndex = 12;
+            this.txtSystemName.Text = "XTHospatal";
+            // 
+            // lbID
+            // 
+            this.lbID.AutoSize = true;
+            this.lbID.Location = new System.Drawing.Point(270, 171);
+            this.lbID.Name = "lbID";
+            this.lbID.Size = new System.Drawing.Size(0, 12);
+            this.lbID.TabIndex = 13;
+            // 
+            // lbCreatetime
+            // 
+            this.lbCreatetime.AutoSize = true;
+            this.lbCreatetime.Location = new System.Drawing.Point(447, 165);
+            this.lbCreatetime.Name = "lbCreatetime";
+            this.lbCreatetime.Size = new System.Drawing.Size(0, 12);
+            this.lbCreatetime.TabIndex = 14;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(725, 440);
+            this.Controls.Add(this.lbCreatetime);
+            this.Controls.Add(this.lbID);
+            this.Controls.Add(this.txtSystemName);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnAddNews);
-            this.Controls.Add(this.richTextBox1);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtBody);
+            this.Controls.Add(this.txtUrl);
+            this.Controls.Add(this.txtTitle);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -205,11 +236,14 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.TextBox txtTitle;
+        private System.Windows.Forms.TextBox txtUrl;
+        private System.Windows.Forms.RichTextBox txtBody;
         private System.Windows.Forms.Button btnAddNews;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.TextBox txtSystemName;
+        private System.Windows.Forms.Label lbID;
+        private System.Windows.Forms.Label lbCreatetime;
     }
 }

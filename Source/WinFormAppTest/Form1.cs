@@ -59,5 +59,16 @@ namespace WinFormAppTest
             int second = 60 * uControlNews1.RefreshCycle-DateTime.Now.Subtract(uControlNews1.LastRefreshTime).Seconds;
             label3.Text = "还有 " + second.ToString() +" 秒刷新";
         }
+
+        private void dataGridView1_Click(object sender, EventArgs e)
+        {
+            WebService.News news = (WebService.News)dataGridView1.CurrentRow.DataBoundItem;
+            lbID.Text = news.NewsID;
+            lbCreatetime.Text = news.CreateTime.ToString();
+            txtSystemName.Text = news.SystemName;
+            txtTitle.Text = news.Title;
+            txtUrl.Text = news.Url;
+            txtBody.Text = news.Body;
+        }
     }
 }

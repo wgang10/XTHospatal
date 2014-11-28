@@ -384,6 +384,10 @@ namespace WinFormAppTest.WebService {
         
         private string bodyField;
         
+        private string systemNameField;
+        
+        private string newsIDField;
+        
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=0)]
         public System.DateTime CreateTime {
@@ -429,6 +433,30 @@ namespace WinFormAppTest.WebService {
             set {
                 this.bodyField = value;
                 this.RaisePropertyChanged("Body");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public string SystemName {
+            get {
+                return this.systemNameField;
+            }
+            set {
+                this.systemNameField = value;
+                this.RaisePropertyChanged("SystemName");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
+        public string NewsID {
+            get {
+                return this.newsIDField;
+            }
+            set {
+                this.newsIDField = value;
+                this.RaisePropertyChanged("NewsID");
             }
         }
         
