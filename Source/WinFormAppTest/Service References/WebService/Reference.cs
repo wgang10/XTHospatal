@@ -272,6 +272,27 @@ namespace WinFormAppTest.WebService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetNews", ReplyAction="*")]
         System.Threading.Tasks.Task<WinFormAppTest.WebService.News[]> GetNewsAsync(string SystemName, int nums);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DeleteNewsPhysic", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        WinFormAppTest.WebService.ReturnValue DeleteNewsPhysic(string ID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DeleteNewsPhysic", ReplyAction="*")]
+        System.Threading.Tasks.Task<WinFormAppTest.WebService.ReturnValue> DeleteNewsPhysicAsync(string ID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DeleteNewsLogic", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        WinFormAppTest.WebService.ReturnValue DeleteNewsLogic(string ID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DeleteNewsLogic", ReplyAction="*")]
+        System.Threading.Tasks.Task<WinFormAppTest.WebService.ReturnValue> DeleteNewsLogicAsync(string ID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AddUpdateNews", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        WinFormAppTest.WebService.ReturnValue AddUpdateNews(WinFormAppTest.WebService.News model);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AddUpdateNews", ReplyAction="*")]
+        System.Threading.Tasks.Task<WinFormAppTest.WebService.ReturnValue> AddUpdateNewsAsync(WinFormAppTest.WebService.News model);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetEmployeePWD", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         WinFormAppTest.WebService.ReturnValue GetEmployeePWD(string EmployeeGZID);
@@ -4657,6 +4678,30 @@ namespace WinFormAppTest.WebService {
         
         public System.Threading.Tasks.Task<WinFormAppTest.WebService.News[]> GetNewsAsync(string SystemName, int nums) {
             return base.Channel.GetNewsAsync(SystemName, nums);
+        }
+        
+        public WinFormAppTest.WebService.ReturnValue DeleteNewsPhysic(string ID) {
+            return base.Channel.DeleteNewsPhysic(ID);
+        }
+        
+        public System.Threading.Tasks.Task<WinFormAppTest.WebService.ReturnValue> DeleteNewsPhysicAsync(string ID) {
+            return base.Channel.DeleteNewsPhysicAsync(ID);
+        }
+        
+        public WinFormAppTest.WebService.ReturnValue DeleteNewsLogic(string ID) {
+            return base.Channel.DeleteNewsLogic(ID);
+        }
+        
+        public System.Threading.Tasks.Task<WinFormAppTest.WebService.ReturnValue> DeleteNewsLogicAsync(string ID) {
+            return base.Channel.DeleteNewsLogicAsync(ID);
+        }
+        
+        public WinFormAppTest.WebService.ReturnValue AddUpdateNews(WinFormAppTest.WebService.News model) {
+            return base.Channel.AddUpdateNews(model);
+        }
+        
+        public System.Threading.Tasks.Task<WinFormAppTest.WebService.ReturnValue> AddUpdateNewsAsync(WinFormAppTest.WebService.News model) {
+            return base.Channel.AddUpdateNewsAsync(model);
         }
         
         public WinFormAppTest.WebService.ReturnValue GetEmployeePWD(string EmployeeGZID) {

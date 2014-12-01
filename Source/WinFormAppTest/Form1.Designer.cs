@@ -140,6 +140,7 @@
             this.btnAddNews.TabIndex = 10;
             this.btnAddNews.Text = "保存";
             this.btnAddNews.UseVisualStyleBackColor = true;
+            this.btnAddNews.Click += new System.EventHandler(this.btnAddNews_Click);
             // 
             // dataGridView1
             // 
@@ -161,6 +162,7 @@
             this.btnDelete.TabIndex = 10;
             this.btnDelete.Text = "删除";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // uControlNews1
             // 
@@ -182,10 +184,13 @@
             // lbID
             // 
             this.lbID.AutoSize = true;
+            this.lbID.BackColor = System.Drawing.Color.Aquamarine;
             this.lbID.Location = new System.Drawing.Point(270, 171);
+            this.lbID.MaximumSize = new System.Drawing.Size(50, 0);
             this.lbID.Name = "lbID";
-            this.lbID.Size = new System.Drawing.Size(0, 12);
+            this.lbID.Size = new System.Drawing.Size(29, 12);
             this.lbID.TabIndex = 13;
+            this.lbID.Text = "编号";
             // 
             // lbCreatetime
             // 

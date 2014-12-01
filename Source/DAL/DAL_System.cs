@@ -14,6 +14,11 @@ namespace XTHospital.DAL
             return new ReturnValue();
         }
 
+        public ReturnValue SearchNews(string ID)
+        {
+            return new ReturnValue();
+        }
+
         public ReturnValue UpdateNews(News model)
         {
             return new ReturnValue();

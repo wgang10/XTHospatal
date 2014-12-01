@@ -13,6 +13,8 @@ namespace XTHospital.OleDbDAL
     {
         #region SQL Statement
 
+        private string searchNews_SQL = @"Select ID From News Where ID = @ID";
+
         private string getNews_SQL = @"Select Top @@@ ID,SystemName,CreateTime,Title,Url,Body From News Where TRANS_STATE <> '3' ";
 
         private string deleteNews_physic_SQL = @"Delete From  News Where ID = @ID ";
@@ -21,7 +23,7 @@ namespace XTHospital.OleDbDAL
 
         private string addNews_SQL = @"Insert into News (TRANS_STATE,SystemName,CreateTime,Title,Url,Body) values ('1',@SystemName,now(),@Title,@Url,@Body) ";
 
-        private string updateNews_SQL = @"update News set TRANS_STATE='2',SystemName=@SystemName,CreateTime=now(),Title=@Title,Url=@Url,Body=@Body Where ID <> @ID ";
+        private string updateNews_SQL = @"update News set TRANS_STATE='2',SystemName=@SystemName,CreateTime=now(),Title=@Title,Url=@Url,Body=@Body Where ID = @ID ";
 
         #endregion
 
@@ -32,6 +34,13 @@ namespace XTHospital.OleDbDAL
             string strWhere = string.Empty;
             strWhere += " and SystemName = '" + SystemName + "' Order By CreateTime Desc";
             return OleDbHelper.Query(getNews_SQL.Replace("@@@",Num.ToString()) + strWhere);
+        }
+
+        public ReturnValue SearchNews(string ID)
+        {
+            OleDbParameter[] parametersSearchID = { new OleDbParameter("@ID", OleDbType.Integer) };
+            parametersSearchID[0].Value = ID;
+            return OleDbHelper.Query(searchNews_SQL, parametersSearchID);
         }
 
         public ReturnValue UpdateNews(News model)

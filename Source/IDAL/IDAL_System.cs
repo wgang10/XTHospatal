@@ -10,6 +10,8 @@ namespace XTHospital.IDAL
     {
         ReturnValue GetNewsList(string SystemName, int Num);
 
+        ReturnValue SearchNews(string ID);
+
         ReturnValue UpdateNews(News model);
 
         ReturnValue AddNews(News model);

@@ -446,6 +446,27 @@ public class Service : System.Web.Services.WebService
         return bll.GetNewsList(SystemName, nums);
     }
 
+    [WebMethod(Description = "物理删除最新公告")]
+    public ReturnValue DeleteNewsPhysic(string ID)
+    {
+        BLL_System bll = new BLL_System();
+        return bll.DeleteNewsPhysic(ID);
+    }
+
+    [WebMethod(Description = "逻辑删除最新公告")]
+    public ReturnValue DeleteNewsLogic(string ID)
+    {
+        BLL_System bll = new BLL_System();
+        return bll.DeleteNewsLogic(ID);
+    }
+
+    [WebMethod(Description = "添加或修改最新公告")]
+    public ReturnValue AddUpdateNews(News model)
+    {
+        BLL_System bll = new BLL_System();
+        return bll.AddUpdateNews(model);
+    }
+
     #region 网站部分Services
 
     [WebMethod(Description = "取得密码")]

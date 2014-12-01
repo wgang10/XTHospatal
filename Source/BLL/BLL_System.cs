@@ -36,6 +36,40 @@ namespace XTHospital.BLL
             return list;
         }
 
-        
+        public ReturnValue DeleteNewsLogic(string ID)
+        {
+            return dal.DeleteNewsLogic(ID);
+        }
+
+        public ReturnValue DeleteNewsPhysic(string ID)
+        {
+            return dal.DeleteNewsPhysic(ID);
+        }
+
+        public ReturnValue AddUpdateNews(News model)
+        {
+            ReturnValue resoult;
+            if (!string.IsNullOrEmpty(model.NewsID))
+            {
+                resoult = dal.SearchNews(model.NewsID);
+                if (!resoult.ErrorFlag)
+                {
+                    return resoult;
+                }
+                if (resoult.Count > 0)
+                {
+                    resoult = dal.UpdateNews(model);
+                }
+                else
+                {
+                    resoult = dal.AddNews(model);
+                }
+            }
+            else
+            {
+                resoult = dal.AddNews(model);
+            }
+            return resoult;
+        }
     }
 }

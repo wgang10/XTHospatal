@@ -19,10 +19,16 @@ namespace WinFormAppTest
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            LoadNews(100);
+        }
+
+        private void LoadNews(int Nums)
+        {
             uControlNews1.btnRefresh.Click += new System.EventHandler(RreshTime);
             timer1.Start();
             WebService.ServiceSoapClient server = new WebService.ServiceSoapClient();
-            WebService.News[] news = server.GetNews("XTHospatal", 10);
+            WebService.News[] news = server.GetNews("XTHospatal", Nums);
+            lbID.Text = string.Empty;
             this.dataGridView1.DataSource = news;
         }
 
@@ -69,6 +75,40 @@ namespace WinFormAppTest
             txtTitle.Text = news.Title;
             txtUrl.Text = news.Url;
             txtBody.Text = news.Body;
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            WebService.ServiceSoapClient server = new WebService.ServiceSoapClient();
+            WebService.ReturnValue resoult = server.DeleteNewsLogic(lbID.Text);//逻辑删除
+            if (resoult.ErrorFlag)
+            {
+                LoadNews(100);
+            }
+            else
+            {
+                MessageBox.Show(resoult.ErrorID);
+            }
+        }
+
+        private void btnAddNews_Click(object sender, EventArgs e)
+        {
+            WebService.ServiceSoapClient server = new WebService.ServiceSoapClient();
+            WebService.News model = new WebService.News();
+            model.NewsID = lbID.Text;
+            model.SystemName = txtSystemName.Text;
+            model.Title = txtTitle.Text;
+            model.Url = txtUrl.Text;
+            model.Body = txtBody.Text;
+            WebService.ReturnValue resoult = server.AddUpdateNews(model);
+            if (resoult.ErrorFlag)
+            {
+                LoadNews(100);
+            }
+            else
+            {
+                MessageBox.Show(resoult.ErrorID);
+            }
         }
     }
 }
