@@ -33,7 +33,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebUI", "WebUI\WebUI.csproj
 EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Web", "Web\", "{22576A5B-07AA-4650-8106-17D2B27D0F2C}"
 	ProjectSection(WebsiteProperties) = preProject
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv2.0"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
 		ProjectReferences = "{1D4C12EC-E53B-41A0-B867-8CB6A6550006}|XTHospital.COM.dll;{7656c225-c76a-4851-a72a-41ba441fb5fa}|XTHospital.BLL.dll;{B247E579-3510-46CD-8ACE-4B43091E4212}|XTHospital.FDAL.dll;{1FE3DF10-B292-4EC7-A708-DFF3DAACFA40}|XTHospital.IDAL.dll;{1CC2D7D8-0620-4103-BA6A-3E1FC1FE86A7}|XTHospital.Model.dll;{05918081-5b3a-4203-9e95-08c10b2a4572}|XTHospital.OleDbDAL.dll;{D8B19AE2-5D2B-41F2-8017-46BD49D8DCB0}|XTHospital.DB.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/Web"
 		Debug.AspNetCompiler.PhysicalPath = "Web\"
@@ -60,6 +60,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnZip", "UnZip\UnZip.csproj", "{9FF28919-2076-4203-BE08-3F1E3F702A8B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormAppTest", "WinFormAppTest\WinFormAppTest.csproj", "{7DC219C1-BAB5-4678-BCA3-0BE1AA246ADB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{22576A5B-07AA-4650-8106-17D2B27D0F2C} = {22576A5B-07AA-4650-8106-17D2B27D0F2C}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -10,7 +10,7 @@ using System.Web;
 /// </summary>
 public static class GlobalValue
 {
-    private static XTWebService.Service gloWebSerices = null;
+    private static XTWebService.ServiceSoapClient gloWebSerices = null;
 
     private static string glostrServicesURL = string.Empty;
 
@@ -41,7 +41,8 @@ public static class GlobalValue
         }
     }
 
-    public static XTWebService.Service GloWebSerices {
+    public static XTWebService.ServiceSoapClient GloWebSerices
+    {
         get {
             if (gloWebSerices == null)
             {
@@ -55,7 +56,7 @@ public static class GlobalValue
 [System.Diagnostics.DebuggerStepThrough()
     , System.ComponentModel.DesignerCategory("code")
     , System.Web.Services.WebServiceBinding(Name = "", Namespace = "")]
-public class MyWebService : XTWebService.Service
+public class MyWebService : XTWebService.ServiceSoapClient
 {
     //public MyWebService():base()
     //{
@@ -65,7 +66,6 @@ public class MyWebService : XTWebService.Service
     public MyWebService(string webUrl)
         : base()
     {
-
-        this.Url = webUrl;
+        this.Endpoint.Address = new System.ServiceModel.EndpointAddress("webUrl");
     }
 }

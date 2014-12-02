@@ -27,7 +27,7 @@ namespace WinFormAppTest
             uControlNews1.btnRefresh.Click += new System.EventHandler(RreshTime);
             timer1.Start();
             WebService.ServiceSoapClient server = new WebService.ServiceSoapClient();
-            WebService.News[] news = server.GetNews("XTHospatal", Nums);
+            WebService.News[] news = server.GetNews("ALL", Nums);
             lbID.Text = string.Empty;
             this.dataGridView1.DataSource = news;
         }

@@ -32,7 +32,14 @@ namespace XTHospital.OleDbDAL
         public ReturnValue GetNewsList(string SystemName, int Num)
         {
             string strWhere = string.Empty;
-            strWhere += " and SystemName = '" + SystemName + "' Order By CreateTime Desc";
+            if (SystemName.Equals("all", StringComparison.CurrentCultureIgnoreCase))
+            {
+                strWhere += " Order By CreateTime Desc";
+            }
+            else
+            {
+                strWhere += " and SystemName = '" + SystemName + "' Order By CreateTime Desc";
+            }
             return OleDbHelper.Query(getNews_SQL.Replace("@@@",Num.ToString()) + strWhere);
         }
 
