@@ -1,0 +1,59 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPageZiYang.master.cs" Inherits="MasterPageZiYang" %>
+
+<!DOCTYPE html>
+
+<html lang="zh-cn" xml:lang="zh-cn" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>子杨软件--Zi Yang Soft-值得信赖</title>
+<meta name="description" content="Zi Yang Soft,子杨软件。"/>
+<meta name="keywords" content="子杨,子杨软件,软件,WMS,考试系统,Silverlight,进销存,考试系统,桌面,体检系统,健康体检"/>
+<meta name="title" content="子杨|子杨软件|软件|WMS|考试系统|Silverlight进销存考试系统桌面体检系统健康体检|子杨软件-值得信赖"/>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<meta content="IE=7" http-equiv="X-UA-Compatible"/>
+<meta content="zh-cn" http-equiv="Content-Language"/>
+<meta content="no-cache" http-equiv="pragma"/>
+<meta content="no-cache" http-equiv="cache-control"/>
+<meta content="0" http-equiv="expires"/>
+<link rel="stylesheet" type="text/css" href="css/index.css"/>
+<!--[if IE 6]>
+<script type="text/javascript" src="http://st3.dbank.com/js/DD_belatedPNG.js?version=2.6.2d" ></script>
+<![endif]--><!-- google code -->
+<script type="text/javascript" src="Script/jquery.js"></script>
+<script type="text/javascript" src="Script/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="Script/common-index.js"></script>
+<meta name="GENERATOR" content="MSHTML 9.00.8112.16447"/>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <table style="width:100%;" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+            <td class="tpkg">
+                    <a href="http://www.ziyangsoft.com/"><img style="float:none; MARGIN:0px 0px 5px 200px" title="子杨软件" alt="子杨软件" src="images/TopLogo.png"/></a>                
+            </td>
+        </tr>
+        <tr>
+            <td class="bgconnent">
+                <div style="min-height:500px;MARGIN:10px 20px 20px 20px">
+                    <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server"> 
+                    </asp:ContentPlaceHolder>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="bgfoot">
+                <div>
+                    <a href="Help.aspx">网站介绍</a>· 
+                    <a href="Help.aspx" rel="nofollow">帮助中心</a>· 
+                    <a href="#" rel=nofollow>法律声明</a>· 
+                    <a href="#">论坛</a>· <a href="#">开放平台</a>· 
+                    <a href="#">招聘</a>· <a href="#">客服QQ</a>
+                    <br><br>陕<font class="enwz1">ICP</font>备<font class=enwz1>12009470</font>号 <a href="#" rel=nofollow>
+                    <font class="enwz">©2012-2017</font> <font class="enwz">Zi Yang Soft</font>子杨软件</a> 
+                </div>
+            </td>
+        </tr>
+    </table>
+    </form>
+</body>
+</html>
+

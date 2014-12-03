@@ -98,7 +98,7 @@
     <form id="form1" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server"/>
         <div id="allscroll" class="allkg">
-	        <div id="scrollctn" class="scrollctn bg1">
+	       <div id="scrollctn" class="scrollctn bg1">
 		        <div class="allscn">
 			        <div class="tpkg">
 				        <div class="tphd" runat="server" id="divLogin" visible="true">
@@ -239,8 +239,9 @@
 				        </div>
 			        </div>
     	        </div>
+            </div>
             
-            <div class="scrollctn bg2">
+           <div class="scrollctn bg2">
                 <div class="btmkg"><a href="Help.aspx">网站介绍</a>· <a href="Help.aspx" rel="nofollow">帮助中心</a>· <a href="#" rel=nofollow>法律声明</a>· <a href="#">论坛</a>· <a href="#">开放平台</a>· <a href="#">招聘</a>· <a href="#">客服QQ</a>
                 <br><br>陕<font class="enwz1">ICP</font>备<font class=enwz1>12009470</font>号 <a href="#" rel=nofollow>
                 <font class="enwz">©2012-2017</font> <font class="enwz">Zi Yang Soft</font>子杨软件</a> 

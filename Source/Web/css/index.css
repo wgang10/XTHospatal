@@ -55,14 +55,24 @@ A {
 .scrollctn {
 	POSITION: relative; HEIGHT: 10%; OVERFLOW: hidden
 }
+.foot {
+	POSITION: relative; HEIGHT: 60px; OVERFLOW: hidden
+}
 .bg1 {
-	MIN-HEIGHT: 820px; BACKGROUND: #fdfdfd
+	MIN-HEIGHT: 840px; BACKGROUND: #fdfdfd
 }
 .seabgot {
 	WIDTH: 100%; BACKGROUND: url(../images/icon10.jpg) no-repeat right top; FLOAT: left; HEIGHT: 100%
 }
 .bg2 {
-	BACKGROUND: url(../images/icon9.jpg) center top
+	MIN-HEIGHT: 500px;BACKGROUND: url(../images/icon9.jpg) center top
+}
+
+.bgconnent {
+	BACKGROUND: url(../images/icon9.jpg) center center;text-align:center center;
+}
+.bgfoot {
+	height:80px; text-align:center; 
 }
 .allscn {
 	WIDTH: 100%; FLOAT: left; HEIGHT: 800px
@@ -88,12 +98,12 @@ A {
 .tpkg {
 	Z-INDEX: 1;
 	POSITION: relative;
-	TEXT-ALIGN: center;
+	TEXT-ALIGN: left;
 	WIDTH: 100%;
 	FONT-FAMILY: "ËÎÌו";
-	BACKGROUND: url(../images/bgscroll.png) #000 repeat-x 0px -192px;
+	BACKGROUND: url(../images/bgscroll.png) repeat-x 0px -192px;
 	FLOAT: left;
-	HEIGHT: 55px;
+	HEIGHT: 50px;
 	COLOR: #ffffff;
 	background-image: url(../images/bgscroll.png);
 }
@@ -195,6 +205,9 @@ A {
 }
 .leftkg {
 	PADDING-BOTTOM: 0px; PADDING-LEFT: 53px; WIDTH: 414px; PADDING-RIGHT: 80px; BACKGROUND: url(../images/bg3.png) no-repeat left bottom; FLOAT: left; HEIGHT: 534px; MARGIN-LEFT: 40px; OVERFLOW: hidden; PADDING-TOP: 0px; _margin-left: 20px
+}
+.concent {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 50px; WIDTH: 100%; PADDING-RIGHT: 50px; FLOAT: left; HEIGHT: 534px; MARGIN-LEFT: 40px; OVERFLOW: hidden; PADDING-TOP: 0px; _margin-left: 20px
 }
 .moviekg {
 	WIDTH: 414px; FLOAT: left; HEIGHT: 296px; PADDING-TOP: 12px
@@ -365,7 +378,7 @@ LI {
 	CURSOR: pointer; MARGIN-RIGHT: 3px
 }
 .btmkg {
-	POSITION: absolute; TEXT-ALIGN: center; PADDING-BOTTOM: 10px; PADDING-LEFT: 0px; WIDTH: 100%; BOTTOM: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: "ËÎÌו",Tahoma; BACKGROUND: #ffffff; HEIGHT: 49px; COLOR: #707070; OVERFLOW: hidden; PADDING-TOP: 15px
+	POSITION: absolute; TEXT-ALIGN: center; PADDING-BOTTOM: 10px; PADDING-LEFT: 0px; WIDTH: 100%; BOTTOM: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: "ËÎÌו",Tahoma; BACKGROUND: #ffffff; COLOR: #707070; OVERFLOW: hidden; PADDING-TOP: 15px
 }
 .btmkg IMG {
 	MARGIN-TOP: -5px; MARGIN-RIGHT: 5px
