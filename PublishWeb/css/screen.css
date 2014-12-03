@@ -1,0 +1,232 @@
+﻿h1{font-size:200%;
+		font-weight:normal;
+		margin:0;
+		padding-left:35px;
+		padding-top:100px
+		}		
+h2, h3, h4, h5, h6{
+		font-weight:normal;
+		margin:1em 0;
+		}	
+h2{            
+		font-size:160%;
+		}	
+h3{          
+		font-size:140%;
+		}
+h4{          
+		font-size:120%;
+		}				
+a{
+		text-decoration:none;
+		color:#fff;
+		}
+a:hover{
+		color:#d8e6ec;
+		text-decoration:underline;
+		}
+.Astyle
+	{
+		text-decoration:none;
+		color:#000000;
+	}	
+p{
+		margin:1em 0;
+		}	
+
+#container{	
+		margin:0 auto;
+		width:928px;
+		text-align:center;
+		}
+#header{
+		height:236px;
+		background:url(../images/bg_header.jpg) no-repeat 0 0;
+		}				
+#content{
+		background:url(../images/bg_content.gif) repeat-y;
+		padding:.5em 34px;
+		text-align:center;
+		}
+#footer{
+		padding:25px 60px;
+		background:url(../images/bg_footer.gif) no-repeat 0 0;				
+		color:#fff;
+		}
+#Links{
+		width:500px;
+		height:25px;
+		float:right;
+		text-align:right;
+		padding-right:40px;
+		margin-top:180px;
+		}
+.Txt{
+	padding-left:3px;
+	border-width: 1px;
+	border-top-color: #C6C3B3;
+	border-right-color: #7C7D6A;	
+	border-bottom-color: #000;
+	border-left-color: #7C7D6A;
+	ime-mode:disabled;
+	}
+.TxtIME{
+	padding-left:3px;
+	border-width: 1px;
+	border-top-color: #C6C3B3;
+	border-right-color: #7C7D6A;
+	border-bottom-color: #000;	
+	border-left-color: #7C7D6A;
+	ime-mode:active;
+	}
+.BTN{
+	border-style: solid;
+    border-color: inherit;
+    border-width: 1px;
+    text-align :center;
+	background-color :#FFFFFF;
+	}
+.BTNMenu {PADDING-RIGHT: 2px; PADDING-LEFT: 2px; FONT-SIZE: 12px; FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#ffffff, EndColorStr=#cccccc); BORDER-LEFT: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; 	BORDER-TOP: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; WIDTH: 140px; cursor:pointer;COLOR: black; PADDING-TOP: 2px; HEIGHT: 26px}
+.ContentInput{
+		margin:10px auto 10px auto;
+		width:720px;
+		padding-left:20px;
+		padding-top:10px;
+		padding-bottom :10px;
+		text-align:left;
+		border:1px;
+		border-style:dashed;
+		}
+.ContentInfo{
+		margin:0px auto 0px auto;
+		width:720px;
+		padding-left:20px;
+		padding-top:0px;
+		padding-bottom :0px;
+		text-align:left;
+		border:1px;
+		border-style:dashed;
+		}
+.ContentGrd{
+		margin:10px auto 10px auto;
+		width:720px;
+		padding-left:20px;
+		padding-top:10px;
+		padding-bottom :10px;
+		text-align:left;
+		border:1px;
+		border-style:dashed;
+		}
+.PadLeft5{padding-left:5px;}
+.ContentMessage{
+	
+	
+	}
+.Print{
+		margin: 5px auto 5px 0px;
+		width:700px;
+		padding-top:5px;
+		padding-bottom :5px;
+		text-align:right;
+		border:0px;
+		border-style:dashed;
+		}
+.DivLogin{
+		margin:10px auto 10px 25px;
+		width:400px;
+		padding-left:60px;
+		padding-top:5px;
+		padding-bottom :5px;
+		text-align:left;
+		border:0px;
+		border-style:dashed;
+		}
+.DivChangePWD{
+		margin:10px auto 10px 25px;
+		width:400px;
+		padding-left:30px;
+		padding-top:5px;
+		padding-bottom :5px;
+		text-align:left;
+		border:0px;
+		border-style:dashed;
+		}
+.DivLoginB{
+		margin:10px auto 10px 25px;
+		width:450px;
+		padding-left:20px;
+		padding-top:5px;
+		padding-bottom :5px;
+		text-align:right;
+		border:0px;
+		border-style:dashed;
+		}
+.DivValidateCode
+		{
+		margin:10px auto 10px 25px;
+		width:450px;
+		padding-left:40px;
+		padding-top:5px;
+		padding-bottom :5px;
+		text-align:left;
+		border:0px;
+		border-style:dashed;
+		}
+#DivLoginBtn{
+		margin:10px auto 10px 25px;
+		width:400px;
+		padding-right:80px;
+		padding-top:10px;
+		padding-bottom :10px;
+		text-align:right;
+		border:0px;
+		border-style:dashed;
+		}
+		
+#DivLogin{
+		margin:10px auto 10px 150px;
+		width:450px;
+		padding-right:80px;
+		padding-top:30px;
+		padding-bottom :20px;
+		text-align:right;
+		border:1px;
+		border-style:dashed;
+		}
+#DivLoginMessage{
+		margin:10px auto 10px 25px;
+		width:400px;
+		padding-left:30px;
+		padding-top:5px;
+		padding-bottom :5px;
+		text-align:left;
+		border:0px;
+		border-style:dashed;
+		color :Red;
+		}		
+#DivDirections{
+		margin:10px auto 10px 15px;
+		width:420px;
+		padding-left:30px;
+		padding-top:5px;
+		padding-bottom :5px;
+		text-align:left;
+		border:0px;
+		border-style:dashed;
+		color :#0E5A77;
+		}
+#DivTipsMessage{
+		margin:10px auto 10px 25px;
+		width:400px;
+		padding-left:30px;
+		padding-top:5px;
+		padding-bottom :5px;
+		text-align:left;
+		border:0px;
+		border-style:dashed;
+		color :#0E5A77;
+		}
+.boldStyle {font-weight:bold;}
+.TitleStyle{color:Blue; font-weight:bold;}
+.TitleBioT{color:Blue; font-style:italic;}
+.ReultStyle{color: #009900;}
