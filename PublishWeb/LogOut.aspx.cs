@@ -13,7 +13,7 @@ public partial class LogOut : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        GlobalValue.GloWebSerices.AddLog("查询用户[" + Session["LoginUserName"].ToString() + "]退出了系统.", "1", Page.Request.UserHostAddress);//添加日志
+        XTHospital.BLL.BLL_Log.AddLog("查询用户[" + Session["LoginUserName"].ToString() + "]退出了系统.", "1", Page.Request.UserHostAddress);//添加日志
         Session.Abandon();
         System.Web.Security.FormsAuthentication.SignOut();
         Response.Redirect("MyLogin.aspx");

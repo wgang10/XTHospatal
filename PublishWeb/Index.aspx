@@ -68,7 +68,7 @@
             var t1 = setInterval(changeBanner, '3500');
         })
 </script>
-    <div class="introbg">
+    
         <div class="leftkg">
             <div class="moviekg">
                 <div id="barScroll" class="mrwm_slide">
@@ -124,6 +124,6 @@
               </li>
             </ul>
         </div>
-    </div>
+    
 </asp:Content>
 

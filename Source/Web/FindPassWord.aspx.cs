@@ -21,7 +21,7 @@ public partial class FindPassWord : System.Web.UI.Page
         {
             if (resoult.Count < 1)
             {
-                GlobalValue.GloWebSerices.AddLog("用户[" + strUserID + "]尝试找回密码失败，用户名不存在！", "1", Page.Request.UserHostAddress);//添加日志
+                XTHospital.BLL.BLL_Log.AddLog("用户[" + strUserID + "]尝试找回密码失败，用户名不存在！", "1", Page.Request.UserHostAddress);//添加日志
                 LiteralMsg.Text = "用户名不存在！";
                 LiteralMsg.DataBind();
                 return;
@@ -54,14 +54,14 @@ public partial class FindPassWord : System.Web.UI.Page
                     blFlag = XTHospital.COM.Mothod.SendMail(strMailTo, strTitle, strMailBody, out strMessage);
                     if (blFlag)
                     {
-                        GlobalValue.GloWebSerices.AddLog("用户[" + strUserName + "]使用了找回密码功能，将密码发送到了邮箱[" + strMailTo + "].", "1", Page.Request.UserHostAddress);//添加日志
+                        XTHospital.BLL.BLL_Log.AddLog("用户[" + strUserName + "]使用了找回密码功能，将密码发送到了邮箱[" + strMailTo + "].", "1", Page.Request.UserHostAddress);//添加日志
                         LiteralMsg.Text = "密码已经发送到了您的邮箱！请查收";
                         LiteralMsg.DataBind();
                         return;
                     }
                     else
                     {
-                        GlobalValue.GloWebSerices.AddLog("用户[" + strUserName + "]使用了找回密码功能，发送到邮箱[" + strMailTo + "]时失败." + strMessage, "1", Page.Request.UserHostAddress);//添加日志
+                        XTHospital.BLL.BLL_Log.AddLog("用户[" + strUserName + "]使用了找回密码功能，发送到邮箱[" + strMailTo + "]时失败." + strMessage, "1", Page.Request.UserHostAddress);//添加日志
                         LiteralMsg.Text = "发送到邮箱[" + strMailTo + "]时失败.";
                         LiteralMsg.DataBind();
                         return;
@@ -69,7 +69,7 @@ public partial class FindPassWord : System.Web.UI.Page
                 }
                 else
                 {
-                    GlobalValue.GloWebSerices.AddLog("用户[" + strUserID + "]尝试找回密码失败，所填邮箱不存在或不是其绑定的邮箱！", "1", Page.Request.UserHostAddress);//添加日志
+                    XTHospital.BLL.BLL_Log.AddLog("用户[" + strUserID + "]尝试找回密码失败，所填邮箱不存在或不是其绑定的邮箱！", "1", Page.Request.UserHostAddress);//添加日志
                     LiteralMsg.Text = "输入的邮箱不存在或不是您当时绑定的邮箱！";
                     LiteralMsg.DataBind();
                     return;

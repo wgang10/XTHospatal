@@ -244,10 +244,11 @@ public partial class WebUserControlEmployeeInfo : System.Web.UI.UserControl
 
     private void SetDepYearMonth()
     {
-        XTWebService.ReturnValue resoult = null;
+        XTHospital.COM.ReturnValue resoult = null;
+        XTHospital.BLL.BLL_LoginUser bll = new XTHospital.BLL.BLL_LoginUser();
         try
         {
-            resoult = GlobalValue.GloWebSerices.GetYearMonth();
+            resoult = bll.GetYearMonth();
         }
         catch
         {
@@ -274,8 +275,9 @@ public partial class WebUserControlEmployeeInfo : System.Web.UI.UserControl
     }
 
     private void ShowData(string LoginUserID, string YearMonth)
-    {        
-        XTWebService.ReturnValue resoult = GlobalValue.GloWebSerices.SearchMyInfo(LoginUserID, YearMonth);
+    {
+        XTHospital.BLL.BLL_Employee bll = new XTHospital.BLL.BLL_Employee();
+        XTHospital.COM.ReturnValue resoult = bll.SearchMyInfo(LoginUserID, YearMonth);
         if (resoult.ErrorFlag)
         {
             if (resoult.Count > 0)
@@ -734,14 +736,15 @@ public partial class WebUserControlEmployeeInfo : System.Web.UI.UserControl
                 strRemarks = resoult.ResultDataSet.Tables[0].Rows[0]["Remarks"].ToString();//备注
                 #endregion
 
-                GlobalValue.GloWebSerices.AddLog("查询用户[" + strName + "]进行了体检信息的查询.", "1", Page.Request.UserHostAddress);//添加日志
+                XTHospital.BLL.BLL_Log.AddLog("查询用户[" + strName + "]进行了体检信息的查询.", "1", Page.Request.UserHostAddress);//添加日志
             }
         }
     }
 
     private void ShowBioTData()
     {
-        XTWebService.ReturnValue resoult = GlobalValue.GloWebSerices.GetBioTInfo();
+        XTHospital.BLL.BLL_Employee bll = new XTHospital.BLL.BLL_Employee();
+        XTHospital.COM.ReturnValue resoult = bll.SearchBioTInfo();
         if (resoult.ErrorFlag)
         {
             if (resoult.Count > 0)
