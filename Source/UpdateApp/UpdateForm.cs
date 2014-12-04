@@ -18,9 +18,9 @@ namespace UpdateApp
 {
     public partial class UpdateForm : Form
     {
-        private static string GitConfigWebUrl = @"http://localhost/Config.ashx";
-        //private static string webUrl2 = @"http://localhost/filelist.ashx?InstallOrUpdate=Update";
-        //private static string webUrl3 = @"http://localhost/GetFileMD5.ashx";
+        private static string GitConfigWebUrl = @"http://www.ziyangsoft.com/Config.ashx";
+        //private static string webUrl2 = @"http://www.ziyangsoft.com/filelist.ashx?InstallOrUpdate=Update";
+        //private static string webUrl3 = @"http://www.ziyangsoft.com/GetFileMD5.ashx";
         private static string systemName = "XTHospatal";
         delegate void ShowProgressDelegate(int totalStep, int currentStep);
         private static string UpdataURLConfig = "InstallURL";
@@ -47,7 +47,7 @@ namespace UpdateApp
             //updateURL = Common.GetConfigFormIni();
             try
             {
-                InstallURL = GetWebConfig(UpdataURLConfig);//http://localhost/App/Install
+                InstallURL = GetWebConfig(UpdataURLConfig);//http://www.ziyangsoft.com/App/Install
                 InstallPath = GetWebConfig(InstallPathConfig);//C:\XTHospatal
             }
             catch (Exception ex)

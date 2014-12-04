@@ -14,8 +14,8 @@ namespace Install
 {
   public partial class Install : Form
   {
-      private static string GetConfigWebUrl = @"http://localhost/Config.ashx";
-      private static string GetInstallFileListWebUrl = @"http://localhost/filelist.ashx";
+      private static string GetConfigWebUrl = @"http://www.ziyangsoft.com/Config.ashx";
+      private static string GetInstallFileListWebUrl = @"http://www.ziyangsoft.com/filelist.ashx";
       private static string systemName = "XTHospatal";
       private static string InstallURLConfig = "InstallURL";
       private static string InstallPathConfig = "InstallPath";
