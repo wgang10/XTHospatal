@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Config>
   <System Name ="XTHospatal">
-    <WebServicesURL>http://localhost</WebServicesURL>
-    <InstallURL>http://localhost/App/Install</InstallURL>
+    <WebServicesURL>http://www.ziyangsoft.com</WebServicesURL>
+    <InstallURL>http://http://www.ziyangsoft.com/App/Install</InstallURL>
     <InstallPath>C:\XTHospatal</InstallPath>
-    <PictureLoading>http://localhost/images/UI/Loading.png</PictureLoading>
-    <PictureTop>http://localhost/images/UI/Top.jpg</PictureTop>
-    <PictureLogin>http://localhost/images/UI/Login.jpg</PictureLogin>
+    <PictureLoading>http://http://www.ziyangsoft.com/images/UI/Loading.png</PictureLoading>
+    <PictureTop>http://http://www.ziyangsoft.com/images/UI/Top.jpg</PictureTop>
+    <PictureLogin>http://http://www.ziyangsoft.com/images/UI/Login.jpg</PictureLogin>
   </System>
 </Config>
