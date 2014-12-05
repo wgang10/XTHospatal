@@ -80,18 +80,14 @@ A {
 .gototop {
 	Z-INDEX: 11; POSITION: absolute; TOP: 500px; LEFT: 50%
 }
-.gototop UL {
-	POSITION: absolute; WIDTH: 32px; BACKGROUND: url(http://st1.dbank.com/images/index/icon4.png?v=2.6.1) no-repeat; HEIGHT: 78px; OVERFLOW: hidden; TOP: -80px; LEFT: 480px
-}
+
 .gototop LI {
 	POSITION: relative; MARGIN-BOTTOM: 14px; HEIGHT: 32px; OVERFLOW: hidden; CURSOR: pointer
 }
 .gototop LI SPAN {
 	POSITION: absolute; LINE-HEIGHT: 11px; WIDTH: 11px; DISPLAY: none; HEIGHT: 11px; TOP: 11px; LEFT: 11px
 }
-.gototop LI.choose SPAN {
-	DISPLAY: block; BACKGROUND: url(http://st1.dbank.com/images/index/icon2.png?v=2.6.1) no-repeat center 50%
-}
+
 .searchbg {
 	MIN-HEIGHT: 620px; BACKGROUND: url(../images/icon6.jpg) repeat-x center top
 }
@@ -122,9 +118,7 @@ A {
 .tpkg .tpinfo .tpinfotxt INPUT {
 	MARGIN-TOP: 13px; FLOAT: left; _margin-top: 12px
 }
-.tpkg .inputbg {
-	LINE-HEIGHT: 24px; BORDER-RIGHT-WIDTH: 0px; MARGIN-TOP: 3px; WIDTH: 180px; BACKGROUND: url(http://st1.dbank.com/images/index/allicon.gif?v=2.6.1) no-repeat 0px 0px; FLOAT: left; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; HEIGHT: 24px; OVERFLOW: hidden; BORDER-LEFT-WIDTH: 0px; MARGIN-RIGHT: 8px
-}
+
 .tpkg IMG {
 	MARGIN-TOP: 7px; FLOAT: left
 }
@@ -155,38 +149,8 @@ A {
 .tpkg .wrgkg .wrnkg SPAN {
 	PADDING-BOTTOM: 0px; LINE-HEIGHT: 21px; PADDING-LEFT: 7px; PADDING-RIGHT: 7px; BACKGROUND: #cc0000; FLOAT: left; HEIGHT: 21px; VISIBILITY: hidden; PADDING-TOP: 0px
 }
-.qqicon {
-	BORDER-RIGHT-WIDTH: 0px; WIDTH: 14px; BACKGROUND: url(http://st1.dbank.com/images/index/allicon.gif?v=2.6.1) no-repeat -481px -1px; FLOAT: right; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; HEIGHT: 15px; BORDER-LEFT-WIDTH: 0px
-}
-.wbicon {
-	BORDER-RIGHT-WIDTH: 0px; WIDTH: 16px; BACKGROUND: url(http://st1.dbank.com/images/index/allicon.gif?v=2.6.1) no-repeat -460px 0px; FLOAT: right; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; HEIGHT: 13px; BORDER-LEFT-WIDTH: 0px
-}
 .otherload {
 	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; WIDTH: 130px; PADDING-RIGHT: 0px; FLOAT: right; PADDING-TOP: 17px
-}
-.othericon {
-	MARGIN: 3px 5px 0px 0px; WIDTH: 4px; BACKGROUND: url(http://st1.dbank.com/images/index/allicon.gif?v=2.6.1) no-repeat -450px 0px; FLOAT: left; HEIGHT: 7px; OVERFLOW: hidden
-}
-.webqq {
-	TEXT-ALIGN: right; WIDTH: 55px; BACKGROUND: url(http://st1.dbank.com/images/index/allicon.gif?v=2.6.1) no-repeat -480px -21px; HEIGHT: 15px
-}
-.nonemask {
-	BACKGROUND: url(http://st1.dbank.com/images/index/bg_none.png?v=2.6.1) no-repeat 6px center
-}
-.membermask {
-	BACKGROUND: url(http://st1.dbank.com/images/index/bg_member.png?v=2.6.1) no-repeat 6px center
-}
-.pwdmask {
-	BACKGROUND: url(http://st1.dbank.com/images/index/bg_pwd.png?v=2.6.1) no-repeat 6px center
-}
-.hardmask {
-	BACKGROUND: url(http://st1.dbank.com/images/index/bgs01.png?v=2.6.1) no-repeat 10px 5px
-}
-.namemask {
-	BACKGROUND: url(http://st1.dbank.com/images/index/bgs01.png?v=2.6.1) no-repeat 10px -54px
-}
-.emailmask {
-	BACKGROUND: url(http://st1.dbank.com/images/index/bgs01.png?v=2.6.1) no-repeat 10px -25px
 }
 .allctn {
 	WIDTH: 100%; FLOAT: left
@@ -253,18 +217,6 @@ A {
 }
 .iconkg DIV UL LI {
 	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; WIDTH: 70px; PADDING-RIGHT: 0px; FLOAT: left; PADDING-TOP: 0px
-}
-.iconkg DIV .scrobg {
-	WIDTH: 70px; DISPLAY: none; BACKGROUND: url(http://st1.dbank.com/images/index/searbtncenter.png?v=2.6.1) repeat-y left center; HEIGHT: 10px
-}
-.iconkg DIV LI IMG {
-	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FLOAT: left; CLEAR: both; CURSOR: pointer; PADDING-TOP: 0px
-}
-.iconkg .searchtop {
-	BACKGROUND: url(http://st1.dbank.com/images/index/searbtntop.png?v=2.6.1) no-repeat center top; HEIGHT: 15px; OVERFLOW: hidden
-}
-.iconkg .searchbtm {
-	BACKGROUND: url(http://st1.dbank.com/images/index/searbtnbottom.png?v=2.6.1) no-repeat center top; HEIGHT: 64px; OVERFLOW: hidden
 }
 .regkg {
 	WIDTH: 391px; FLOAT: left
@@ -467,15 +419,6 @@ LI {
 .btn-login-unbind {
 	BORDER-RIGHT-WIDTH: 0px; MARGIN: 3px 0px 0px; WIDTH: 52px; FONT: 14px "ËÎÌå"; BACKGROUND: url(../images/allicon.gif) no-repeat -171px -116px; FLOAT: left; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; HEIGHT: 24px; COLOR: #ffffff; BORDER-LEFT-WIDTH: 0px; CURSOR: default
 }
-.btn1 {
-	BORDER-RIGHT-WIDTH: 0px; WIDTH: 154px; BACKGROUND: url(http://st1.dbank.com/images/index/allicon.gif?v=2.6.1) no-repeat 0px -145px; FLOAT: left; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; HEIGHT: 40px; BORDER-LEFT-WIDTH: 0px; CURSOR: pointer
-}
-.btn1_over {
-	BORDER-RIGHT-WIDTH: 0px; WIDTH: 154px; BACKGROUND: url(http://st1.dbank.com/images/index/allicon.gif?v=2.6.1) no-repeat -159px -145px; FLOAT: left; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; HEIGHT: 40px; BORDER-LEFT-WIDTH: 0px; CURSOR: pointer
-}
-.btn1_press {
-	BORDER-RIGHT-WIDTH: 0px; WIDTH: 154px; BACKGROUND: url(http://st1.dbank.com/images/index/allicon.gif?v=2.6.1) no-repeat -318px -145px; FLOAT: left; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; HEIGHT: 40px; BORDER-LEFT-WIDTH: 0px; CURSOR: pointer
-}
 .btn2 {
 	BORDER-RIGHT-WIDTH: 0px; WIDTH: 126px; FONT: 24px "Î¢ÈíÑÅºÚ"; BACKGROUND: url(../images/icon66.png) no-repeat center 50%; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; HEIGHT: 62px; COLOR: #ffffff; BORDER-LEFT-WIDTH: 0px; CURSOR: pointer
 }
@@ -576,3 +519,12 @@ A.blue {
 /*Ñ¡ÖÐ*/
 #bannerTextBox ul li.thisHover  a{background: #CA0068; }
 /**/
+#stuff
+    {
+        position: fixed;
+        top: 100px;
+        right: 25px;
+        z-index: 888;
+        padding:10px;
+        background-color:#ffffff;
+    }

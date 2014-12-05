@@ -22,7 +22,7 @@ namespace UI
         /// <summary>
         /// hide
         /// </summary>
-        int windowHeight1 = 228;
+        int windowHeight1 = 225;
         /// <summary>
         /// show
         /// </summary>

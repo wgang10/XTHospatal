@@ -69,7 +69,7 @@ namespace UI
                 //GlobalVal.glostrAppNo = GetAppNoFromTxt();
                 if (args.Length > 0)
                 {
-                    GlobalVal.TerminalCD = args[0];
+                    GlobalVal.TerminalCD = args[0];//需要修改
                     if (args[0].Equals("Install", StringComparison.CurrentCultureIgnoreCase))
                     {   
                         Thread t1 = new Thread(new ThreadStart(CreateDesktopLnk));

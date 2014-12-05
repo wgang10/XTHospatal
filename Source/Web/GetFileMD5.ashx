@@ -15,7 +15,7 @@ public class GetFileMD5 : IHttpHandler {
         try
         {
             string fileName = context.Request.QueryString["FileName"];
-            string filePath = context.Server.MapPath("App/Update/" + fileName);
+            string filePath = context.Server.MapPath("App/Install/" + fileName);
             if (File.Exists(filePath))
             {
                 FileStream file = new FileStream(filePath, FileMode.Open);

@@ -26,7 +26,7 @@
                 setListNo.apply(this, ['x']);
             }).mouseout(function () {
                 //鼠标离开编号 自动开始继续切换
-                t1 = setInterval(changeBanner, '3000');
+                t1 = setInterval(changeBanner, '5000');
             })
             //定义可触发编号 该变量用来自动切换过程中累加计算 用于判断是否到达最好一个banner位置
             var bannerListIndex = 1;
@@ -76,13 +76,17 @@
                         <div id="bannerImgesBox"> 
                             <a href="Default.aspx" target="_blank" style="display:block;"><img src="images/banner/1.jpg"></a> 
                             <a href="Default.aspx" target="_blank"><img src="images/banner/2.jpg"/></a>
-                            <a href="#"><img src="images/banner/3.jpg"/></a> 
+                            <a href="#"><img src="images/banner/3.jpg"/></a>
+                            <a href="#"><img src="images/banner/4.jpg"/></a> 
+                            <a href="#"><img src="images/banner/5.jpg"/></a> 
                          </div>
                          <div id="bannerTextBox">
                             <ul>
                                 <li class="thisHover" set="0"><a href="###">1</a></li>
                                 <li set="1"><a href="###">2</a></li>
                                 <li set="2"><a href="###">3</a></li>
+                                <li set="3"><a href="###">4</a></li>
+                                <li set="4"><a href="###">5</a></li>
                             </ul>
                         </div>
                     </div>
@@ -123,6 +127,9 @@
 					        </div>
               </li>
             </ul>
+        </div>
+        <div id="stuff">
+            <a href="http://www.ziyangsoft.com/default.aspx" target="_blank">进入西安体院体检<p>信息查询系统>>></></a>
         </div>
     
 </asp:Content>

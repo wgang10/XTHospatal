@@ -14,8 +14,7 @@ namespace Install
 {
   public partial class Install : Form
   {
-      private static string GetConfigWebUrl = @"http://www.ziyangsoft.com/Config.ashx";
-      private static string GetInstallFileListWebUrl = @"http://www.ziyangsoft.com/filelist.ashx";
+      private static string ServerURL = @"http://www.ziyangsoft.com";
       private static string systemName = "XTHospatal";
       private static string InstallURLConfig = "InstallURL";
       private static string InstallPathConfig = "InstallPath";
@@ -26,6 +25,7 @@ namespace Install
     private static int num=0;//已更新文件数 
     private static string[] fileNames;
     private static long size;//所有文件大小 
+    private Dictionary<string, string> LocalFiles = new Dictionary<string, string>();
     public Install()
     {
       InitializeComponent();
@@ -37,20 +37,57 @@ namespace Install
         t.Start();
     }
 
+      /// <summary>
+      /// 获取本地已经存在文件的MD5值
+      /// </summary>
+    private void GetLoacalFilesMD5()
+    {
+        try
+        {
+            string md5Code = string.Empty;
+            DirectoryInfo dr = new DirectoryInfo(appPath);
+            FileInfo[] files = dr.GetFiles();
+            System.Security.Cryptography.MD5 md5 = new System.Security.Cryptography.MD5CryptoServiceProvider();
+            FileStream file;
+            StringBuilder sb = new StringBuilder();
+            byte[] retVal;
+            for (int i = 0; i < files.Length; i++)
+            {
+                if (File.Exists(files[i].FullName))
+                {
+                    file = new FileStream(files[i].FullName, FileMode.Open);                    
+                    retVal = md5.ComputeHash(file);
+                    file.Close();                    
+                    for (int j = 0; j < retVal.Length; j++)
+                    {
+                        sb.Append(retVal[j].ToString("x2"));
+                    }
+                    md5Code = sb.ToString();
+                }
+                LocalFiles.Add(files[i].Name, md5Code);
+            }
+        }
+        catch
+        {   
+        }
+    }
+
     private void BeginInstall()
     {
         try
         {
             InstallURL = GetWebConfig(InstallURLConfig);
             appPath = GetWebConfig(InstallPathConfig);
+            GetLoacalFilesMD5();
         }
         catch (Exception ex)
         {
             MeBox(ex.Message);
             return;
         }
-        GetDownloadFileList();
-        UpdaterStart();
+        GetDownloadFileList();//获取服务器文件列表
+        DeleteExtraFiles();//删除本地不在列表中的文件
+        UpdaterStart();//开始下载
     }
 
     /// <summary> 
@@ -212,10 +249,27 @@ namespace Install
         fileName = fileNames[arry];
         num++;
         //删除已有的下载包
+        //如果本地存在相同文件（文件名和MD5值都相同），则不需要再次下载
+        if (LocalFiles.ContainsKey(fileName.Substring(0, fileName.LastIndexOf(".zip"))))
+        {
+            if (LocalFiles[fileName.Substring(0, fileName.LastIndexOf(".zip"))] == (GetServerFileMD5(fileName)))
+            {
+                lbMessageFile.Text = String.Format(
+            CultureInfo.InvariantCulture,
+            "进度 {0}/{1}>>已存在，跳过..",
+            num,
+            fileNames.Length);
+                return;
+            }
+        }
+
+
         if (File.Exists(appPath + "\\" + fileName))
         {
             File.Delete(appPath + "\\" + fileName);
         }
+
+
         lbMessageFile.Text = String.Format(
             CultureInfo.InvariantCulture,
             "下载进度 {0}/{1}",
@@ -253,7 +307,7 @@ namespace Install
         try
         {
             string strRet = string.Empty;
-            WebRequest req = WebRequest.Create(GetInstallFileListWebUrl);
+            WebRequest req = WebRequest.Create(string.Format("{0}/filelist.ashx", ServerURL));
             WebResponse res = req.GetResponse();
             System.IO.Stream resStream = res.GetResponseStream();
             Encoding encode = System.Text.Encoding.Default;
@@ -276,7 +330,30 @@ namespace Install
         finally
         {   
         }
-    } 
+    }
+
+      /// <summary>
+      /// 删除本地额外文件
+      /// </summary>
+    private void DeleteExtraFiles()
+    {
+        foreach(string key in LocalFiles.Keys)
+        {
+            bool IsExist = false;
+            for (int j = 0; j < fileNames.Length; j++)
+            {
+                if (fileNames[j].Substring(0, fileNames[j].LastIndexOf(".zip")).Equals(key, StringComparison.CurrentCultureIgnoreCase))
+                {
+                    IsExist = true;
+                    break;
+                }
+            }
+            if(!IsExist)
+            {
+                File.Delete(appPath + "\\" + key);
+            }
+        }
+    }
 
     /// <summary>
     /// 计算文件的MD5校验
@@ -302,6 +379,33 @@ namespace Install
       {
         throw new Exception("error:" + ex.Message);
       }
+    }
+
+      /// <summary>
+      /// 获取服务器文件MD5值
+      /// </summary>
+      /// <param name="file"></param>
+      /// <returns></returns>
+    private string GetServerFileMD5(string file)
+    {
+        string strRet = string.Empty;
+        WebRequest req = WebRequest.Create(string.Format("{0}/GetFileMD5.ashx?FileName={1}", ServerURL, file));
+        WebResponse res = req.GetResponse();
+        System.IO.Stream resStream = res.GetResponseStream();
+        Encoding encode = System.Text.Encoding.Default;
+        StreamReader readStream = new StreamReader(resStream, encode);
+        Char[] read = new Char[256];
+        int count = readStream.Read(read, 0, 256);
+        while (count > 0)
+        {
+            String str = new String(read, 0, count);
+            strRet = strRet + str;
+            count = readStream.Read(read, 0, 256);
+        }
+        resStream.Close();
+        readStream.Close();
+        res.Close();
+        return strRet;
     }
 
     /// <summary> 
@@ -346,7 +450,7 @@ namespace Install
     private static string GetWebConfig(string ConfigName)
     {
         string strRet = string.Empty;
-        WebRequest req = WebRequest.Create(string.Format("{0}?SystemName={1}&ConfigName={2}", GetConfigWebUrl,systemName,ConfigName));
+        WebRequest req = WebRequest.Create(string.Format("{0}/Config.ashx?SystemName={1}&ConfigName={2}", ServerURL, systemName, ConfigName));
         WebResponse res = req.GetResponse();
         System.IO.Stream resStream = res.GetResponseStream();
         Encoding encode = System.Text.Encoding.Default;
