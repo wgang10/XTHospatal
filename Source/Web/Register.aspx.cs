@@ -10,4 +10,8 @@ public partial class Register : System.Web.UI.Page
     {
 
     }
+    protected void btnRegister_Click(object sender, EventArgs e)
+    {
+
+    }
 }

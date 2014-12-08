@@ -68,12 +68,7 @@ A {
 	MIN-HEIGHT: 500px;BACKGROUND: url(../images/icon9.jpg) center top
 }
 
-.bgconnent {
-	BACKGROUND: url(../images/icon9.jpg) center center;text-align:center center;
-}
-.bgfoot {
-	height:80px; text-align:center; background-color:#fff;vertical-align:top; MARGIN:10px 0px 0px 20px;
-}
+
 .allscn {
 	WIDTH: 100%; FLOAT: left; HEIGHT: 800px
 }
@@ -91,20 +86,8 @@ A {
 .searchbg {
 	MIN-HEIGHT: 620px; BACKGROUND: url(../images/icon6.jpg) repeat-x center top
 }
-.tpkg {
-	Z-INDEX: 1;
-	POSITION: relative;
-	TEXT-ALIGN: left;
-	WIDTH: 100%;
-	FONT-FAMILY: "ËÎÌו";
-	BACKGROUND: url(../images/bgscroll.png) repeat-x 0px -192px;
-	FLOAT: left;
-	HEIGHT: 50px;
-	COLOR: #ffffff;
-	background-image: url(../images/bgscroll.png);
-}
 .topLink {
-    PADDING-TOP:20px;PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FLOAT: right; MARGIN:0px 200px 15px 0px; OVERFLOW: hidden;
+    PADDING-TOP:20px;PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FLOAT: left; MARGIN:0px 0px 15px 0px; OVERFLOW: hidden;
 }
 .tpkg .tphd {
 	POSITION: relative; TEXT-ALIGN: left; MARGIN: 0px auto; WIDTH: 980px; HEIGHT: 75px;
@@ -219,19 +202,19 @@ A {
 	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; WIDTH: 70px; PADDING-RIGHT: 0px; FLOAT: left; PADDING-TOP: 0px
 }
 .regkg {
-	WIDTH: 391px; FLOAT: left
+	WIDTH: 500px; FLOAT: left
 }
 .regkg1 {
-	MARGIN-TOP: 54px; FLOAT: left
+	FLOAT: left;color:#ffffff; margin:50px 0 0 200px;
 }
 .regkg INPUT {
 	FLOAT: left
 }
 .regkg UL {
-	WIDTH: 391px; FLOAT: left
+	WIDTH: 500; FLOAT: left
 }
 LI {
-	WIDTH: 391px; FLOAT: left
+	WIDTH:500px; FLOAT: left
 }
 .regkg UL LI {
 	PADDING-TOP: 23px
@@ -528,3 +511,35 @@ A.blue {
         padding:10px;
         background-color:#ffffff;
     }
+
+#toppic
+    {
+        float:left;
+        left: 20px;
+        padding:0px;
+    }
+#toplink
+    {
+        float:right;
+        left: 100px;
+        padding:0px;
+        min-width:300px;
+        OVERFLOW: hidden;
+    }
+.tpkg {    
+	TEXT-ALIGN: left;
+	WIDTH: 100%;
+	FONT-FAMILY: "ËÎÌו";
+	BACKGROUND: url(../images/bgscroll.png) repeat-x 0px -192px;
+	FLOAT: left;
+	HEIGHT: 50px;
+	COLOR: #ffffff;
+	background-image: url(../images/bgscroll.png);
+}
+
+.bgconnent {
+	BACKGROUND: url(../images/icon9.jpg) center center;text-align:center center;
+}
+.bgfoot {
+	height:80px; text-align:center; background-color:#fff;vertical-align:top; MARGIN:10px 0px 0px 20px;
+}
