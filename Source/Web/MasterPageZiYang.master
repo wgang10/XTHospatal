@@ -33,7 +33,7 @@
 				    <a href="Register.aspx">注册</a>
                 </asp:Label>
                 <asp:Label class="topLink" runat="server" id="divLogined" visible="false"> 
-				    <a href="LogOut.aspx">注销</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <asp:Button ID="btnLogOut" runat="server" Text="注销" OnClick="btnLogOut_Click" />&nbsp;&nbsp;&nbsp;&nbsp;
 				    <a href="ChangePassWord.aspx">修改密码</a>&nbsp;&nbsp;&nbsp;&nbsp;
                     <a href="MebmerInfo.aspx">个人信息</a>
                 </asp:Label> 

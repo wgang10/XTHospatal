@@ -10,14 +10,7 @@ public partial class MebmerInfo : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            if (Session["UserInfo"] != null)
-            {
-                this.Label1.Text = Session["UserInfo"].ToString();
-            }
-            else
-            {
-                Response.Redirect("Login.aspx");
-            }
+            this.Label1.Text = Session["UserInfo"].ToString();
         }
     }
 }
