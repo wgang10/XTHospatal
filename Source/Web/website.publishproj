@@ -20,7 +20,7 @@ Copyright (C) Microsoft Corporation. All rights reserved.
     <SourceWebPhysicalPath>$(MSBuildThisFileDirectory)</SourceWebPhysicalPath>
     <SourceWebVirtualPath>/Web</SourceWebVirtualPath>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
-    <SourceWebProject>D:\GitSource\XTHospatal\Source\Web</SourceWebProject>
+    <SourceWebProject>D:\GitSource\XTHospital\Source\Web</SourceWebProject>
     <SourceWebMetabasePath>/IISExpress/7.5/LM/W3SVC/3/ROOT</SourceWebMetabasePath>
   </PropertyGroup>
   <PropertyGroup>

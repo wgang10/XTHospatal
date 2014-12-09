@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="XTHospatalChangePassWord.aspx.cs" Inherits="ChangePassWord" Title="修改密码" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="XTHospitalChangePassWord.aspx.cs" Inherits="ChangePassWord" Title="修改密码" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 <div style="text-align:center;">
     <div id="DivLogin" style="text-align:center;">

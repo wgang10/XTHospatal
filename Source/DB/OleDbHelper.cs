@@ -317,7 +317,7 @@ namespace XTHospital.DB
 
         private static string GetConnectionStr()
         {
-            return @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + System.Web.HttpContext.Current.Server.MapPath("~/App_Data") + @"\XTHospatal.mdb;Jet OLEDB:Database Password=wan;";
+            return @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + System.Web.HttpContext.Current.Server.MapPath("~/App_Data") + @"\XTHospital.mdb;Jet OLEDB:Database Password=wan;";
         }
     }
 }

@@ -394,7 +394,7 @@ namespace UI
 
         public void ShowNews()
         {
-            webService.News[] list = GlobalVal.WebSerices.GetNews("XTHospatal", 5);
+            webService.News[] list = GlobalVal.WebSerices.GetNews("XTHospital", 5);
             for (int i = 0; i < list.Length; i++)
             {
                 Label lbl = new Label();

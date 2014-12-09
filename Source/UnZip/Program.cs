@@ -11,9 +11,9 @@ namespace UnZip
     class Program
     {
         private static string webUrl = @"http://ziyangsoft.com/Config.ashx";
-        private static string systemName = "XTHospatal";
+        private static string systemName = "XTHospital";
         private static string fileName = "";
-        private static string appPath = @"C:\XTHospatal";
+        private static string appPath = @"C:\XTHospital";
         private static string InstallFileNameConfig = "InstallFileName";
         private static string InstallPathConfig = "InstallPath";
 

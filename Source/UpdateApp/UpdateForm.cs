@@ -21,7 +21,7 @@ namespace UpdateApp
         private static string GitConfigWebUrl = @"http://www.ziyangsoft.com/Config.ashx";
         //private static string webUrl2 = @"http://www.ziyangsoft.com/filelist.ashx?InstallOrUpdate=Update";
         //private static string webUrl3 = @"http://www.ziyangsoft.com/GetFileMD5.ashx";
-        private static string systemName = "XTHospatal";
+        private static string systemName = "XTHospital";
         delegate void ShowProgressDelegate(int totalStep, int currentStep);
         private static string UpdataURLConfig = "InstallURL";
         private static string InstallPathConfig = "InstallPath";
@@ -34,7 +34,7 @@ namespace UpdateApp
         private static long upsize;//已更新文件大小 
         private static string fileName="Update.zip";//当前文件名 
         private static long filesize;//当前文件大小
-        private static string InstallPath = @"C:\XTHospatal";//安装路径，默认C盘
+        private static string InstallPath = @"C:\XTHospital";//安装路径，默认C盘
         private static string LastAppNoConfig = "LastAppNo";
         public UpdateForm()
         {
@@ -48,7 +48,7 @@ namespace UpdateApp
             try
             {
                 InstallURL = GetWebConfig(UpdataURLConfig);//http://www.ziyangsoft.com/App/Install
-                InstallPath = GetWebConfig(InstallPathConfig);//C:\XTHospatal
+                InstallPath = GetWebConfig(InstallPathConfig);//C:\XTHospital
             }
             catch (Exception ex)
             {

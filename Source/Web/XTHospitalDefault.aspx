@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="XTHospatalDefault.aspx.cs" Inherits="_Default" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="XTHospitalDefault.aspx.cs" Inherits="_Default" %>
 
 <%@ Register src="WebUserControlEmployeeInfo.ascx" tagname="WebUserControlEmployeeInfo" tagprefix="uc1" %>
 

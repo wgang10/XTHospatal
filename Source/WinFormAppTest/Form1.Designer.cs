@@ -179,7 +179,7 @@
             this.txtSystemName.Name = "txtSystemName";
             this.txtSystemName.Size = new System.Drawing.Size(148, 21);
             this.txtSystemName.TabIndex = 12;
-            this.txtSystemName.Text = "XTHospatal";
+            this.txtSystemName.Text = "XTHospital";
             // 
             // lbID
             // 

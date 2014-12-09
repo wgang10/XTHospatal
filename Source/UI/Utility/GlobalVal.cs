@@ -180,13 +180,13 @@ namespace UI
         /// </summary>
         public static string PictureTopUrl = "";
         /// <summary>
-        /// 程序安装路径 默认为C:\XTHospatal
+        /// 程序安装路径 默认为C:\XTHospital
         /// </summary>
-        public static string AappPath = @"C:\XTHospatal";
+        public static string AappPath = @"C:\XTHospital";
         /// <summary>
         /// 系统名称
         /// </summary>
-        public static string SystemNameEN = @"XTHospatal";
+        public static string SystemNameEN = @"XTHospital";
         /// <summary>
         /// 登录用户名
         /// </summary>

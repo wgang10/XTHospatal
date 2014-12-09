@@ -23,7 +23,7 @@
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <OldToolsVersion>4.0</OldToolsVersion>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -45,10 +45,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLLUser.cs" />
     <Compile Include="BLL_Bexamination.cs" />
     <Compile Include="BLL_Biochemistry.cs" />
     <Compile Include="BLL_Composition.cs" />
@@ -73,6 +75,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\COMM\COMM.csproj">
+      <Project>{5b6c3e04-ddff-4d43-8800-f4e081d295dc}</Project>
+      <Name>COMM</Name>
+    </ProjectReference>
     <ProjectReference Include="..\COM\COM.csproj">
       <Project>{1D4C12EC-E53B-41A0-B867-8CB6A6550006}</Project>
       <Name>COM</Name>
@@ -88,6 +94,10 @@
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{1CC2D7D8-0620-4103-BA6A-3E1FC1FE86A7}</Project>
       <Name>Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ORM\ORM.csproj">
+      <Project>{a3639d44-6e1f-4e5e-bbe3-47a1cb8e991e}</Project>
+      <Name>ORM</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

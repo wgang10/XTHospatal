@@ -8,10 +8,11 @@
     <ProjectGuid>{D09674C4-3BA7-44B5-99E6-5337D9841EBF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>XTHospatal.SQLDAL</RootNamespace>
-    <AssemblyName>XTHospatal.SQLDAL</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <RootNamespace>XTHospital.SQLDAL</RootNamespace>
+    <AssemblyName>XTHospital.SQLDAL</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>

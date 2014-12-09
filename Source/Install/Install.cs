@@ -15,13 +15,13 @@ namespace Install
   public partial class Install : Form
   {
       private static string ServerURL = @"http://www.ziyangsoft.com";
-      private static string systemName = "XTHospatal";
+      private static string systemName = "XTHospital";
       private static string InstallURLConfig = "InstallURL";
       private static string InstallPathConfig = "InstallPath";
       private static string InstallURL = string.Empty;
     private WebClient downWebClient = new WebClient();
     private static string fileName = "Install.zip";//当前文件名 
-    private static string appPath = @"C:\XTHospatal";
+    private static string appPath = @"C:\XTHospital";
     private static int num=0;//已更新文件数 
     private static string[] fileNames;
     private static long size;//所有文件大小 
