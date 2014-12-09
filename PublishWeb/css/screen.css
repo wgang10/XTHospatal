@@ -172,6 +172,17 @@ p{
 		border:0px;
 		border-style:dashed;
 		}
+.DivPassword2
+		{
+		margin:10px auto 10px 25px;
+		width:450px;
+		padding-left:19px;
+		padding-top:5px;
+		padding-bottom :5px;
+		text-align:left;
+		border:0px;
+		border-style:dashed;
+		}
 #DivLoginBtn{
 		margin:10px auto 10px 25px;
 		width:400px;

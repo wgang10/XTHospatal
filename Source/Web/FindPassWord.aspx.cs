@@ -51,7 +51,7 @@ public partial class FindPassWord : System.Web.UI.Page
     尚美思计算机科技有限公司
 
     本邮件为系统自动发送，请勿回复。";
-                    blFlag = XTHospital.COM.Mothod.SendMail(strMailTo, strTitle, strMailBody, out strMessage);
+                    blFlag = XTHospital.COM.Method.SendMail1(strMailTo, strTitle, strMailBody, out strMessage);
                     if (blFlag)
                     {
                         XTHospital.BLL.BLL_Log.AddLog("用户[" + strUserName + "]使用了找回密码功能，将密码发送到了邮箱[" + strMailTo + "].", "1", Page.Request.UserHostAddress);//添加日志

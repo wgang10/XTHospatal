@@ -13,4 +13,12 @@ public partial class Login : System.Web.UI.Page
             Session["UserInfo"] = Page.Request.UserHostAddress + "|" + Page.Request.Browser.ToString();
         }
     }
+    protected void btnLogin_Click(object sender, EventArgs e)
+    {
+
+    }
+    protected void btnFindPassWord_Click(object sender, EventArgs e)
+    {
+
+    }
 }

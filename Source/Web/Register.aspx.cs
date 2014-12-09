@@ -8,6 +8,12 @@ using XTHospital.BLL;
 public partial class Register : System.Web.UI.Page
 {
     private readonly BLLUser bll;
+
+    public Register()
+    {
+        bll = new BLLUser();
+    }
+
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -24,6 +30,14 @@ public partial class Register : System.Web.UI.Page
         {
             lbRegisterMsg.Visible = true;
             lbRegisterMsg.Text = "两次输入密码不一致。";
+            lbRegisterMsg.DataBind();
+            return;
+        }
+
+        if (this.txtValidateCode.Text.Trim().ToUpper() != Session["CheckCode"].ToString().ToUpper())
+        {
+            lbRegisterMsg.Visible = true;
+            lbRegisterMsg.Text = "验证码错误!";
             lbRegisterMsg.DataBind();
             return;
         }

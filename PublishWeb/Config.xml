@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Config>
-  <System Name ="XTHospatal">
+  <System Name ="XTHospital">
     <WebServicesURL>http://www.ziyangsoft.com</WebServicesURL>
     <InstallURL>http://www.ziyangsoft.com/App/Install</InstallURL>
-    <InstallPath>C:\XTHospatal</InstallPath>
+    <InstallPath>C:\XTHospital</InstallPath>
     <PictureLoading>http://http://www.ziyangsoft.com/images/UI/Loading.png</PictureLoading>
     <PictureTop>http://http://www.ziyangsoft.com/images/UI/Top.jpg</PictureTop>
     <PictureLogin>http://http://www.ziyangsoft.com/images/UI/Login.jpg</PictureLogin>

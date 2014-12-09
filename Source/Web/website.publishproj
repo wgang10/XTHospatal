@@ -19,7 +19,7 @@ Copyright (C) Microsoft Corporation. All rights reserved.
     <ProjectGuid>{dafd34a7-a98d-4d14-874b-6ecb43679c19}</ProjectGuid>
     <SourceWebPhysicalPath>$(MSBuildThisFileDirectory)</SourceWebPhysicalPath>
     <SourceWebVirtualPath>/Web</SourceWebVirtualPath>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <SourceWebProject>D:\GitSource\XTHospital\Source\Web</SourceWebProject>
     <SourceWebMetabasePath>/IISExpress/7.5/LM/W3SVC/3/ROOT</SourceWebMetabasePath>
   </PropertyGroup>
@@ -46,6 +46,10 @@ Copyright (C) Microsoft Corporation. All rights reserved.
       <Project>{7656C225-C76A-4851-A72A-41BA441FB5FA}</Project>
       <Name>BLL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\COMM\COMM.csproj">
+      <Project>{5B6C3E04-DDFF-4D43-8800-F4E081D295DC}</Project>
+      <Name>COMM</Name>
+    </ProjectReference>
     <ProjectReference Include="..\COM\COM.csproj">
       <Project>{1D4C12EC-E53B-41A0-B867-8CB6A6550006}</Project>
       <Name>COM</Name>
@@ -69,6 +73,10 @@ Copyright (C) Microsoft Corporation. All rights reserved.
     <ProjectReference Include="..\OleDbDAL\OleDbDAL.csproj">
       <Project>{05918081-5B3A-4203-9E95-08C10B2A4572}</Project>
       <Name>OleDbDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ORM\ORM.csproj">
+      <Project>{A3639D44-6E1F-4E5E-BBE3-47A1CB8E991E}</Project>
+      <Name>ORM</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(_WebPublishTargetsPath)\Web\Microsoft.WebSite.Publishing.targets" />

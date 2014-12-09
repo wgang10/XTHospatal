@@ -4,6 +4,7 @@ using System.Text;
 using XTHospital.COMM.Entity;
 using XTHospital.ORM;
 using System.Configuration;
+using XTHospital.COM;
 
 namespace XTHospital.BLL
 {
@@ -51,10 +52,10 @@ namespace XTHospital.BLL
                 else
                 {
                     list[0].Nickname = Nickname;
-                    list[0].LoginPWD = COM.Mothod.EncryptPWD(PassWord);
+                    list[0].LoginPWD = COM.Method.EncryptPWD(PassWord);
                     list[0].UpdateTime = DateTime.Now;
                     list[0].CreatTime = DateTime.Now;
-                    list[0].VerifictionCode = COM.Mothod.GenerateVerifictionCode();
+                    list[0].VerifictionCode = COM.Method.GenerateVerifictionCode();
                     int limitMinutes = 30;
                     int.TryParse(ConfigurationManager.AppSettings["VerifictionCodeLimitMinutes"], out limitMinutes);
                     list[0].VerifictionCodeLimit = DateTime.Now.AddMinutes(limitMinutes);
@@ -69,13 +70,13 @@ namespace XTHospital.BLL
 
                 model.Nickname = Nickname;
                 model.Email = Email;
-                model.LoginPWD = COM.Mothod.EncryptPWD(PassWord);
+                model.LoginPWD = COM.Method.EncryptPWD(PassWord);
                 model.Status = 3;//刚注册未验证
                 model.LoginTimes = 0;
                 model.Integral = 0;
                 model.UpdateTime = DateTime.Now;
                 model.CreatTime = DateTime.Now;
-                model.VerifictionCode = COM.Mothod.GenerateVerifictionCode();
+                model.VerifictionCode = COM.Method.GenerateVerifictionCode();
                 int limitMinutes = 30;
                 int.TryParse(ConfigurationManager.AppSettings["VerifictionCodeLimitMinutes"], out limitMinutes);
                 model.VerifictionCodeLimit = DateTime.Now.AddMinutes(limitMinutes);
@@ -91,6 +92,165 @@ namespace XTHospital.BLL
                     ID = model.Id;
                     return true;
                 }
+            }
+        }
+
+        /// <summary>
+        /// 会员激活
+        /// </summary>
+        /// <param name="MemberID"></param>
+        /// <param name="VerifictionCode"></param>
+        /// <param name="Msg"></param>
+        /// <returns></returns>
+        public bool ActivatMember(int MemberID, string VerifictionCode, ref string Msg)
+        {
+            IList<Member> list = OptionMember.GetAllMemberByID(MemberID);
+            if (list.Count > 0)
+            {
+                if (list[0].VerifictionCodeLimit < DateTime.Now)
+                {
+                    Msg = "验证码有效期已过，请重新发送验证码";
+                    return false;
+                }
+                else
+                {
+                    if (list[0].VerifictionCode.Trim().Equals(VerifictionCode.Trim()))
+                    {
+                        //修改用户状态为正常
+                        list[0].Status = 0;
+                        list[0].Integral = 100;
+                        list[0].UpdateTime = DateTime.Now;
+                        bool isSuccess = OptionMember.UpdateMember(list[0]);
+                        //添加用户历史信息
+                        if (isSuccess)
+                        {
+                            #region 会员历史信息
+                            HistoryOfMemberUpdate modelHis = new HistoryOfMemberUpdate();
+                            modelHis.CreatTime = DateTime.Now;
+                            modelHis.MemberId = list[0].Id;
+                            modelHis.OpenId = list[0].OpenId;
+                            modelHis.Nickname = list[0].Nickname;
+                            modelHis.Question1 = list[0].Question1;
+                            modelHis.Question2 = list[0].Question2;
+                            modelHis.Question3 = list[0].Question3;
+                            modelHis.Anwser1 = list[0].Anwser1;
+                            modelHis.Anwser2 = list[0].Anwser2;
+                            modelHis.Anwser3 = list[0].Anwser3;
+                            modelHis.Email = list[0].Email;
+                            modelHis.Phone = list[0].Phone;
+                            modelHis.LoginPWD = list[0].LoginPWD;
+                            modelHis.Type = list[0].Type;
+                            modelHis.Photo = list[0].Photo;
+                            modelHis.PhotoURL = list[0].PhotoURL;
+                            modelHis.Gender = list[0].Gender;
+                            modelHis.Birthday = list[0].Birthday;
+                            modelHis.Birthplace = list[0].Birthplace;
+                            modelHis.Education = list[0].Education;
+                            modelHis.Job = list[0].Job;
+                            modelHis.Address = list[0].Address;
+                            modelHis.LoginTimes = list[0].LoginTimes;
+                            modelHis.LastLoginDateTime = list[0].LastLoginDateTime;
+                            modelHis.CurrentLoginDateTime = list[0].CurrentLoginDateTime;
+                            modelHis.Integral = list[0].Integral;
+                            modelHis.Status = list[0].Status;
+                            #endregion
+
+                            if (OptionMember.SaveHistoryOfMemberUpdate(modelHis) == -1)
+                            {
+                                Msg = "保存会员历史信息发生错误";
+                                return false;
+                            }
+                            else
+                            {
+                                return true;
+                            }
+                        }
+                        else
+                        {
+                            Msg = "保存会员信息发生错误";
+                            return false;
+                        }
+                    }
+                    else
+                    {
+                        Msg = "验证码错误";
+                        return false;
+                    }
+                }
+            }
+            else
+            {
+                Msg = "没有找到本会员信息";
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// 会员登录
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <param name="Msg"></param>
+        /// <returns></returns>
+        public bool LoginMember(int ID, ref string Msg, ref Member model)
+        {
+            bool isSuccess = false;
+            IList<Member> list = OptionMember.GetNormalMemberByID(ID);
+            if (list.Count > 0)
+            {
+                list[0].LoginTimes += 1;
+                //如果最后登录时间不是今天（也就是今天第一次登录）积分+10
+                if (list[0].LastLoginDateTime.HasValue && list[0].LastLoginDateTime.Value.Date != DateTime.Now.Date && list[0].LastLoginDateTime < DateTime.Now)
+                {
+                    list[0].Integral += 10;
+                }
+                list[0].LastLoginDateTime = list[0].CurrentLoginDateTime;
+                list[0].CurrentLoginDateTime = DateTime.Now;
+                list[0].UpdateTime = DateTime.Now;
+                model = list[0];
+                return OptionMember.UpdateMember(list[0]);
+            }
+            else
+            {
+                Msg = "会员不存在";//会员不存在
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// 会员登录
+        /// </summary>
+        /// <param name="LoginID"></param>
+        /// <param name="PWD"></param>
+        /// <param name="Msg"></param>
+        /// <returns></returns>
+        public bool LoginMember(string LoginID, string PWD, ref string Msg, ref Member model)
+        {
+            bool isSuccess = false;
+            IList<Member> list = OptionMember.GetNormalMemberByEmail(LoginID);
+            if (list.Count > 0)
+            {
+                if (!list[0].LoginPWD.Trim().Equals(COM.Method.EncryptPWD(PWD)))
+                {
+                    Msg = "账号或密码错误";
+                    return false;
+                }
+
+                list[0].LoginTimes += 1;
+                //如果最后登录时间不是今天（也就是今天第一次登录）积分+10
+                if (list[0].LastLoginDateTime.HasValue && list[0].LastLoginDateTime.Value.Date != DateTime.Now.Date && list[0].LastLoginDateTime < DateTime.Now)
+                {
+                    list[0].Integral += 10;
+                }
+                list[0].LastLoginDateTime = list[0].CurrentLoginDateTime;
+                list[0].CurrentLoginDateTime = DateTime.Now;
+                list[0].UpdateTime = DateTime.Now;
+                model = list[0];
+                return OptionMember.UpdateMember(list[0]);
+            }
+            else
+            {
+                Msg = "账号或密码错误";//账号不存在
+                return false;
             }
         }
     }

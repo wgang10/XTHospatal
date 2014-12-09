@@ -60,7 +60,7 @@
     <Compile Include="DataSetZip.cs" />
     <Compile Include="Enum.cs" />
     <Compile Include="GlobalVal.cs" />
-    <Compile Include="Mothod.cs" />
+    <Compile Include="Method.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReturnValue.cs" />
     <Compile Include="UtilityLog.cs" />
