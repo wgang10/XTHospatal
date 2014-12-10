@@ -51,7 +51,7 @@ public partial class MyLogin : System.Web.UI.Page
                             Session["EmployeeMail"] = resoult.ResultDataSet.Tables[0].Rows[0]["EmployeeEmail"].ToString().Trim();
                             Session["EmployeePhone"] = resoult.ResultDataSet.Tables[0].Rows[0]["EmployeePhone"].ToString().Trim();
                             XTHospital.BLL.BLL_Log.AddLog("查询用户[" + strEmployeeName + "]登录了系统.", "1", Page.Request.UserHostAddress);//添加日志
-                            Response.Redirect("Default.aspx");
+                            Response.Redirect("XTHospitalDefault.aspx");
                         }
                         else
                         {
@@ -85,6 +85,6 @@ public partial class MyLogin : System.Web.UI.Page
 
     protected void btnFindPassWord_Click(object sender, EventArgs e)
     {
-        Response.Redirect("FindPassWord.aspx");
+        Response.Redirect("XTHospitalFindPassWord.aspx");
     }
 }

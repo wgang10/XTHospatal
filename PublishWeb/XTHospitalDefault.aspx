@@ -39,8 +39,8 @@
 <div id="container">
 	<div id="header">
 	    <div id="Links">
-		    <a href="ChangePassWord.aspx">修改密码</a>
-		    <a href="LogOut.aspx">退出系统</a>
+		    <a href="XTHospitalChangePassWord.aspx">修改密码</a>
+		    <a href="XTHospitalLogOut.aspx">退出系统</a>
 		</div>
 	</div>
     

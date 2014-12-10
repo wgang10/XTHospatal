@@ -40,7 +40,7 @@ public partial class ActivatMember : System.Web.UI.Page
     本邮件为系统自动发送，请勿回复。谢谢！
 
     子杨软件|www.ziyangsoft.com", strNickName, strLimitTime);
-                blFlag = XTHospital.COM.Mothod.SendMail2(strMailTo, strTitle, strMailBody, out strMessage);
+                blFlag = XTHospital.COM.Method.SendMail2(strMailTo, strTitle, strMailBody, out strMessage);
                 if (blFlag)
                 {
                     lbMsg1.Text = String.Format("注册成功！您的账号<strong>{0}</strong>。", strMailTo);

@@ -8,6 +8,12 @@ using XTHospital.BLL;
 public partial class Register : System.Web.UI.Page
 {
     private readonly BLLUser bll;
+
+    public Register()
+    {
+        bll = new BLLUser();
+    }
+
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -28,8 +34,9 @@ public partial class Register : System.Web.UI.Page
             return;
         }
 
-        if (this.txtValidateCode.Text.Trim().ToUpper() == Session["CheckCode"].ToString().ToUpper())
+        if (this.txtValidateCode.Text.Trim().ToUpper() != Session["CheckCode"].ToString().ToUpper())
         {
+            lbRegisterMsg.Visible = true;
             lbRegisterMsg.Text = "验证码错误!";
             lbRegisterMsg.DataBind();
             return;

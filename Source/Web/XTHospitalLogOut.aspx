@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="LoginToQQ.aspx.cs" Inherits="LoginToQQ" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="XTHospitalLogOut.aspx.cs" Inherits="XTHospitalLogOut" %>
 
 <!DOCTYPE html>
 
@@ -9,7 +9,7 @@
 <body>
     <form id="form1" runat="server">
     <div>
-    <asp:Label ID="lbLoginMessage" runat="server" ForeColor="White" Visible="false" BackColor="Red"/>
+    
     </div>
     </form>
 </body>

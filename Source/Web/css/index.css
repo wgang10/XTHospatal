@@ -544,3 +544,8 @@ A.blue {
 .bgfoot {
 	height:60px; text-align:center; background-color:#fff;vertical-align:top; MARGIN:10px 0px 0px 20px;
 }
+.tableborder {BORDER-RIGHT: #dedbbd 1px solid; BORDER-TOP: #dedbbd 1px solid; BACKGROUND: #fffbff; BORDER-LEFT: #dedbbd 1px solid; BORDER-BOTTOM: #dedbbd 1px solid}
+.header {FONT: bold 11px Tahoma, Verdana; COLOR: #ffffff; BACKGROUND-COLOR: #cecfb5}
+.header A {COLOR: #ffffff}
+.altbg1 {BACKGROUND: #fffbf7}
+.altbg2 {BACKGROUND: #fffbff}

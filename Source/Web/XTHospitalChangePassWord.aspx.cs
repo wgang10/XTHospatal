@@ -17,7 +17,7 @@ public partial class ChangePassWord : System.Web.UI.Page
         {
             if (Session["LoginUserID"] == null || Session["LoginUserID"].ToString() == "")
             {
-                Response.Redirect("Login.aspx");
+                Response.Redirect("MyLogin.aspx");
             }
             if (!IsPostBack)
             {
@@ -26,12 +26,12 @@ public partial class ChangePassWord : System.Web.UI.Page
         }
         catch
         {
-            Response.Redirect("Login.aspx");
+            Response.Redirect("MyLogin.aspx");
         }
     }
     protected void btnCancel_Click(object sender, EventArgs e)
     {
-        Response.Redirect("Default.aspx");
+        Response.Redirect("XTHospitalDefault.aspx");
     }
     protected void btnSave_Click(object sender, EventArgs e)
     {

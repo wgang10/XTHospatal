@@ -253,5 +253,141 @@ namespace XTHospital.BLL
                 return false;
             }
         }
+
+        /// <summary>
+        /// 取得全部会员信息
+        /// </summary>
+        /// <returns></returns>
+        public IList<Member> GetAllMembers()
+        {
+            return OptionMember.GetAllMembers();
+        }
+
+        /// <summary>
+        /// 删除会员
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <returns></returns>
+        public bool DeleteMember(int ID)
+        {
+            return true;
+        }
+
+        /// <summary>
+        /// 根据会员ID查询会员信息
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <returns></returns>
+        public IList<Member> GetAllMemberByID(int ID)
+        {
+            return OptionMember.GetAllMemberByID(ID);
+        }
+
+        /// <summary>
+        /// 根据会员Email查询会员信息
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <returns></returns>
+        public IList<Member> GetAllMemberByEmail(string email)
+        {
+            return OptionMember.GetAllMemberByEmail(email);
+        }
+
+        /// <summary>
+        /// 会员登录
+        /// </summary>
+        /// <param name="Member"></param>
+        /// <param name="Msg"></param>
+        /// <returns></returns>
+        public bool LoginMember(Member modelMember, ref string Msg)
+        {
+            bool isSuccess = false;
+            try
+            {
+                IList<Member> list = OptionMember.GetMemberByOpenID(modelMember.OpenId);
+                if (list.Count > 0)
+                {
+                    list[0].LoginTimes += 1;
+                    list[0].Nickname = modelMember.Nickname;
+                    //如果最后登录时间不是今天（也就是今天第一次登录）积分+10
+                    if (list[0].LastLoginDateTime.Value.Date != DateTime.Now.Date && list[0].LastLoginDateTime < DateTime.Now)
+                    {
+                        list[0].Integral += 10;
+                    }
+                    list[0].LastLoginDateTime = list[0].CurrentLoginDateTime;
+                    list[0].CurrentLoginDateTime = DateTime.Now;
+                    list[0].UpdateTime = DateTime.Now;
+                    list[0].PhotoURL = modelMember.PhotoURL;
+                    isSuccess = OptionMember.UpdateMember(list[0]);
+                }
+                else
+                {
+                    Member model = new Member();
+                    HistoryOfMemberUpdate modelHis = new HistoryOfMemberUpdate();
+                    model.OpenId = modelMember.OpenId;
+                    model.Nickname = modelMember.Nickname;
+                    model.LastLoginDateTime = DateTime.Now;
+                    model.CurrentLoginDateTime = DateTime.Now;
+                    model.LoginTimes = 1;
+                    model.Integral = 100;
+                    model.Status = 0;
+                    model.UpdateTime = DateTime.Now;
+                    model.CreatTime = DateTime.Now;
+                    model.PhotoURL = modelMember.PhotoURL;
+                    modelHis.MemberId = OptionMember.SaveMember(model);
+                    if (modelHis.MemberId != -1)
+                    {
+                        modelHis.CreatTime = DateTime.Now;
+
+                        #region 会员历史信息
+                        modelHis.OpenId = model.OpenId;
+                        modelHis.Nickname = model.Nickname;
+                        modelHis.Question1 = model.Question1;
+                        modelHis.Question2 = model.Question2;
+                        modelHis.Question3 = model.Question3;
+                        modelHis.Anwser1 = model.Anwser1;
+                        modelHis.Anwser2 = model.Anwser2;
+                        modelHis.Anwser3 = model.Anwser3;
+                        modelHis.Email = model.Email;
+                        modelHis.Phone = model.Phone;
+                        modelHis.LoginPWD = model.LoginPWD;
+                        modelHis.Type = model.Type;
+                        modelHis.Photo = model.Photo;
+                        modelHis.PhotoURL = model.PhotoURL;
+                        modelHis.Gender = model.Gender;
+                        modelHis.Birthday = model.Birthday;
+                        modelHis.Birthplace = model.Birthplace;
+                        modelHis.Education = model.Education;
+                        modelHis.Job = model.Job;
+                        modelHis.Address = model.Address;
+                        modelHis.LoginTimes = model.LoginTimes;
+                        modelHis.LastLoginDateTime = model.LastLoginDateTime;
+                        modelHis.CurrentLoginDateTime = model.CurrentLoginDateTime;
+                        modelHis.Integral = model.Integral;
+                        modelHis.Status = model.Status;
+                        #endregion
+
+                        OptionMember.SaveHistoryOfMemberUpdate(modelHis);
+                        isSuccess = true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Msg = ex.Message;
+                isSuccess = false;
+            }
+            return isSuccess;
+        }
+
+        /// <summary>
+        /// 获取用户信息
+        /// </summary>
+        /// <param name="OponID"></param>
+        /// <returns></returns>
+        public IList<Member> GetMemberByOpenID(string OponID)
+        {
+            return OptionMember.GetMemberByOpenID(OponID);
+        }
     }
 }

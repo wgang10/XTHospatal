@@ -129,7 +129,7 @@
             </ul>
         </div>
         <div id="stuff">
-            <a href="http://www.ziyangsoft.com/default.aspx" target="_blank">进入西安体院体检<p>信息查询系统>>></></a>
+            <a href="XTHospitalDefault.aspx" target="_blank">进入西安体院体检<p>信息查询系统>>></></a>
         </div>
     
 </asp:Content>

@@ -151,6 +151,16 @@ p{
 		border:0px;
 		border-style:dashed;
 		}
+.DivChangePWD1{
+		margin:10px auto 10px 25px;
+		width:400px;
+		padding-left:42px;
+		padding-top:5px;
+		padding-bottom :5px;
+		text-align:left;
+		border:0px;
+		border-style:dashed;
+		}
 .DivLoginB{
 		margin:10px auto 10px 25px;
 		width:450px;
@@ -165,7 +175,7 @@ p{
 		{
 		margin:10px auto 10px 25px;
 		width:450px;
-		padding-left:40px;
+		padding-left:48px;
 		padding-top:5px;
 		padding-bottom :5px;
 		text-align:left;
@@ -176,7 +186,7 @@ p{
 		{
 		margin:10px auto 10px 25px;
 		width:450px;
-		padding-left:19px;
+		padding-left:37px;
 		padding-top:5px;
 		padding-bottom :5px;
 		text-align:left;
