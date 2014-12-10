@@ -5,3 +5,5 @@ Published/
 *.suo
 # mstest test results
 TestResults
+!/lib/*
+*.mdb
