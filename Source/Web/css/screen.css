@@ -151,6 +151,16 @@ p{
 		border:0px;
 		border-style:dashed;
 		}
+.DivChangePWD1{
+		margin:10px auto 10px 25px;
+		width:400px;
+		padding-left:42px;
+		padding-top:5px;
+		padding-bottom :5px;
+		text-align:left;
+		border:0px;
+		border-style:dashed;
+		}
 .DivLoginB{
 		margin:10px auto 10px 25px;
 		width:450px;

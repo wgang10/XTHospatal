@@ -517,6 +517,7 @@ A.blue {
         float:left;
         left: 20px;
         padding:0px;
+        MARGIN:0px 0px 15px 0px;
     }
 #toplink
     {
@@ -525,13 +526,13 @@ A.blue {
         padding:0px;
         min-width:300px;
         OVERFLOW: hidden;
+        MARGIN:0px 0px 15px 0px;
     }
 .tpkg {    
 	TEXT-ALIGN: left;
 	WIDTH: 100%;
 	FONT-FAMILY: "ËÎÌו";
 	BACKGROUND: url(../images/bgscroll.png) repeat-x 0px -192px;
-	FLOAT: left;
 	HEIGHT: 50px;
 	COLOR: #ffffff;
 	background-image: url(../images/bgscroll.png);
@@ -541,5 +542,5 @@ A.blue {
 	BACKGROUND: url(../images/icon9.jpg) center center;text-align:center center;
 }
 .bgfoot {
-	height:80px; text-align:center; background-color:#fff;vertical-align:top; MARGIN:10px 0px 0px 20px;
+	height:60px; text-align:center; background-color:#fff;vertical-align:top; MARGIN:10px 0px 0px 20px;
 }

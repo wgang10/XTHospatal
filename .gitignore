@@ -6,4 +6,4 @@ Published/
 # mstest test results
 TestResults
 !/lib/*
-*.mdb
+!hibernate.cfg.xml
