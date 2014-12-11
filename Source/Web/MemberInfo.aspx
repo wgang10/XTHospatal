@@ -9,8 +9,8 @@
         <br/><asp:Label ID="lbLastLoginDateTime" runat="server" Text=""/>
         <br/><asp:Label ID="lbIntegral" runat="server" Text=""/>
         <br/><asp:Label ID="lbBindQQ" runat="server" Text=""/>
-        <br/><asp:Button ID="btnBindQQ" Visible="false" runat="server" Text="解除绑定" 
-                onclick="btnBindQQ_Click" />
+        <br/><asp:Button ID="btnUnBindQQ" Visible="false" runat="server" Text="解除绑定QQ" OnClick="btnUnBindQQ_Click" />
+        <asp:Button ID="btnChangeBindQQ" Visible="false" runat="server" Text="绑定其他QQ" OnClick="btnChangeBindQQ_Click"  />
         <br/><asp:Label ID="lbMessageMember" runat="server" Text=""/>
         <div id="divBindEmail" runat="server" visible="false">
             <br/><strong>请绑定您的邮箱</strong>
@@ -33,13 +33,13 @@
                 TextMode="Password" />
             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
                 ControlToValidate="txtPassWord" Display="Dynamic" ErrorMessage="*"></asp:RequiredFieldValidator>
-            <br/><asp:Button ID="btnVerify" Width="80px" runat="server" Text="开始绑定" 
-                onclick="btnVerify_Click" />
+            <br/><asp:Button ID="btnBindEmail" Width="80px" runat="server" Text="绑定账号" OnClick="btnBindEmail_Click" />
         </div>
         <div id="divBingQQ" runat="server" visible="false">
             <br/><strong>绑定QQ账号</strong>
-            <br/>建立绑定后你可使用QQ账号快速登录网站
-            <br/><a href="#">立刻绑定</a>
+            <br/>绑定QQ后你可使用QQ账号快速登录网站
+            <br/><a href="https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=100289171&redirect_uri=www.ziyangsoft.com/BindingToQQ.aspx&scope=get_user_info,do_like&state=115039554">
+                立刻绑定</a>
         </div>
         <br/><asp:Label ID="lbMessage" runat="server" Visible="false" ForeColor="White" BackColor="Red" />        
     </div>

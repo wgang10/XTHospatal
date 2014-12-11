@@ -389,5 +389,150 @@ namespace XTHospital.BLL
         {
             return OptionMember.GetMemberByOpenID(OponID);
         }
+
+        /// <summary>
+        /// 更新会员信息
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public bool UpdateMember(Member model)
+        {
+            return OptionMember.UpdateMember(model);
+        }
+
+        /// <summary>
+        /// 绑定新邮箱
+        /// </summary>
+        /// <param name="Email"></param>
+        /// <param name="PassWord"></param>
+        /// <param name="ID"></param>
+        /// <param name="Msg"></param>
+        /// <returns></returns>
+        public bool BindNewEmail(string Email, string PassWord, int ID, ref string Msg)
+        {
+            IList<Member> list = OptionMember.GetAllMemberByEmail(Email);
+            if (list.Count > 0)
+            {
+                if (list[0].Status != 3)
+                {
+                    Msg = "邮箱已被注册";
+                    return false;
+                }
+            }
+            list = OptionMember.GetAllMemberByID(ID);
+            if (list.Count > 0)
+            {
+                list[0].Email = Email;
+                list[0].Status = 4;
+                list[0].LoginPWD = XTHospital.COM.Method.EncryptPWD(PassWord);
+                list[0].UpdateTime = DateTime.Now;
+                list[0].VerifictionCode = XTHospital.COM.Method.GenerateVerifictionCode();
+                int limitMinutes = 30;
+                int.TryParse(ConfigurationManager.AppSettings["VerifictionCodeLimitMinutes"], out limitMinutes);
+                list[0].VerifictionCodeLimit = DateTime.Now.AddMinutes(limitMinutes);
+                Msg = String.Format("{0} [过期时间：{1:yyyy/MM/dd HH:mm:ss}]", list[0].VerifictionCode, list[0].VerifictionCodeLimit.Value);
+                return OptionMember.UpdateMember(list[0]);
+                //添加历史信息
+            }
+            else
+            {
+                Msg = "会员不存在";
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// 绑定旧邮箱
+        /// </summary>
+        /// <param name="Email"></param>
+        /// <param name="PassWord"></param>
+        /// <param name="ID"></param>
+        /// <param name="Msg"></param>
+        /// <returns></returns>
+        public bool BindOldEmail(string Email, string PassWord, int ID, ref string Msg)
+        {
+            bool isSuccess = false;
+            IList<Member> listEmail = OptionMember.GetNormalMemberByEmail(Email);
+            if (listEmail.Count < 1)
+            {
+                Msg = "账号不存在";
+                return false;
+            }
+            else
+            {
+                if (!listEmail[0].LoginPWD.Trim().Equals(XTHospital.COM.Method.EncryptPWD(PassWord)))
+                {
+                    Msg = "账号或密码错误";
+                    return false;
+                }
+                if (!string.IsNullOrEmpty(listEmail[0].OpenId))
+                {
+                    Msg = "此账号已与QQ账号绑定";
+                    return false;
+                }
+                IList<Member> listQQ = OptionMember.GetAllMemberByID(ID);
+                if (listQQ.Count > 0)
+                {
+                    listEmail[0].OpenId = listQQ[0].OpenId;
+                    listEmail[0].Nickname = listQQ[0].Nickname;
+                    listEmail[0].UpdateTime = DateTime.Now;
+                    isSuccess = OptionMember.UpdateMember(listEmail[0]);
+                    Msg = listEmail[0].LoginTimes.ToString();
+                    if (isSuccess)
+                    {
+                        //删除listQQ记录
+                        isSuccess = OptionMember.DeleteMember(listQQ[0]);
+                        //删除listQQ历史记录
+                        //添加listEmail历史记录
+                        #region 会员历史信息
+                        HistoryOfMemberUpdate modelHis = new HistoryOfMemberUpdate();
+                        modelHis.CreatTime = DateTime.Now;
+                        modelHis.MemberId = listEmail[0].Id;
+                        modelHis.OpenId = listEmail[0].OpenId;
+                        modelHis.Nickname = listEmail[0].Nickname;
+                        modelHis.Question1 = listEmail[0].Question1;
+                        modelHis.Question2 = listEmail[0].Question2;
+                        modelHis.Question3 = listEmail[0].Question3;
+                        modelHis.Anwser1 = listEmail[0].Anwser1;
+                        modelHis.Anwser2 = listEmail[0].Anwser2;
+                        modelHis.Anwser3 = listEmail[0].Anwser3;
+                        modelHis.Email = listEmail[0].Email;
+                        modelHis.Phone = listEmail[0].Phone;
+                        modelHis.LoginPWD = listEmail[0].LoginPWD;
+                        modelHis.Type = listEmail[0].Type;
+                        modelHis.Photo = listEmail[0].Photo;
+                        modelHis.PhotoURL = listEmail[0].PhotoURL;
+                        modelHis.Gender = listEmail[0].Gender;
+                        modelHis.Birthday = listEmail[0].Birthday;
+                        modelHis.Birthplace = listEmail[0].Birthplace;
+                        modelHis.Education = listEmail[0].Education;
+                        modelHis.Job = listEmail[0].Job;
+                        modelHis.Address = listEmail[0].Address;
+                        modelHis.LoginTimes = listEmail[0].LoginTimes;
+                        modelHis.LastLoginDateTime = listEmail[0].LastLoginDateTime;
+                        modelHis.CurrentLoginDateTime = listEmail[0].CurrentLoginDateTime;
+                        modelHis.Integral = listEmail[0].Integral;
+                        modelHis.Status = listEmail[0].Status;
+                        #endregion
+                        if (OptionMember.SaveHistoryOfMemberUpdate(modelHis) == -1)
+                        {
+                            Msg = "保存会员历史信息发生错误";
+                            return false;
+                        }
+                        else
+                        {
+                            return true;
+                        }
+
+                    }
+                    return isSuccess;
+                }
+                else
+                {
+                    Msg = "会员不存在";
+                    return false;
+                }
+            }
+        }
     }
 }

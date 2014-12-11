@@ -35,22 +35,33 @@ public partial class MebmerInfo : System.Web.UI.Page
             }
             SetMemberInfo();
         }
-    }
-    protected void btnBindQQ_Click(object sender, EventArgs e)
-    {
-
-    }
-    protected void btnVerify_Click(object sender, EventArgs e)
-    {
-
-    }
+    }    
+    
     protected void rdbNotExist_CheckedChanged(object sender, EventArgs e)
     {
-
+        if (rdbNotExist.Checked)
+        {
+            lbMessage.Text = "";
+            lbMessage.Visible = false;
+            lbMessage.DataBind();
+            lbEmail.Text = "邮箱地址:";
+            lbPassWord.Text = "设置密码:";
+            btnBindEmail.Text = "绑定账号";
+            //btnVerify.DataBind();
+        }
     }
     protected void rdbExist_CheckedChanged(object sender, EventArgs e)
     {
-
+        if (rdbExist.Checked)
+        {
+            lbMessage.Text = "";
+            lbMessage.Visible = false;
+            lbMessage.DataBind();
+            lbEmail.Text = "登陆账号:";
+            lbPassWord.Text = "登录密码:";
+            btnBindEmail.Text = "登录账号";
+            //btnVerify.DataBind();
+        }
     }
 
     private void SetMemberInfo()
@@ -78,7 +89,7 @@ public partial class MebmerInfo : System.Web.UI.Page
         if (!string.IsNullOrEmpty(modelMember.OpenId) && !string.IsNullOrEmpty(modelMember.Email))
         {
             lbBindQQ.Text = "已经绑定QQ账号";
-            btnBindQQ.Visible = true;
+            btnUnBindQQ.Visible = true;
         }
 
         lbNickname.Text = String.Format("欢迎您:<strong>{0}</strong>", modelMember.Nickname);
@@ -103,5 +114,55 @@ public partial class MebmerInfo : System.Web.UI.Page
             imgPhoto.ImageUrl = modelMember.PhotoURL;
         }
 
+    }
+    protected void btnUnBindQQ_Click(object sender, EventArgs e)
+    {
+
+    }
+    protected void btnChangeBindQQ_Click(object sender, EventArgs e)
+    {
+
+    }
+    protected void btnBindEmail_Click(object sender, EventArgs e)
+    {
+        lbMessage.Text = "";
+        lbMessage.Visible = false;
+
+        Member modelMember = (Member)Session["MemberInfo"];
+        string strMsg = string.Empty;
+        if (rdbNotExist.Checked)
+        {
+            //邮箱激活
+            if (bll.BindNewEmail(txtEmail.Text, txtPassWord.Text, modelMember.Id, ref strMsg))
+            {
+                //显示已经激活，QQ账号登录后确实是已经激活状态
+                //输入正确激活码后应该直接登录显示绑定的邮箱
+                //另外现在没有添加历史记录
+                Response.Redirect(String.Format("ActivatMember.aspx?LoginID={0}&NickName={1}&LimitTime={2}&ID={3}", txtEmail.Text.Trim(), modelMember.Nickname, strMsg, modelMember.Id));
+            }
+            else
+            {
+                lbMessage.Visible = true;
+                lbMessage.Text = strMsg;
+            }
+        }
+        else
+        {
+            if (bll.BindOldEmail(txtEmail.Text, txtPassWord.Text, modelMember.Id, ref strMsg))
+            {
+                lbLoginID.Text = String.Format("邮箱/登录账号:<strong>{0}</strong>", txtEmail.Text);
+                modelMember.Email = txtEmail.Text;
+                Session["MemberInfo"] = modelMember;
+                lbMessage.Visible = true;
+                lbLoginTimes.Text = String.Format("这是您第 {0} 次登录", strMsg);
+                lbMessage.Text = "邮箱绑定成功";
+                divBindEmail.Visible = false;
+            }
+            else
+            {
+                lbMessage.Visible = true;
+                lbMessage.Text = strMsg;
+            }
+        }
     }
 }
