@@ -9,13 +9,7 @@
     -->
     </script>
     <div style="text-align:center;">
-        <div id="DivLogin">
-            <div id="DivLoginID" class ="DivLogin">
-                <asp:Label ID="Label1" runat="server" Text="昵称：" Font-Bold="False" Font-Italic="False" ForeColor="White"></asp:Label>
-                <asp:TextBox ID="txtNickName" runat="server" CssClass="Txt" MaxLength="10" 
-                    Width="180px" Font-Bold="False" Font-Size="12pt" Font-Italic="False"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtNickName"
-                    ErrorMessage="*"></asp:RequiredFieldValidator></div>
+        <div id="DivLogin">            
             <div id="DivLoginMail" class ="DivLogin">
                 <asp:Label ID="Label4" runat="server" Text="邮箱：" Font-Bold="False" Font-Italic="False" ForeColor="White"></asp:Label>
                 <asp:TextBox ID="txtEmail" runat="server" CssClass="Txt" MaxLength="30" 

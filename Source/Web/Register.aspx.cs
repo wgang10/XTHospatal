@@ -36,6 +36,7 @@ public partial class Register : System.Web.UI.Page
 
         if (this.txtValidateCode.Text.Trim().ToUpper() != Session["CheckCode"].ToString().ToUpper())
         {
+            txtValidateCode.Text = "";
             lbRegisterMsg.Visible = true;
             lbRegisterMsg.Text = "验证码错误!";
             lbRegisterMsg.DataBind();
@@ -52,11 +53,11 @@ public partial class Register : System.Web.UI.Page
         }
 
         int ID = -1;
-        if (bll.RegistMember(txtNickName.Text.Trim(), txtEmail.Text.Trim(), txtPassWord.Text.Trim(), ref msg, ref ID))
+        if (bll.RegistMember(txtEmail.Text.Trim(), txtPassWord.Text.Trim(), ref msg, ref ID))
         {
             //注册成功
             //邮箱激活
-            Response.Redirect(String.Format("ActivatMember.aspx?LoginID={0}&NickName={1}&LimitTime={2}&ID={3}", txtEmail.Text.Trim(), txtNickName.Text.Trim(), msg, ID));
+            Response.Redirect(String.Format("ActivatMember.aspx?LoginID={0}&LimitTime={1}&ID={2}", txtEmail.Text.Trim(), msg, ID));
         }
         else
         {

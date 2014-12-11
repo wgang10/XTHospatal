@@ -33,12 +33,11 @@ namespace XTHospital.BLL
         /// <summary>
         /// 注册账号
         /// </summary>
-        /// <param name="Nickname"></param>
         /// <param name="Email"></param>
         /// <param name="PassWord"></param>
         /// <param name="Msg"></param>
         /// <returns></returns>
-        public bool RegistMember(string Nickname, string Email, string PassWord, ref string Msg, ref int ID)
+        public bool RegistMember(string Email, string PassWord, ref string Msg, ref int ID)
         {
             IList<Member> list = OptionMember.GetAllMemberByEmail(Email);
             if (list.Count > 0)
@@ -51,7 +50,6 @@ namespace XTHospital.BLL
                 }
                 else
                 {
-                    list[0].Nickname = Nickname;
                     list[0].LoginPWD = COM.Method.EncryptPWD(PassWord);
                     list[0].UpdateTime = DateTime.Now;
                     list[0].CreatTime = DateTime.Now;
@@ -68,7 +66,6 @@ namespace XTHospital.BLL
             {
                 Member model = new Member();
 
-                model.Nickname = Nickname;
                 model.Email = Email;
                 model.LoginPWD = COM.Method.EncryptPWD(PassWord);
                 model.Status = 3;//刚注册未验证
@@ -449,7 +446,7 @@ namespace XTHospital.BLL
         /// <param name="ID"></param>
         /// <param name="Msg"></param>
         /// <returns></returns>
-        public bool BindOldEmail(string Email, string PassWord, int ID, ref string Msg)
+        public bool BindOldEmail(string Email, string PassWord, int ID, ref string Msg,ref int NewID)
         {
             bool isSuccess = false;
             IList<Member> listEmail = OptionMember.GetNormalMemberByEmail(Email);
@@ -480,6 +477,7 @@ namespace XTHospital.BLL
                     Msg = listEmail[0].LoginTimes.ToString();
                     if (isSuccess)
                     {
+                        NewID = listEmail[0].Id;
                         //删除listQQ记录
                         isSuccess = OptionMember.DeleteMember(listQQ[0]);
                         //删除listQQ历史记录
@@ -533,6 +531,68 @@ namespace XTHospital.BLL
                     return false;
                 }
             }
+        }
+
+        /// <summary>
+        /// 修改密码
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <param name="OldPWD"></param>
+        /// <param name="NewPWD"></param>
+        /// <returns></returns>
+        public bool ChangePassWord(int ID, string OldPWD, string NewPWD,ref string msg)
+        {
+            bool isSuccess = false;
+            IList<Member> list = OptionMember.GetNormalMemberByID(ID);
+            if (list.Count > 0)
+            {
+                if (!list[0].LoginPWD.Trim().Equals(COM.Method.EncryptPWD(OldPWD)))
+                {
+                    msg = "原始密码错误。";
+                }
+                list[0].LoginPWD = COM.Method.EncryptPWD(NewPWD);
+                isSuccess = OptionMember.UpdateMember(list[0]);
+                if (isSuccess)
+                {
+                    msg = "修改密码成功。";
+                }
+                else
+                {
+                    msg = "修改密码失败。";
+                }
+            }
+            else
+            {
+                msg = "账号无效。";
+            }
+            return isSuccess;
+        }
+
+        /// <summary>
+        /// 找回密码
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <param name="NewPWD"></param>
+        /// <returns></returns>
+        public bool FindPassWord(string Email, ref string NewPWD)
+        {
+            bool isSuccess = false;
+            IList<Member> list = OptionMember.GetNormalMemberByEmail(Email);
+            if (list.Count > 0)
+            {
+                NewPWD = XTHospital.COM.Method.GenerateVerifictionCode().Substring(0, 6);
+                list[0].LoginPWD = COM.Method.EncryptPWD(NewPWD);
+                isSuccess = OptionMember.UpdateMember(list[0]);
+                if (!isSuccess)
+                {
+                    NewPWD = "找回密码失败。";
+                }
+            }
+            else
+            {
+                NewPWD = "输入的邮箱无效。";
+            }
+            return isSuccess;
         }
     }
 }

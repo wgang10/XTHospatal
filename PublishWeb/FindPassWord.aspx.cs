@@ -43,25 +43,24 @@ public partial class FindPassWord : System.Web.UI.Page
             return;
         }
 
-
+        bool blFlag = false;
         string strMail = txtMail.Text.Trim();
-        IList<Member> list = bll.GetAllMemberByEmail(strMail);
-        if (list.Count > 0)
+        string nwePwd = string.Empty;
+        if (!bll.FindPassWord(strMail, ref nwePwd))
         {
-
-            bool blFlag = false;
-            string strPassWord = "";//新密码;
-            string strUserName = list[0].Nickname;
-            string strMessage = string.Empty;
-            string strTitle = "子扬软件找回密码";
-            string strMailTo = strMail;
-            string strMailBody = @"尊敬的阁下：
-	您好！很高兴您能收到这封邮件。
-	
+            lbLoginMessage.Visible = true;
+            lbLoginMessage.Text = nwePwd;
+            lbLoginMessage.DataBind();
+            return;
+        }
+        string strMessage = string.Empty;
+        string strTitle = "子扬软件找回密码";
+        string strMailTo = strMail;
+        string strMailBody = string.Format(@"亲爱的 {0},您好！
+		
 	您最近忘记密码了吗?以后要牢记哦。
     
-	您的账号为：" + strMail + "   密码：" + strPassWord;
-            strMailBody += @"
+	您的新密码是：{1}
 
 致
 	敬
@@ -69,27 +68,21 @@ public partial class FindPassWord : System.Web.UI.Page
 
     子扬软件
 
-    本邮件为系统自动发送，请勿回复。";
-            blFlag = XTHospital.COM.Method.SendMail1(strMailTo, strTitle, strMailBody, out strMessage);
-            if (blFlag)
-            {
-                XTHospital.BLL.BLL_Log.AddLog("用户[" + strUserName + "]使用了找回密码功能，将密码发送到了邮箱[" + strMailTo + "].", "1", Page.Request.UserHostAddress);//添加日志
-                lbLoginMessage.Text = "密码已经发送到了您的邮箱！请查收";
-                lbLoginMessage.DataBind();
-                return;
-            }
-            else
-            {
-                XTHospital.BLL.BLL_Log.AddLog("用户[" + strUserName + "]使用了找回密码功能，发送到邮箱[" + strMailTo + "]时失败." + strMessage, "1", Page.Request.UserHostAddress);//添加日志
-                lbLoginMessage.Text = "发送到邮箱[" + strMailTo + "]时失败.";
-                lbLoginMessage.DataBind();
-                return;
-            }
+    本邮件为系统自动发送，请勿回复。", strMail, nwePwd);
+        blFlag = XTHospital.COM.Method.SendMail2(strMailTo, strTitle, strMailBody, out strMessage);
+        if (blFlag)
+        {
+            XTHospital.BLL.BLL_Log.AddLog("用户[" + strMailTo + "]使用了找回密码功能，将密码发送到了邮箱", "1", Page.Request.UserHostAddress);//添加日志
+            lbLoginMessage.Visible = true;
+            lbLoginMessage.Text = "新密码已经发送到了您的邮箱！使用新密码登陆请尽快修改为您容易记住的密码。";
+            lbLoginMessage.DataBind();
+            return;
         }
         else
         {
-            XTHospital.BLL.BLL_Log.AddLog("用户[" + strMail + "]尝试找回密码失败，用户名不存在！", "1", Page.Request.UserHostAddress);//添加日志
-            lbLoginMessage.Text = "用户名不存在！";
+            XTHospital.BLL.BLL_Log.AddLog("用户[" + strMailTo + "]使用了找回密码功能，发送到邮箱时失败." + strMessage, "1", Page.Request.UserHostAddress);//添加日志
+            lbLoginMessage.Visible = true;
+            lbLoginMessage.Text = "发送到邮箱[" + strMailTo + "]时失败.";
             lbLoginMessage.DataBind();
             return;
         }

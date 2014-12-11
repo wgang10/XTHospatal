@@ -17,11 +17,11 @@
                                 <ItemStyle HorizontalAlign="Left" />
                                 <HeaderStyle HorizontalAlign="Left" />
                             </asp:BoundField>
-                            <asp:BoundField DataField="Nickname" HeaderText="昵称">
+                            <asp:BoundField DataField="Email" HeaderText="邮箱" >
                                 <ItemStyle HorizontalAlign="Left" />
                                 <HeaderStyle HorizontalAlign="Left" />
                             </asp:BoundField>
-                            <asp:BoundField DataField="Email" HeaderText="邮箱" >
+                            <asp:BoundField DataField="Nickname" HeaderText="QQ" >
                                 <ItemStyle HorizontalAlign="Left" />
                                 <HeaderStyle HorizontalAlign="Left" />
                             </asp:BoundField>
