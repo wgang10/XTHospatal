@@ -60,6 +60,7 @@
   <ItemGroup>
     <Compile Include="NHibernateHelper.cs" />
     <Compile Include="OptionMember.cs" />
+    <Compile Include="OptionNews.cs" />
     <Compile Include="PoidPropertyAsIdClassName.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

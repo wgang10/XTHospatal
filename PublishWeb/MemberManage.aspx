@@ -53,7 +53,7 @@
                                 <ItemStyle HorizontalAlign="Left" Width="120px" />
                                 <HeaderStyle HorizontalAlign="Left" Width="120px" />
                             </asp:BoundField>
-                            <asp:BoundField DataField="CreatTime" HeaderText="创建时间" >
+                            <asp:BoundField DataField="CreateTime" HeaderText="创建时间" >
                                 <ItemStyle HorizontalAlign="Left" Width="120px" />
                                 <HeaderStyle HorizontalAlign="Left" Width="120px" />
                             </asp:BoundField>

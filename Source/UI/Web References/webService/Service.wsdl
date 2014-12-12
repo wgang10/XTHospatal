@@ -798,23 +798,69 @@
       <s:element name="GetNewsResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetNewsResult" type="tns:ArrayOfNews" />
+            <s:element minOccurs="0" maxOccurs="1" name="GetNewsResult" type="tns:ArrayOfNotic" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:complexType name="ArrayOfNews">
+      <s:complexType name="ArrayOfNotic">
         <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="News" nillable="true" type="tns:News" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Notic" nillable="true" type="tns:Notic" />
         </s:sequence>
       </s:complexType>
-      <s:complexType name="News">
+      <s:complexType name="Notic">
         <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="CreateTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="Url" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SystemName" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="Body" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" type="s:dateTime" />
         </s:sequence>
       </s:complexType>
+      <s:element name="DeleteNewsPhysic">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteNewsPhysicResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteNewsPhysicResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteNewsLogic">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteNewsLogicResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteNewsLogicResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddUpdateNews">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="model" type="tns:Notic" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddUpdateNewsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddUpdateNewsResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="GetEmployeePWD">
         <s:complexType>
           <s:sequence>
@@ -1076,6 +1122,24 @@
   <wsdl:message name="GetNewsSoapOut">
     <wsdl:part name="parameters" element="tns:GetNewsResponse" />
   </wsdl:message>
+  <wsdl:message name="DeleteNewsPhysicSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteNewsPhysic" />
+  </wsdl:message>
+  <wsdl:message name="DeleteNewsPhysicSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteNewsPhysicResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteNewsLogicSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteNewsLogic" />
+  </wsdl:message>
+  <wsdl:message name="DeleteNewsLogicSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteNewsLogicResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddUpdateNewsSoapIn">
+    <wsdl:part name="parameters" element="tns:AddUpdateNews" />
+  </wsdl:message>
+  <wsdl:message name="AddUpdateNewsSoapOut">
+    <wsdl:part name="parameters" element="tns:AddUpdateNewsResponse" />
+  </wsdl:message>
   <wsdl:message name="GetEmployeePWDSoapIn">
     <wsdl:part name="parameters" element="tns:GetEmployeePWD" />
   </wsdl:message>
@@ -1273,6 +1337,21 @@
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">取得最新公告</wsdl:documentation>
       <wsdl:input message="tns:GetNewsSoapIn" />
       <wsdl:output message="tns:GetNewsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteNewsPhysic">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">物理删除最新公告</wsdl:documentation>
+      <wsdl:input message="tns:DeleteNewsPhysicSoapIn" />
+      <wsdl:output message="tns:DeleteNewsPhysicSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteNewsLogic">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">逻辑删除最新公告</wsdl:documentation>
+      <wsdl:input message="tns:DeleteNewsLogicSoapIn" />
+      <wsdl:output message="tns:DeleteNewsLogicSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUpdateNews">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">添加或修改最新公告</wsdl:documentation>
+      <wsdl:input message="tns:AddUpdateNewsSoapIn" />
+      <wsdl:output message="tns:AddUpdateNewsSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="GetEmployeePWD">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">取得密码</wsdl:documentation>
@@ -1609,6 +1688,33 @@
     </wsdl:operation>
     <wsdl:operation name="GetNews">
       <soap:operation soapAction="http://tempuri.org/GetNews" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteNewsPhysic">
+      <soap:operation soapAction="http://tempuri.org/DeleteNewsPhysic" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteNewsLogic">
+      <soap:operation soapAction="http://tempuri.org/DeleteNewsLogic" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUpdateNews">
+      <soap:operation soapAction="http://tempuri.org/AddUpdateNews" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1963,6 +2069,33 @@
     </wsdl:operation>
     <wsdl:operation name="GetNews">
       <soap12:operation soapAction="http://tempuri.org/GetNews" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteNewsPhysic">
+      <soap12:operation soapAction="http://tempuri.org/DeleteNewsPhysic" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteNewsLogic">
+      <soap12:operation soapAction="http://tempuri.org/DeleteNewsLogic" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUpdateNews">
+      <soap12:operation soapAction="http://tempuri.org/AddUpdateNews" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

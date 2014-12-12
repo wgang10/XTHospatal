@@ -22,7 +22,7 @@ namespace XTHospital.COMM.Entity
         /// 创建时间
         /// </summary>
         [DataMember]
-        public virtual DateTime CreatTime { get; set; }
+        public virtual DateTime CreateTime { get; set; }
 
         #region 会员信息
 

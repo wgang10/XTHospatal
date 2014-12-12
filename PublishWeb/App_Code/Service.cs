@@ -5,6 +5,7 @@ using System.Web.Services.Protocols;
 using XTHospital.BLL;
 using XTHospital.COM;
 using XTHospital.Model;
+using XTHospital.COMM.Entity;
 using System.IO;
 using System.Text;
 using System.Collections.Generic;
@@ -440,28 +441,29 @@ public class Service : System.Web.Services.WebService
     }
 
     [WebMethod(Description = "取得最新公告")]
-    public List<News> GetNews(string SystemName,int nums)
+    public List<XTHospital.COMM.Entity.Notic> GetNews(string SystemName,int nums)
     {
         BLL_System bll = new BLL_System();
-        return bll.GetNewsList(SystemName, nums);
+        //return bll.GetNewsListForWeb(SystemName, nums);
+        return (List<XTHospital.COMM.Entity.Notic>)bll.GetNewsList(SystemName, nums);
     }
 
     [WebMethod(Description = "物理删除最新公告")]
-    public ReturnValue DeleteNewsPhysic(string ID)
+    public bool DeleteNewsPhysic(int ID)
     {
         BLL_System bll = new BLL_System();
         return bll.DeleteNewsPhysic(ID);
     }
 
     [WebMethod(Description = "逻辑删除最新公告")]
-    public ReturnValue DeleteNewsLogic(string ID)
+    public bool DeleteNewsLogic(int ID)
     {
         BLL_System bll = new BLL_System();
         return bll.DeleteNewsLogic(ID);
     }
 
     [WebMethod(Description = "添加或修改最新公告")]
-    public ReturnValue AddUpdateNews(News model)
+    public bool AddUpdateNews(XTHospital.COMM.Entity.Notic model)
     {
         BLL_System bll = new BLL_System();
         return bll.AddUpdateNews(model);

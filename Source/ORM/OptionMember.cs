@@ -29,7 +29,7 @@ namespace XTHospital.ORM
                 var query = session.QueryOver<Member>()
                     .Where(p => p.OpenId == OponID)
                     //.Where("Name like '%我的测试'")
-                    .OrderBy(p => p.CreatTime).Desc
+                    .OrderBy(p => p.CreateTime).Desc
                         .List();
                 return query;
             }
@@ -53,7 +53,7 @@ namespace XTHospital.ORM
                 var query = session.QueryOver<Member>()
                     .Where(p => p.Email == Email)
                     .Where(p => p.Status == 0)
-                    .OrderBy(p => p.CreatTime).Desc
+                    .OrderBy(p => p.CreateTime).Desc
                         .List();
                 return query;
             }
@@ -77,7 +77,7 @@ namespace XTHospital.ORM
                 var query = session.QueryOver<Member>()
                     .Where(p => p.Id == ID)
                     .Where(p => p.Status == 0)
-                    .OrderBy(p => p.CreatTime).Desc
+                    .OrderBy(p => p.CreateTime).Desc
                         .List();
                 return query;
             }
@@ -100,7 +100,7 @@ namespace XTHospital.ORM
             {
                 var query = session.QueryOver<Member>()
                     .Where(p => p.Id == ID)
-                    .OrderBy(p => p.CreatTime).Desc
+                    .OrderBy(p => p.CreateTime).Desc
                         .List();
                 return query;
             }
@@ -122,7 +122,7 @@ namespace XTHospital.ORM
             using (session = factory.OpenSession())
             {
                 var query = session.QueryOver<Member>()
-                    .OrderBy(p => p.CreatTime).Desc
+                    .OrderBy(p => p.CreateTime).Desc
                         .List();
                 return query;
             }
@@ -146,7 +146,7 @@ namespace XTHospital.ORM
                 var query = session.QueryOver<HistoryOfMemberUpdate>()
                     .Where(p => p.OpenId == OponID)
                     //.Where("Name like '%我的测试'")
-                    .OrderBy(p => p.CreatTime).Desc
+                    .OrderBy(p => p.CreateTime).Desc
                         .List();
                 return query;
             }
@@ -169,7 +169,7 @@ namespace XTHospital.ORM
             {
                 var query = session.QueryOver<Member>()
                     .Where(p => p.Email == Email)
-                    .OrderBy(p => p.CreatTime).Desc
+                    .OrderBy(p => p.CreateTime).Desc
                         .List();
                 return query;
             }

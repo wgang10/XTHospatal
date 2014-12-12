@@ -108,7 +108,6 @@ namespace UI
                 FormLogin frm = new FormLogin();
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
-                    ShowNews();
                     this.Activate();
                     GlobalVal.FormShow = this;
                     BindChartData();

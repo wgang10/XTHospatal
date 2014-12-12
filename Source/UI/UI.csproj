@@ -217,6 +217,12 @@
     <Compile Include="FormUserManage.designer.cs">
       <DependentUpon>FormUserManage.cs</DependentUpon>
     </Compile>
+    <Compile Include="UControlNews.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UControlNews.Designer.cs">
+      <DependentUpon>UControlNews.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utility\DataSetHelper.cs" />
     <Compile Include="Utility\DataSetZip.cs" />
     <Compile Include="Utility\Enum.cs" />
@@ -235,7 +241,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
-    <None Include="Web References\webService\News.datasource">
+    <None Include="Web References\webService\Notic.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
     <None Include="Web References\webService\Reference.map">
@@ -310,6 +316,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormUserManage.resx">
       <DependentUpon>FormUserManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UControlNews.resx">
+      <DependentUpon>UControlNews.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Utility\SplashResource.resx">
       <Generator>ResXFileCodeGenerator</Generator>

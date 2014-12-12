@@ -102,6 +102,12 @@ namespace UI.webService {
         
         private System.Threading.SendOrPostCallback GetNewsOperationCompleted;
         
+        private System.Threading.SendOrPostCallback DeleteNewsPhysicOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback DeleteNewsLogicOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback AddUpdateNewsOperationCompleted;
+        
         private System.Threading.SendOrPostCallback GetEmployeePWDOperationCompleted;
         
         private System.Threading.SendOrPostCallback SearchMyInfoOperationCompleted;
@@ -253,6 +259,15 @@ namespace UI.webService {
         
         /// <remarks/>
         public event GetNewsCompletedEventHandler GetNewsCompleted;
+        
+        /// <remarks/>
+        public event DeleteNewsPhysicCompletedEventHandler DeleteNewsPhysicCompleted;
+        
+        /// <remarks/>
+        public event DeleteNewsLogicCompletedEventHandler DeleteNewsLogicCompleted;
+        
+        /// <remarks/>
+        public event AddUpdateNewsCompletedEventHandler AddUpdateNewsCompleted;
         
         /// <remarks/>
         public event GetEmployeePWDCompletedEventHandler GetEmployeePWDCompleted;
@@ -1296,11 +1311,11 @@ namespace UI.webService {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetNews", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public News[] GetNews(string SystemName, int nums) {
+        public Notic[] GetNews(string SystemName, int nums) {
             object[] results = this.Invoke("GetNews", new object[] {
                         SystemName,
                         nums});
-            return ((News[])(results[0]));
+            return ((Notic[])(results[0]));
         }
         
         /// <remarks/>
@@ -1322,6 +1337,93 @@ namespace UI.webService {
             if ((this.GetNewsCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetNewsCompleted(this, new GetNewsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/DeleteNewsPhysic", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool DeleteNewsPhysic(int ID) {
+            object[] results = this.Invoke("DeleteNewsPhysic", new object[] {
+                        ID});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void DeleteNewsPhysicAsync(int ID) {
+            this.DeleteNewsPhysicAsync(ID, null);
+        }
+        
+        /// <remarks/>
+        public void DeleteNewsPhysicAsync(int ID, object userState) {
+            if ((this.DeleteNewsPhysicOperationCompleted == null)) {
+                this.DeleteNewsPhysicOperationCompleted = new System.Threading.SendOrPostCallback(this.OnDeleteNewsPhysicOperationCompleted);
+            }
+            this.InvokeAsync("DeleteNewsPhysic", new object[] {
+                        ID}, this.DeleteNewsPhysicOperationCompleted, userState);
+        }
+        
+        private void OnDeleteNewsPhysicOperationCompleted(object arg) {
+            if ((this.DeleteNewsPhysicCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.DeleteNewsPhysicCompleted(this, new DeleteNewsPhysicCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/DeleteNewsLogic", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool DeleteNewsLogic(int ID) {
+            object[] results = this.Invoke("DeleteNewsLogic", new object[] {
+                        ID});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void DeleteNewsLogicAsync(int ID) {
+            this.DeleteNewsLogicAsync(ID, null);
+        }
+        
+        /// <remarks/>
+        public void DeleteNewsLogicAsync(int ID, object userState) {
+            if ((this.DeleteNewsLogicOperationCompleted == null)) {
+                this.DeleteNewsLogicOperationCompleted = new System.Threading.SendOrPostCallback(this.OnDeleteNewsLogicOperationCompleted);
+            }
+            this.InvokeAsync("DeleteNewsLogic", new object[] {
+                        ID}, this.DeleteNewsLogicOperationCompleted, userState);
+        }
+        
+        private void OnDeleteNewsLogicOperationCompleted(object arg) {
+            if ((this.DeleteNewsLogicCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.DeleteNewsLogicCompleted(this, new DeleteNewsLogicCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/AddUpdateNews", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool AddUpdateNews(Notic model) {
+            object[] results = this.Invoke("AddUpdateNews", new object[] {
+                        model});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void AddUpdateNewsAsync(Notic model) {
+            this.AddUpdateNewsAsync(model, null);
+        }
+        
+        /// <remarks/>
+        public void AddUpdateNewsAsync(Notic model, object userState) {
+            if ((this.AddUpdateNewsOperationCompleted == null)) {
+                this.AddUpdateNewsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAddUpdateNewsOperationCompleted);
+            }
+            this.InvokeAsync("AddUpdateNews", new object[] {
+                        model}, this.AddUpdateNewsOperationCompleted, userState);
+        }
+        
+        private void OnAddUpdateNewsOperationCompleted(object arg) {
+            if ((this.AddUpdateNewsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.AddUpdateNewsCompleted(this, new AddUpdateNewsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -1496,23 +1598,31 @@ namespace UI.webService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class News {
+    public partial class Notic {
         
-        private System.DateTime createTimeField;
+        private int idField;
         
         private string titleField;
         
         private string urlField;
         
+        private string systemNameField;
+        
         private string bodyField;
         
+        private int statusField;
+        
+        private System.DateTime createTimeField;
+        
+        private System.DateTime updateTimeField;
+        
         /// <remarks/>
-        public System.DateTime CreateTime {
+        public int Id {
             get {
-                return this.createTimeField;
+                return this.idField;
             }
             set {
-                this.createTimeField = value;
+                this.idField = value;
             }
         }
         
@@ -1537,12 +1647,52 @@ namespace UI.webService {
         }
         
         /// <remarks/>
+        public string SystemName {
+            get {
+                return this.systemNameField;
+            }
+            set {
+                this.systemNameField = value;
+            }
+        }
+        
+        /// <remarks/>
         public string Body {
             get {
                 return this.bodyField;
             }
             set {
                 this.bodyField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int Status {
+            get {
+                return this.statusField;
+            }
+            set {
+                this.statusField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime CreateTime {
+            get {
+                return this.createTimeField;
+            }
+            set {
+                this.createTimeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime UpdateTime {
+            get {
+                return this.updateTimeField;
+            }
+            set {
+                this.updateTimeField = value;
             }
         }
     }
@@ -5537,10 +5687,88 @@ namespace UI.webService {
         }
         
         /// <remarks/>
-        public News[] Result {
+        public Notic[] Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((News[])(this.results[0]));
+                return ((Notic[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.18408")]
+    public delegate void DeleteNewsPhysicCompletedEventHandler(object sender, DeleteNewsPhysicCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.18408")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class DeleteNewsPhysicCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal DeleteNewsPhysicCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.18408")]
+    public delegate void DeleteNewsLogicCompletedEventHandler(object sender, DeleteNewsLogicCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.18408")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class DeleteNewsLogicCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal DeleteNewsLogicCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.18408")]
+    public delegate void AddUpdateNewsCompletedEventHandler(object sender, AddUpdateNewsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.18408")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class AddUpdateNewsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal AddUpdateNewsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
             }
         }
     }

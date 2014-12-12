@@ -52,7 +52,7 @@ namespace XTHospital.BLL
                 {
                     list[0].LoginPWD = COM.Method.EncryptPWD(PassWord);
                     list[0].UpdateTime = DateTime.Now;
-                    list[0].CreatTime = DateTime.Now;
+                    list[0].CreateTime = DateTime.Now;
                     list[0].VerifictionCode = COM.Method.GenerateVerifictionCode();
                     int limitMinutes = 30;
                     int.TryParse(ConfigurationManager.AppSettings["VerifictionCodeLimitMinutes"], out limitMinutes);
@@ -72,7 +72,7 @@ namespace XTHospital.BLL
                 model.LoginTimes = 0;
                 model.Integral = 0;
                 model.UpdateTime = DateTime.Now;
-                model.CreatTime = DateTime.Now;
+                model.CreateTime = DateTime.Now;
                 model.VerifictionCode = COM.Method.GenerateVerifictionCode();
                 int limitMinutes = 30;
                 int.TryParse(ConfigurationManager.AppSettings["VerifictionCodeLimitMinutes"], out limitMinutes);
@@ -123,7 +123,7 @@ namespace XTHospital.BLL
                         {
                             #region 会员历史信息
                             HistoryOfMemberUpdate modelHis = new HistoryOfMemberUpdate();
-                            modelHis.CreatTime = DateTime.Now;
+                            modelHis.CreateTime = DateTime.Now;
                             modelHis.MemberId = list[0].Id;
                             modelHis.OpenId = list[0].OpenId;
                             modelHis.Nickname = list[0].Nickname;
@@ -329,12 +329,12 @@ namespace XTHospital.BLL
                     model.Integral = 100;
                     model.Status = 0;
                     model.UpdateTime = DateTime.Now;
-                    model.CreatTime = DateTime.Now;
+                    model.CreateTime = DateTime.Now;
                     model.PhotoURL = modelMember.PhotoURL;
                     modelHis.MemberId = OptionMember.SaveMember(model);
                     if (modelHis.MemberId != -1)
                     {
-                        modelHis.CreatTime = DateTime.Now;
+                        modelHis.CreateTime = DateTime.Now;
 
                         #region 会员历史信息
                         modelHis.OpenId = model.OpenId;
@@ -484,7 +484,7 @@ namespace XTHospital.BLL
                         //添加listEmail历史记录
                         #region 会员历史信息
                         HistoryOfMemberUpdate modelHis = new HistoryOfMemberUpdate();
-                        modelHis.CreatTime = DateTime.Now;
+                        modelHis.CreateTime = DateTime.Now;
                         modelHis.MemberId = listEmail[0].Id;
                         modelHis.OpenId = listEmail[0].OpenId;
                         modelHis.Nickname = listEmail[0].Nickname;

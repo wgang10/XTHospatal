@@ -37,8 +37,10 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.uControlNews1 = new UI.UControlNews();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,7 +50,7 @@
             this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
             this.pictureBox4.Location = new System.Drawing.Point(0, 0);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(702, 63);
+            this.pictureBox4.Size = new System.Drawing.Size(698, 63);
             this.pictureBox4.TabIndex = 36;
             this.pictureBox4.TabStop = false;
             // 
@@ -92,13 +94,25 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.pictureBox4);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.uControlNews1);
             this.splitContainer1.Size = new System.Drawing.Size(984, 63);
-            this.splitContainer1.SplitterDistance = 702;
+            this.splitContainer1.SplitterDistance = 698;
             this.splitContainer1.TabIndex = 40;
             // 
-            // timer1
+            // uControlNews1
             // 
-            this.timer1.Tick += new System.EventHandler(this.tmrShow_Tick);
+            this.uControlNews1.BackColor = System.Drawing.Color.CadetBlue;
+            this.uControlNews1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uControlNews1.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.uControlNews1.Location = new System.Drawing.Point(0, 0);
+            this.uControlNews1.Name = "uControlNews1";
+            this.uControlNews1.RefreshCycle = 10;
+            this.uControlNews1.Size = new System.Drawing.Size(282, 63);
+            this.uControlNews1.TabIndex = 0;
+            this.uControlNews1.VisibleFreshButton = false;
             // 
             // FormBase
             // 
@@ -120,6 +134,7 @@
             this.Load += new System.EventHandler(this.FormBase_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -135,5 +150,6 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.ToolTip toolTip1;
+        private UControlNews uControlNews1;
     }
 }

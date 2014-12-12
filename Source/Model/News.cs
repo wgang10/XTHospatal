@@ -7,20 +7,22 @@ namespace XTHospital.Model
     public class News
     {
         public News() { }
-        public News(string ID,string SystemName,DateTime createtiem,string title,string url,string body) 
+        public News(int ID,string SystemName,DateTime createTime,DateTime updateTime,string title,string url,string body) 
         { 
-            this.CreateTime = createtiem;
+            this.CreateTime = createTime;
+            this.UpdateTime = updateTime;
             this.SystemName = SystemName;
             this.Title = title;
             this.Url = url;
             this.Body = body;
-            this.NewsID = ID;
+            this.ID = ID;
         }
         public DateTime CreateTime { get; set; }
+        public DateTime UpdateTime { get; set; }
         public string Title { get; set; }
         public string Url { get; set; }
         public string Body { get; set; }
         public string SystemName { get; set; }
-        public string NewsID { get; set; }
+        public int ID { get; set; }
     }
 }

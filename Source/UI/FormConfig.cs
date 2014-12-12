@@ -189,28 +189,7 @@ namespace UI
 
         private void FormConfig_Load(object sender, EventArgs e)
         {
-            GlobalVal.SplashObj.Dispose();
-            webService.News[] list = GlobalVal.WebSerices.GetNews("XTHospital",5);
-            for (int i = 0; i < list.Length; i++)
-            {
-                Label lbl = new Label();
-                lblTxt.Add(lbl);
-                lblTxt[i].Top = this.Height - 24;
-                lblTxt[i].Left = 24;
-                lblTxt[i].Visible = false;
-                lblTxt[i].BackColor = Color.Transparent;
-                lblTxt[i].ForeColor = Color.Blue;
-                lblTxt[i].AutoSize = true;
-                this.Controls.Add(lblTxt[i]);
-                lblTxt[i].Text = list[i].Title;
-                lblTxt[i].Tag = list[i].Url;
-                // 添加事件监听
-                lblTxt[i].Click += new EventHandler(frmAbout_WebSite_Click);
-                lblTxt[i].MouseMove += new MouseEventHandler(frmAbout_Link_MouseMove);
-                lblTxt[i].MouseLeave += new EventHandler(frmAbout_Link_MouseLeave);
-            }
-            lblScroll.Add(lblTxt[0]);
-            timer1.Start();
+            
         }
     }
 }

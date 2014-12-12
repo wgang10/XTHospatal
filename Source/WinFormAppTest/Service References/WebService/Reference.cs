@@ -267,31 +267,31 @@ namespace WinFormAppTest.WebService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetNews", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        WinFormAppTest.WebService.News[] GetNews(string SystemName, int nums);
+        WinFormAppTest.WebService.Notic[] GetNews(string SystemName, int nums);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetNews", ReplyAction="*")]
-        System.Threading.Tasks.Task<WinFormAppTest.WebService.News[]> GetNewsAsync(string SystemName, int nums);
+        System.Threading.Tasks.Task<WinFormAppTest.WebService.Notic[]> GetNewsAsync(string SystemName, int nums);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DeleteNewsPhysic", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        WinFormAppTest.WebService.ReturnValue DeleteNewsPhysic(string ID);
+        bool DeleteNewsPhysic(int ID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DeleteNewsPhysic", ReplyAction="*")]
-        System.Threading.Tasks.Task<WinFormAppTest.WebService.ReturnValue> DeleteNewsPhysicAsync(string ID);
+        System.Threading.Tasks.Task<bool> DeleteNewsPhysicAsync(int ID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DeleteNewsLogic", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        WinFormAppTest.WebService.ReturnValue DeleteNewsLogic(string ID);
+        bool DeleteNewsLogic(int ID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DeleteNewsLogic", ReplyAction="*")]
-        System.Threading.Tasks.Task<WinFormAppTest.WebService.ReturnValue> DeleteNewsLogicAsync(string ID);
+        System.Threading.Tasks.Task<bool> DeleteNewsLogicAsync(int ID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AddUpdateNews", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        WinFormAppTest.WebService.ReturnValue AddUpdateNews(WinFormAppTest.WebService.News model);
+        bool AddUpdateNews(WinFormAppTest.WebService.Notic model);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AddUpdateNews", ReplyAction="*")]
-        System.Threading.Tasks.Task<WinFormAppTest.WebService.ReturnValue> AddUpdateNewsAsync(WinFormAppTest.WebService.News model);
+        System.Threading.Tasks.Task<bool> AddUpdateNewsAsync(WinFormAppTest.WebService.Notic model);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetEmployeePWD", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -395,29 +395,33 @@ namespace WinFormAppTest.WebService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class News : object, System.ComponentModel.INotifyPropertyChanged {
+    public partial class Notic : object, System.ComponentModel.INotifyPropertyChanged {
         
-        private System.DateTime createTimeField;
+        private int idField;
         
         private string titleField;
         
         private string urlField;
         
-        private string bodyField;
-        
         private string systemNameField;
         
-        private string newsIDField;
+        private string bodyField;
+        
+        private int statusField;
+        
+        private System.DateTime createTimeField;
+        
+        private System.DateTime updateTimeField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public System.DateTime CreateTime {
+        public int Id {
             get {
-                return this.createTimeField;
+                return this.idField;
             }
             set {
-                this.createTimeField = value;
-                this.RaisePropertyChanged("CreateTime");
+                this.idField = value;
+                this.RaisePropertyChanged("Id");
             }
         }
         
@@ -447,18 +451,6 @@ namespace WinFormAppTest.WebService {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=3)]
-        public string Body {
-            get {
-                return this.bodyField;
-            }
-            set {
-                this.bodyField = value;
-                this.RaisePropertyChanged("Body");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
         public string SystemName {
             get {
                 return this.systemNameField;
@@ -470,14 +462,50 @@ namespace WinFormAppTest.WebService {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
-        public string NewsID {
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public string Body {
             get {
-                return this.newsIDField;
+                return this.bodyField;
             }
             set {
-                this.newsIDField = value;
-                this.RaisePropertyChanged("NewsID");
+                this.bodyField = value;
+                this.RaisePropertyChanged("Body");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
+        public int Status {
+            get {
+                return this.statusField;
+            }
+            set {
+                this.statusField = value;
+                this.RaisePropertyChanged("Status");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=6)]
+        public System.DateTime CreateTime {
+            get {
+                return this.createTimeField;
+            }
+            set {
+                this.createTimeField = value;
+                this.RaisePropertyChanged("CreateTime");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=7)]
+        public System.DateTime UpdateTime {
+            get {
+                return this.updateTimeField;
+            }
+            set {
+                this.updateTimeField = value;
+                this.RaisePropertyChanged("UpdateTime");
             }
         }
         
@@ -4672,35 +4700,35 @@ namespace WinFormAppTest.WebService {
             return ((WinFormAppTest.WebService.ServiceSoap)(this)).GetStatisticsDataByIDAsync(inValue);
         }
         
-        public WinFormAppTest.WebService.News[] GetNews(string SystemName, int nums) {
+        public WinFormAppTest.WebService.Notic[] GetNews(string SystemName, int nums) {
             return base.Channel.GetNews(SystemName, nums);
         }
         
-        public System.Threading.Tasks.Task<WinFormAppTest.WebService.News[]> GetNewsAsync(string SystemName, int nums) {
+        public System.Threading.Tasks.Task<WinFormAppTest.WebService.Notic[]> GetNewsAsync(string SystemName, int nums) {
             return base.Channel.GetNewsAsync(SystemName, nums);
         }
         
-        public WinFormAppTest.WebService.ReturnValue DeleteNewsPhysic(string ID) {
+        public bool DeleteNewsPhysic(int ID) {
             return base.Channel.DeleteNewsPhysic(ID);
         }
         
-        public System.Threading.Tasks.Task<WinFormAppTest.WebService.ReturnValue> DeleteNewsPhysicAsync(string ID) {
+        public System.Threading.Tasks.Task<bool> DeleteNewsPhysicAsync(int ID) {
             return base.Channel.DeleteNewsPhysicAsync(ID);
         }
         
-        public WinFormAppTest.WebService.ReturnValue DeleteNewsLogic(string ID) {
+        public bool DeleteNewsLogic(int ID) {
             return base.Channel.DeleteNewsLogic(ID);
         }
         
-        public System.Threading.Tasks.Task<WinFormAppTest.WebService.ReturnValue> DeleteNewsLogicAsync(string ID) {
+        public System.Threading.Tasks.Task<bool> DeleteNewsLogicAsync(int ID) {
             return base.Channel.DeleteNewsLogicAsync(ID);
         }
         
-        public WinFormAppTest.WebService.ReturnValue AddUpdateNews(WinFormAppTest.WebService.News model) {
+        public bool AddUpdateNews(WinFormAppTest.WebService.Notic model) {
             return base.Channel.AddUpdateNews(model);
         }
         
-        public System.Threading.Tasks.Task<WinFormAppTest.WebService.ReturnValue> AddUpdateNewsAsync(WinFormAppTest.WebService.News model) {
+        public System.Threading.Tasks.Task<bool> AddUpdateNewsAsync(WinFormAppTest.WebService.Notic model) {
             return base.Channel.AddUpdateNewsAsync(model);
         }
         

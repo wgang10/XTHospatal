@@ -74,7 +74,7 @@ public partial class FindPassWord : System.Web.UI.Page
         {
             XTHospital.BLL.BLL_Log.AddLog("用户[" + strMailTo + "]使用了找回密码功能，将密码发送到了邮箱", "1", Page.Request.UserHostAddress);//添加日志
             lbLoginMessage.Visible = true;
-            lbLoginMessage.Text = "新密码已经发送到了您的邮箱！使用新密码登陆请尽快修改为您容易记住的密码。";
+            lbLoginMessage.Text = "新密码已经发送到了您的邮箱！登陆后请尽快改为您容易记住的密码。";
             lbLoginMessage.DataBind();
             return;
         }

@@ -27,7 +27,7 @@ namespace WinFormAppTest
             uControlNews1.btnRefresh.Click += new System.EventHandler(RreshTime);
             timer1.Start();
             WebService.ServiceSoapClient server = new WebService.ServiceSoapClient();
-            WebService.News[] news = server.GetNews("ALL", Nums);
+            WebService.Notic[] news = server.GetNews("ALL", Nums);
             lbID.Text = string.Empty;
             this.dataGridView1.DataSource = news;
         }
@@ -68,8 +68,8 @@ namespace WinFormAppTest
 
         private void dataGridView1_Click(object sender, EventArgs e)
         {
-            WebService.News news = (WebService.News)dataGridView1.CurrentRow.DataBoundItem;
-            lbID.Text = news.NewsID;
+            WebService.Notic news = (WebService.Notic)dataGridView1.CurrentRow.DataBoundItem;
+            lbID.Text = news.Id.ToString();
             lbCreatetime.Text = news.CreateTime.ToString();
             txtSystemName.Text = news.SystemName;
             txtTitle.Text = news.Title;
@@ -80,34 +80,41 @@ namespace WinFormAppTest
         private void btnDelete_Click(object sender, EventArgs e)
         {
             WebService.ServiceSoapClient server = new WebService.ServiceSoapClient();
-            WebService.ReturnValue resoult = server.DeleteNewsLogic(lbID.Text);//逻辑删除
-            if (resoult.ErrorFlag)
+            bool isSuccess = server.DeleteNewsLogic(Int32.Parse(lbID.Text));//逻辑删除
+            if (isSuccess)
             {
                 LoadNews(100);
             }
             else
             {
-                MessageBox.Show(resoult.ErrorID);
+                MessageBox.Show("删除失败");
             }
         }
 
         private void btnAddNews_Click(object sender, EventArgs e)
         {
             WebService.ServiceSoapClient server = new WebService.ServiceSoapClient();
-            WebService.News model = new WebService.News();
-            model.NewsID = lbID.Text;
+            WebService.Notic model = new WebService.Notic();
+            if (string.IsNullOrEmpty(lbID.Text))
+            {
+                model.Id = -1;
+            }
+            else
+            {
+                model.Id = Int32.Parse(lbID.Text);
+            }
             model.SystemName = txtSystemName.Text;
             model.Title = txtTitle.Text;
             model.Url = txtUrl.Text;
             model.Body = txtBody.Text;
-            WebService.ReturnValue resoult = server.AddUpdateNews(model);
-            if (resoult.ErrorFlag)
+            bool isSuccese = server.AddUpdateNews(model);
+            if (isSuccese)
             {
                 LoadNews(100);
             }
             else
             {
-                MessageBox.Show(resoult.ErrorID);
+                MessageBox.Show("保存失败。");
             }
         }
     }

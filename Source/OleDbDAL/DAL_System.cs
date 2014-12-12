@@ -62,7 +62,7 @@ namespace XTHospital.OleDbDAL
             parametersAdd[1].Value = model.Title;
             parametersAdd[2].Value = model.Url;
             parametersAdd[3].Value = model.Body;
-            parametersAdd[4].Value = model.NewsID;
+            parametersAdd[4].Value = model.ID;
             return OleDbHelper.ExecuteSql(updateNews_SQL, parametersAdd);
         }
 

@@ -210,10 +210,10 @@ namespace WinFormAppTest
             lastRefreshTime = DateTime.Now;
             List<News> list=new List<News>();
             WebService.ServiceSoapClient server = new WebService.ServiceSoapClient();
-            WebService.News[] news = server.GetNews("XTHospital", 10);
+            WebService.Notic[] news = server.GetNews("XTHospital", 10);
             for (int i = 0; i < news.Length; i++)
             {
-                list.Add(new News(news[i].NewsID,news[i].SystemName,news[i].CreateTime, news[i].Title, news[i].Url, news[i].Body));
+                 list.Add(new News(news[i].Id.ToString(),news[i].SystemName,news[i].UpdateTime, news[i].Title, news[i].Url, news[i].Body));
             }
             NewsSource = list;
         }

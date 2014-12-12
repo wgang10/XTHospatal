@@ -19,9 +19,9 @@ public partial class Index : System.Web.UI.Page
         if (!IsPostBack)
         {
             XTHospital.BLL.BLL_System bll = new XTHospital.BLL.BLL_System();
-            List<XTHospital.Model.News> list = bll.GetNewsList("Public", 10);
+            IList<XTHospital.COMM.Entity.Notic> list = bll.GetNewsList("Public", 10);
             System.Text.StringBuilder strNews = new System.Text.StringBuilder();
-            for (int i = 0; i < list.Count; i++)
+            for (int i = 0; i < list.Count&&i<10; i++)
             {
                 strNews.AppendLine(@"<li><a title=" + list[i].Body + " href=" + list[i].Url + ">" + list[i].Title + "【" + list[i].CreateTime.ToShortDateString() + "】</a></li>");
             }
