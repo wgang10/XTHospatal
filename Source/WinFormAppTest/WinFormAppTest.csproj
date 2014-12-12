@@ -89,7 +89,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Service References\WebService\Service1.wsdl" />
+    <None Include="Service References\WebService\Service.wsdl" />
     <None Include="Service References\WebService\WinFormAppTest.WebService.GetAllBiochemistryDataResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -131,7 +131,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\WebService\Service1.disco" />
+    <None Include="Service References\WebService\Service.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

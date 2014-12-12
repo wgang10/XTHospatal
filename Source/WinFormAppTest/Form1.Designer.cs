@@ -43,10 +43,10 @@
             this.btnAddNews = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnDelete = new System.Windows.Forms.Button();
-            this.uControlNews1 = new WinFormAppTest.UControlNews();
             this.txtSystemName = new System.Windows.Forms.TextBox();
             this.lbID = new System.Windows.Forms.Label();
             this.lbCreatetime = new System.Windows.Forms.Label();
+            this.uControlNews1 = new WinFormAppTest.UControlNews();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -164,15 +164,6 @@
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
-            // uControlNews1
-            // 
-            this.uControlNews1.BackColor = System.Drawing.Color.CadetBlue;
-            this.uControlNews1.Location = new System.Drawing.Point(255, 7);
-            this.uControlNews1.Name = "uControlNews1";
-            this.uControlNews1.RefreshCycle = 10;
-            this.uControlNews1.Size = new System.Drawing.Size(466, 144);
-            this.uControlNews1.TabIndex = 0;
-            // 
             // txtSystemName
             // 
             this.txtSystemName.Location = new System.Drawing.Point(565, 162);
@@ -199,6 +190,16 @@
             this.lbCreatetime.Name = "lbCreatetime";
             this.lbCreatetime.Size = new System.Drawing.Size(0, 12);
             this.lbCreatetime.TabIndex = 14;
+            // 
+            // uControlNews1
+            // 
+            this.uControlNews1.BackColor = System.Drawing.Color.CadetBlue;
+            this.uControlNews1.Location = new System.Drawing.Point(255, 7);
+            this.uControlNews1.Name = "uControlNews1";
+            this.uControlNews1.RefreshCycle = 10;
+            this.uControlNews1.Size = new System.Drawing.Size(466, 144);
+            this.uControlNews1.TabIndex = 0;
+            this.uControlNews1.Load += new System.EventHandler(this.uControlNews1_Load);
             // 
             // Form1
             // 

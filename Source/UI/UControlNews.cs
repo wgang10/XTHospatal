@@ -205,7 +205,7 @@ namespace UI
             GetLatestNews();
         }
 
-        private void GetLatestNews()
+        public void GetLatestNews()
         {
             if (GlobalVal.WebSerices == null)
             {

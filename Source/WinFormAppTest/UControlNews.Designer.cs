@@ -57,7 +57,6 @@
             this.Controls.Add(this.btnRefresh);
             this.Name = "UControlNews";
             this.Size = new System.Drawing.Size(590, 193);
-            this.Load += new System.EventHandler(this.UControlNews_Load);
             this.ResumeLayout(false);
 
         }

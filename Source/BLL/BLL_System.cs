@@ -127,7 +127,14 @@ namespace XTHospital.BLL
                 model.Status = 0;
                 model.CreateTime = DateTime.Now;
                 model.UpdateTime = DateTime.Now;
-                return OptionNews.UpdateNews(list[0]);
+                if (OptionNews.SaveNews(model) == -1)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
             }
         }
     }

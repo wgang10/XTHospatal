@@ -376,7 +376,9 @@ namespace UI
         public string LoginUser { set { this.lbUser.Text = "当前登录用户：" + value; } }
 
         private void FormBase_Load(object sender, EventArgs e)
-        {            
+        {
+            //uControlNews1.VisibleFreshButton = false;
+            uControlNews1.GetLatestNews();
             linkLabel1.Text = GlobalVal.SupportCompanyName;
             label139.Text = GlobalVal.Copyright;
             lbUser.Text = "当前登录用户："+GlobalVal.LoginUserID;
