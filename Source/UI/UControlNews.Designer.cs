@@ -53,7 +53,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.CadetBlue;
+            this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.btnRefresh);
             this.Name = "UControlNews";
             this.Size = new System.Drawing.Size(590, 193);

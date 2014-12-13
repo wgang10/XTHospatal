@@ -199,7 +199,6 @@
             this.uControlNews1.RefreshCycle = 10;
             this.uControlNews1.Size = new System.Drawing.Size(466, 144);
             this.uControlNews1.TabIndex = 0;
-            this.uControlNews1.Load += new System.EventHandler(this.uControlNews1_Load);
             // 
             // Form1
             // 

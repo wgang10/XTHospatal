@@ -16,7 +16,7 @@ namespace UI
         List<Label> lbListNews = new List<Label>();
         List<Label> lbListScroll = new List<Label>();
         List<News> Newslist;// = new List<News>();
-        Color backColor = Color.CadetBlue;
+        Color backColor = Color.Transparent;
         Color foreColor = Color.Blue;
         /// <summary>
         /// 刷新周期 单位：分钟
@@ -190,7 +190,7 @@ namespace UI
                 lbListNews[i].Click += new EventHandler(frmAbout_WebSite_Click);
                 lbListNews[i].MouseMove += new MouseEventHandler(frmAbout_Link_MouseMove);
                 lbListNews[i].MouseLeave += new EventHandler(frmAbout_Link_MouseLeave);
-                lbListNews[i].MouseHover += new EventHandler(frmAbout_MouseHover);
+                //lbListNews[i].MouseHover += new EventHandler(frmAbout_MouseHover);
                 lbListNews[i].MouseDown += new MouseEventHandler(frmAbout_MouseDown);
                 lbListScroll.Add(lbListNews[i]);
             }

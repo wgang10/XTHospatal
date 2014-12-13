@@ -30,10 +30,21 @@ namespace XTHospital.ORM
             //打开Session做持久化数据
             using (session = factory.OpenSession())
             {
-                var query = session.QueryOver<Notic>()
+                IList<Notic> query;
+                if (string.IsNullOrEmpty(SystemName))
+                {
+                    query = session.QueryOver<Notic>()
+                    .OrderBy(p => p.CreateTime).Desc
+                        .List();
+                }
+                else
+                {
+                    query = session.QueryOver<Notic>()
                     .Where(p => p.SystemName == SystemName)
                     .OrderBy(p => p.CreateTime).Desc
                         .List();
+                }
+                
                 return query;
             }
         }

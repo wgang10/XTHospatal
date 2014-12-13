@@ -36,6 +36,10 @@ namespace XTHospital.BLL
             //    }
             //}
             //return list;
+            if (SystemName.ToUpper()=="ALL")
+            {
+                SystemName = "";
+            }
             return OptionNews.GetNewsList(SystemName,Num);
 
         }
