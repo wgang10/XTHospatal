@@ -17,7 +17,8 @@ namespace UI
         List<Label> lbListScroll = new List<Label>();
         List<News> Newslist;// = new List<News>();
         Color backColor = Color.Transparent;
-        Color foreColor = Color.Blue;
+        Color foreColor = Color.Black;
+        Color foreColorMouseMove = Color.Blue;
         /// <summary>
         /// 刷新周期 单位：分钟
         /// </summary>
@@ -26,7 +27,7 @@ namespace UI
         DateTime lastRefreshTime=DateTime.Now;
         
         int RowHight = 25;//行高
-        int RowLeft = 25;//左缩进
+        int RowLeft = 45;//左缩进
         int RowTop = 25;//上边距
         int index = 0;
         /// <summary>
@@ -52,7 +53,7 @@ namespace UI
         private void frmAbout_Link_MouseMove(object sender, MouseEventArgs e)
         {
             Label currentLabel = (sender as Label);
-            currentLabel.ForeColor = Color.Yellow;
+            currentLabel.ForeColor = foreColorMouseMove;
             currentLabel.Cursor = Cursors.Hand;
             timer1.Stop();
         }
@@ -64,7 +65,7 @@ namespace UI
         private void frmAbout_Link_MouseLeave(object sender, EventArgs e)
         {
             Label currentLabel = (sender as Label);
-            currentLabel.ForeColor = Color.Blue;
+            currentLabel.ForeColor = foreColor;
             currentLabel.Cursor = Cursors.Default;
             timer1.Start();
         }
@@ -86,7 +87,12 @@ namespace UI
         {
             var lb = (Label)sender;
             var New = (News)lb.Tag;
-            Process.Start(New.Url);
+            //Process.Start(New.Url);
+            FromNews shownew = new FromNews();
+            shownew.NewsUpdateTime = New.CreateTime.ToString("yyyy/MM/dd HH:mm:ss");
+            shownew.NewsTitle = New.Title;
+            shownew.NewsConnent = New.Body;
+            shownew.ShowDialog();
         }
         /// <summary>
         /// 计时器事件(调度信息字幕显示)
@@ -185,6 +191,7 @@ namespace UI
                 lbListNews[i].AutoSize = true;
                 this.Controls.Add(lbListNews[i]);
                 lbListNews[i].Text = Newslist[i].Title;
+                this.toolTip1.SetToolTip(lbListNews[i], Newslist[i].Body);
                 lbListNews[i].Tag = Newslist[i];
                 // 添加事件监听
                 lbListNews[i].Click += new EventHandler(frmAbout_WebSite_Click);
@@ -213,6 +220,7 @@ namespace UI
             }
 
             lastRefreshTime = DateTime.Now;
+            timer2.Start();
             List<News> list=new List<News>();
             
             webService.Notic[] news = GlobalVal.WebSerices.GetNews("XTHospital", 10);
@@ -302,6 +310,21 @@ namespace UI
             }
             get{
                 return btnRefresh.Visible;
+            }
+        }
+
+        /// <summary>
+        /// 是否显示刷新剩余时间
+        /// </summary>
+        public bool VisibleRefrshTime
+        {
+            set {
+                lbRefrshTime.Visible = value;
+                lbRefrshTime1.Visible = value;
+                lbRefrshTime2.Visible = value;
+            }
+            get {
+                return lbRefrshTime.Visible;
             }
         }
 
@@ -404,6 +427,17 @@ namespace UI
                     this.systemNameField = value;
                 }
             }
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            int second = 60 * RefreshCycle - DateTime.Now.Subtract(LastRefreshTime).Seconds;
+            lbRefrshTime.Text = second.ToString();
+        }
+
+        private void label1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            VisibleRefrshTime = !VisibleRefrshTime;
         }
     }
 }

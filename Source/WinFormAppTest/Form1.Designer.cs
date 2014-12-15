@@ -47,6 +47,7 @@
             this.lbID = new System.Windows.Forms.Label();
             this.lbCreatetime = new System.Windows.Forms.Label();
             this.uControlNews1 = new WinFormAppTest.UControlNews();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -95,6 +96,7 @@
             this.label2.Size = new System.Drawing.Size(77, 12);
             this.label2.TabIndex = 5;
             this.label2.Text = "上次刷新时间";
+            this.toolTip1.SetToolTip(this.label2, "哈哈!!!");
             // 
             // label3
             // 
@@ -250,5 +252,6 @@
         private System.Windows.Forms.TextBox txtSystemName;
         private System.Windows.Forms.Label lbID;
         private System.Windows.Forms.Label lbCreatetime;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

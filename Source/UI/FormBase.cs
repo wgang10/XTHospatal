@@ -379,6 +379,7 @@ namespace UI
         {
             //uControlNews1.VisibleFreshButton = false;
             uControlNews1.GetLatestNews();
+            uControlNews1.VisibleRefrshTime = false; 
             linkLabel1.Text = GlobalVal.SupportCompanyName;
             label139.Text = GlobalVal.Copyright;
             lbUser.Text = "当前登录用户："+GlobalVal.LoginUserID;
