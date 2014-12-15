@@ -7,3 +7,5 @@ Published/
 TestResults
 !/lib/*
 !hibernate.cfg.xml
+PublishWeb/App_Data/XTHospatal.mdb
+PublishWeb/App_Data/XTHospital.mdb
