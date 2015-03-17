@@ -26,6 +26,7 @@ namespace WinFormAppTest
 
         private void Calculate()
         {
+            DataTable dt = CreateDataTable();
             double original = double.Parse(txtBenjin.Text);
             double rate = double.Parse(txtLiLv.Text);
             int time = int.Parse(txtTime.Text);
@@ -33,10 +34,6 @@ namespace WinFormAppTest
             double result = original;
             double touru = original;
             double lixi = 0;
-
-            List<string> x = new List<string>();
-            List<double> y1 = new List<double>();
-            List<double> y2 = new List<double>();
 
             for (int i = 1; i <= time; i++)
             {
@@ -46,16 +43,18 @@ namespace WinFormAppTest
                     touru += add;
                 }
                 result += result * rate;
-                x.Add(i.ToString());
-                y1.Add(result-touru);
-                y2.Add(result);
+                DataRow dr = dt.NewRow();
+                dr["Time"] = i;
+                dr["Lixi"] = result - touru;
+                dr["All"] = result;
+                dt.Rows.Add(dr);
             }
             lixi = result - touru;
             txtTouRu.Text = touru.ToString();
             txtHuibao.Text = result.ToString();
             txtLiXi.Text = lixi.ToString();
 
-            FillColumnChart(chart2, x.ToArray(), y1.ToArray(), y2.ToArray());
+            FillColumnChart(dt);
         }
 
         private void SetChart()
@@ -67,24 +66,42 @@ namespace WinFormAppTest
             //FillColumnChart(chart2, x, y1, y2);
         }
 
-        public void FillColumnChart(Chart chart2, string[] x, double[] y1, double[] y2)
+        public void FillColumnChart(DataTable DT)
         {
-            //chart2.Series.Clear();
-            chart2.Legends.Clear();
+            dataGridView1.DataSource = DT;
 
-            chart2.ChartAreas[0].Area3DStyle.Enable3D = true;
-            chart2.ChartAreas[0].Area3DStyle.Inclination = 30;
-            chart2.ChartAreas[0].Area3DStyle.PointDepth = 50;
-            chart2.ChartAreas[0].Area3DStyle.IsClustered = true;
-            chart2.ChartAreas[0].AxisX.IntervalAutoMode = IntervalAutoMode.VariableCount;
+            chart2.Series.Clear();
 
-            chart2.Series[0].ChartType = SeriesChartType.Column;
-            chart2.Series[0].Points.DataBindXY(x, y1);
+            Series seriesAll = new Series("总收入");
+            chart2.Series.Add(seriesAll);
+            Series seriesLixi = new Series("利息");
+            chart2.Series.Add(seriesLixi);
 
-            Series second = new Series();
-            second.ChartType = SeriesChartType.Column;
-            second.Points.DataBindXY(x, y2);
-            chart2.Series.Add(second);
+            chart2.DataSource = DT;
+
+            //设置图表Y轴对应项
+            seriesAll.YValueMembers = "All";
+            seriesLixi.YValueMembers = "Lixi";
+
+            //设置图表X轴对应项
+            chart2.Series[0].XValueMember = "Time";
+
+            //chart2.ChartAreas[0].Area3DStyle.Enable3D = true;
+            //chart2.ChartAreas[0].Area3DStyle.Inclination = 30;
+            //chart2.ChartAreas[0].Area3DStyle.PointDepth = 50;
+            //chart2.ChartAreas[0].Area3DStyle.IsClustered = true;
+            //chart2.ChartAreas[0].AxisX.IntervalAutoMode = IntervalAutoMode.VariableCount;
+
+            chart2.DataBind();
+        }
+
+        private DataTable CreateDataTable()
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("Time");
+            dt.Columns.Add("All");
+            dt.Columns.Add("Lixi");
+            return dt;
         }
     }
 }
