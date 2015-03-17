@@ -105,22 +105,25 @@ namespace UI
             GlobalVal.SplashObj.Dispose();
             try
             {
-                FormLogin frm = new FormLogin();
-                if (frm.ShowDialog() == DialogResult.OK)
+                if (this.DesignMode != true)
                 {
-                    this.Activate();
-                    GlobalVal.FormShow = this;
-                    BindChartData();
-                    try
+                    FormLogin frm = new FormLogin();
+                    if (frm.ShowDialog() == DialogResult.OK)
                     {
-                        this.Text = GlobalVal.SystemNameCN + "    当前登录用户：" + GlobalVal.LoginUserID;
-                        LoginUser = GlobalVal.LoginUserID;
+                        this.Activate();
+                        GlobalVal.FormShow = this;
+                        BindChartData();
+                        try
+                        {
+                            this.Text = GlobalVal.SystemNameCN + "    当前登录用户：" + GlobalVal.LoginUserID;
+                            LoginUser = GlobalVal.LoginUserID;
+                        }
+                        catch { }
                     }
-                    catch { }
-                }
-                else
-                {
-                    Application.Exit();
+                    else
+                    {
+                        Application.Exit();
+                    }
                 }
             }
             catch (Exception ex)

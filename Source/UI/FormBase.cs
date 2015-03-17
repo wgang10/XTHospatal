@@ -378,21 +378,25 @@ namespace UI
         private void FormBase_Load(object sender, EventArgs e)
         {
             //uControlNews1.VisibleFreshButton = false;
-            uControlNews1.GetLatestNews();
-            uControlNews1.VisibleRefrshTime = false; 
-            linkLabel1.Text = GlobalVal.SupportCompanyName;
-            label139.Text = GlobalVal.Copyright;
-            lbUser.Text = "当前登录用户："+GlobalVal.LoginUserID;
-            try
+            if (this.DesignMode != true)
             {
-                WebClient wc = new WebClient();
-                Image image = Image.FromStream(wc.OpenRead(GlobalVal.PictureTopUrl));
-                this.pictureBox4.Image = image;
+                uControlNews1.GetLatestNews();
+                uControlNews1.VisibleRefrshTime = false;
+
+                linkLabel1.Text = GlobalVal.SupportCompanyName;
+                label139.Text = GlobalVal.Copyright;
+                lbUser.Text = "当前登录用户：" + GlobalVal.LoginUserID;
+                try
+                {
+                    WebClient wc = new WebClient();
+                    Image image = Image.FromStream(wc.OpenRead(GlobalVal.PictureTopUrl));
+                    this.pictureBox4.Image = image;
+                }
+                catch (Exception ex)
+                {
+                    //GlobalVal.gloWebSerices.AddLog("加载图片[" + GlobalVal.gloPictureLoginUrl + "]失败."+ex.Message, "3", Dns.GetHostAddresses(Dns.GetHostName())[0].ToString());
+                }
             }
-            catch (Exception ex)
-            {
-                //GlobalVal.gloWebSerices.AddLog("加载图片[" + GlobalVal.gloPictureLoginUrl + "]失败."+ex.Message, "3", Dns.GetHostAddresses(Dns.GetHostName())[0].ToString());
-            }            
         }        
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
