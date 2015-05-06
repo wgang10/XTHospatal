@@ -2133,10 +2133,10 @@
   </wsdl:binding>
   <wsdl:service name="Service">
     <wsdl:port name="ServiceSoap" binding="tns:ServiceSoap">
-      <soap:address location="http://localhost:17761/Service.asmx" />
+      <soap:address location="http://www.ziyangsoft.com/Service.asmx" />
     </wsdl:port>
     <wsdl:port name="ServiceSoap12" binding="tns:ServiceSoap12">
-      <soap12:address location="http://localhost:17761/Service.asmx" />
+      <soap12:address location="http://www.ziyangsoft.com/Service.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

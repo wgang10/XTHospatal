@@ -12,7 +12,7 @@ using System.Text.RegularExpressions;
 
 namespace wintrue_xiaomi
 {
-    public partial class Login : WT_UI
+    public partial class Login //: WT_UI
     {
         public Login()
         {

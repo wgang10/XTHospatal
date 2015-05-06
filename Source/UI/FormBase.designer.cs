@@ -35,9 +35,9 @@
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.lbUser = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.uControlNews1 = new UI.UControlNews();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.uControlNews1 = new UI.UControlNews();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -110,10 +110,11 @@
             this.uControlNews1.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.uControlNews1.Location = new System.Drawing.Point(0, 0);
             this.uControlNews1.Name = "uControlNews1";
-            this.uControlNews1.RefreshCycle = 10;
+            this.uControlNews1.RefreshCycle = 5;
             this.uControlNews1.Size = new System.Drawing.Size(282, 63);
             this.uControlNews1.TabIndex = 0;
             this.uControlNews1.VisibleFreshButton = false;
+            this.uControlNews1.VisibleRefrshTime = false;
             // 
             // FormBase
             // 

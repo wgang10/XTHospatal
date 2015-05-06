@@ -19,11 +19,11 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:17761/Service.asmx" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://www.ziyangsoft.com/Service.asmx" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="Service.wsdl" MetadataType="Wsdl" ID="9a3fd427-35b9-4988-9ec1-ebf0fadf485f" SourceId="1" SourceUrl="http://localhost:17761/Service.asmx?wsdl" />
-    <MetadataFile FileName="Service.disco" MetadataType="Disco" ID="922adf64-e87e-4925-9443-8e80673be422" SourceId="1" SourceUrl="http://localhost:17761/Service.asmx?disco" />
+    <MetadataFile FileName="Service1.disco" MetadataType="Disco" ID="cca37d93-0568-4d51-ad5a-6cf3db4898b3" SourceId="1" SourceUrl="http://www.ziyangsoft.com/Service.asmx?disco" />
+    <MetadataFile FileName="Service1.wsdl" MetadataType="Wsdl" ID="cf6a843b-78aa-42ee-9775-a8272b329d2b" SourceId="1" SourceUrl="http://www.ziyangsoft.com/Service.asmx?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

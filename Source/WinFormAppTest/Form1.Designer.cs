@@ -48,6 +48,9 @@
             this.lbCreatetime = new System.Windows.Forms.Label();
             this.uControlNews1 = new WinFormAppTest.UControlNews();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -114,23 +117,23 @@
             // 
             // txtTitle
             // 
-            this.txtTitle.Location = new System.Drawing.Point(255, 189);
+            this.txtTitle.Location = new System.Drawing.Point(313, 189);
             this.txtTitle.Name = "txtTitle";
-            this.txtTitle.Size = new System.Drawing.Size(458, 21);
+            this.txtTitle.Size = new System.Drawing.Size(400, 21);
             this.txtTitle.TabIndex = 7;
             // 
             // txtUrl
             // 
-            this.txtUrl.Location = new System.Drawing.Point(255, 216);
+            this.txtUrl.Location = new System.Drawing.Point(313, 216);
             this.txtUrl.Name = "txtUrl";
-            this.txtUrl.Size = new System.Drawing.Size(458, 21);
+            this.txtUrl.Size = new System.Drawing.Size(400, 21);
             this.txtUrl.TabIndex = 8;
             // 
             // txtBody
             // 
-            this.txtBody.Location = new System.Drawing.Point(255, 243);
+            this.txtBody.Location = new System.Drawing.Point(313, 243);
             this.txtBody.Name = "txtBody";
-            this.txtBody.Size = new System.Drawing.Size(458, 96);
+            this.txtBody.Size = new System.Drawing.Size(400, 96);
             this.txtBody.TabIndex = 9;
             this.txtBody.Text = "";
             // 
@@ -202,12 +205,48 @@
             this.uControlNews1.Size = new System.Drawing.Size(466, 144);
             this.uControlNews1.TabIndex = 0;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Aquamarine;
+            this.label4.Location = new System.Drawing.Point(270, 198);
+            this.label4.MaximumSize = new System.Drawing.Size(50, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(29, 12);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "标题";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Aquamarine;
+            this.label5.Location = new System.Drawing.Point(270, 219);
+            this.label5.MaximumSize = new System.Drawing.Size(50, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(23, 12);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "URL";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Aquamarine;
+            this.label6.Location = new System.Drawing.Point(270, 246);
+            this.label6.MaximumSize = new System.Drawing.Size(50, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(29, 12);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "内容";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(725, 440);
             this.Controls.Add(this.lbCreatetime);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.lbID);
             this.Controls.Add(this.txtSystemName);
             this.Controls.Add(this.dataGridView1);
@@ -253,5 +292,8 @@
         private System.Windows.Forms.Label lbID;
         private System.Windows.Forms.Label lbCreatetime;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
     }
 }

@@ -9,7 +9,7 @@ using wintrue;
 
 namespace wintrue_xiaomi
 {
-    public partial class AboutMe : WT_UI
+    public partial class AboutMe //: WT_UI
     {
         public AboutMe()
         {

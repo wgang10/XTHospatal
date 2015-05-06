@@ -377,11 +377,11 @@ namespace UI
 
         private void FormBase_Load(object sender, EventArgs e)
         {
-            //uControlNews1.VisibleFreshButton = false;
             if (this.DesignMode != true)
             {
                 uControlNews1.GetLatestNews();
-                uControlNews1.VisibleRefrshTime = false;
+                uControlNews1.VisibleRefrshTime = false;//设置刷新倒计时不可见
+                uControlNews1.VisibleFreshButton = false;//设置刷新按钮不可见
 
                 linkLabel1.Text = GlobalVal.SupportCompanyName;
                 label139.Text = GlobalVal.Copyright;
