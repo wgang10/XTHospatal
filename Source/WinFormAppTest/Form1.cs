@@ -77,10 +77,24 @@ namespace WinFormAppTest
             txtBody.Text = news.Body;
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
+        private void btnDeleteLogic_Click(object sender, EventArgs e)
         {
             WebService.ServiceSoapClient server = new WebService.ServiceSoapClient();
             bool isSuccess = server.DeleteNewsLogic(Int32.Parse(lbID.Text));//逻辑删除
+            if (isSuccess)
+            {
+                LoadNews(100);
+            }
+            else
+            {
+                MessageBox.Show("删除失败");
+            }
+        }
+
+        private void btnDeletePhysic_Click(object sender, EventArgs e)
+        {
+            WebService.ServiceSoapClient server = new WebService.ServiceSoapClient();
+            bool isSuccess = server.DeleteNewsPhysic(Int32.Parse(lbID.Text));//物理删除
             if (isSuccess)
             {
                 LoadNews(100);

@@ -41,7 +41,6 @@ namespace XTHospital.BLL
                 SystemName = "";
             }
             return OptionNews.GetNewsList(SystemName,Num);
-
         }
 
         public List<XTHospital.Model.News> GetNewsListForWeb(string SystemName, int Num)
@@ -62,6 +61,10 @@ namespace XTHospital.BLL
             //    }
             //}
             //return list;
+            if (SystemName.ToUpper() == "ALL")
+            {
+                SystemName = "";
+            }
             IList<Notic> list = OptionNews.GetNewsList(SystemName, Num);
             List<XTHospital.Model.News> listNews = new List<Model.News>();
             for (int i = 0; i < list.Count; i++)
@@ -123,6 +126,7 @@ namespace XTHospital.BLL
             if (list.Count > 0)
             {
                 model.Status = 1;
+                model.CreateTime = list[0].CreateTime;
                 model.UpdateTime = DateTime.Now;
                 return OptionNews.UpdateNews(model);
             }

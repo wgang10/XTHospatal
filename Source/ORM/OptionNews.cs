@@ -41,6 +41,7 @@ namespace XTHospital.ORM
                 {
                     query = session.QueryOver<Notic>()
                     .Where(p => p.SystemName == SystemName)
+                    .Where(p => p.Status != 2)
                     .OrderBy(p => p.CreateTime).Desc
                         .List();
                 }

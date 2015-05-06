@@ -46,11 +46,12 @@
             this.txtSystemName = new System.Windows.Forms.TextBox();
             this.lbID = new System.Windows.Forms.Label();
             this.lbCreatetime = new System.Windows.Forms.Label();
-            this.uControlNews1 = new WinFormAppTest.UControlNews();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.uControlNews1 = new WinFormAppTest.UControlNews();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -165,9 +166,9 @@
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.TabIndex = 10;
-            this.btnDelete.Text = "删除";
+            this.btnDelete.Text = "逻辑删除";
             this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            this.btnDelete.Click += new System.EventHandler(this.btnDeleteLogic_Click);
             // 
             // txtSystemName
             // 
@@ -195,15 +196,6 @@
             this.lbCreatetime.Name = "lbCreatetime";
             this.lbCreatetime.Size = new System.Drawing.Size(0, 12);
             this.lbCreatetime.TabIndex = 14;
-            // 
-            // uControlNews1
-            // 
-            this.uControlNews1.BackColor = System.Drawing.Color.CadetBlue;
-            this.uControlNews1.Location = new System.Drawing.Point(255, 7);
-            this.uControlNews1.Name = "uControlNews1";
-            this.uControlNews1.RefreshCycle = 10;
-            this.uControlNews1.Size = new System.Drawing.Size(466, 144);
-            this.uControlNews1.TabIndex = 0;
             // 
             // label4
             // 
@@ -238,6 +230,25 @@
             this.label6.TabIndex = 13;
             this.label6.Text = "内容";
             // 
+            // uControlNews1
+            // 
+            this.uControlNews1.BackColor = System.Drawing.Color.CadetBlue;
+            this.uControlNews1.Location = new System.Drawing.Point(255, 7);
+            this.uControlNews1.Name = "uControlNews1";
+            this.uControlNews1.RefreshCycle = 10;
+            this.uControlNews1.Size = new System.Drawing.Size(466, 144);
+            this.uControlNews1.TabIndex = 0;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(417, 345);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 10;
+            this.button3.Text = "物理删除";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.btnDeletePhysic_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -250,6 +261,7 @@
             this.Controls.Add(this.lbID);
             this.Controls.Add(this.txtSystemName);
             this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnAddNews);
             this.Controls.Add(this.txtBody);
@@ -295,5 +307,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button button3;
     }
 }
