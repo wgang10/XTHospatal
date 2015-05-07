@@ -248,6 +248,11 @@ namespace UI
         public static string ServicesURL = @"http://www.ziyangsoft.com";
 
         /// <summary>
+        /// 管理员密码
+        /// </summary>
+        public static string ManagerPassword = "115039554";
+
+        /// <summary>
         /// 程序号
         /// </summary>
         //public static string glostrAppNo = "";

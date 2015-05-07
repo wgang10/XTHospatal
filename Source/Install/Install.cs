@@ -53,6 +53,7 @@ namespace Install
             byte[] retVal;
             for (int i = 0; i < files.Length; i++)
             {
+                sb.Remove(0, sb.Length);
                 if (File.Exists(files[i].FullName))
                 {
                     file = new FileStream(files[i].FullName, FileMode.Open);                    
@@ -78,7 +79,7 @@ namespace Install
         {
             InstallURL = GetWebConfig(InstallURLConfig);
             appPath = GetWebConfig(InstallPathConfig);
-            GetLoacalFilesMD5();
+            GetLoacalFilesMD5();//获取本地文件列表
         }
         catch (Exception ex)
         {
@@ -172,47 +173,52 @@ namespace Install
           }
           else
           {
-              //UpdaterClose();//不需要解压
-              //fileName = GetWebConfig(InstallFileNameConfig);
-              //appPath = GetWebConfig(InstallPathConfig);
-              //System.Console.WriteLine("开始解压...");
-              //UnZipFile(appPath + "\\" + fileName, appPath);
-              System.Console.WriteLine("开始配置程序...");
-              //Thread t1 = new Thread(new ThreadStart(CreateDesktopLnk));
-              //t1.Start();
-              //while (t1.ThreadState == ThreadState.Running)
-              //{
-              //    Thread.Sleep(500);
-              //}
-              System.Console.WriteLine("配置完成，开始启动程序...");
-              int i = 0;
-              while (!File.Exists(appPath + @"\UI.exe") && i < 20)
-              {
-                  Thread.Sleep(1000);
-                  System.Console.WriteLine(i.ToString() + "...");
-                  i++;
-              }
-
-              try
-              {
-                  System.Diagnostics.Process.Start(appPath + @"\UI.exe","Install");
-              }
-              catch (Win32Exception e)
-              {
-                  MeBox(e.Message);
-              }
-              catch (Exception e)
-              {
-                  MeBox(e.Message);
-              }
-              finally
-              {
-                  Application.Exit();
-              }
+              runApp();
           }
         }
       };
       DownloadFile(num);
+    }
+
+    private void runApp()
+    {
+        //UpdaterClose();//不需要解压
+        //fileName = GetWebConfig(InstallFileNameConfig);
+        //appPath = GetWebConfig(InstallPathConfig);
+        //System.Console.WriteLine("开始解压...");
+        //UnZipFile(appPath + "\\" + fileName, appPath);
+        System.Console.WriteLine("开始配置程序...");
+        //Thread t1 = new Thread(new ThreadStart(CreateDesktopLnk));
+        //t1.Start();
+        //while (t1.ThreadState == ThreadState.Running)
+        //{
+        //    Thread.Sleep(500);
+        //}
+        System.Console.WriteLine("配置完成，开始启动程序...");
+        int i = 0;
+        while (!File.Exists(appPath + @"\UI.exe") && i < 20)
+        {
+            Thread.Sleep(1000);
+            System.Console.WriteLine(i.ToString() + "...");
+            i++;
+        }
+
+        try
+        {
+            System.Diagnostics.Process.Start(appPath + @"\UI.exe", "Install");
+        }
+        catch (Win32Exception e)
+        {
+            MeBox(e.Message);
+        }
+        catch (Exception e)
+        {
+            MeBox(e.Message);
+        }
+        finally
+        {
+            Application.Exit();
+        }
     }
 
     //private static void CreateDesktopLnk()
@@ -255,10 +261,18 @@ namespace Install
             if (LocalFiles[fileName.Substring(0, fileName.LastIndexOf(".zip"))] == (GetServerFileMD5(fileName)))
             {
                 lbMessageFile.Text = String.Format(
-            CultureInfo.InvariantCulture,
-            "进度 {0}/{1}>>已存在，跳过..",
-            num,
-            fileNames.Length);
+                    CultureInfo.InvariantCulture,
+                    "进度 {0}/{1}>>已存在，跳过..",
+                    num,
+                    fileNames.Length);
+                if (num < fileNames.Length)
+                {
+                    DownloadFile(num);
+                }
+                else
+                {
+                    runApp();
+                }
                 return;
             }
         }
@@ -297,13 +311,6 @@ namespace Install
     /// </summary> 
     private static void GetDownloadFileList()
     {
-        fileNames = new string[] { "ICSharpCode.SharpZipLib.dll.zip"
-        ,"Interop.IWshRuntimeLibrary.dll.zip"
-        ,"log4net.dll.zip" 
-        ,"System.Windows.Forms.DataVisualization.dll.zip"
-        ,"UI.exe.config.zip"
-        ,"UI.exe.zip"
-        ,"UpdateApp.exe.zip"};
         try
         {
             string strRet = string.Empty;

@@ -18,6 +18,7 @@ namespace UI
         private static Dictionary<string,string> updateFiles = null;
         private static Dictionary<string, string> deleteFiles = null;
         private static string updateFileList = string.Empty;
+        private static string updateFileListMsg = string.Empty;
 
         /// <summary>
         /// hide
@@ -173,6 +174,7 @@ namespace UI
                                 {
                                     updateFiles.Add(files[f].Name + ".zip", md5);
                                     updateFileList += files[f].Name + ".zip|";
+                                    updateFileListMsg += files[f].Name + "\n";
                                 }
                                 break;
                             }
@@ -199,6 +201,7 @@ namespace UI
                         {
                             updateFiles.Add(apps[k].name, "");
                             updateFileList += apps[k].name + "|";
+                            updateFileListMsg += apps[k].name.Replace(".zip","") + "\n";
                         }
                     }
 
@@ -226,7 +229,7 @@ namespace UI
                     //****************************************************************************
                     else
                     {
-                        if (MessageBox.Show("发现有新程序可以更新，是否更新？\n" + updateFileList, "发现更新：" + updateFiles.Count.ToString() + "个文件", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        if (MessageBox.Show("发现有新程序可以更新，是否更新？\n" + updateFileListMsg, "发现更新：" + updateFiles.Count.ToString() + "个文件", MessageBoxButtons.YesNo) == DialogResult.Yes)
                         {
                             try
                             {
