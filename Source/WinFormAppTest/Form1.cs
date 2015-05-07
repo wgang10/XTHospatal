@@ -131,5 +131,10 @@ namespace WinFormAppTest
                 MessageBox.Show("保存失败。");
             }
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            lbID.Text = "";
+        }
     }
 }

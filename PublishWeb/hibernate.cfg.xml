@@ -7,7 +7,7 @@
       Data Source=127.0.0.1,1433;initial catalog=a0718152616;User Id=a0718152616;Password=45678537
     </property>-->
     <property name="connection.connection_string">
-      Data Source=127.0.0.1\SQLEXPRESS;initial catalog=a0718152616;User Id=a0718152616;Password=45678537
+      Data Source=127.0.0.1\SQLEXPRESS,1433;initial catalog=a0718152616;User Id=a0718152616;Password=45678537
     </property>
     <property name="show_sql">true</property>
     <property name="current_session_context_class">wcf_operation</property>

@@ -6,72 +6,67 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Web.UI;
 
-public partial class _Default : Page
+public partial class NoticeReturn : Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        // 支付宝的网关
         string alipayNotifyURL = "https://www.alipay.com/cooperate/gateway.do?";
-        // 用户注册支付宝时生成的校验码（必须填写自己的）
-        string key = "xxxxxxx";
-        // 页面编码格式
-        string _input_charset = "utf-8";
-        // 用户注册支付宝时生成的合作伙伴id（必须填写自己的）
-        string partner = "xxxxxx";
+        // partner合作伙伴id（必须填写）
+        string partner = "xxxxxxxxxx";
+        // partner 的对应交易安全校验码（必须填写）
+        string key = "xxxxxxxx";
         alipayNotifyURL = alipayNotifyURL + "service=create_digital_goods_trade_p" + "&partner=" + partner +
-                          "&notify_id=" + Request.QueryString["notify_id"];
+                          "&notify_id=" + Request.Form["notify_id"];
         // 获取支付宝ATN返回结果，true是正确的订单信息，false 是无效的
         string responseTxt = Get_Http(alipayNotifyURL, 120000);
         int i;
         NameValueCollection coll;
         // 在集合中装载返回信息
-        coll = Request.QueryString;
+        coll = Request.Form;
         // 将所有的键值保存在数组中
         String[] requestarr = coll.AllKeys;
         // 进行排序
         string[] Sortedstr = BubbleSort(requestarr);
-        for (i = 0; i < Sortedstr.Length; i++)
-        {
-            Response.Write("Form: " + Sortedstr[i] + "=" + Request.QueryString[Sortedstr[i]] + "<br>");
-        }
         // 构造待md5摘要字符串
-        StringBuilder prestr = new StringBuilder();
+        string prestr = "";
         for (i = 0; i < Sortedstr.Length; i++)
         {
             if (Request.Form[Sortedstr[i]] != "" && Sortedstr[i] != "sign" && Sortedstr[i] != "sign_type")
             {
                 if (i == Sortedstr.Length - 1)
                 {
-                    prestr.Append(Sortedstr[i] + "=" + Request.QueryString[Sortedstr[i]]);
+                    prestr = prestr + Sortedstr[i] + "=" + Request.Form[Sortedstr[i]];
                 }
                 else
                 {
-                    prestr.Append(Sortedstr[i] + "=" + Request.QueryString[Sortedstr[i]] + "&");
+                    prestr = prestr + Sortedstr[i] + "=" + Request.Form[Sortedstr[i]] + "&";
                 }
             }
         }
-        prestr.Append(key);
-        // 生成Md5摘要
-        string mysign = GetMD5(prestr.ToString(), _input_charset);
-        string sign = Request.QueryString["sign"];
-        // 测试返回的结果
-        // Response.Write(prestr.ToString());  
+        prestr = prestr + key;
+        string mysign = GetMD5(prestr);
+        string sign = Request.Form["sign"];
         // 验证支付发过来的消息，签名是否正确
         if (mysign == sign && responseTxt == "true")
         {
-            // 此时可以更新网站的数据,比如商品的减少等等。
-            Response.Write("success"); // 返回给支付宝消息，成功
-        }
-        else
-        {
-            Response.Write("fail");
+            // 判断支付状态TRADE_FINISHED（文档中有枚举表可以参考） 
+            if (Request.Form["trade_status"] == "WAIT_SELLER_SEND_GOODS")
+            {
+                // 更新自己数据库的订单语句
+                // 返回给支付宝消息，成功
+                Response.Write("success");
+            }
+            else
+            {
+                Response.Write("fail");
+            }
         }
     }
 
-    public static string GetMD5(string s, string _input_charset)
+    public static string GetMD5(string s)
     {
         MD5 md5 = new MD5CryptoServiceProvider();
-        byte[] t = md5.ComputeHash(Encoding.GetEncoding(_input_charset).GetBytes(s));
+        byte[] t = md5.ComputeHash(Encoding.GetEncoding("utf-8").GetBytes(s));
         StringBuilder sb = new StringBuilder(32);
         for (int i = 0; i < t.Length; i++)
         {
@@ -80,25 +75,25 @@ public partial class _Default : Page
         return sb.ToString();
     }
 
-    public static string[] BubbleSort(string[] r)
+    public static string[] BubbleSort(string[] R)
     {
-        int i, j;
+        int i, j; // 交换标志 
         string temp;
         bool exchange;
-        // 最多做R.Length-1趟排序 
-        for (i = 0; i < r.Length; i++)
+        // 最多做R.Length-1趟排序
+        for (i = 0; i < R.Length; i++)
         {
             // 本趟排序开始前，交换标志应为假
             exchange = false;
-            for (j = r.Length - 2; j >= i; j--)
+            for (j = R.Length - 2; j >= i; j--)
             {
                 // 交换条件
-                if (String.CompareOrdinal(r[j + 1], r[j]) < 0)
+                if (String.CompareOrdinal(R[j + 1], R[j]) < 0)
                 {
-                    temp = r[j + 1];
-                    r[j + 1] = r[j];
-                    r[j] = temp;
-                    // 发生了交换，故将交换标志置为真
+                    temp = R[j + 1];
+                    R[j + 1] = R[j];
+                    R[j] = temp;
+                    // 发生了交换，故将交换标志置为真 
                     exchange = true;
                 }
             }
@@ -108,7 +103,7 @@ public partial class _Default : Page
                 break;
             }
         }
-        return r;
+        return R;
     }
 
     // 获取远程服务器ATN结果
