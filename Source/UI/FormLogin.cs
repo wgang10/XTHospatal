@@ -129,45 +129,6 @@ namespace UI
                 MessageBox.Show(ex.Message);
                 return;
             }
-            //检查并更新update.exe文件
-            //是否存在
-            string updateExe = GlobalVal.AappPath + @"\Update.exe";
-            string updateExeUrl = GlobalVal.ServicesURL + @"/App/Update.exe.zip";
-            if (File.Exists(updateExe))
-            {
-                //检查是否需要更新
-                string localMd5 = Method.GetMD5HashFromFile(updateExe);
-                string serverMd5 = GetUpdateExeMD5();
-                if (localMd5 != serverMd5)
-                {
-                    File.Delete(updateExe);
-                    WebClient downWebClient = new WebClient();
-                    try
-                    {
-                        downWebClient.DownloadFile(new Uri(updateExeUrl), updateExe);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-                }
-            }
-            else
-            {
-                //直接下载
-                WebClient downWebClient = new WebClient();
-                try
-                {
-                    downWebClient.DownloadFile(new Uri(updateExeUrl), updateExe);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
-
-
-
 
             if (GlobalVal.TerminalCD.Equals("Install", StringComparison.CurrentCultureIgnoreCase)
                 || GlobalVal.TerminalCD.Equals("Update", StringComparison.CurrentCultureIgnoreCase))
@@ -180,6 +141,7 @@ namespace UI
                 this.Height = windowHeight1;
                 btnConfig.Text = "▼";
                 this.Activate();
+                GlobalVal.SplashObj.Dispose();
             }
             else
             {
@@ -228,10 +190,10 @@ namespace UI
                     }
 
                     //删除本地多余文件
-                    foreach (string name in deleteFiles.Keys)
-                    {
-                        File.Delete(name);
-                    }
+                    //foreach (string name in deleteFiles.Keys)
+                    //{
+                    //    File.Delete(name);
+                    //}
 
                     for (int k = 0; k < apps.Count; k++)//找到本地不存在，服务器端存在的文件列表
                     {
@@ -271,12 +233,14 @@ namespace UI
                         this.Height = windowHeight1;
                         btnConfig.Text = "▼";
                         this.Activate();
+                        GlobalVal.SplashObj.Dispose();
                         //Method.CmbDataBound("YearMonth", cmbYearMonth);
                     }
                     //****************************************************************************
                     else
                     {
-                        if (MessageBox.Show("发现有新程序可以更新，是否更新？\n" + updateFileListMsg, "发现更新：" + updateFiles.Count.ToString() + "个文件", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        GlobalVal.SplashObj.Dispose();
+                        if (MessageBox.Show("发现有文件需要更新，是否更新？\n" + updateFileListMsg, "发现更新：" + updateFiles.Count.ToString() + "个文件", MessageBoxButtons.YesNo) == DialogResult.Yes)
                         {
                             try
                             {
@@ -537,28 +501,6 @@ namespace UI
         {
             string strRet = string.Empty;
             WebRequest req = WebRequest.Create(string.Format("{0}?FileName={1}", GlobalVal.ServicesURL + "/GetFileMD5.ashx", "Update.zip"));
-            WebResponse res = req.GetResponse();
-            System.IO.Stream resStream = res.GetResponseStream();
-            Encoding encode = System.Text.Encoding.Default;
-            StreamReader readStream = new StreamReader(resStream, encode);
-            Char[] read = new Char[256];
-            int count = readStream.Read(read, 0, 256);
-            while (count > 0)
-            {
-                String str = new String(read, 0, count);
-                strRet = strRet + str;
-                count = readStream.Read(read, 0, 256);
-            }
-            resStream.Close();
-            readStream.Close();
-            res.Close();
-            return strRet;
-        }
-
-        private static string GetUpdateExeMD5()
-        {
-            string strRet = string.Empty;
-            WebRequest req = WebRequest.Create(string.Format("{0}", GlobalVal.ServicesURL + "/GetUpdateExeMD5.ashx"));
             WebResponse res = req.GetResponse();
             System.IO.Stream resStream = res.GetResponseStream();
             Encoding encode = System.Text.Encoding.Default;

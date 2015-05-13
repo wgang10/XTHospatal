@@ -31,7 +31,7 @@ namespace UI
             series2.Legend = "Legend1";
             series2.Name = "Series1";
             this.chart2.Series.Add(series2);
-            this.chart2.Size = new System.Drawing.Size(850, 300);
+            this.chart2.Size = new System.Drawing.Size(850, 250);
             this.chart2.TabIndex = 13;
             this.chart2.Text = "chart1";
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
@@ -137,7 +137,8 @@ namespace UI
                 btnManage.Text = "确定";
                 return;
             }
-            if (txtManagementPassword.Text == GlobalVal.ManagerPassword)
+            GlobalVal.ManagerPassword = Method.GetWebConfig(ConfigName.ManagerPassword);
+            if (Method.EncryptPWD(txtManagementPassword.Text) == GlobalVal.ManagerPassword)
             {
                 tabControl1.Visible = true;
                 btnManage.Text = "锁定";

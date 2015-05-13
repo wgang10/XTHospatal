@@ -69,6 +69,16 @@ namespace UI
         }
 
         /// <summary>
+        /// 加密密码
+        /// </summary>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        public static string EncryptPWD(string password)
+        {
+            return System.Web.Security.FormsAuthentication.HashPasswordForStoringInConfigFile(password, "MD5");
+        }
+
+        /// <summary>
         /// 取得年龄
         /// </summary>
         /// <param name="birthday">出生年月日</param>

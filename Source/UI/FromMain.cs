@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
+using System.Net;
 using System.Text;
 using System.Windows.Forms;
 
@@ -102,7 +104,39 @@ namespace UI
         private void FromMain_Load(object sender, EventArgs e)
         {
             this.Activate();
-            GlobalVal.SplashObj.Dispose();
+            //检查并更新update.exe文件
+            //是否存在
+            string updateExe = GlobalVal.AappPath + @"\UpdateApp.exe";
+            string updateExeUrl = GlobalVal.ServicesURL + @"/App/UpdateApp.exe.zip";
+            WebClient downWebClient = new WebClient();
+            downWebClient.DownloadFileCompleted += delegate(object wcsender, AsyncCompletedEventArgs ex)
+            {
+                if (ex.Error != null)
+                {
+                    MessageBox.Show(ex.Error.Message);
+                }
+                else
+                {
+                    GlobalVal.SplashObj.Dispose();
+                }
+            };
+            if (File.Exists(updateExe))
+            {
+                //检查是否需要更新
+                string localMd5 = Method.GetMD5HashFromFile(updateExe);
+                string serverMd5 = GetUpdateAppMD5();
+                if (localMd5 != serverMd5)
+                {
+                    File.Delete(updateExe);
+                    downWebClient.DownloadFileAsync(new Uri(updateExeUrl), updateExe);
+                }
+            }
+            else
+            {
+                //直接下载
+                downWebClient.DownloadFileAsync(new Uri(updateExeUrl), updateExe);
+            }
+            
             try
             {
                 if (this.DesignMode != true)
@@ -130,6 +164,28 @@ namespace UI
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private static string GetUpdateAppMD5()
+        {
+            string strRet = string.Empty;
+            WebRequest req = WebRequest.Create(string.Format("{0}", GlobalVal.ServicesURL + "/GetUpdateExeMD5.ashx"));
+            WebResponse res = req.GetResponse();
+            System.IO.Stream resStream = res.GetResponseStream();
+            Encoding encode = System.Text.Encoding.Default;
+            StreamReader readStream = new StreamReader(resStream, encode);
+            Char[] read = new Char[256];
+            int count = readStream.Read(read, 0, 256);
+            while (count > 0)
+            {
+                String str = new String(read, 0, count);
+                strRet = strRet + str;
+                count = readStream.Read(read, 0, 256);
+            }
+            resStream.Close();
+            readStream.Close();
+            res.Close();
+            return strRet;
         }
 
         private void BindChartData()

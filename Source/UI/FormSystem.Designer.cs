@@ -482,6 +482,7 @@
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.btnManage);
             this.Controls.Add(this.btnClose);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormSystem";
             this.Text = "FormSystem";
             this.Load += new System.EventHandler(this.FormSystem_Load);

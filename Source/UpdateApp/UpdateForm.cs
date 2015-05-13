@@ -29,6 +29,9 @@ namespace UpdateApp
         private static string InstallURL=string.Empty;
         private static long size;//所有文件大小 
         private static int count;//文件总数 
+        /// <summary>
+        /// 更新文件列表
+        /// </summary>
         private static string[] fileNames;
         private static int num=0;//已更新文件数 
         private static long upsize;//已更新文件大小 
@@ -234,6 +237,11 @@ namespace UpdateApp
             fileNames = Common.globalUpdateList.Split('|');
         }
 
+        public static string EncryptPWD(string password)
+        {
+            return System.Web.Security.FormsAuthentication.HashPasswordForStoringInConfigFile(password, "MD5");
+        }
+
         /// <summary> 
         /// 开始更新 
         /// </summary> 
@@ -246,7 +254,7 @@ namespace UpdateApp
                 lbMessageSize.Text = String.Format(
                     CultureInfo.InvariantCulture,
                     "正在下载:{0}  [ {1}/{2} ]",
-                    fileName,
+                    fileName.Replace(".zip",""),
                     ConvertSize(ex.BytesReceived),
                     ConvertSize(ex.TotalBytesToReceive));
 
@@ -474,6 +482,11 @@ namespace UpdateApp
             }
             public string name { get; set; }
             public string md5 { get; set; }
+        }
+
+        private void btntxtEncrypt_Click(object sender, EventArgs e)
+        {
+            txtEncryptNew.Text = EncryptPWD(txtEncryptOriginal.Text);
         }
     }
 }

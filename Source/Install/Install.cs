@@ -23,7 +23,10 @@ namespace Install
     private static string fileName = "Install.zip";//当前文件名 
     private static string appPath = @"C:\XTHospital";
     private static int num=0;//已更新文件数 
-    private static string[] fileNames;
+    /// <summary>
+    /// 服务器文件列表
+    /// </summary>
+    private static string[] ServerFileNames;
     private static long size;//所有文件大小 
     private Dictionary<string, string> LocalFiles = new Dictionary<string, string>();
     public Install()
@@ -130,7 +133,7 @@ namespace Install
         lbMessageSize.Text = String.Format(
             CultureInfo.InvariantCulture,
             "正在下载:{0}  [ {1}/{2} ]",
-            fileName,
+            fileName.Replace(".zip",""),
             ConvertSize(ex.BytesReceived),
             ConvertSize(ex.TotalBytesToReceive));
 
@@ -167,7 +170,7 @@ namespace Install
           //设置最新的程序号
           //string[] newAppNo = { Common.globalAppVNo, Common.globalAppMD5No };
           //SetConfigAppNo(newAppNo);
-          if (num < fileNames.Length)
+          if (num < ServerFileNames.Length)
           {
             DownloadFile(num);
           }
@@ -252,7 +255,7 @@ namespace Install
     {
       try
       { 
-        fileName = fileNames[arry];
+        fileName = ServerFileNames[arry];
         num++;
         //删除已有的下载包
         //如果本地存在相同文件（文件名和MD5值都相同），则不需要再次下载
@@ -264,8 +267,8 @@ namespace Install
                     CultureInfo.InvariantCulture,
                     "进度 {0}/{1}>>已存在，跳过..",
                     num,
-                    fileNames.Length);
-                if (num < fileNames.Length)
+                    ServerFileNames.Length);
+                if (num < ServerFileNames.Length)
                 {
                     DownloadFile(num);
                 }
@@ -288,8 +291,8 @@ namespace Install
             CultureInfo.InvariantCulture,
             "下载进度 {0}/{1}",
             num,
-            fileNames.Length);
-        progressBarFile.Value = Convert.ToInt32(((float)num / (float)fileNames.Length) * 100);
+            ServerFileNames.Length);
+        progressBarFile.Value = Convert.ToInt32(((float)num / (float)ServerFileNames.Length) * 100);
         string DownLoadURL = InstallURL + @"/" + fileName;
         if (!Directory.Exists(appPath))
         {
@@ -330,7 +333,7 @@ namespace Install
             resStream.Close();
             readStream.Close();
             res.Close();
-            fileNames = strRet.Split('|');
+            ServerFileNames = strRet.Split('|');
         }
         catch
         { }
@@ -346,10 +349,11 @@ namespace Install
     {
         foreach(string key in LocalFiles.Keys)
         {
+            if (key.Equals("updateapp.exe", StringComparison.InvariantCultureIgnoreCase)) continue;
             bool IsExist = false;
-            for (int j = 0; j < fileNames.Length; j++)
+            for (int j = 0; j < ServerFileNames.Length; j++)
             {
-                if (fileNames[j].Substring(0, fileNames[j].LastIndexOf(".zip")).Equals(key, StringComparison.CurrentCultureIgnoreCase))
+                if (ServerFileNames[j].Substring(0, ServerFileNames[j].LastIndexOf(".zip")).Equals(key, StringComparison.CurrentCultureIgnoreCase))
                 {
                     IsExist = true;
                     break;

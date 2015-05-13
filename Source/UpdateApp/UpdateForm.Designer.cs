@@ -40,6 +40,9 @@
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.txtEncryptOriginal = new System.Windows.Forms.TextBox();
+            this.txtEncryptNew = new System.Windows.Forms.TextBox();
+            this.btntxtEncrypt = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // progressBarFile
@@ -148,11 +151,38 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // txtEncryptOriginal
+            // 
+            this.txtEncryptOriginal.Location = new System.Drawing.Point(14, 124);
+            this.txtEncryptOriginal.Name = "txtEncryptOriginal";
+            this.txtEncryptOriginal.Size = new System.Drawing.Size(448, 21);
+            this.txtEncryptOriginal.TabIndex = 12;
+            // 
+            // txtEncryptNew
+            // 
+            this.txtEncryptNew.Location = new System.Drawing.Point(12, 151);
+            this.txtEncryptNew.Name = "txtEncryptNew";
+            this.txtEncryptNew.Size = new System.Drawing.Size(541, 21);
+            this.txtEncryptNew.TabIndex = 13;
+            // 
+            // btntxtEncrypt
+            // 
+            this.btntxtEncrypt.Location = new System.Drawing.Point(478, 124);
+            this.btntxtEncrypt.Name = "btntxtEncrypt";
+            this.btntxtEncrypt.Size = new System.Drawing.Size(75, 23);
+            this.btntxtEncrypt.TabIndex = 14;
+            this.btntxtEncrypt.Text = "加密";
+            this.btntxtEncrypt.UseVisualStyleBackColor = true;
+            this.btntxtEncrypt.Click += new System.EventHandler(this.btntxtEncrypt_Click);
+            // 
             // UpdateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(565, 427);
+            this.Controls.Add(this.btntxtEncrypt);
+            this.Controls.Add(this.txtEncryptNew);
+            this.Controls.Add(this.txtEncryptOriginal);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.listBox1);
@@ -189,5 +219,8 @@
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TextBox txtEncryptOriginal;
+        private System.Windows.Forms.TextBox txtEncryptNew;
+        private System.Windows.Forms.Button btntxtEncrypt;
     }
 }

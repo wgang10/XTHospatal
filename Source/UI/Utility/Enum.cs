@@ -70,6 +70,7 @@ namespace UI
         InstallPath,
         PictureLoading,
         PictureTop,
-        PictureLogin
+        PictureLogin,
+        ManagerPassword
     }
 }
