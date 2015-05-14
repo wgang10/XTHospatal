@@ -27,32 +27,39 @@ namespace WinFormAppTest
         private void Calculate()
         {
             DataTable dt = CreateDataTable();
-            double original = double.Parse(txtBenjin.Text);
-            double rate = double.Parse(txtLiLv.Text);
-            int time = int.Parse(txtTime.Text);
-            double add = double.Parse(txtAdd.Text);
-            double result = original;
-            double touru = original;
-            double lixi = 0;
 
-            for (int i = 1; i <= time; i++)
+            decimal original = decimal.Parse(txtBenjin.Text);
+            decimal rate = decimal.Parse(txtLiLv.Text);//利率
+            int time = int.Parse(txtTime.Text);//时间
+            int timeOfYear = int.Parse(txtTimesOfYear.Text);//年复利次数
+            decimal add = decimal.Parse(txtAdd.Text);//每年追加
+            decimal result = original;
+            decimal touru = original;
+            decimal lixi = 0;
+            int year = 1;
+
+            for (int i = 1; i <= time * timeOfYear; i++)
             {
-                if (i > 1)
+                if (i > timeOfYear && (i-1) % timeOfYear == 0)
                 {
                     result += add;
                     touru += add;
                 }
-                result += result * rate;
-                DataRow dr = dt.NewRow();
-                dr["Time"] = i;
-                dr["Lixi"] = result - touru;
-                dr["All"] = result;
-                dt.Rows.Add(dr);
+                result += result * rate / timeOfYear;
+
+                if (i >= timeOfYear && (i) % timeOfYear == 0)
+                {
+                    DataRow dr = dt.NewRow();
+                    dr["Time"] = year++;
+                    dr["Lixi"] = string.Format("{0:F2}", result - touru);
+                    dr["All"] = string.Format("{0:F2}", result);
+                    dt.Rows.Add(dr);
+                }
             }
             lixi = result - touru;
-            txtTouRu.Text = touru.ToString();
-            txtHuibao.Text = result.ToString();
-            txtLiXi.Text = lixi.ToString();
+            txtTouRu.Text = string.Format("{0:F2}", touru);
+            txtHuibao.Text = string.Format("{0:F2}", result);
+            txtLiXi.Text = string.Format("{0:F2}", lixi);
 
             FillColumnChart(dt);
         }

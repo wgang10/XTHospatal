@@ -70,7 +70,7 @@
             this.txtBenjin.Name = "txtBenjin";
             this.txtBenjin.Size = new System.Drawing.Size(100, 21);
             this.txtBenjin.TabIndex = 1;
-            this.txtBenjin.Text = "1000";
+            this.txtBenjin.Text = "50000";
             // 
             // txtLiLv
             // 
@@ -137,7 +137,7 @@
             this.txtAdd.Name = "txtAdd";
             this.txtAdd.Size = new System.Drawing.Size(100, 21);
             this.txtAdd.TabIndex = 9;
-            this.txtAdd.Text = "0";
+            this.txtAdd.Text = "50000";
             // 
             // label5
             // 
@@ -215,6 +215,9 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(12, 438);
             this.dataGridView1.Name = "dataGridView1";

@@ -348,7 +348,7 @@
             this.txtAdd.Name = "txtAdd";
             this.txtAdd.Size = new System.Drawing.Size(100, 21);
             this.txtAdd.TabIndex = 26;
-            this.txtAdd.Text = "0";
+            this.txtAdd.Text = "50000";
             // 
             // txtHuibao
             // 
@@ -432,7 +432,7 @@
             this.txtBenjin.Name = "txtBenjin";
             this.txtBenjin.Size = new System.Drawing.Size(100, 21);
             this.txtBenjin.TabIndex = 16;
-            this.txtBenjin.Text = "1000";
+            this.txtBenjin.Text = "50000";
             // 
             // button1
             // 
