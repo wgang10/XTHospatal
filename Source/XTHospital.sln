@@ -64,6 +64,28 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormAppTest", "WinFormAp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xiaomilogin", "XiaoMi\xiaomilogin.csproj", "{587AAEF3-B2DB-4E59-9A2E-61A34CF39CC3}"
 EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WebTest", "http://localhost:50182", "{2B4A0083-5C54-4B58-8EC4-07BC3382F497}"
+	ProjectSection(WebsiteProperties) = preProject
+		UseIISExpress = "true"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_50182"
+		Debug.AspNetCompiler.PhysicalPath = "..\WebTest\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_50182\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_50182"
+		Release.AspNetCompiler.PhysicalPath = "..\WebTest\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_50182\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		SlnRelativePath = "..\WebTest\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|.NET = Debug|.NET
@@ -292,6 +314,18 @@ Global
 		{587AAEF3-B2DB-4E59-9A2E-61A34CF39CC3}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{587AAEF3-B2DB-4E59-9A2E-61A34CF39CC3}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{587AAEF3-B2DB-4E59-9A2E-61A34CF39CC3}.Release|x86.ActiveCfg = Release|Any CPU
+		{2B4A0083-5C54-4B58-8EC4-07BC3382F497}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{2B4A0083-5C54-4B58-8EC4-07BC3382F497}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B4A0083-5C54-4B58-8EC4-07BC3382F497}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B4A0083-5C54-4B58-8EC4-07BC3382F497}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{2B4A0083-5C54-4B58-8EC4-07BC3382F497}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{2B4A0083-5C54-4B58-8EC4-07BC3382F497}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2B4A0083-5C54-4B58-8EC4-07BC3382F497}.Release|.NET.ActiveCfg = Debug|Any CPU
+		{2B4A0083-5C54-4B58-8EC4-07BC3382F497}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B4A0083-5C54-4B58-8EC4-07BC3382F497}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{2B4A0083-5C54-4B58-8EC4-07BC3382F497}.Release|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{2B4A0083-5C54-4B58-8EC4-07BC3382F497}.Release|Mixed Platforms.Build.0 = Debug|Any CPU
+		{2B4A0083-5C54-4B58-8EC4-07BC3382F497}.Release|x86.ActiveCfg = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
