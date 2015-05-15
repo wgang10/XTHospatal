@@ -78,12 +78,22 @@ public partial class _Default : System.Web.UI.Page
         chart2.Series.Clear();
 
         Series seriesAll = new Series("总收入");
+        //seriesAll.IsValueShownAsLabel = true;
+        //seriesAll.ToolTip = "#VALX,#VAL";
+        seriesAll.ToolTip = "#VAL";
         chart2.Series.Add(seriesAll);
+
         Series seriesLixi = new Series("利息");
+        //seriesLixi.IsValueShownAsLabel = true;
+        seriesLixi.ToolTip = "#VAL";
         chart2.Series.Add(seriesLixi);
+
         Series seriesTouRu = new Series("本金");
+        //seriesTouRu.IsValueShownAsLabel = true;
+        seriesTouRu.ToolTip = "#VAL";
         chart2.Series.Add(seriesTouRu);
 
+        
         chart2.DataSource = DT;
 
         //设置图表Y轴对应项

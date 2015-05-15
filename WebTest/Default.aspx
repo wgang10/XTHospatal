@@ -37,6 +37,10 @@
                 <asp:ChartArea Name="ChartArea1">
                 </asp:ChartArea>
             </chartareas>
+            <legends>
+                <asp:Legend Name="Legend1">
+                </asp:Legend>
+            </legends>
             <Titles>
                 <asp:Title Name="收益图">
                 </asp:Title>
