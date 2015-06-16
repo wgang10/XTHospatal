@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Config>
   <System Name ="XTHospital">
-    <WebServicesURL>http://www.ziyangsoft.com</WebServicesURL>
+    <WebServicesURL>http://111.114.111.111</WebServicesURL>
+    <WebServicesZiyangSoft>http://www.ziyangsoft.com</WebServicesZiyangSoft>
     <InstallURL>http://www.ziyangsoft.com/App/Install</InstallURL>
     <InstallPath>C:\XTHospital</InstallPath>
     <PictureLoading>http://www.ziyangsoft.com/images/UI/Loading.png</PictureLoading>

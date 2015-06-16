@@ -66,6 +66,7 @@ namespace UI
     public enum ConfigName
     {
         WebServicesURL,
+        WebServicesZiyangSoft,
         InstallURL,
         InstallPath,
         PictureLoading,

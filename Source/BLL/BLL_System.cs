@@ -39,9 +39,50 @@ namespace XTHospital.BLL
             if (SystemName.ToUpper()=="ALL")
             {
                 SystemName = "";
-            }
-            return OptionNews.GetNewsList(SystemName,Num);
+            }         
+            //return OptionNews.GetNewsList(SystemName,Num);
+            return new List<Notic>();
         }
+
+        //public IList<Notic> GetNewsListByWeb(string SystemName, int Num)
+        //{
+        //    //List<News> list = new List<News>();
+        //    //ReturnValue resoult = dal.GetNewsList(SystemName,Num);
+        //    //if (resoult.ErrorFlag)
+        //    //{
+        //    //    for (int i = 0; i < resoult.Count; i++)
+        //    //    {
+        //    //        News news = new News(resoult.ResultDataSet.Tables[0].Rows[i]["ID"].ToString(),
+        //    //            resoult.ResultDataSet.Tables[0].Rows[i]["SystemName"].ToString(),
+        //    //            DateTime.Parse(resoult.ResultDataSet.Tables[0].Rows[i]["CreateTime"].ToString()),
+        //    //            resoult.ResultDataSet.Tables[0].Rows[i]["Title"].ToString(),
+        //    //            resoult.ResultDataSet.Tables[0].Rows[i]["Url"].ToString(),
+        //    //            resoult.ResultDataSet.Tables[0].Rows[i]["Body"].ToString());
+        //    //        list.Add(news);
+        //    //    }
+        //    //}
+        //    //return list;
+        //    if (SystemName.ToUpper() == "ALL")
+        //    {
+        //        SystemName = "";
+        //    }
+        //    ziyangsoftserver.ServiceSoapClient server = new ziyangsoftserver.ServiceSoapClient();            
+        //    ziyangsoftserver.Notic[] notices = server.GetNews(SystemName, Num);
+        //    IList<Notic> list = new List<Notic>();
+        //    foreach (ziyangsoftserver.Notic notic in notices)
+        //    {
+        //        Notic newNotic = new Notic();
+        //        newNotic.Body = notic.Body;
+        //        newNotic.CreateTime = notic.CreateTime;
+        //        newNotic.Id = notic.Id;
+        //        newNotic.Status = notic.Status;
+        //        newNotic.SystemName = notic.SystemName;
+        //        newNotic.UpdateTime = notic.UpdateTime;
+        //        newNotic.Url = notic.Url;
+        //        list.Add(newNotic);
+        //    }
+        //    return list;
+        //}
 
         public List<XTHospital.Model.News> GetNewsListForWeb(string SystemName, int Num)
         {

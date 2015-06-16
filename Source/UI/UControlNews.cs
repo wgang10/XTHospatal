@@ -218,12 +218,15 @@ namespace UI
             {
                 GlobalVal.WebSerices = new MyWebService(GlobalVal.ServicesURL + @"/Service.asmx");
             }
+            //ZiyangSoftServer.ServiceSoapClient server = new ZiyangSoftServer.ServiceSoapClient();
 
             lastRefreshTime = DateTime.Now;
             timer2.Start();
             List<News> list=new List<News>();
             
             webService.Notic[] news = GlobalVal.WebSerices.GetNews("XTHospital", 10);
+
+            //ZiyangSoftServer.Notic[] news = server.GetNews("XTHospital", 10);
             for (int i = 0; i < news.Length; i++)
             {
                  list.Add(new News(news[i].Id.ToString(),news[i].SystemName,news[i].UpdateTime, news[i].Title, news[i].Url, news[i].Body));
