@@ -41,5 +41,10 @@ namespace XTHospital.BLL
         {
             return dalBiochemistry.GetAll();
         }
+
+        public ReturnValue GetStatisticsBio(string EmployeeID)
+        {
+            return dalBiochemistry.GetStatisticsBio(EmployeeID);
+        }
     }
 }

@@ -29,42 +29,44 @@
         private void InitializeComponent()
         {
             this.btnClose = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // btnClose
             // 
             this.btnClose.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnClose.Location = new System.Drawing.Point(726, 96);
+            this.btnClose.Location = new System.Drawing.Point(881, 708);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(91, 30);
+            this.btnClose.Size = new System.Drawing.Size(91, 33);
             this.btnClose.TabIndex = 41;
             this.btnClose.Text = "关闭";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // label1
+            // richTextBox1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("SimSun", 60F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(295, 316);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(394, 80);
-            this.label1.TabIndex = 42;
-            this.label1.Text = "建设中...";
+            this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox1.Location = new System.Drawing.Point(15, 83);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ReadOnly = true;
+            this.richTextBox1.Size = new System.Drawing.Size(957, 598);
+            this.richTextBox1.TabIndex = 42;
+            this.richTextBox1.Text = "1、创建部门";
             // 
             // FormHelp
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(984, 712);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(984, 771);
+            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.btnClose);
+            this.MaximumSize = new System.Drawing.Size(1000, 873);
+            this.MinimumSize = new System.Drawing.Size(798, 698);
             this.Name = "FormHelp";
             this.Text = "FormHelp";
             this.Load += new System.EventHandler(this.FormHelp_Load);
             this.Controls.SetChildIndex(this.btnClose, 0);
-            this.Controls.SetChildIndex(this.label1, 0);
+            this.Controls.SetChildIndex(this.richTextBox1, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -73,6 +75,6 @@
         #endregion
 
         private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }

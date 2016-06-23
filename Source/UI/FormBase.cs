@@ -373,19 +373,19 @@ namespace UI
         /// <summary>
         /// 设置当前登录用户
         /// </summary>
-        public string LoginUser { set { this.lbUser.Text = "当前登录用户：" + value; } }
+        public string LoginUser { set { this.lbUser.Text = "User:" + value; } }
 
         private void FormBase_Load(object sender, EventArgs e)
         {
             if (this.DesignMode != true)
             {
-                uControlNews1.GetLatestNews();
-                uControlNews1.VisibleRefrshTime = false;//设置刷新倒计时不可见
-                uControlNews1.VisibleFreshButton = false;//设置刷新按钮不可见
+                //uControlNews1.GetLatestNews();
+                uControlNews1.VisibleRefrshTime = false;
+                uControlNews1.VisibleFreshButton = false;
 
                 linkLabel1.Text = GlobalVal.SupportCompanyName;
                 label139.Text = GlobalVal.Copyright;
-                lbUser.Text = "当前登录用户：" + GlobalVal.LoginUserID;
+                lbUser.Text = "User:" + GlobalVal.LoginUserID;
                 try
                 {
                     WebClient wc = new WebClient();
@@ -397,7 +397,12 @@ namespace UI
                     //GlobalVal.gloWebSerices.AddLog("加载图片[" + GlobalVal.gloPictureLoginUrl + "]失败."+ex.Message, "3", Dns.GetHostAddresses(Dns.GetHostName())[0].ToString());
                 }
             }
-        }        
+        }
+
+        public void StartShowNews()
+        {
+            uControlNews1.GetLatestNews();
+        }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {

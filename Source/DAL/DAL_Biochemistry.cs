@@ -47,6 +47,11 @@ where EmployeeID=@EmployeeID and YearMoth=@YearMonth ";
 
         private string GetAll_SQL = @"select * from Biochemistry";
 
+        public ReturnValue GetStatisticsBio(string EmployeeID)
+        {
+            return null;
+        }
+
         public ReturnValue Add(Biochemistry model)
         {
             SqlParameter[] parameters = {

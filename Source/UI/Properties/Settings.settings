@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="UI_webService_Service" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://localhost/Service.asmx</Value>
+      <Value Profile="(Default)">http://localhost:17761/Service.asmx</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -54,6 +54,44 @@ where EmployeeID=@EmployeeID and YearMoth=@YearMonth ";
 
         private string GetAll_SQL = @"select * from Biochemistry";
 
+        private string GetStatisticsBio_SQL = @"SELECT 
+BioT.EmployeeID
+,BioT.YearMoth
+,BioT.HYTC
+,BioT.HYTG
+,BioT.HYHDLC
+,BioT.HYLDLC
+,BioT.HYTBIL
+,BioT.HYDBIL
+,BioT.HYTP
+,BioT.HYALB
+,BioT.HYALT
+,BioT.HY_GLU
+,BioT.HY_UREA
+,BioT.HY_CR
+,BioT.HY_AFP
+,BioT.HY_CEA
+,BioT.HYHBsAg
+,BioT.HYHBsAb
+,BioT.HYHBeAg
+,BioT.HYHBeAb
+,BioT.HYHBcAb
+,BioT.HYAPOAI
+,BioT.HYAPOB
+,BioT.HYAST
+,BioT.HYGT
+,BioT.HYALP
+,BioT.HYUA
+From Biochemistry BioT
+where BioT.EmployeeID='120103196202153240'";
+
+        public ReturnValue GetStatisticsBio(string EmployeeID)
+        {
+            OleDbParameter[] parametersSearchID = { new OleDbParameter("@EmployeeID", OleDbType.VarWChar, 18) };
+            parametersSearchID[0].Value = EmployeeID;
+            return OleDbHelper.Query(GetStatisticsBio_SQL, parametersSearchID);
+        }
+
         public ReturnValue Add(Biochemistry model)
         {
             OleDbParameter[] parameters = {

@@ -92,7 +92,7 @@ namespace UI
                 i++;
             }
             string DesktopPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Desktop);//得到桌面文件夹 
-            IWshRuntimeLibrary.WshShell shell = new IWshRuntimeLibrary.WshShellClass();
+            IWshRuntimeLibrary.WshShell shell = new IWshRuntimeLibrary.WshShell();// .WshShellClass();
             IWshRuntimeLibrary.IWshShortcut shortcut = (IWshRuntimeLibrary.IWshShortcut)shell.CreateShortcut(DesktopPath + "\\体检系统.lnk");
             shortcut.TargetPath = GlobalVal.AappPath + @"\UI.exe";
             shortcut.Arguments = "";// 参数 

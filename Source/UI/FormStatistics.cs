@@ -108,18 +108,32 @@ namespace UI
       /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
-          webService.Service ws = new webService.Service();
-          byte[] buffer = ws.GetStatisticsData();
-          if (buffer != null)
-          {
-            DataSet ds = DataSetZip.Decompress(buffer);
-            if (ds.Tables.Count > 0)
+            //webService.Service ws = new webService.Service();
+            //byte[] buffer = ws.GetStatisticsData();
+            //if (buffer != null)
+            //{
+            //  DataSet ds = DataSetZip.Decompress(buffer);
+            //  if (ds.Tables.Count > 0)
+            //  {
+            //    this.dataGridView1.DataSource = ds.Tables[0];
+            //    tbStatistics = ds.Tables[0];
+            //    BindChart(tbStatistics);
+            //  }
+            //}
+
+            webService.ReturnValue resoult = GlobalVal.WebSerices.GetStatisticsBio("120103196202153240");
+            if (resoult.ErrorFlag)
             {
-              this.dataGridView1.DataSource = ds.Tables[0];
-              tbStatistics = ds.Tables[0];
-              BindChart(tbStatistics);
+                if (resoult.Count > 0)
+                {
+                    tbStatistics = resoult.ResultDataSet.Tables[0];
+                    BindChart(tbStatistics);
+                }
+                else
+                {
+                    MessageBox.Show(resoult.ErrorID);
+                }
             }
-          }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -293,15 +307,16 @@ namespace UI
             chart2.Series.Clear();
             chart2.DataSource = tb;
 
-            string[] series ={"HYTC","HYTG","HYHDLC","HYLDLC","HYAPOAI","HYAPOB","HYTBIL","HYDBIL",
-"HYTP","HYALB","HYALT","HYAST","HYGT","HYALP","HY_GLU","HY_UREA","HY_CR","HYUA","HY_AFP","HY_CEA"};
+            //            string[] series ={"HYTC","HYTG","HYHDLC","HYLDLC","HYAPOAI","HYAPOB","HYTBIL","HYDBIL",
+            //"HYTP","HYALB","HYALT","HYAST","HYGT","HYALP","HY_GLU","HY_UREA","HY_CR","HYUA","HY_AFP","HY_CEA"};
+            string[] series ={"HYTC","HYTG","HYHDLC","HYLDLC","HYAPOAI","HYAPOB"};
 
             for (int i = 0; i < series.Length; i++)
             {
                 Series series1 = new Series(series[i]);
                 series1.ChartType = SeriesChartType.Spline;
                 chart2.Series.Add(series1);
-                series1.XValueMember = "YearMonth";
+                series1.XValueMember = "YearMoth";
                 series1.YValueMembers = series[i];
             }
             chart2.DataBind();
@@ -471,6 +486,7 @@ namespace UI
                 
             }
         }
+        
     }
     class ObjUser
     {

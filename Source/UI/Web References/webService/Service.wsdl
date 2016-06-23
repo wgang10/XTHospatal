@@ -749,6 +749,20 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetStatisticsBio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EmployeeID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStatisticsBioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetStatisticsBioResult" type="tns:ReturnValue" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="InportBiochemistryData">
         <s:complexType>
           <s:sequence>
@@ -1098,6 +1112,12 @@
   <wsdl:message name="GetBioTInfoSoapOut">
     <wsdl:part name="parameters" element="tns:GetBioTInfoResponse" />
   </wsdl:message>
+  <wsdl:message name="GetStatisticsBioSoapIn">
+    <wsdl:part name="parameters" element="tns:GetStatisticsBio" />
+  </wsdl:message>
+  <wsdl:message name="GetStatisticsBioSoapOut">
+    <wsdl:part name="parameters" element="tns:GetStatisticsBioResponse" />
+  </wsdl:message>
   <wsdl:message name="InportBiochemistryDataSoapIn">
     <wsdl:part name="parameters" element="tns:InportBiochemistryData" />
   </wsdl:message>
@@ -1317,6 +1337,11 @@
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取生化参考值数据</wsdl:documentation>
       <wsdl:input message="tns:GetBioTInfoSoapIn" />
       <wsdl:output message="tns:GetBioTInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStatisticsBio">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取生化统计数据</wsdl:documentation>
+      <wsdl:input message="tns:GetStatisticsBioSoapIn" />
+      <wsdl:output message="tns:GetStatisticsBioSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="InportBiochemistryData">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">导入生化数据</wsdl:documentation>
@@ -1652,6 +1677,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetBioTInfo">
       <soap:operation soapAction="http://tempuri.org/GetBioTInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStatisticsBio">
+      <soap:operation soapAction="http://tempuri.org/GetStatisticsBio" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -2040,6 +2074,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetStatisticsBio">
+      <soap12:operation soapAction="http://tempuri.org/GetStatisticsBio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="InportBiochemistryData">
       <soap12:operation soapAction="http://tempuri.org/InportBiochemistryData" style="document" />
       <wsdl:input>
@@ -2133,10 +2176,10 @@
   </wsdl:binding>
   <wsdl:service name="Service">
     <wsdl:port name="ServiceSoap" binding="tns:ServiceSoap">
-      <soap:address location="http://localhost/Service.asmx" />
+      <soap:address location="http://localhost:17761/Service.asmx" />
     </wsdl:port>
     <wsdl:port name="ServiceSoap12" binding="tns:ServiceSoap12">
-      <soap12:address location="http://localhost/Service.asmx" />
+      <soap12:address location="http://localhost:17761/Service.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

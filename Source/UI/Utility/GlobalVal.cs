@@ -20,7 +20,8 @@ namespace UI
         private static FormConfig _formConfig;
         private static FormEmployeeManage _empManage;
         private static FormEmployeeCheckNum _empCheckProject;
-        private static FormStatistics _formStatistics;        
+        private static FormStatistics _formStatistics;
+        private static string _servicesURL;
 
         /// <summary>
         /// 检索窗体
@@ -245,7 +246,18 @@ namespace UI
         /// <summary>
         /// 服务器地址
         /// </summary>
-        public static string ServicesURL = @"http://www.ziyangsoft.com";
+        public static string ServicesURL
+        {
+            get {
+                _servicesURL = @"http://www.ziyangsoft.com";
+#if DEBUG
+                _servicesURL = @"http://localhost:17761";
+#endif          
+                return _servicesURL;
+            }
+
+            set { _servicesURL = value; }
+        }
 
         /// <summary>
         /// 管理员密码

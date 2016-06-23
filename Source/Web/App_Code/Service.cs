@@ -368,6 +368,13 @@ public class Service : System.Web.Services.WebService
         return bll.SearchBioTInfo();
     }
 
+    [WebMethod(Description = "获取生化统计数据")]
+    public ReturnValue GetStatisticsBio(string EmployeeID)
+    {
+        BLL_Biochemistry bll = new BLL_Biochemistry();
+        return bll.GetStatisticsBio(EmployeeID);
+    }
+
     [WebMethod(Description = "导入生化数据")]
     public bool InportBiochemistryData(byte[] buffer)
     {

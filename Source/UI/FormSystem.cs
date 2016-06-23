@@ -55,14 +55,13 @@ namespace UI
             {
                 GlobalVal.WebSerices = new MyWebService(GlobalVal.ServicesURL + @"/Service.asmx");
             }
-
-            if (string.IsNullOrEmpty(lbID.Text))
+            if (string.IsNullOrEmpty(txtID.Text))
             {
                 model.Id = -1;
             }
             else
             {
-                model.Id = Int32.Parse(lbID.Text);
+                model.Id = Int32.Parse(txtID.Text);
             }
             model.SystemName = txtSystemName.Text;
             model.Title = txtTitle.Text;
@@ -92,11 +91,13 @@ namespace UI
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtID.Text))
+                return;
             if (GlobalVal.WebSerices == null)
             {
                 GlobalVal.WebSerices = new MyWebService(GlobalVal.ServicesURL + @"/Service.asmx");
             }
-            bool isSuccess = GlobalVal.WebSerices.DeleteNewsLogic(Int32.Parse(lbID.Text));//逻辑删除
+            bool isSuccess = GlobalVal.WebSerices.DeleteNewsLogic(Int32.Parse(txtID.Text));//逻辑删除
             if (isSuccess)
             {
                 LoadNews(100);
@@ -109,11 +110,13 @@ namespace UI
 
         private void button3_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtID.Text))
+                return;
             if (GlobalVal.WebSerices == null)
             {
                 GlobalVal.WebSerices = new MyWebService(GlobalVal.ServicesURL + @"/Service.asmx");
             }
-            bool isSuccess = GlobalVal.WebSerices.DeleteNewsPhysic(Int32.Parse(lbID.Text));//逻辑删除
+            bool isSuccess = GlobalVal.WebSerices.DeleteNewsPhysic(Int32.Parse(txtID.Text));//逻辑删除
             if (isSuccess)
             {
                 LoadNews(100);
@@ -126,7 +129,7 @@ namespace UI
 
         private void button4_Click(object sender, EventArgs e)
         {
-            lbID.Text = "";
+            txtID.Text = "";
         }
 
         private void btnManage_Click(object sender, EventArgs e)
@@ -143,6 +146,7 @@ namespace UI
                 tabControl1.Visible = true;
                 btnManage.Text = "锁定";
                 txtManagementPassword.Text = "";
+                LoadBiochemistryConfigInfo();//加载生化配置信息。
             }
             else
             {
@@ -150,6 +154,13 @@ namespace UI
                 txtManagementPassword.Focus();
                 txtManagementPassword.SelectAll();
             }
+
+#if DEBUG
+            tabControl1.Visible = true;
+            btnManage.Text = "锁定";
+            txtManagementPassword.Text = "";
+            LoadBiochemistryConfigInfo();//加载生化配置信息。
+#endif
         }
 
         private void FormSystem_Shown(object sender, EventArgs e)
@@ -265,12 +276,91 @@ namespace UI
                 GlobalVal.WebSerices = new MyWebService(GlobalVal.ServicesURL + @"/Service.asmx");
             }
             webService.Notic news = (webService.Notic)dataGridView1.CurrentRow.DataBoundItem;
-            lbID.Text = news.Id.ToString();
+            txtID.Text = news.Id.ToString();
             lbCreatetime.Text = news.CreateTime.ToString();
             txtSystemName.Text = news.SystemName;
             txtTitle.Text = news.Title;
             txtUrl.Text = news.Url;
             txtBody.Text = news.Body;
+        }
+
+        private void LoadBiochemistryConfigInfo()
+        {
+            webService.ReturnValue resoult = GlobalVal.WebSerices.GetBioTInfo();
+            if (resoult.ErrorFlag)
+            {
+                if (resoult.Count > 0)
+                {
+                    this.txtHY_TC.Text = resoult.ResultDataSet.Tables[0].Rows[0]["_Bio_HYTC"].ToString();//总胆固醇(TC)
+                    this.txtHY_TG.Text = resoult.ResultDataSet.Tables[0].Rows[0]["_Bio_HYTG"].ToString();//甘油三脂(TG)
+                    this.txtHY_HDL_C.Text = resoult.ResultDataSet.Tables[0].Rows[0]["_Bio_HYHDLC"].ToString();//高密度脂蛋白胆固醇(HDL-C)
+
+                    this.txtHYLDLC.Text = resoult.ResultDataSet.Tables[0].Rows[0]["_Bio_HYLDLC"].ToString();//低密度脂蛋白胆固醇(LDL-C)
+                    this.txtHYAPOAI.Text = resoult.ResultDataSet.Tables[0].Rows[0]["_Bio_HYAPOAI"].ToString();//载脂蛋白AI(APOAI)
+                    this.txtHYAPOB.Text = resoult.ResultDataSet.Tables[0].Rows[0]["_Bio_HYAPOB"].ToString();//载脂蛋白B(APOB)
+                    this.txtHYAST.Text = resoult.ResultDataSet.Tables[0].Rows[0]["_Bio_HYAST"].ToString();//天门冬氨酸氨基转移酶(AST)
+                    this.txtHYGT.Text = resoult.ResultDataSet.Tables[0].Rows[0]["_Bio_HYGT"].ToString();//γ-谷胺酰转肽酶(γ-GT)
+                    this.txtHYALP.Text = resoult.ResultDataSet.Tables[0].Rows[0]["_Bio_HYALP"].ToString();//碱性磷酸酶(ALP)
+                    this.txtHYUA.Text = resoult.ResultDataSet.Tables[0].Rows[0]["_Bio_HYUA"].ToString();//尿酸（UA）
+
+                    this.txtHY_TBIL.Text = resoult.ResultDataSet.Tables[0].Rows[0]["_Bio_HYTBIL"].ToString();//总胆红素(TBIL)
+                    this.txtHY_DBIL.Text = resoult.ResultDataSet.Tables[0].Rows[0]["_Bio_HYDBIL"].ToString();//直接胆红素(DBIL)
+                    this.txtHY_TP.Text = resoult.ResultDataSet.Tables[0].Rows[0]["_Bio_HYTP"].ToString();//总蛋白(TP)
+                    this.txtHY_ALB.Text = resoult.ResultDataSet.Tables[0].Rows[0]["_Bio_HYALB"].ToString();//白蛋白(ALB)
+                    this.txtHY_ALT.Text = resoult.ResultDataSet.Tables[0].Rows[0]["_Bio_HYALT"].ToString();//谷丙转氨酶(ALT)
+                    this.txtGLU.Text = resoult.ResultDataSet.Tables[0].Rows[0]["_Bio_HY_GLU"].ToString();//血糖
+                    this.txtUREA.Text = resoult.ResultDataSet.Tables[0].Rows[0]["_Bio_HY_UREA"].ToString();//尿素
+                    this.txtCR.Text = resoult.ResultDataSet.Tables[0].Rows[0]["_Bio_HY_CR"].ToString();//肌酐
+                    this.txtAFP.Text = resoult.ResultDataSet.Tables[0].Rows[0]["_Bio_HY_AFP"].ToString();//甲胎蛋白
+                    this.txtCEA.Text = resoult.ResultDataSet.Tables[0].Rows[0]["_Bio_HY_CEA"].ToString();//癌胚抗原
+                }
+                else
+                {
+                    MessageBox.Show(resoult.ErrorID);
+                }
+            }
+        }
+
+        private void btnSaveBiochemistryConfig_Click(object sender, EventArgs e)
+        {
+            webService.Biochemistry model = new UI.webService.Biochemistry();
+            model.EmployeeID = "88888888";
+            model.YearMonth = GlobalVal.YearMonth;
+            model.HYNo = txtHY_No.Text.Trim();
+            model.HYDr = txtHY_Dr.Text.Trim();
+            model.HYTC = txtHY_TC.Text.Trim();
+            model.HYTG = txtHY_TG.Text.Trim();
+            model.HYHDLC = txtHY_HDL_C.Text.Trim();
+            model.HYTBIL = txtHY_TBIL.Text.Trim();
+            model.HYDBIL = txtHY_DBIL.Text.Trim();
+            model.HYTP = txtHY_TP.Text.Trim();
+            model.HYALB = txtHY_ALB.Text.Trim();
+            model.HYALT = txtHY_ALT.Text.Trim();
+            model.HY_GLU = txtGLU.Text.Trim();//血糖
+            model.HY_UREA = txtUREA.Text.Trim();//尿素
+            model.HY_CR = txtCR.Text.Trim();//肌酐
+            model.HY_AFP = txtAFP.Text.Trim();//甲胎蛋白
+            model.HY_CEA = txtCEA.Text.Trim();//癌胚抗原
+
+            model.HYLDLC = this.txtHYLDLC.Text.Trim();
+            model.HYAPOAI = this.txtHYAPOAI.Text.Trim();
+            model.HYAPOB = this.txtHYAPOB.Text.Trim();
+            model.HYAST = this.txtHYAST.Text.Trim();
+            model.HYGT = this.txtHYGT.Text.Trim();
+            model.HYALP = this.txtHYALP.Text.Trim();
+            model.HYUA = this.txtHYUA.Text.Trim();            
+            model.UPDATER_ID = GlobalVal.LoginUserID;
+            model.TERMINAL_CD = GlobalVal.TerminalCD;
+
+            webService.ReturnValue resoult = GlobalVal.WebSerices.AddUpdateBiochemistry(model);
+            if (resoult.ErrorFlag)
+            {
+                MessageBox.Show("操作成功！");
+            }
+            else
+            {
+                MessageBox.Show(resoult.ErrorID);
+            }
         }
     }
 }

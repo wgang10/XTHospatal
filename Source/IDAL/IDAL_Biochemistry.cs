@@ -15,5 +15,7 @@ namespace XTHospital.IDAL
         ReturnValue Update(Biochemistry model);
 
         ReturnValue GetAll();
+
+        ReturnValue GetStatisticsBio(string EmployeeID);
     }
 }

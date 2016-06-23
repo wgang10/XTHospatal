@@ -21,7 +21,7 @@ namespace XTHospital.BLL
         public IList<Notic> GetNewsList(string SystemName, int Num)
         {
             //List<News> list = new List<News>();
-            //ReturnValue resoult = dal.GetNewsList(SystemName,Num);
+            //ReturnValue resoult = dal.GetNewsList(SystemName, Num);
             //if (resoult.ErrorFlag)
             //{
             //    for (int i = 0; i < resoult.Count; i++)
@@ -40,8 +40,8 @@ namespace XTHospital.BLL
             {
                 SystemName = "";
             }         
-            //return OptionNews.GetNewsList(SystemName,Num);
-            return new List<Notic>();
+            return OptionNews.GetNewsList(SystemName,Num);
+            //return new List<Notic>();
         }
 
         //public IList<Notic> GetNewsListByWeb(string SystemName, int Num)

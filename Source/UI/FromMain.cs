@@ -103,6 +103,7 @@ namespace UI
 
         private void FromMain_Load(object sender, EventArgs e)
         {
+            this.Hide();
             this.Activate();
             //检查并更新update.exe文件
             //是否存在
@@ -146,7 +147,9 @@ namespace UI
                     {
                         this.Activate();
                         GlobalVal.FormShow = this;
+                        this.Show();
                         BindChartData();
+                        StartShowNews();
                         try
                         {
                             this.Text = GlobalVal.SystemNameCN + "    当前登录用户：" + GlobalVal.LoginUserID;
